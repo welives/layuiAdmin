@@ -1,0 +1,239 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "page/welcome-1.html"
+  },
+  "logoInfo": {
+    "title": "LAYUI 摸🐟",
+    "image": "images/logo.gif",
+    "href": "javascript:;"
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "layui-icon layui-icon-set",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "主页模板",
+          "href": "",
+          "icon": "layui-icon layui-icon-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "主页一",
+              "href": "page/welcome-1.html",
+              "icon": "layui-icon layui-icon-console",
+              "target": "_self"
+            },
+            {
+              "title": "主页二",
+              "href": "page/welcome-2.html",
+              "icon": "layui-icon layui-icon-layer",
+              "target": "_self"
+            },
+            {
+              "title": "主页三",
+              "href": "page/welcome-3.html",
+              "icon": "layui-icon layui-icon-util",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "菜单管理",
+          "href": "page/menu.html",
+          "icon": "layui-icon layui-icon-menu-fill",
+          "target": "_self"
+        },
+        {
+          "title": "系统设置",
+          "href": "page/setting.html",
+          "icon": "layui-icon layui-icon-set-fill",
+          "target": "_self"
+        },
+        {
+          "title": "表格示例",
+          "href": "page/table.html",
+          "icon": "layui-icon layui-icon-table",
+          "target": "_self"
+        },
+        {
+          "title": "表单示例",
+          "href": "",
+          "icon": "layui-icon layui-icon-form",
+          "target": "_self",
+          "child": [
+            {
+              "title": "普通表单",
+              "href": "page/form.html",
+              "icon": "layui-icon layui-icon-chart-screen",
+              "target": "_self"
+            },
+            {
+              "title": "分步表单",
+              "href": "page/form-step.html",
+              "icon": "layui-icon layui-icon-app",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "登录模板",
+          "href": "",
+          "icon": "layui-icon layui-icon-website",
+          "target": "_self",
+          "child": [
+            {
+              "title": "登录-1",
+              "href": "page/login-1.html",
+              "icon": "layui-icon layui-icon-login-wechat",
+              "target": "_blank"
+            },
+            {
+              "title": "登录-2",
+              "href": "page/login-2.html",
+              "icon": "layui-icon layui-icon-login-qq",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "异常页面",
+          "href": "",
+          "icon": "layui-icon layui-icon-face-cry",
+          "target": "_self",
+          "child": [
+            {
+              "title": "404页面",
+              "href": "page/404.html",
+              "icon": "layui-icon layui-icon-404",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "其它界面",
+          "href": "",
+          "icon": "layui-icon layui-icon-flag",
+          "target": "",
+          "child": [
+            {
+              "title": "按钮示例",
+              "href": "page/button.html",
+              "icon": "layui-icon layui-icon-praise",
+              "target": "_self"
+            },
+            {
+              "title": "弹出层",
+              "href": "page/layer.html",
+              "icon": "layui-icon layui-icon-tread",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "组件管理",
+      "icon": "layui-icon layui-icon-component",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "图标列表",
+          "href": "page/icon.html",
+          "icon": "layui-icon layui-icon-at",
+          "target": "_self"
+        },
+        {
+          "title": "图标选择",
+          "href": "page/icon-picker.html",
+          "icon": "layui-icon layui-icon-mute",
+          "target": "_self"
+        },
+        {
+          "title": "颜色选择",
+          "href": "page/color-select.html",
+          "icon": "layui-icon layui-icon-mike",
+          "target": "_self"
+        },
+        {
+          "title": "下拉选择",
+          "href": "page/table-select.html",
+          "icon": "layui-icon layui-icon-key",
+          "target": "_self"
+        },
+        {
+          "title": "文件上传",
+          "href": "page/upload.html",
+          "icon": "layui-icon layui-icon-gift",
+          "target": "_self"
+        },
+        {
+          "title": "富文本编辑器",
+          "href": "page/editor.html",
+          "icon": "layui-icon layui-icon-email",
+          "target": "_self"
+        },
+        {
+          "title": "省市县区选择器",
+          "href": "page/area.html",
+          "icon": "layui-icon layui-icon-rss",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "其它管理",
+      "icon": "layui-icon layui-icon-release",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "多级菜单",
+          "href": "",
+          "icon": "layui-icon layui-icon-bluetooth",
+          "target": "",
+          "child": [
+            {
+              "title": "按钮1",
+              "href": "page/button.html?v=1",
+              "icon": "layui-icon layui-icon-time",
+              "target": "_self",
+              "child": [
+                {
+                  "title": "按钮2",
+                  "href": "page/button.html?v=2",
+                  "icon": "layui-icon layui-icon-light",
+                  "target": "_self",
+                  "child": [
+                    {
+                      "title": "按钮3",
+                      "href": "page/button.html?v=3",
+                      "icon": "layui-icon layui-icon-heart",
+                      "target": "_self"
+                    },
+                    {
+                      "title": "表单4",
+                      "href": "page/form.html?v=1",
+                      "icon": "layui-icon layui-icon-heart-fill",
+                      "target": "_self"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "失效菜单",
+          "href": "page/error.html",
+          "icon": "layui-icon layui-icon-fire",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

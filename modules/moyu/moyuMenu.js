@@ -32,8 +32,8 @@ layui.define(['element', 'laytpl'], (exports) => {
 
       leftMenusHtml = this.renderLeftMenu(menuList, { childOpenClass })
       $('body').addClass('layui-single-module') // 单模块标识
-      $('.layui-header-menu').remove()
-      $('.layui-side-menu').html(leftMenusHtml) // 左侧菜单
+      $('.layui-header-menu').remove() // 移除头部导航节点
+      $('[lay-filter=side-menu]').html(leftMenusHtml) // 左侧菜单
       element.init()
     },
 
@@ -80,9 +80,9 @@ layui.define(['element', 'laytpl'], (exports) => {
         return headerMenuItemHtml
       }).join('')
       $('body').addClass('layui-multi-module') // 多模块标识
-      $('.layui-header-menu-pc').html(headerMenusHtml) // pc端
-      $('.layui-header-menu-mobile').html(headerMobileMenusHtml) // 移动端
-      $('.layui-side-menu').html(leftMenusHtml) // 左侧菜单
+      $('[lay-filter=header-menu-pc]').html(headerMenusHtml) // pc端
+      $('[lay-filter=header-menu-mobile]').html(headerMobileMenusHtml) // 移动端
+      $('[lay-filter=side-menu]').html(leftMenusHtml) // 左侧菜单
       element.init()
     },
 
@@ -94,8 +94,8 @@ layui.define(['element', 'laytpl'], (exports) => {
      */
     compileMenu(menu, isSub = false) {
       let menuHtml = isSub
-        ? `<dd {{d.menu?'data-menu="'+d.menu+'"':''}} {{d.id?'id="'+d.id+'"':''}} class="{{d.activeClass||''}} {{d.childOpenClass||''}}"><a href="javascript:;" {{d.href?'lay-href="'+d.href+'"':''}} {{d.target?'target="'+d.target+'"':''}}>{{d.icon?'<i class="'+d.icon+'"></i>':''}}<span>{{d.title||''}}</span></a>{{d.children||''}}</dd>`
-        : `<li {{d.menu?'data-menu="'+d.menu+'"':''}} class="layui-nav-item {{d.activeClass||''}} {{d.childOpenClass||''}}" {{d.id?'id="'+d.id+'"':''}}><a href="javascript:;" {{d.href?'lay-href="'+d.href+'"':''}} {{d.target?'target="'+d.target+'"':''}}>{{d.icon?'<i class="'+d.icon+'"></i>':''}}<span>{{d.title||''}}</span></a>{{d.children||''}}</li>`
+        ? `<dd {{d.menu?'data-id="'+d.menu+'"':''}} {{d.id?'id="'+d.id+'"':''}} class="{{d.activeClass||''}} {{d.childOpenClass||''}}"><a href="javascript:;" {{d.href?'lay-href="'+d.href+'"':''}} {{d.target?'target="'+d.target+'"':''}}>{{d.icon?'<i class="'+d.icon+'"></i>':''}}<span>{{d.title||''}}</span></a>{{d.children||''}}</dd>`
+        : `<li {{d.menu?'data-id="'+d.menu+'"':''}} class="layui-nav-item {{d.activeClass||''}} {{d.childOpenClass||''}}" {{d.id?'id="'+d.id+'"':''}}><a href="javascript:;" {{d.href?'lay-href="'+d.href+'"':''}} {{d.target?'target="'+d.target+'"':''}}>{{d.icon?'<i class="'+d.icon+'"></i>':''}}<span>{{d.title||''}}</span></a>{{d.children||''}}</li>`
       return laytpl(menuHtml).render(menu)
     },
 
@@ -190,59 +190,57 @@ layui.define(['element', 'laytpl'], (exports) => {
      */
     listen() {
       // PC端菜单模块切换
-      $('body').on('click', '[data-menu]', function () {
-        let menuId = $(this).attr('data-menu')
+      $('body').on('click', '[data-id]', function () {
+        let menuId = $(this).attr('data-id')
         // pc端头部导航
-        $('.layui-header-menu-pc .layui-this').removeClass('layui-this')
+        $('[lay-filter=header-menu-pc] .layui-this').removeClass('layui-this')
         // 移动端头部导航
-        $('.layui-header-menu-mobile .layui-this').removeClass('layui-this')
+        $('[lay-filter=header-menu-mobile] .layui-this').removeClass(
+          'layui-this',
+        )
         // 给当前点击项添加layui-this类
-        $(`[data-menu=${menuId}]`).addClass('layui-this')
+        $(`[data-id=${menuId}]`).addClass('layui-this')
 
         // 左侧菜单
-        $('.layui-side-menu .layui-nav.layui-this')
+        $('.layui-side .layui-this')
           .addClass('layui-hide')
           .removeClass('layui-this')
         $(`#${menuId}`).removeClass('layui-hide').addClass('layui-this')
+        layer.close(window.popupMenu)
       })
 
       // 移动端点击菜单模块弹出左侧菜单
-      $('body').on('click', '.layui-header-menu-mobile dd', function () {
-        let attrEvent = $('.layui-shrink [moyu-event]').attr('moyu-event')
-        if (attrEvent === 'unfold') {
+      $('body').on('click', '[lay-filter=header-menu-mobile] dd', function () {
+        let event = $('.layui-shrink [lay-event]').attr('lay-event')
+        if (event === 'unfold') {
           $('.layui-side-mobile').trigger('click')
         }
       })
 
       // PC端左侧菜单折叠
-      $('body').on('click', '.layui-shrink [moyu-event]', function () {
-        let attrEvent = $(this).attr('moyu-event')
-        if (attrEvent === 'unfold') {
+      $('body').on('click', '.layui-shrink [lay-event]', function () {
+        let event = $(this).attr('lay-event')
+        if (event === 'unfold') {
           // 折叠
-          $(this).attr('moyu-event', 'fold')
-          $(this)
-            .children()
-            .removeClass('layui-icon-shrink-right')
-            .addClass('layui-icon-spread-left')
+          $(this).attr('lay-event', 'fold')
+          $(this).html('<i class="layui-icon layui-icon-spread-left"></i>')
           $('body').removeClass('layui-default').addClass('layui-mini')
         } else {
           // 展开
-          $(this).attr('moyu-event', 'unfold')
-          $(this)
-            .children()
-            .removeClass('layui-icon-spread-left')
-            .addClass('layui-icon-shrink-right')
+          $(this).attr('lay-event', 'unfold')
+          $(this).html('<i class="layui-icon layui-icon-shrink-right"></i>')
           $('body').removeClass('layui-mini').addClass('layui-default')
+          layer.close(window.popupMenu)
         }
       })
 
       // 移动端左侧菜单折叠
       $('body').on('click', '.layui-side-mobile', function () {
-        let el = $('.layui-shrink [moyu-event]'),
-          attrEvent = el.attr('moyu-event')
-        if (attrEvent === 'unfold') {
+        let el = $('.layui-shrink [lay-event]'),
+          event = el.attr('lay-event')
+        if (event === 'unfold') {
           // 展开
-          el.attr('moyu-event', 'fold')
+          el.attr('lay-event', 'fold')
           $('.layui-shrink i').attr(
             'class',
             'layui-icon layui-icon-spread-left',

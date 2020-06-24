@@ -1,48 +1,5 @@
 /* 本样式文件主要用来控制layout布局页元素的颜色,其他子页面不使用本样式文件 */
-/* 页面默认背景色和字体颜色 */
-body {
-  background-color: #f8f8f8;
-  color: #565656;
-}
-
-::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-/* 文本颜色 */
-.layui-text-red {
-  color: #ff5722 !important;
-}
-.layui-text-orange {
-  color: #ffb800 !important;
-}
-.layui-text-green {
-  color: #009688 !important;
-}
-.layui-text-cyan {
-  color: #2f4056 !important;
-}
-.layui-text-blue {
-  color: #1e9fff !important;
-}
-.layui-text-black {
-  color: #393d49 !important;
-}
-.layui-text-gray {
-  color: #565656 !important;
-}
-
-/* 弹出模板 */
-.layui-layer-admin .layui-layer-title {
-  background-color: #42b983;
-  color: #fff;
-}
-.layui-layer-admin i[close] {
-  color: #fff;
-}
-.layui-layer-admin .layui-layer-content cite {
-  color: #ff5722;
-}
+@import url(../base.css);
 
 /* logo */
 .layui-layout-admin .layui-logo {
@@ -114,6 +71,18 @@ body {
 /* 遮罩 */
 .layadmin-body-shade {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* 弹出模板 */
+.layui-layer-admin .layui-layer-title {
+  background-color: #42b983;
+  color: #fff;
+}
+.layui-layer-admin i[close] {
+  color: #fff;
+}
+.layui-layer-admin .layui-layer-content cite {
+  color: #ff5722;
 }
 
 /* 主题设置面板 */

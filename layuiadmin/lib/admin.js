@@ -615,6 +615,20 @@ layui.define('view', (exports) => {
       },
 
       /**
+       * @description 主题设置
+       * @param {object} othis jQuery对象
+       */
+      setTheme(othis) {
+        let index = othis.data('index'),
+          prevIndex = othis.siblings(`.${THIS}`).data('index')
+
+        if (othis.hasClass(THIS)) return
+        // 移除兄弟元素的layui-this
+        othis.addClass(THIS).siblings(`.${THIS}`).removeClass(THIS)
+        admin.initTheme(index)
+      },
+
+      /**
        * @description 便签
        * @param {object} othis jQuery对象
        */
@@ -711,20 +725,6 @@ layui.define('view', (exports) => {
        */
       back() {
         history.back()
-      },
-
-      /**
-       * @description 主题设置
-       * @param {object} othis jQuery对象
-       */
-      setTheme(othis) {
-        let index = othis.data('index'),
-          prevIndex = othis.siblings(`.${THIS}`).data('index')
-
-        if (othis.hasClass(THIS)) return
-        // 移除兄弟元素的layui-this
-        othis.addClass(THIS).siblings(`.${THIS}`).removeClass(THIS)
-        admin.initTheme(index)
       },
 
       /**
@@ -1031,6 +1031,7 @@ layui.define('view', (exports) => {
       )
     }
 
+    // 渲染侧边菜单
     admin.render()
   })()
 

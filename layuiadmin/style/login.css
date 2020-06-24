@@ -1,43 +1,9 @@
+@import url(./base.css);
+
 html,
 body,
 #LAY_app {
   height: 100%;
-}
-
-body {
-  background-color: #f8f8f8;
-  color: #565656;
-}
-
-::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-/* 文本颜色 */
-.layui-text-red {
-  color: #ff5722 !important;
-}
-.layui-text-orange {
-  color: #ffb800 !important;
-}
-.layui-text-green {
-  color: #009688 !important;
-}
-.layui-text-cyan {
-  color: #2f4056 !important;
-}
-.layui-text-blue {
-  color: #1e9fff !important;
-}
-.layui-text-black {
-  color: #393d49 !important;
-}
-.layui-text-gray {
-  color: #565656 !important;
-}
-
-*[template] {
-  display: none;
 }
 
 #LAY-user-login,

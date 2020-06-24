@@ -9,7 +9,7 @@
   <div class="layui-card-header">配色方案</div>
   <div class="layui-card-body layadmin-setTheme">
     <ul class="layadmin-setTheme-color">
-      {{# layui.each(layui.setter.theme.color, function(index, item){ }}
+      {{# layui.each(layui.setter.theme.color, (index, item) => { }}
       <li layadmin-event="setTheme" data-index="{{ index }}" data-alias="{{ item.alias }}" title="{{ item.alias }}" {{ index === themeColorIndex ? 'class="layui-this"' : ''}}>
         <div class="layadmin-setTheme-header" style="background-color: {{ item.header || 'white' }}"></div>
         <div class="layadmin-setTheme-side" style="background-color: {{ item.main }}">

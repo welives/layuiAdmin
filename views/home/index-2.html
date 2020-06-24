@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>主页二</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-sm6 layui-col-md3">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              访问量
+              <span class="layui-badge layui-bg-blue layadmin-badge">周</span>
+            </div>
+            <div class="layui-card-body layadmin-card-list">
+              <p class="layadmin-big-font">9,999,666</p>
+              <p>
+                总计访问量
+                <span class="layadmin-span-color"
+                  >88万 <i class="layui-inline layui-icon layui-icon-flag"></i
+                ></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              下载
+              <span class="layui-badge layui-bg-cyan layadmin-badge">月</span>
+            </div>
+            <div class="layui-card-body layadmin-card-list">
+              <p class="layadmin-big-font">33,555</p>
+              <p>
+                新下载
+                <span class="layadmin-span-color"
+                  >10%
+                  <i class="layui-inline layui-icon layui-icon-face-smile-b"></i
+                ></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              收入
+              <span class="layui-badge layui-bg-green layadmin-badge">年</span>
+            </div>
+            <div class="layui-card-body layadmin-card-list">
+              <p class="layadmin-big-font">999,666</p>
+              <p>
+                总收入
+                <span class="layadmin-span-color"
+                  >*** <i class="layui-inline layui-icon layui-icon-dollar"></i
+                ></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              活跃用户
+              <span class="layui-badge layui-bg-orange layadmin-badge">月</span>
+            </div>
+            <div class="layui-card-body layadmin-card-list">
+              <p class="layadmin-big-font">66,666</p>
+              <p>
+                最近一个月
+                <span class="layadmin-span-color"
+                  >15% <i class="layui-inline layui-icon layui-icon-user"></i
+                ></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-sm12">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              访问量
+              <div class="layui-btn-group layadmin-btn-group">
+                <a
+                  href="javascript:;"
+                  class="layui-btn layui-btn-xs layui-btn-primary"
+                  >去年</a
+                >
+                <a
+                  href="javascript:;"
+                  class="layui-btn layui-btn-xs layui-btn-primary"
+                  >今年</a
+                >
+              </div>
+            </div>
+            <div class="layui-card-body">
+              <div class="layui-row">
+                <div class="layui-col-sm8">
+                  <div
+                    class="layui-carousel layadmin-carousel layadmin-dataview"
+                    data-anim="fade"
+                    lay-filter="layadmin-index-demo2"
+                  >
+                    <div carousel-item id="LAY-index-demo2">
+                      <div>
+                        <i
+                          class="layui-icon layui-icon-loading-1 layadmin-loading"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="layui-col-sm4">
+                  <div class="layadmin-card-list">
+                    <p class="layadmin-normal-font">月访问数</p>
+                    <span>同上期增长</span>
+                    <div
+                      class="layui-progress layui-progress-big"
+                      lay-showPercent="yes"
+                    >
+                      <div class="layui-progress-bar" lay-percent="30%"></div>
+                    </div>
+                  </div>
+                  <div class="layadmin-card-list">
+                    <p class="layadmin-normal-font">月下载数</p>
+                    <span>同上期增长</span>
+                    <div
+                      class="layui-progress layui-progress-big"
+                      lay-showPercent="yes"
+                    >
+                      <div class="layui-progress-bar" lay-percent="20%"></div>
+                    </div>
+                  </div>
+                  <div class="layadmin-card-list">
+                    <p class="layadmin-normal-font">月收入</p>
+                    <span>同上期增长</span>
+                    <div
+                      class="layui-progress layui-progress-big"
+                      lay-showPercent="yes"
+                    >
+                      <div class="layui-progress-bar" lay-percent="25%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-sm4">
+          <div class="layui-card">
+            <div class="layui-card-header">用户留言</div>
+            <div class="layui-card-body">
+              <ul class="layadmin-usernotes"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-sm8">
+          <div class="layui-row layui-col-space10">
+            <div class="layui-col-sm6">
+              <div class="layui-card">
+                <div class="layui-card-header">本周活跃用户列表</div>
+                <div class="layui-card-body">
+                  <table id="LAY-index-activeUser"></table>
+                </div>
+              </div>
+            </div>
+            <div class="layui-col-sm6">
+              <div class="layui-card">
+                <div class="layui-card-header">项目进展</div>
+                <div class="layui-card-body">
+                  <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                      <table id="LAY-index-prograss"></table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="layui-col-sm12">
+              <div class="layui-card">
+                <div class="layui-card-header">用户全国分布</div>
+                <div class="layui-card-body">
+                  <div class="layui-row layui-col-space10">
+                    <div class="layui-col-sm4">
+                      <table class="layui-table" lay-skin="line">
+                        <thead>
+                          <tr>
+                            <th>排名</th>
+                            <th>地区</th>
+                            <th>人数</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>浙江</td>
+                            <td>62310</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>上海</td>
+                            <td>59190</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>广东</td>
+                            <td>55891</td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>北京</td>
+                            <td>51919</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>山东</td>
+                            <td>39231</td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>湖北</td>
+                            <td>37109</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="layui-col-sm8">
+                      <div
+                        class="layui-carousel layadmin-carousel layadmin-dataview"
+                        data-anim="fade"
+                        lay-filter="layadmin-index-demo3"
+                      >
+                        <div carousel-item id="LAY-index-demo3">
+                          <div>
+                            <i
+                              class="layui-icon layui-icon-loading-1 layadmin-loading"
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use(['index', 'sample'])
+    </script>
+  </body>
+</html>

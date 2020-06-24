@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>注册 - layuiMoyu</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../layuiadmin/style/login.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div
+      class="layadmin-user-login layadmin-user-display-show"
+      id="LAY-user-login"
+      style="display: none;"
+    >
+      <div class="layadmin-user-login-main">
+        <div class="layadmin-user-login-box layadmin-user-login-header">
+          <h2>layuiMoyu</h2>
+          <p>摸🐟 - 基于Layui的练习项目</p>
+        </div>
+        <div
+          class="layadmin-user-login-box layadmin-user-login-body layui-form"
+        >
+          <div class="layui-form-item">
+            <label
+              class="layadmin-user-login-icon layui-icon layui-icon-cellphone"
+              for="LAY-user-cellphone"
+            ></label>
+            <input
+              type="text"
+              id="LAY-user-cellphone"
+              class="layui-input"
+              name="cellphone"
+              placeholder="手机"
+              lay-verify="phone"
+            />
+          </div>
+          <div class="layui-form-item">
+            <div class="layui-row">
+              <div class="layui-col-xs7">
+                <label
+                  for="LAY-user-smscode"
+                  class="layadmin-user-login-icon layui-icon layui-icon-vercode"
+                ></label>
+                <input
+                  type="text"
+                  class="layui-input"
+                  id="LAY-user-smscode"
+                  name="smscode"
+                  placeholder="短信验证码"
+                  lay-verify="required"
+                />
+              </div>
+              <div class="layui-col-xs5">
+                <div style="margin-left: 10px;">
+                  <button
+                    class="layui-btn layui-btn-primary layui-btn-fluid"
+                    id="LAY-user-get-smscode"
+                  >
+                    获取验证码
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label
+              class="layadmin-user-login-icon layui-icon layui-icon-password"
+              for="LAY-user-login-password"
+            ></label>
+            <input
+              type="password"
+              id="LAY-user-login-password"
+              class="layui-input"
+              name="password"
+              placeholder="密码"
+              lay-verify="pass"
+            />
+          </div>
+          <div class="layui-form-item">
+            <label
+              class="layadmin-user-login-icon layui-icon layui-icon-password"
+              for="LAY-user-login-repass"
+            ></label>
+            <input
+              type="password"
+              id="LAY-user-login-repass"
+              class="layui-input"
+              name="repass"
+              placeholder="确认密码"
+              lay-verify="required"
+            />
+          </div>
+          <div class="layui-form-item">
+            <label
+              class="layadmin-user-login-icon layui-icon layui-icon-username"
+              for="LAY-user-login-nickname"
+            ></label>
+            <input
+              type="text"
+              id="LAY-user-login-nickname"
+              class="layui-input"
+              name="nickname"
+              placeholder="昵称"
+              lay-verify="nickname"
+            />
+          </div>
+          <div class="layui-form-item">
+            <input
+              type="checkbox"
+              name="agreement"
+              title="同意用户协议"
+              lay-skin="primary"
+              checked
+            />
+          </div>
+          <div class="layui-form-item">
+            <button
+              class="layui-btn layui-btn-fluid"
+              lay-filter="LAY-user-reg-submit"
+              lay-submit
+            >
+              注 册
+            </button>
+          </div>
+          <div class="layui-form-item layui-trans layadmin-user-login-other">
+            <label>社交账号注册</label>
+            <a href="javascript:;"
+              ><i class="layui-icon layui-icon-login-qq layui-text-blue"></i
+            ></a>
+            <a href="javascript:;"
+              ><i class="layui-icon layui-icon-login-wechat"></i
+            ></a>
+            <a href="javascript:;"
+              ><i class="layui-icon layui-icon-login-weibo"></i
+            ></a>
+            <a
+              href="login.html"
+              class="layadmin-user-jump-change layui-text-green layui-hide-xs"
+              >用已有帐号登入</a
+            >
+            <a
+              href="login.html"
+              class="layadmin-user-jump-change layui-text-green layui-hide-sm layui-show-xs-inline-block"
+              >登入</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="layadmin-user-login-footer layui-trans">
+        <p>
+          © 2020 <a href="http://www.layui.com/" target="_blank">layui.com</a>
+        </p>
+      </div>
+    </div>
+    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use(['index', 'user'], () => {
+          let $ = layui.$,
+            setter = layui.setter,
+            admin = layui.admin,
+            form = layui.form,
+            router = layui.router()
+
+          form.render()
+
+          // 提交
+          form.on('submit(LAY-user-reg-submit)', (data) => {
+            let field = data.field
+
+            // 确认密码
+            if (field.password !== field.repass) {
+              return layer.msg('两次密码输入不一致')
+            }
+
+            // 是否同意用户协议
+            if (!field.agreement) {
+              return layer.msg('你必须同意用户协议才能注册')
+            }
+
+            // 请求接口
+            admin.req({
+              url: setter.base + 'json/user/reg.json',
+              data: field,
+              done(res) {
+                layer.msg(
+                  '注册成功',
+                  {
+                    offset: '15px',
+                    icon: 1,
+                    time: 1000,
+                  },
+                  () => {
+                    location.href = 'login.html' // 跳转到登入页
+                  },
+                )
+              },
+            })
+
+            return false
+          })
+        })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>主页一</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md8">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              更新日志
+              <a
+                lay-href="http://www.layui.com/doc/base/changelog.html"
+                class="layui-a-tips layui-text-blue"
+                >全部更新</a
+              >
+            </div>
+            <div class="layui-card-body" id="LAY-update-logs"></div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">用户动态</div>
+            <div class="layui-card-body">
+              <dl class="layadmin-user-news"></dl>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md4">
+          <div class="layui-card">
+            <div class="layui-card-header">便捷导航</div>
+            <div class="layui-card-body">
+              <div class="layadmin-card-link">
+                <a href="javascript:;">操作一</a>
+                <a href="javascript:;">操作二</a>
+                <a href="javascript:;">操作三</a>
+                <a href="javascript:;">操作四</a>
+                <a href="javascript:;">操作五</a>
+                <a href="javascript:;">操作六</a>
+                <button class="layui-btn layui-btn-primary layui-btn-xs">
+                  <i
+                    class="layui-icon layui-icon-add-1"
+                    style="position: relative; top: -1px;"
+                  ></i
+                  >添加
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">八卦新闻</div>
+            <div class="layui-card-body">
+              <div
+                class="layui-carousel layadmin-carousel layadmin-dataview"
+                data-anim="fade"
+                lay-filter="layadmin-index-demo1"
+              >
+                <div carousel-item id="LAY-index-demo1">
+                  <div>
+                    <i
+                      class="layui-icon layui-icon-loading-1 layadmin-loading"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">重点组件</div>
+            <div class="layui-card-body">
+              <ul class="layui-row layadmin-components"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use(['index', 'sample'])
+    </script>
+  </body>
+</html>

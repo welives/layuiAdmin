@@ -1,0 +1,410 @@
+body {
+  background-color: #f8f8f8;
+  color: #565656;
+}
+
+::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+/* 文本颜色 */
+.layui-text-red {
+  color: #ff5722 !important;
+}
+.layui-text-orange {
+  color: #ffb800 !important;
+}
+.layui-text-green {
+  color: #009688 !important;
+}
+.layui-text-cyan {
+  color: #2f4056 !important;
+}
+.layui-text-blue {
+  color: #1e9fff !important;
+}
+.layui-text-black {
+  color: #393d49 !important;
+}
+.layui-text-gray {
+  color: #565656 !important;
+}
+
+/**自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #9c9da0;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+/* 全局 */
+*[template] {
+  display: none;
+}
+a,
+*[lay-href],
+*[lay-tips],
+*[layadmin-event] {
+  cursor: pointer;
+}
+.layui-fluid {
+  padding: 10px;
+}
+.layui-card-header .layui-icon {
+  line-height: initial;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -7px;
+}
+.layadmin-loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -16px -15px;
+  font-size: 30px;
+  color: #c2c2c2;
+}
+.layui-card .layui-table-view {
+  margin: 0;
+}
+
+/***************
+  首页 home.html
+ ***************/
+
+/* 重置轮播样式 */
+.layadmin-carousel {
+  height: 185px !important;
+  background-color: #fff;
+}
+.layadmin-carousel > *[carousel-item] > * {
+  background-color: #fff;
+}
+.layadmin-carousel .layui-col-space10 {
+  margin: 0;
+}
+.layadmin-carousel .layui-carousel-ind {
+  position: absolute;
+  top: -41px;
+  text-align: right;
+}
+.layadmin-carousel .layui-carousel-ind ul {
+  background: none;
+}
+.layadmin-carousel .layui-carousel-ind li {
+  background-color: #e2e2e2;
+}
+.layadmin-carousel .layui-carousel-ind li:hover {
+  background-color: #c2c2c2;
+}
+.layadmin-carousel .layui-carousel-ind li.layui-this {
+  background-color: #999999;
+}
+
+/* 快捷方式 */
+.layadmin-shortcut li {
+  text-align: center;
+}
+.layadmin-shortcut li .layui-icon {
+  display: inline-block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 30px;
+  color: #333333;
+  background-color: #f8f8f8;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+.layadmin-shortcut li:hover .layui-icon {
+  background-color: #f2f2f2;
+}
+.layadmin-shortcut li cite {
+  position: relative;
+  top: 2px;
+  display: block;
+  color: #565656;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+/* 待办事项 */
+.layadmin-backlog .layadmin-backlog-body {
+  display: block;
+  padding: 10px 15px;
+  background-color: #f8f8f8;
+  color: #565656;
+  border-radius: 2px;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+.layadmin-backlog-body h3 {
+  padding-bottom: 10px;
+  font-size: 12px;
+}
+.layadmin-backlog-body p cite {
+  font-style: normal;
+  font-size: 30px;
+  font-weight: 300;
+}
+.layadmin-backlog-body:hover {
+  background-color: #f2f2f2;
+}
+
+/* 数据概率 */
+.layadmin-dataview {
+  height: 332px !important;
+}
+.layadmin-dataview > *[carousel-item]::before {
+  display: none;
+}
+.layadmin-dataview > *[carousel-item] > div {
+  height: 332px;
+}
+
+/* 效果报告 */
+.layadmin-takerates {
+  padding-top: 5px;
+}
+.layadmin-takerates .layui-progress {
+  margin: 50px 0 60px;
+}
+.layadmin-takerates .layui-progress:last-child {
+  margin-bottom: 10px;
+}
+.layadmin-takerates .layui-progress h3 {
+  position: absolute;
+  right: 0;
+  top: -35px;
+  font-size: 14px;
+  color: #999999;
+}
+.layadmin-takerates .layui-progress-bar {
+  text-align-last: left;
+}
+.layadmin-takerates .layui-progress-text {
+  top: -35px;
+  line-height: 26px;
+  font-size: 26px;
+}
+
+/* 产品动态 */
+.layadmin-news {
+  height: 60px !important;
+}
+.layadmin-news a {
+  display: block;
+  line-height: 60px;
+  text-align: center;
+}
+
+/* 作者心语 */
+.layadmin-text p {
+  margin-bottom: 10px;
+  text-indent: 2em;
+}
+.layadmin-text p:last-child {
+  margin: 0;
+}
+
+/**********
+  主页一
+ ***********/
+.layui-card a:hover {
+  color: #1e9fff !important;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+}
+/* 最近更新 */
+.layui-card-header .layui-a-tips {
+  position: absolute;
+  right: 15px;
+}
+.layadmin-update-logs {
+  background-color: #f8f8f8;
+  color: #777;
+  padding: 24px;
+}
+.layadmin-update-logs .layadmin-text-top {
+  padding-bottom: 10px;
+}
+.layadmin-update-logs .layadmin-text-top a {
+  line-height: 24px;
+  font-size: 16px;
+  vertical-align: top;
+}
+.layadmin-update-logs .layadmin-text-top i {
+  color: #009688;
+  margin-right: 10px;
+  font-size: 24px;
+}
+.layadmin-update-logs .layadmin-text-center {
+  height: 44px;
+  line-height: 22px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.layadmin-update-logs .layadmin-text-bottom {
+  position: relative;
+}
+.layadmin-update-logs .layadmin-text-bottom a {
+  color: inherit;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+.layadmin-update-logs .layadmin-text-bottom span {
+  color: #ccc;
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+}
+
+/* 用户动态 */
+.layadmin-user-news {
+  padding: 0 10px;
+}
+.layadmin-user-news dd {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  display: -webkit-flex;
+}
+.layadmin-user-news dd .layadmin-avatar-img,
+.layadmin-components .layadmin-cpn-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.layadmin-user-news dd .layadmin-avatar-img a {
+  width: 100%;
+  height: 100%;
+  line-height: 32px;
+  display: inline-block;
+  text-align: center;
+}
+.layadmin-user-news dd .layadmin-avatar-img img,
+.layadmin-components .layadmin-cpn-img img {
+  width: 100%;
+  height: 100%;
+}
+.layadmin-user-news dd div span {
+  color: #ccc;
+}
+
+/* 便捷导航 */
+.layadmin-card-link {
+  padding-left: 10px;
+  font-size: 0;
+}
+.layadmin-card-link a {
+  display: inline-block;
+  width: 25%;
+  color: #666666;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.layadmin-card-link button {
+  vertical-align: top;
+}
+
+/* 重点组件 */
+.layadmin-components li {
+  padding: 10px 0 10px 10px;
+}
+.layadmin-components span {
+  color: #666666;
+}
+.layadmin-components .layadmin-cpn-img {
+  display: inline-block;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+
+/**********
+  主页二
+ ***********/
+.layadmin-badge {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -9px;
+}
+.layadmin-card-list {
+  padding: 15px;
+}
+.layadmin-card-list p.layadmin-big-font {
+  font-size: 36px;
+  color: #666666;
+  line-height: 36px;
+  padding: 5px 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
+.layadmin-card-list p.layadmin-normal-font {
+  padding-bottom: 10px;
+  font-size: 20px;
+  color: #666666;
+  line-height: 24px;
+}
+.layadmin-span-color {
+  font-size: 14px;
+  position: absolute;
+  right: 15px;
+}
+.layadmin-span-color i {
+  padding-left: 5px;
+}
+.layadmin-btn-group {
+  position: absolute;
+  right: 15px;
+}
+.layadmin-usernotes {
+  padding: 0 10px;
+}
+.layadmin-usernotes li {
+  position: relative;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.layadmin-usernotes li h3 {
+  padding-bottom: 5px;
+  font-weight: 700;
+}
+.layadmin-usernotes li p {
+  padding-bottom: 10px;
+}
+.layadmin-usernotes li > span {
+  color: #999999;
+}
+.layadmin-usernotes li:hover .layadmin-reply {
+  display: block;
+}
+.layadmin-usernotes .layadmin-reply {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 12px;
+}

@@ -1,0 +1,429 @@
+/**自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #9c9da0;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+/* 取消layui的样式 */
+.layui-nav-bar,
+.layui-nav .layui-this::after,
+.layui-nav-tree .layui-nav-itemed::after,
+.layui-tabs-page .layui-tabs-select .layui-nav-more,
+.layui-tabs-page .layui-tabs-select .layui-nav-mored,
+.layui-tabs-page .layui-tab-title li:first-child .layui-tab-close,
+.layui-tabs-page .layui-tab-title .layui-this::after {
+  display: none;
+}
+
+/* 以下是PC和移动端的通用样式 */
+.layui-nav .layui-this,
+.layui-nav .layui-nav-item a:hover,
+.layui-shrink i:hover {
+  transition: all 0.5s;
+}
+
+/* 移动端遮罩层 */
+.layui-mobile-shade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  cursor: pointer;
+}
+
+/* 初始化加载层 */
+.layui-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 999999;
+}
+.layui-loader .layui-loader-inner {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #42b983;
+  animation: spin 2s linear infinite;
+}
+.layui-loader .layui-loader-inner::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #42b983;
+  animation: spin 3s linear infinite;
+}
+.layui-loader .layui-loader-inner::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #42b983;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* 左侧菜单弹出层 */
+.layui-popup-menu.layui-layer-tips .layui-layer-content {
+  padding: 0;
+}
+.layui-popup-menu .layui-nav .layui-nav-item a > span {
+  margin-left: 5px;
+  letter-spacing: 1px;
+}
+.layui-popup-menu .layui-nav {
+  width: 150px;
+}
+
+/* 头部logo */
+.layui-layout-admin .layui-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+}
+.layui-header .layui-logo {
+  font-weight: bold;
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+  transition: all 0.5s;
+  box-sizing: border-box;
+}
+.layui-header .layui-logo img {
+  display: inline-block;
+  height: 40px;
+  vertical-align: middle;
+}
+.layui-header .layui-logo h1 {
+  display: inline-block;
+  margin-left: 12px;
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+/* PC端左侧菜单折叠按钮 */
+.layui-shrink {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  width: 40px;
+  height: 100%;
+  margin: 0 10px;
+  text-align: center;
+  transition: all 0.5s;
+  box-sizing: border-box;
+}
+.layui-shrink i {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 3px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+/* 头部导航 */
+.layui-header-content .layui-nav {
+  padding: 0;
+}
+.layui-header-content .layui-nav.layui-mobile-show {
+  letter-spacing: 1px;
+}
+.layui-header-content .layui-layout-left {
+  left: 250px;
+  transition: all 0.5s;
+}
+.layui-header-content .layui-nav .layui-nav-item {
+  height: 50px;
+  line-height: 50px;
+}
+.layui-header-content .layui-nav .layui-nav-child {
+  top: 50px;
+  left: auto;
+}
+.layui-header-content .layui-layout-right .layui-nav-item i {
+  font-size: 16px;
+}
+.layui-mobile-show .layui-nav-child a > span {
+  margin-left: 5px;
+  letter-spacing: 1px;
+}
+
+/* 左侧菜单 */
+.layui-layout-admin .layui-side {
+  top: 50px;
+  z-index: 1000;
+  transition: all 0.5s;
+  box-sizing: border-box;
+}
+.layui-side .layui-nav .layui-nav-item > a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.layui-side .layui-nav .layui-nav-item a {
+  height: 40px;
+  line-height: 40px;
+  padding-right: 30px;
+}
+.layui-side .layui-nav .layui-nav-item a > span {
+  margin-left: 5px;
+  letter-spacing: 1px;
+}
+.layui-side .layui-nav-itemed > .layui-nav-child {
+  padding: 5px 0;
+}
+
+/* tab选项卡 */
+.layui-layout-admin .layui-tabs-page {
+  position: fixed;
+  top: 50px;
+  left: 200px;
+  right: 0;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 80px 0 40px;
+  z-index: 999;
+  box-sizing: border-box;
+  transition: all 0.5s;
+}
+.layui-tabs-page .layui-tabs-control {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid whitesmoke;
+  box-sizing: border-box;
+  transition: all 0.5s;
+}
+.layui-tabs-page .layui-icon-prev {
+  left: 0;
+  border: none;
+  border-right: 1px solid whitesmoke;
+}
+.layui-tabs-page .layui-icon-next {
+  right: 40px;
+  border: none;
+  border-left: 1px solid whitesmoke;
+}
+.layui-tabs-page .layui-icon-down {
+  right: 0;
+  border: none;
+  border-left: 1px solid whitesmoke;
+}
+.layui-tabs-page .layui-tabs-select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+.layui-tabs-page .layui-tabs-select .layui-nav-item {
+  width: 100%;
+  height: 100%;
+}
+.layui-tabs-page .layui-tabs-select .layui-nav-child {
+  top: 40px;
+  left: auto;
+  right: 0;
+}
+.layui-tabs-page .layui-tab {
+  margin: 0;
+  overflow: hidden;
+}
+.layui-tabs-page .layui-tab-title {
+  height: 40px;
+  border: none;
+}
+.layui-tabs-page .layui-tab-title li {
+  min-width: 0;
+  height: 100%;
+  max-width: 150px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.layui-tabs-page .layui-tab-title .layui-tab-active {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 10px;
+}
+
+/* 主体内容 */
+.layui-layout-admin .layui-body {
+  top: 90px;
+  bottom: 0;
+  transition: all 0.5s;
+}
+.layui-body .layui-tabsbody-item {
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+.layui-tabsbody-item {
+  display: none;
+}
+.layui-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* PC端样式 */
+@media screen and (min-width: 1025px) {
+  .layui-pc-show {
+    display: block;
+  }
+  .layui-mobile-show,
+  .layui-mini .layui-header .layui-logo h1,
+  .layui-mini .layui-side .layui-nav-more,
+  .layui-mini .layui-side .layui-nav-child,
+  .layui-mini .layui-side .layui-nav-item > a span {
+    display: none;
+  }
+  .layui-mini .layui-header .layui-shrink,
+  .layui-mini .layui-layout-admin .layui-tabs-page,
+  .layui-mini .layui-layout-admin .layui-body {
+    left: 50px;
+  }
+  .layui-mini .layui-header .layui-header-menu {
+    left: 100px;
+  }
+  .layui-mini .layui-header .layui-logo,
+  .layui-mini .layui-side,
+  .layui-mini .layui-side > ul {
+    width: 50px !important;
+  }
+  .layui-mini .layui-side .layui-nav-item > a {
+    height: 40px;
+    line-height: 40px;
+    padding-right: 0;
+  }
+}
+
+/* 移动端样式 */
+@media screen and (max-width: 1024px) {
+  .layui-mobile-show,
+  .layui-mini .layui-mobile-shade {
+    display: block;
+  }
+  .layui-shrink,
+  .layui-pc-show,
+  .layui-mini .layui-side-mobile,
+  .layui-mini .layui-popup-menu {
+    display: none;
+  }
+  .layui-side-mobile {
+    display: block;
+    position: fixed;
+    z-index: 100000;
+    left: 10px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+  }
+  .layui-header-content .layui-layout-right .layui-nav-item i {
+    font-size: 14px;
+  }
+  .layui-header-content .layui-layout-right > li:not(.layui-moyu-user) {
+    width: 40px;
+  }
+  .layui-header-content .layui-layout-right > li:not(.layui-moyu-user) a {
+    padding: 0 13px;
+  }
+  .layui-default .layui-header-menu,
+  .layui-default .layui-tabs-page,
+  .layui-default .layui-body {
+    left: 0;
+  }
+  .layui-default .layui-header .layui-logo,
+  .layui-default .layui-side {
+    left: -200px;
+    transition: all 0.5s;
+  }
+  .layui-mini .layui-header {
+    z-index: 1001;
+  }
+  .layui-mini .layui-header .layui-header-menu {
+    left: 200px;
+    transition: all 0.5s;
+  }
+  .layui-mini .layui-header .layui-logo,
+  .layui-mini .layui-side {
+    left: 0;
+    transition: all 0.5s;
+    z-index: 1001;
+  }
+  .layui-mini .layui-tabs-page,
+  .layui-mini .layui-body {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  /* 移动端小屏幕呼出左侧菜单时隐藏头部右侧按钮 */
+  .layui-mini .layui-header-content .layui-layout-right {
+    display: none;
+  }
+}

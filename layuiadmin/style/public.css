@@ -168,7 +168,9 @@
 /**********
   主页一
  ***********/
-.layui-card a:hover {
+.layadmin-update-logs a:hover,
+.layadmin-card-link a:hover,
+.layadmin-components span:hover {
   color: #1e9fff !important;
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -232,7 +234,6 @@
 .layadmin-components .layadmin-cpn-img {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
   margin-right: 15px;
 }
 .layadmin-user-news dd .layadmin-avatar-img a {
@@ -349,4 +350,22 @@
   position: absolute;
   right: 0;
   bottom: 12px;
+}
+
+/**********
+  用户列表
+ ***********/
+.layui-card-header.layadmin-card-header-auto {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: auto;
+}
+.layadmin-card-header-auto .layui-form-item:last-child {
+  margin-bottom: 0;
+}
+.layadmin-card-header-auto i.layadmin-icon-search-btn {
+  position: relative;
+  right: 0;
+  top: 0;
+  vertical-align: middle;
 }

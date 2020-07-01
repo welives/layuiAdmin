@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>用户列表</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-card">
+        <div class="layui-form layui-card-header layadmin-card-header-auto">
+          <div class="layui-form-item">
+            <div class="layui-inline">
+              <label class="layui-form-label">ID</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  class="layui-input"
+                  name="id"
+                  placeholder="请输入"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">用户名</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  class="layui-input"
+                  name="username"
+                  placeholder="请输入"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">邮箱</label>
+              <div class="layui-input-block">
+                <input
+                  type="text"
+                  class="layui-input"
+                  name="email"
+                  placeholder="请输入"
+                  autocomplete="off"
+                />
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">性别</label>
+              <div class="layui-input-block">
+                <select name="sex">
+                  <option value="0">不限</option>
+                  <option value="1">男</option>
+                  <option value="2">女</option>
+                </select>
+              </div>
+            </div>
+            <div class="layui-inline">
+              <button
+                class="layui-btn layadmin-btn-user"
+                lay-submit
+                lay-filter="LAY-user-search"
+              >
+                <i
+                  class="layui-icon layui-icon-search layadmin-icon-search-btn"
+                ></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="layui-card-body">
+          <div style="padding-bottom: 10px;">
+            <button class="layui-btn layadmin-btn-user" data-type="batchDel">
+              删除
+            </button>
+            <button class="layui-btn layadmin-btn-user" data-type="add">
+              添加
+            </button>
+          </div>
+          <table id="LAY-user-list" lay-filter="LAY-user-list"></table>
+          <script type="text/html" id="imgTpl">
+            <img style="display: inline-block; width: 50%; height: 100%" class="layui-circle" src={{ d.avatar }}>
+          </script>
+          <script type="text/html" id="table-tool-userlist">
+            <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">
+              <i class="layui-icon layui-icon-edit"></i>
+              编辑
+            </a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">
+              <i class="layui-icon layui-icon-delete"></i>
+              删除
+            </a>
+          </script>
+        </div>
+      </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use(['index', 'useradmin', 'table'], () => {
+          let $ = layui.$,
+            form = layui.form,
+            table = layui.table,
+            // 表格顶部按钮事件
+            event = {
+              // 批量删除
+              batchDel() {
+                let checkStatus = table.checkStatus('LAY-user-list'),
+                  checkData = checkStatus.data
+
+                if (checkData.length === 0) {
+                  return layer.msg('请选择数据')
+                }
+                layer.confirm(
+                  '确定删除选中的数据吗?',
+                  { icon: 3, title: '提示' },
+                  (index) => {
+                    //执行 Ajax 后重载
+                    // $.ajax({})
+                    table.reload('LAY-user-list')
+                    layer.msg('已删除')
+                  },
+                )
+              },
+              // 添加用户
+              add() {
+                layer.open({
+                  type: 2,
+                  title: '添加用户',
+                  content: 'userform.html',
+                  maxmin: true,
+                  area: ['500px', '450px'],
+                  btn: ['确定', '取消'],
+                  yes(index, layero) {
+                    // 通过 window[name] 获取iframe窗体
+                    let iframeWindow = window['layui-layer-iframe' + index],
+                      submitID = 'LAY-user-submit',
+                      submit = layero
+                        .find('iframe')
+                        .contents()
+                        .find(`#${submitID}`)
+
+                    // 监听iframe表单提交
+                    iframeWindow.layui.form.on(
+                      `submit(${submitID})`,
+                      (data) => {
+                        let field = data.field // 获取提交的字段
+                        //提交 Ajax 成功后，静态更新表格中的数据
+                        // $.ajax({})
+                        table.reload('LAY-user-list') // 数据刷新
+                        layer.close(index) // 关闭弹层
+                      },
+                    )
+                    submit.trigger('click')
+                  },
+                })
+              },
+            }
+
+          // 监听搜索
+          form.on('submit(LAY-user-search)', (data) => {
+            let field = data.field
+            table.reload('LAY-user-list', { where: field })
+          })
+
+          // 监听表格顶部按钮点击事件
+          $('.layadmin-btn-user').on('click', function () {
+            let type = $(this).data('type')
+            event[type] ? event[type].call(this) : ''
+          })
+        })
+    </script>
+  </body>
+</html>

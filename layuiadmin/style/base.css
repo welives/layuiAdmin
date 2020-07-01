@@ -64,3 +64,10 @@ a,
 .layui-text-gray {
   color: #565656 !important;
 }
+
+.layui-float-left {
+  float: left;
+}
+.layui-float-right {
+  float: right;
+}

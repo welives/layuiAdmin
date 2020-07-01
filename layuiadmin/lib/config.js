@@ -1,6 +1,7 @@
-layui.define(['element'], (exports) => {
+layui.define(['laytpl', 'layer', 'element', 'util'], (exports) => {
   exports('setter', {
     container: 'LAY-app', // 应用容器ID
+    root: '/', // 项目根目录
     base: layui.cache.base, // 记录静态资源所在路径
     views: layui.cache.base + 'tpl/', // 动态模板所在目录
     entry: 'index', // 默认视图文件名

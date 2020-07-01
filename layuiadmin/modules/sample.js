@@ -227,7 +227,7 @@ layui.define((exports) => {
     laytpl(`
     {{# layui.each(d, (index, item) => { }}
       <dd>
-        <div class="layadmin-avatar-img layui-bg-green">
+        <div class="layadmin-avatar-img layui-bg-green layui-circle">
           <a href="javascript:;">
             <img src="{{ item.avatar }}" alt="" />
           </a>
@@ -252,7 +252,7 @@ layui.define((exports) => {
     {{# layui.each(d, (index, item) =>{ }}
       <li class="layui-col-xs6">
         <a lay-href="{{ item.link }}">
-          <span class="layui-bg-green layadmin-cpn-img">
+          <span class="layui-bg-green layui-circle layadmin-cpn-img">
             <img src="{{ item.img }}" >
           </span>
           <span>{{ item.text }}</span>

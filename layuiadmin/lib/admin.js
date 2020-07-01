@@ -79,16 +79,29 @@ layui.define('view', (exports) => {
        * @description 渲染
        */
       render() {
-        let local = layui.data(setter.tableName),
-          id = '#LAY-side-menu',
-          menuHtml
-        if (local.menu) {
-          menuHtml = this.renderMenu(local.menu)
-          $(id).html(menuHtml)
-          element.render()
-        } else {
-          this.getMenuData()
-        }
+        // let local = layui.data(setter.tableName),
+        //   id = '#LAY-side-menu',
+        //   menuHtml
+        // if (local.menu) {
+        //   menuHtml = this.renderMenu(local.menu)
+        //   $(id).html(menuHtml)
+        //   element.render()
+        // } else {
+        //   this.getMenuData()
+        // }
+        this.req({
+          url: setter.base + 'json/menu.json',
+          success: (res) => {
+            let menuHtml = this.renderMenu(res.data)
+            $('#LAY-side-menu').html(menuHtml)
+            element.render()
+
+            layui.data(setter.tableName, {
+              key: 'menu',
+              value: res.data,
+            })
+          },
+        })
       },
 
       /**
@@ -588,7 +601,7 @@ layui.define('view', (exports) => {
           done(res) {
             //清空本地记录的 token，并跳转到登入页
             admin.exit(() => {
-              location.href = 'user/login.html'
+              location.href = 'useradmin/login.html'
             })
           },
         })

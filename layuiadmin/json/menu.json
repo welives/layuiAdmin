@@ -421,15 +421,18 @@
       "list": [
         {
           "name": "list",
-          "title": "用户列表"
+          "title": "用户列表",
+          "jump": "useradmin/user/list.html"
         },
         {
           "name": "admin",
-          "title": "管理员列表"
+          "title": "管理员列表",
+          "jump": "useradmin/admin/list.html"
         },
         {
           "name": "role",
-          "title": "角色管理"
+          "title": "角色列表",
+          "jump": "useradmin/role/list.html"
         }
       ]
     },

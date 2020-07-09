@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>评分</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">基础效果</div>
+            <div class="layui-card-body">
+              <div id="LAY-rate-base"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">显示文字</div>
+            <div class="layui-card-body">
+              <div id="LAY-rate-text"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">半星效果</div>
+            <div class="layui-card-body">
+              <div id="LAY-rate-half1"></div>
+              <br />
+              <div id="LAY-rate-half2"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">自定义主题色</div>
+            <div class="layui-card-body">
+              <div id="LAY-rate-theme1"></div>
+              <br />
+              <div id="LAY-rate-theme2"></div>
+              <br />
+              <div id="LAY-rate-theme3"></div>
+              <br />
+              <div id="LAY-rate-theme4"></div>
+              <br />
+              <div id="LAY-rate-theme5"></div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">只读</div>
+            <div class="layui-card-body">
+              <div id="LAY-rate-readonly"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">自定义内容</div>
+            <div class="layui-card-body">
+              <div id="LAY-rate-custom-content1"></div>
+              <br />
+              <div id="LAY-rate-custom-content2"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">自定义长度</div>
+            <div class="layui-card-body">
+              <div id="LAY-rate-custom-length1"></div>
+              <br />
+              <div id="LAY-rate-custom-length2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use(['index', 'rate'], () => {
+          let $ = layui.$,
+            rate = layui.rate
+
+          // 基础效果
+          rate.render({
+            elem: '#LAY-rate-base',
+          })
+          // 显示文字
+          rate.render({
+            elem: '#LAY-rate-text',
+            value: 2, // 初始值
+            text: true, // 开启文本
+          })
+          // 半星效果
+          rate.render({
+            elem: '#LAY-rate-half1',
+            value: 2.5,
+            half: true,
+          })
+          rate.render({
+            elem: '#LAY-rate-half2',
+            value: 3.5,
+            half: true,
+            text: true,
+          })
+          // 只读
+          rate.render({
+            elem: '#LAY-rate-readonly',
+            value: 4,
+            readonly: true,
+          })
+          // 自定义内容
+          rate.render({
+            elem: '#LAY-rate-custom-content1',
+            value: 3,
+            text: true,
+            setText(value) {
+              let data = {
+                '1': '极差',
+                '2': '差',
+                '3': '中等',
+                '4': '好',
+                '5': '极好',
+              }
+              this.span.text(data[value] || value + '星')
+            },
+          })
+          rate.render({
+            elem: '#LAY-rate-custom-content2',
+            value: 1.5,
+            half: true,
+            text: true,
+            setText(value) {
+              this.span.text(value)
+            },
+          })
+          // 自定义长度
+          rate.render({
+            elem: '#LAY-rate-custom-length1',
+            length: 3,
+          })
+          rate.render({
+            elem: '#LAY-rate-custom-length2',
+            length: 10,
+            value: 8,
+          })
+          // 自定义主题色
+          rate.render({
+            elem: '#LAY-rate-theme1',
+            value: 3,
+            theme: '#FF8000',
+          })
+          rate.render({
+            elem: '#LAY-rate-theme2',
+            value: 3,
+            theme: '#009688',
+          })
+          rate.render({
+            elem: '#LAY-rate-theme3',
+            value: 3,
+            theme: '#1e9fff',
+          })
+          rate.render({
+            elem: '#LAY-rate-theme4',
+            value: 3,
+            theme: '#2f4056',
+          })
+          rate.render({
+            elem: '#LAY-rate-theme5',
+            value: 3,
+            theme: '#FE0000',
+          })
+        })
+    </script>
+  </body>
+</html>

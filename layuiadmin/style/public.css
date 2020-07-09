@@ -21,6 +21,28 @@
 .layui-card .layui-table-view {
   margin: 0;
 }
+.layui-layer-admin .layui-layer-title {
+  height: 50px;
+  line-height: 50px;
+  border: none;
+  background-color: #42b983;
+  color: #fff;
+}
+.layui-layer-admin .layui-layer-content {
+  padding: 15px;
+  line-height: 22px;
+}
+.layui-layer-admin i[close] {
+  position: absolute;
+  padding: 5px;
+  top: 12px;
+  right: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+.layui-form[wid100] .layui-form-label {
+  width: 100px;
+}
 
 /***************
   首页 home.html

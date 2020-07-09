@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>选项卡组件</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md12">
+          <div class="layui-card">
+            <div class="layui-card-header">默认风格</div>
+            <div class="layui-card-body">
+              <div class="layui-tab">
+                <ul class="layui-tab-title">
+                  <li class="layui-this">网站设置</li>
+                  <li>用户管理</li>
+                  <li>权限分配</li>
+                  <li>商品管理</li>
+                  <li>订单管理</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <div class="layui-tab-item layui-show">
+                    1. 高度默认自适应，也可以随意固宽。
+                    <br />2. Tab进行了响应式处理，所以无需担心数量多少。
+                  </div>
+                  <div class="layui-tab-item">内容2</div>
+                  <div class="layui-tab-item">内容3</div>
+                  <div class="layui-tab-item">内容4</div>
+                  <div class="layui-tab-item">内容5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">简洁风格</div>
+            <div class="layui-card-body">
+              <div
+                class="layui-tab layui-tab-brief"
+                lay-filter="LAY-tabs-brief"
+              >
+                <ul class="layui-tab-title">
+                  <li class="layui-this">网站设置</li>
+                  <li>用户管理</li>
+                  <li>权限分配</li>
+                  <li>商品管理</li>
+                  <li>订单管理</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <div class="layui-tab-item layui-show">
+                    你也可以监听 tab 事件
+                  </div>
+                  <div class="layui-tab-item">内容2</div>
+                  <div class="layui-tab-item">内容3</div>
+                  <div class="layui-tab-item">内容4</div>
+                  <div class="layui-tab-item">内容5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">卡片风格</div>
+            <div class="layui-card-body">
+              <div class="layui-tab layui-tab-card">
+                <ul class="layui-tab-title">
+                  <li class="layui-this">网站设置</li>
+                  <li>用户管理</li>
+                  <li>权限分配</li>
+                  <li>商品管理</li>
+                  <li>订单管理</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <div class="layui-tab-item layui-show">
+                    默认宽度是相对于父元素100%适应的，你也可以固定宽度。
+                  </div>
+                  <div class="layui-tab-item">内容2</div>
+                  <div class="layui-tab-item">内容3</div>
+                  <div class="layui-tab-item">内容4</div>
+                  <div class="layui-tab-item">内容5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">动态操作</div>
+            <div class="layui-card-body">
+              <div
+                class="layui-tab"
+                lay-filter="LAY-tabs-control"
+                lay-allowclose="true"
+              >
+                <ul class="layui-tab-title">
+                  <li class="layui-this" lay-id="11">网站设置</li>
+                  <li lay-id="22">用户管理</li>
+                  <li lay-id="33">权限分配</li>
+                  <li lay-id="44">商品管理</li>
+                  <li lay-id="55">订单管理</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <div class="layui-tab-item layui-show">内容1</div>
+                  <div class="layui-tab-item">内容2</div>
+                  <div class="layui-tab-item">内容3</div>
+                </div>
+              </div>
+              <div class="layui-btn-container">
+                <button class="layui-btn layadmin-tabs-control" data-type="add">
+                  新增一个项
+                </button>
+                <button class="layui-btn layadmin-tabs-control" data-type="del">
+                  删除：用户管理
+                </button>
+                <button
+                  class="layui-btn layadmin-tabs-control"
+                  data-type="change"
+                >
+                  切换到：权限分配
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">记录状态</div>
+            <div class="layui-card-body">
+              <div class="layui-tab layui-tab-brief" lay-filter="LAY-tabs-hash">
+                <ul class="layui-tab-title">
+                  <li class="layui-this" lay-id="11">网站设置</li>
+                  <li lay-id="22">用户管理</li>
+                  <li lay-id="33">权限分配</li>
+                  <li lay-id="44">商品管理</li>
+                  <li lay-id="55">订单管理</li>
+                </ul>
+                <div class="layui-tab-content">
+                  <div class="layui-tab-item layui-show">
+                    点击该Tab的任一标题，观察地址栏变化，再刷新页面。选项卡将会自动定位到上一次切换的项
+                  </div>
+                  <div class="layui-tab-item">内容2</div>
+                  <div class="layui-tab-item">内容3</div>
+                  <div class="layui-tab-item">内容4</div>
+                  <div class="layui-tab-item">内容5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use('index', () => {
+          let $ = layui.$,
+            element = layui.element,
+            router = layui.router(),
+            event = {
+              add() {
+                // 新增一个Tab项
+                element.tabAdd('LAY-tabs-control', {
+                  title: `新选项${(Math.random() * 1000) | 0}`,
+                  content: `内容${(Math.random() * 1000) | 0}`,
+                  id: new Date().getTime(),
+                })
+              },
+              del(othis) {
+                // 删除指定Tab项
+                element.tabDelete('LAY-tabs-control', 22)
+                othis.addClass('layui-btn-disabled')
+              },
+              change() {
+                // 切换到指定Tab项
+                element.tabChange('LAY-tabs-control', 33)
+              },
+            }
+
+          // 监听 tab 事件
+          element.on('tab(LAY-tabs-brief)', function (obj) {
+            layer.msg(`${obj.index}: ${this.innerHTML}`)
+          })
+
+          // 监听自定义事件
+          $('.layadmin-tabs-control').on('click', function () {
+            let type = $(this).data('type')
+            event[type] && event[type].call(this, $(this))
+          })
+
+          // Hash地址的定位
+          element.on('tab(LAY-tabs-hash)', function (elem) {
+            location.hash = `/#layid=${$(this).attr('lay-id')}`
+          })
+          let layid = router.hash.replace(/^#layid=/, '')
+          layid && element.tabChange('LAY-tabs-hash', layid)
+        })
+    </script>
+  </body>
+</html>

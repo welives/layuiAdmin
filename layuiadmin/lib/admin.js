@@ -166,11 +166,11 @@ layui.define('view', (exports) => {
       compileMenu(menu, isSub = false) {
         let menuHtml = isSub
           ? `<dd {{ d.name ? 'data-name="'+d.name+'"' : '' }} class="{{ d.active ? 'layui-this' : ''}} {{ d.spread ? 'layui-nav-itemed' : ''}}">
-              <a {{ d.children ? 'href="javascript:;"' : '' }} {{ d.jump || !d.children ? 'lay-href="'+d.jump+'"' : ''}}>{{ d.title }}</a>
+              <a {{ d.children ? 'href="javascript:;"' : '' }} {{ d.text?'lay-text="'+d.text+'"':'' }} {{ d.jump || !d.children ? 'lay-href="'+d.jump+'"' : ''}}>{{ d.title }}</a>
               {{ d.children || '' }}
             </dd>`
           : `<li {{ d.name?'data-name="'+d.name+'"':'' }} class="layui-nav-item {{ d.spread?'layui-nav-itemed':'' }}">
-              <a href="javascript:;" {{ d.jump?'lay-href="'+d.jump+'"':'' }} lay-tips="{{ d.title }}" lay-direction="2">
+              <a href="javascript:;" {{ d.text?'lay-text="'+d.text+'"':'' }} {{ d.jump?'lay-href="'+d.jump+'"':'' }} lay-tips="{{ d.title }}" lay-direction="2">
                 <i class="layui-icon {{ d.icon}}"></i>
                 <cite>{{ d.title }}</cite>
               </a>

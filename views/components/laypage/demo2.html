@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>功能演示2 - 通用分页组件</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md12">
+          <div class="layui-card">
+            <div class="layui-card-header">显示完整功能</div>
+            <div class="layui-card-body">
+              <div id="LAY-laypage-complete"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">自定义排版</div>
+            <div class="layui-card-body">
+              <div id="LAY-laypage-custom1"></div>
+              <div id="LAY-laypage-custom2"></div>
+              <div id="LAY-laypage-custom3"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">自定义每页条数的选择项</div>
+            <div class="layui-card-body">
+              <div id="LAY-laypage-custom4"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">将一段已知数组分页展示</div>
+            <div class="layui-card-body">
+              <div id="LAY-laypage-data"></div>
+              <ul id="LAY-laypage-datalist"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use(['index', 'laypage'], () => {
+          let $ = layui.$,
+            laypage = layui.laypage
+
+          // 显示完整功能
+          laypage.render({
+            elem: 'LAY-laypage-complete',
+            count: 100,
+            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
+            jump(obj) {
+              console.log(obj)
+            },
+          })
+          // 自定义排版
+          laypage.render({
+            elem: 'LAY-laypage-custom1',
+            count: 1000,
+            layout: ['limit', 'prev', 'page', 'next'],
+          })
+          laypage.render({
+            elem: 'LAY-laypage-custom2',
+            count: 1000,
+            layout: ['prev', 'next', 'page'],
+          })
+          laypage.render({
+            elem: 'LAY-laypage-custom3',
+            count: 1000,
+            layout: ['page', 'count'],
+          })
+          // 自定义每页条数的选择项
+          laypage.render({
+            elem: 'LAY-laypage-custom4',
+            count: 1000,
+            limit: 100,
+            limits: [100, 300, 500],
+          })
+          // 将一段已知数组分页展示
+          let layPageData = [
+            '北京',
+            '上海',
+            '广州',
+            '深圳',
+            '杭州',
+            '长沙',
+            '合肥',
+            '宁夏',
+            '成都',
+            '西安',
+            '南昌',
+            '上饶',
+            '沈阳',
+            '济南',
+            '厦门',
+            '福州',
+            '九江',
+            '宜春',
+            '赣州',
+            '宁波',
+            '绍兴',
+            '无锡',
+            '苏州',
+            '徐州',
+            '东莞',
+            '佛山',
+            '中山',
+            '成都',
+            '武汉',
+            '青岛',
+            '天津',
+            '重庆',
+            '南京',
+            '九江',
+            '香港',
+            '澳门',
+            '台北',
+          ]
+          laypage.render({
+            elem: 'LAY-laypage-data',
+            count: layPageData.length,
+            jump(obj) {
+              // 模拟渲染
+              $('#LAY-laypage-datalist').html(
+                (() => {
+                  let arr = [],
+                    thisData = layPageData
+                      .concat()
+                      .splice(obj.curr * obj.limit - obj.limit, obj.limit)
+                  $.each(thisData, (index, item) => {
+                    arr.push(`<li>${item}</li>`)
+                  })
+                  return arr.join('')
+                })(),
+              )
+            },
+          })
+        })
+    </script>
+  </body>
+</html>

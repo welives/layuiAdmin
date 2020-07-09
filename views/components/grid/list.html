@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>等比例列表排列</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <style>
+      #LAY-components-grid-list .layui-row .layui-card {
+        height: 267px;
+        line-height: 267px;
+        font-size: 20px;
+        text-align: center;
+        overflow: hidden;
+      }
+    </style>
+    <div class="layui-fluid" id="LAY-components-grid-list">
+      <div class="layui-row layui-col-space10">
+        <script type="text/html" template>
+          {{# for(let i=0; i<15; i++){ }}
+            <div class="layui-col-sm4 layui-col-md3 layui-col-lg3">
+              <div class="layui-card">{{ i }}</div>
+            </div>
+          {{# } }}
+        </script>
+      </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use('index')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>动画</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <style>
+      #LAY-anim-example .layui-card-body {
+        padding: 15px;
+      }
+      #LAY-anim-example .LAY-anim-demo {
+        margin-bottom: 50px;
+        font-size: 0;
+      }
+      #LAY-anim-example .LAY-anim-demo li {
+        display: inline-block;
+        vertical-align: middle;
+        width: 222px;
+        line-height: 25px;
+        padding: 20px 0;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        border: 1px solid #e2e2e2;
+        font-size: 14px;
+        text-align: center;
+        color: #666666;
+        transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+      }
+      #LAY-anim-example .LAY-anim-demo li .layui-icon {
+        display: inline-block;
+        font-size: 36px;
+      }
+      #LAY-anim-example .LAY-anim-demo li .fontclass {
+        display: none;
+      }
+      #LAY-anim-example .LAY-anim-demo li .name {
+        color: #c2c2c2;
+      }
+      #LAY-anim-example .LAY-anim-demo li:hover {
+        background-color: #f2f2f2;
+        color: #000;
+      }
+      #LAY-anim-example .LAY-anim-demo .layui-anim {
+        width: 150px;
+        height: 150px;
+        line-height: 150px;
+        margin: 0 auto 10px;
+        text-align: center;
+        background-color: #009688;
+        cursor: pointer;
+        color: #fff;
+      }
+    </style>
+    <div class="layui-fluid" id="LAY-anim-example">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md12">
+          <div class="layui-card">
+            <div class="layui-card-header">点击演示动画</div>
+            <div class="layui-card-body">
+              <ul class="LAY-anim-demo">
+                <li>
+                  <div
+                    class="layui-anim layui-circle"
+                    data-anim="layui-anim-up"
+                  >
+                    从最底部往上滑入
+                  </div>
+                  <div>layui-anim-up</div>
+                </li>
+                <li>
+                  <div
+                    class="layui-anim layui-circle"
+                    data-anim="layui-anim-upbit"
+                  >
+                    微微往上滑入
+                  </div>
+                  <div>layui-anim-upbit</div>
+                </li>
+                <li>
+                  <div
+                    class="layui-anim layui-circle"
+                    data-anim="layui-anim-scale"
+                  >
+                    平滑放大
+                  </div>
+                  <div>layui-anim-scale</div>
+                </li>
+                <li>
+                  <div
+                    class="layui-anim layui-circle"
+                    data-anim="layui-anim-scaleSpring"
+                  >
+                    弹簧式放大
+                  </div>
+                  <div>layui-anim-scaleSpring</div>
+                </li>
+              </ul>
+              <ul class="LAY-anim-demo">
+                <li>
+                  <div
+                    class="layui-anim layui-circle"
+                    data-anim="layui-anim-fadein"
+                  >
+                    渐现
+                  </div>
+                  <div>layui-anim-fadein</div>
+                </li>
+                <li>
+                  <div
+                    class="layui-anim layui-circle"
+                    data-anim="layui-anim-fadeout"
+                  >
+                    渐隐
+                  </div>
+                  <div>layui-anim-fadeout</div>
+                </li>
+                <li>
+                  <div
+                    class="layui-anim layui-circle"
+                    data-anim="layui-anim-rotate"
+                  >
+                    360度旋转
+                  </div>
+                  <div>layui-anim-rotate</div>
+                </li>
+                <li>
+                  <div
+                    class="layui-anim layui-circle"
+                    data-anim="layui-anim-rotate layui-anim-loop"
+                  >
+                    循环动画
+                  </div>
+                  <div>追加：layui-anim-loop</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use('index', () => {
+          let $ = layui.$
+          $('#LAY-anim-example .LAY-anim-demo .layui-anim').on(
+            'click',
+            function () {
+              let anim = $(this).data('anim')
+              // 停止循环
+              if ($(this).hasClass('layui-anim-loop'))
+                return $(this).removeClass(anim)
+
+              $(this).removeClass(anim)
+
+              setTimeout(() => {
+                $(this).addClass(anim)
+              })
+
+              // 恢复渐隐
+              if (anim === 'layui-anim-fadeout') {
+                setTimeout(() => {
+                  $(this).removeClass(anim)
+                }, 1300)
+              }
+            },
+          )
+        })
+    </script>
+  </body>
+</html>

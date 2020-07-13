@@ -348,55 +348,68 @@
       "list": [
         {
           "name": "personal",
-          "title": "个人主页"
+          "title": "个人主页",
+          "jump": "template/personalpage.html"
         },
         {
           "name": "address-list",
-          "title": "通讯录"
+          "title": "通讯录",
+          "jump": "template/addresslist.html"
         },
         {
           "name": "goods",
-          "title": "商品列表"
+          "title": "商品列表",
+          "jump": "template/goodslist.html"
         },
         {
           "name": "masboard",
-          "title": "留言板"
+          "title": "留言板",
+          "jump": "template/msgboard.html"
         },
         {
           "name": "search",
-          "title": "搜索结果"
+          "title": "搜索结果",
+          "jump": "template/search.html"
         },
         {
           "name": "reg",
-          "title": "注册"
+          "title": "注册",
+          "jump": "useradmin/reg.html"
         },
         {
           "name": "login",
-          "title": "登入"
+          "title": "登入",
+          "jump": "useradmin/login.html"
         },
         {
           "name": "forget",
-          "title": "忘记密码"
+          "title": "忘记密码",
+          "jump": "useradmin/forget.html"
         },
         {
           "name": "404",
-          "title": "404页面不存在"
+          "title": "404页面不存在",
+          "jump": "template/tips/404.html"
         },
         {
           "name": "error",
-          "title": "错误提示"
+          "title": "错误提示",
+          "jump": "template/tips/error.html"
         },
         {
           "name": "baidu",
-          "title": "百度一下"
+          "title": "百度一下",
+          "jump": "http://www.baidu.com/"
         },
         {
           "name": "layui",
-          "title": "layui官网"
+          "title": "layui官网",
+          "jump": "http://www.layui.com/"
         },
         {
           "name": "layuiAdmin",
-          "title": "layuiAdmin官网"
+          "title": "layuiAdmin官网",
+          "jump": "http://www.layui.com/admin/"
         }
       ]
     },
@@ -411,15 +424,18 @@
           "list": [
             {
               "name": "article",
-              "title": "文章列表"
+              "title": "文章列表",
+              "jump": "app/content/list.html"
             },
             {
               "name": "category",
-              "title": "分类管理"
+              "title": "分类管理",
+              "jump": "app/content/tags.html"
             },
             {
               "name": "comment",
-              "title": "评论管理"
+              "title": "评论管理",
+              "jump": "app/content/comment.html"
             }
           ]
         },
@@ -429,21 +445,25 @@
           "list": [
             {
               "name": "posts",
-              "title": "帖子列表"
+              "title": "帖子列表",
+              "jump": "app/forum/list.html"
             },
             {
               "name": "replys",
-              "title": "回帖列表"
+              "title": "回帖列表",
+              "jump": "app/forum/replys.html"
             }
           ]
         },
         {
           "name": "message",
-          "title": "消息中心"
+          "title": "消息中心",
+          "jump": "app/message/index.html"
         },
         {
           "name": "workorder",
-          "title": "工单系统"
+          "title": "工单系统",
+          "jump": "app/workorder/list.html"
         }
       ]
     },
@@ -462,15 +482,18 @@
           "list": [
             {
               "name": "line",
-              "title": "折线图"
+              "title": "折线图",
+              "jump": "senior/echarts/line.html"
             },
             {
               "name": "bar",
-              "title": "柱状图"
+              "title": "柱状图",
+              "jump": "senior/echarts/bar.html"
             },
             {
               "name": "map",
-              "title": "地图"
+              "title": "地图",
+              "jump": "senior/echarts/map.html"
             }
           ]
         }
@@ -509,11 +532,13 @@
           "list": [
             {
               "name": "website",
-              "title": "网站设置"
+              "title": "网站设置",
+              "jump": "set/system/website.html"
             },
             {
               "name": "email",
-              "title": "邮件服务"
+              "title": "邮件服务",
+              "jump": "set/system/email.html"
             }
           ]
         },
@@ -524,11 +549,13 @@
           "list": [
             {
               "name": "basic",
-              "title": "基本资料"
+              "title": "基本资料",
+              "jump": "set/user/info.html"
             },
             {
               "name": "password",
-              "title": "修改密码"
+              "title": "修改密码",
+              "jump": "set/user/password.html"
             }
           ]
         }

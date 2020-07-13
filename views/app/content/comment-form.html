@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>layuiAdmin 评论管理 iframe 框</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div
+      class="layui-form"
+      id="LAY-app-content-comment-form"
+      lay-filter="LAY-app-content-comment-form"
+      style="padding-top: 20px;"
+    >
+      <div class="layui-form-item">
+        <label class="layui-form-label">评论内容</label>
+        <div class="layui-input-block">
+          <textarea
+            name="content"
+            class="layui-textarea"
+            lay-verify="required"
+            placeholder="请输入"
+            autocomplete="off"
+          ></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item layui-hide">
+        <button
+          class="layui-btn"
+          lay-submit
+          lay-filter="LAY-app-content-comment-submit"
+          id="LAY-app-content-comment-submit"
+        >
+          提交
+        </button>
+      </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use(['index', 'form'])
+    </script>
+  </body>
+</html>

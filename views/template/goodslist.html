@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>商品列表</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../layuiadmin/layui/css/layui.css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="../../layuiadmin/style/public.css"
+      media="all"
+    />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row layui-col-space10">
+        <script type="text/html" template>
+          {{# for(let i=0; i<15; i++){ }}
+          <div class="layui-col-md2 layui-col-sm4" style="padding: 10px;">
+            <div class="layadmin-goods-container">
+              <a href="javascript:;">
+                <img src="../../layuiadmin/images/portrait.png" width="100%" />
+              </a>
+              <a href="javascript:;">
+                <div class="layadmin-goods-content">
+                  <p class="info">
+                    2018春夏季新款港味短款白色T恤+网纱中长款chic半身裙套装两件套
+                  </p>
+                  <div class="price">
+                    <b>￥79</b>
+                    <span>¥ <del>130</del></span>
+                    <span class="flow">
+                      <i class="layui-icon layui-icon-rate"></i>
+                      123
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          {{# } }}
+        </script>
+        <div class="layui-col-md12 layui-col-sm12">
+          <div id="LAY-goods-page" class="layui-text-center"></div>
+        </div>
+      </div>
+    </div>
+    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../layuiadmin/',
+        })
+        .extend({
+          index: 'lib/index',
+        })
+        .use(['index', 'laypage'], () => {
+          let laypage = layui.laypage
+
+          laypage.render({
+            elem: 'LAY-goods-page',
+            count: 50,
+          })
+        })
+    </script>
+  </body>
+</html>

@@ -1,6 +1,15 @@
+/**
+
+ @Name：全局配置
+ @Author：贤心
+ @Site：http://www.layui.com/admin/
+ @License：LPPL（layui付费产品协议）
+
+ */
+
 layui.define(['laytpl', 'layer', 'element', 'util'], (exports) => {
   exports('setter', {
-    container: 'LAY-app', // 应用容器ID
+    container: 'LAY_app', // 应用容器ID
     root: '/', // 项目根目录
     base: layui.cache.base, // 记录静态资源所在路径
     views: layui.cache.base + 'tpl/', // 动态模板所在目录

@@ -1,8 +1,16 @@
+/**
+
+ @Name：layuiAdmin 核心模块
+ @Author：贤心
+ @Site：http://www.layui.com/admin/
+ @License：LPPL
+
+ */
+
 layui.define('view', (exports) => {
   let $ = layui.$,
     laytpl = layui.laytpl,
     element = layui.element,
-    layer = layui.layer,
     setter = layui.setter,
     view = layui.view,
     device = layui.device(),
@@ -14,18 +22,19 @@ layui.define('view', (exports) => {
     THIS = 'layui-this', // 当前元素类
     DISABLED = 'layui-disabled', // 禁用元素类
     TEMP = 'template',
-    APP_TABS = 'LAY-app-tabs',
-    APP_TABS_HEADER = 'LAY-app-tabs-header',
-    APP_TABS_BODY = 'LAY-app-tabs-body', // tab页主体容器ID
-    APP_FLEXIBLE = 'LAY-app-flexible', // 侧边收缩按钮
-    FILTER_TABS_LIST = 'layadmin-tabs-list', // tab标签容器过滤器
-    TABS_BODY_ITEM = 'layadmin-tabs-body-item', // iframe标签的容器
-    TABS_REMOVE_TAG = 'layadmin-tabs-remove', // 标记要关闭的tab
+    APP_TABS = '#LAY_app_tabs', // 页面标签容器ID
+    APP_BODY = '#LAY_app_body', // 主体内容容器ID
+    TABS_HEADER = '#LAY_app_tabsHeader', // tab标签列表ID
+    TABS_BODY_ITEM = 'LAY-tabsBody-item', // iframe标签或内容页的容器类
+    FILTER_TAB_TABS = 'LAY-filter-layout-tabs', // tab标签容器过滤器
+    FILTER_TAB_OPERATE = 'LAY-filter-tabs-operate', // tab标签更多操作的过滤器
+    APP_FLEXIBLE = '#LAY_app_flexible', // 侧边收缩按钮
     ICON_SHRINK = 'layui-icon-shrink-right', // 侧边菜单处于展开时的按钮图标
     ICON_SPERAD = 'layui-icon-spread-left', // 侧边菜单处于收缩时的按钮图标
-    SIDE_SHRINK = 'layadmin-side-shrink', // PC端标记
-    APP_SPREAD_SM = 'layadmin-side-spread-sm', // 移动端标记
-    SIDE_MENU = 'LAY-side-menu', // 侧边菜单容器ID
+    SIDE_SHRINK = 'LAY-side-shrink', // PC端标记
+    APP_SPREAD_SM = 'LAY-side-spread-sm', // 移动端标记
+    SIDE_MENU = '#LAY_app_side_menu', // 侧边菜单容器ID
+    FILTER_SIDE_MENU = 'LAY-filter-side-menu', // 侧边菜单容器过滤器
     // 同步路由
     setThisRouter = (othis) => {
       let layid = othis.attr('lay-id'),
@@ -93,7 +102,7 @@ layui.define('view', (exports) => {
           url: setter.base + 'json/menu.json',
           success: (res) => {
             let menuHtml = this.renderMenu(res.data)
-            $('#LAY-side-menu').html(menuHtml)
+            $(SIDE_MENU).html(menuHtml)
             element.render()
 
             layui.data(setter.tableName, {
@@ -201,8 +210,8 @@ layui.define('view', (exports) => {
         options = $.extend(
           {
             seconds: 60,
-            elemPhone: '#LAY-phone',
-            elemSMScode: '#LAY-smscode',
+            elemPhone: '#LAY_phone',
+            elemSMScode: '#LAY_smscode',
           },
           options,
         )
@@ -210,7 +219,6 @@ layui.define('view', (exports) => {
         let seconds = options.seconds,
           btn = $(options.elem),
           token = null,
-          success,
           timer,
           countDown = (loop) => {
             seconds--
@@ -229,18 +237,17 @@ layui.define('view', (exports) => {
             }
           }
 
-        options.elemPhone = $(options.elemPhone)
-        options.elemSMScode = $(options.elemSMScode)
-
         // 监听按钮点击事件
         btn.on('click', function () {
-          let elemPhone = options.elemPhone,
-            value = elemPhone.val()
+          options.elemPhone = $(options.elemPhone)
+          options.elemSMScode = $(options.elemSMScode)
+          let success,
+            value = options.elemPhone.val()
 
           // 如果还在倒计时则终止执行
           if (seconds !== options.seconds || $(this).hasClass(DISABLED)) return
           if (!/^1\d{10}$/.test(value)) {
-            elemPhone.focus()
+            options.elemPhone.focus()
             return layer.msg('请输入正确的手机号')
           }
           if (typeof options.ajax === 'object') {
@@ -254,9 +261,7 @@ layui.define('view', (exports) => {
               {
                 url: '/auth/code',
                 type: 'get',
-                data: {
-                  phone: value,
-                },
+                data: { phone: value },
                 success(res) {
                   layer.msg('验证码已发送至你的手机，请注意查收', {
                     icon: 1,
@@ -279,7 +284,7 @@ layui.define('view', (exports) => {
        */
       sideFlexible(status) {
         let app = container,
-          iconElem = $(`#${APP_FLEXIBLE}`),
+          iconElem = $(APP_FLEXIBLE),
           screen = this.screen()
 
         // 设置状态，PC：默认展开、移动端：默认收缩
@@ -306,7 +311,7 @@ layui.define('view', (exports) => {
           }
           app.removeClass(APP_SPREAD_SM)
         }
-        // 执行自定义事件 side ,事件在home模块中注册
+        // 执行自定义事件 side ,事件在console模块中注册
         layui.event.call(this, setter.MOD_NAME, 'side({*})', { status })
       },
 
@@ -367,7 +372,7 @@ layui.define('view', (exports) => {
           $.extend(
             {
               type: 1,
-              id: 'LAY-admin-popup-right',
+              id: 'LAY_adminPopupR',
               anim: -1,
               title: false,
               closeBtn: false,
@@ -389,15 +394,15 @@ layui.define('view', (exports) => {
       theme(options) {
         let theme = setter.theme,
           local = layui.data(setter.tableName),
-          id = 'LAY-admin-theme',
+          id = 'LAY_admin_theme',
           style = document.createElement('style'),
           styleText = laytpl(`
           /* 主题色 */
           .layui-side-menu,
           .layui-layer-admin .layui-layer-title,
-          .layadmin-tabs-page .layui-tab-title li:after,
-          .layadmin-tabs-page .layui-tab-title li.layui-this:after,
-          .layadmin-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > .layui-nav-child {
+          .layadmin-pageTabs .layui-tab-title li:after,
+          .layadmin-pageTabs .layui-tab-title li.layui-this:after,
+          .LAY-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > .layui-nav-child {
             background-color: {{ d.color.main }} !important;
           }
           /* 选中色 */
@@ -430,7 +435,7 @@ layui.define('view', (exports) => {
           .layui-layout-admin .layui-header .layui-nav-bar {
             background-color: rgba(255, 255, 255, 0.5);
           }
-          .layadmin-tabs-page .layui-tab-title li:after {display: none;}
+          .layadmin-pageTabs .layui-tab-title li:after {display: none;}
           {{# } }}
           `).render($.extend({}, local.theme, options)),
           styleElem = document.getElementById(id)
@@ -471,13 +476,21 @@ layui.define('view', (exports) => {
       },
 
       /**
+       * @description 获取标签页的头元素
+       * @param {number} [index=0] tab页索引
+       * @returns jQuery对象
+       */
+      tabsHeader(index = 0) {
+        return $(`${TABS_HEADER}>li`).eq(index)
+      },
+
+      /**
        * @description 获取页面标签主体元素
        * @param {number} [index=0] tab页索引
        * @returns {object} jQuery对象
        */
-      getTabsBody(index = 0) {
-        // jQuery.eq 获取当前链式操作中第N个jQuery对象，返回jQuery对象，当参数大于等于0时为正向选取，比如0代表第一个，1代表第二个。当参数为负数时为反向选取，比如-1为倒数第一个
-        return $(`#${APP_TABS_BODY}`).find(`.${TABS_BODY_ITEM}`).eq(index)
+      tabsBody(index = 0) {
+        return $(APP_BODY).find(`.${TABS_BODY_ITEM}`).eq(index)
       },
 
       /**
@@ -487,8 +500,8 @@ layui.define('view', (exports) => {
        */
       tabsBodyChange(index, options = {}) {
         // jQuery.siblings 取得一个包含匹配的元素集合中每一个元素的所有唯一同辈元素的元素集合
-        this.getTabsBody(index).addClass(SHOW).siblings().removeClass(SHOW)
-        this.events.rollPage('auto', index)
+        this.tabsBody(index).addClass(SHOW).siblings().removeClass(SHOW)
+        events.rollPage('auto', index)
         /**
          * layui.event(modName, events, params) 执行自定义模块事件，搭配onevent使用
          * modName 事件所属模块
@@ -507,7 +520,12 @@ layui.define('view', (exports) => {
       resize(fn) {
         let router = layui.router(),
           key = router.path.join('-')
-        $win.off('resize', this.resizeFn[key])
+
+        if (this.resizeFn[key]) {
+          $win.off('resize', this.resizeFn[key])
+          delete this.resizeFn[key]
+        }
+        if (fn === 'off') return // 如果是清除 resize 事件，则终止往下执行
         fn()
         this.resizeFn[key] = fn
         $win.on('resize', this.resizeFn[key])
@@ -518,10 +536,7 @@ layui.define('view', (exports) => {
         this.resizeFn[key] && this.resizeFn[key]()
       },
       delResize() {
-        let router = layui.router(),
-          key = router.path.join('-')
-        $win.off('resize', this.resizeFn[key])
-        delete this.resizeFn[key]
+        this.resize('off')
       },
 
       /**
@@ -529,10 +544,39 @@ layui.define('view', (exports) => {
        */
       closeThisTabs() {
         if (!this.tabsPage.index) return
-        $(`#${APP_TABS_HEADER}>li`)
+        $(`${TABS_HEADER}>li`)
           .eq(this.tabsPage.index)
           .find(`.layui-tab-close`)
           .trigger('click')
+      },
+
+      /**
+       * @description 全屏
+       */
+      fullScreen() {
+        let elem = document.documentElement,
+          reqFullScreen =
+            elem.requestFullscreen ||
+            elem.webkitRequestFullScreen ||
+            elem.mozRequestFullScreen ||
+            elem.msRequestFullScreen
+
+        typeof reqFullScreen !== 'undefined' &&
+          reqFullScreen &&
+          reqFullScreen.call(elem)
+      },
+
+      /**
+       * @description 退出全屏
+       */
+      exitScreen() {
+        document.exitFullscreen
+          ? document.exitFullscreen()
+          : document.mozCancelFullScreen
+          ? document.mozCancelFullScreen()
+          : document.webkitCancelFullScreen
+          ? document.webkitCancelFullScreen()
+          : document.msExitFullscreen && document.msExitFullscreen()
       },
     },
     events = (admin.events = {
@@ -541,7 +585,7 @@ layui.define('view', (exports) => {
        * @param {object} othis jQuery对象
        */
       flexible(othis) {
-        let iconElem = othis.find(`#${APP_FLEXIBLE}`),
+        let iconElem = othis.find(APP_FLEXIBLE),
           isSpread = iconElem.hasClass(ICON_SPERAD)
         admin.sideFlexible(isSpread ? 'spread' : null)
       },
@@ -555,7 +599,7 @@ layui.define('view', (exports) => {
         if (admin.tabsPage.index >= length) {
           admin.tabsPage.index = length - 1
         }
-        let iframe = admin.getTabsBody(admin.tabsPage.index).find(iframeElem)
+        let iframe = admin.tabsBody(admin.tabsPage.index).find(iframeElem)
         iframe[0].contentWindow.location.reload(true)
       },
 
@@ -570,7 +614,7 @@ layui.define('view', (exports) => {
           if (e.keyCode === 13) {
             let href = othis.attr('lay-action'),
               text = othis.attr('lay-text') || '搜索'
-            href = href + this.value
+            href += this.value
             text = `${text} <span class="layui-text-red">${admin.escape(
               this.value,
             )}</span>`
@@ -582,7 +626,6 @@ layui.define('view', (exports) => {
             if (this.value === events.search.keys[admin.tabsPage.index]) {
               events.refresh(othis)
             }
-
             // 清空输入框
             this.value = ''
           }
@@ -620,7 +663,7 @@ layui.define('view', (exports) => {
        */
       theme() {
         admin.popupRight({
-          id: 'LAY-admin-popup-theme',
+          id: 'LAY_adminPopupTheme',
           success() {
             view(this.id).render('system/theme')
           },
@@ -633,11 +676,11 @@ layui.define('view', (exports) => {
        */
       setTheme(othis) {
         let index = othis.data('index'),
-          prevIndex = othis.siblings(`.${THIS}`).data('index')
+          prevIndex = othis.siblings('layui-this').data('index')
 
         if (othis.hasClass(THIS)) return
         // 移除兄弟元素的layui-this
-        othis.addClass(THIS).siblings(`.${THIS}`).removeClass(THIS)
+        othis.addClass(THIS).siblings('layui-this').removeClass(THIS)
         admin.initTheme(index)
       },
 
@@ -653,8 +696,8 @@ layui.define('view', (exports) => {
           shade: 0,
           offset: ['41px', isMobile ? null : `${othis.offset().left - 250}px`],
           anim: -1,
-          id: 'LAY-admin-note',
-          skin: 'layadmin-note layui-anim layui-anim-upbit ',
+          id: 'LAY_adminNote',
+          skin: 'layui-anim layui-anim-upbit layadmin-note',
           content: '<textarea placeholder="内容"></textarea>',
           resize: false,
           success(layero, index) {
@@ -685,26 +728,10 @@ layui.define('view', (exports) => {
           SCREEN_REST = 'layui-icon-screen-restore',
           iconElem = othis.children('i')
         if (iconElem.hasClass(SCREEN_FULL)) {
-          let elem = document.body
-          if (elem.webkitRequestFullScreen) {
-            elem.webkitRequestFullScreen()
-          } else if (elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen()
-          } else if (elem.requestFullscreen) {
-            elem.requestFullscreen()
-          }
+          admin.fullScreen()
           iconElem.addClass(SCREEN_REST).removeClass(SCREEN_FULL)
         } else {
-          let elem = document
-          if (elem.webkitCancelFullScreen) {
-            elem.webkitCancelFullScreen()
-          } else if (elem.mozCancelFullScreen) {
-            elem.mozCancelFullScreen()
-          } else if (elem.cancelFullScreen) {
-            elem.cancelFullScreen()
-          } else if (elem.exitFullscreen) {
-            elem.exitFullscreen()
-          }
+          admin.exitScreen()
           iconElem.addClass(SCREEN_FULL).removeClass(SCREEN_REST)
         }
       },
@@ -714,7 +741,7 @@ layui.define('view', (exports) => {
        */
       about() {
         admin.popupRight({
-          id: 'LAY-admin-popup-about',
+          id: 'LAY_adminPopupAbout',
           success() {
             view(this.id).render('system/about')
           },
@@ -726,7 +753,7 @@ layui.define('view', (exports) => {
        */
       more() {
         admin.popupRight({
-          id: 'LAY-admin-popup-more',
+          id: 'LAY_adminPopupMore',
           success() {
             view(this.id).render('system/more')
           },
@@ -746,7 +773,7 @@ layui.define('view', (exports) => {
        * @param {number} index
        */
       rollPage(type, index) {
-        let tabsHeader = $(`#${APP_TABS_HEADER}`),
+        let tabsHeader = $(TABS_HEADER),
           liItem = tabsHeader.children('li'),
           scrollWidth = tabsHeader.prop('scrollWidth'),
           outerWidth = tabsHeader.outerWidth(),
@@ -758,12 +785,12 @@ layui.define('view', (exports) => {
 
           // 当前的left减去可视宽度，用于与上一轮的页标比较
           let prefLeft = -tabsLeft - outerWidth
-          liItem.each(function (i, item) {
+          liItem.each((i, item) => {
             let li = $(item),
               left = li.position().left
             if (left >= prefLeft) {
               tabsHeader.css('left', -left)
-              return
+              return false
             }
           })
         }
@@ -782,7 +809,7 @@ layui.define('view', (exports) => {
             if (thisLeft + thisLi.outerWidth() >= outerWidth - tabsLeft) {
               let subLeft =
                 thisLeft + thisLi.outerWidth() - (outerWidth - tabsLeft)
-              liItem.each(function (i, item) {
+              liItem.each((i, item) => {
                 let li = $(item),
                   left = li.position().left
 
@@ -790,20 +817,20 @@ layui.define('view', (exports) => {
                 if (left + tabsLeft > 0) {
                   if (left - tabsLeft > subLeft) {
                     tabsHeader.css('left', -left)
-                    return
+                    return false
                   }
                 }
               })
             }
-          })
+          })()
         } else {
           // 默认向左滚动
-          liItem.each(function (i, item) {
+          liItem.each((i, item) => {
             let li = $(item),
               left = li.position().left
             if (left + li.outerWidth() >= outerWidth - tabsLeft) {
               tabsHeader.css('left', -left)
-              return
+              return false
             }
           })
         }
@@ -835,21 +862,21 @@ layui.define('view', (exports) => {
        * @param {string} type
        */
       closeOtherTabs(type) {
+        let TABS_REMOVE = 'LAY-tabsPage-remove'
         if (type === 'all') {
           // jQuery :gt(index) 匹配所有大于给定索引值的元素
-          $(`#${APP_TABS_HEADER}>li:gt(0)`).remove()
-          $(`#${APP_TABS_BODY}`).find(`.${TABS_BODY_ITEM}:gt(0)`).remove()
-
-          $(`#${APP_TABS_HEADER}>li`).eq(0).trigger('click')
+          $(`${TABS_HEADER}>li:gt(0)`).remove()
+          $(APP_BODY).find(`.${TABS_BODY_ITEM}:gt(0)`).remove()
+          $(`${TABS_HEADER}>li`).eq(0).trigger('click')
         } else {
-          $(`#${APP_TABS_HEADER}>li`).each(function (index, item) {
+          $(`${TABS_HEADER}>li`).each((index, item) => {
             // 主页默认index是0,所以下面的逻辑判断自然会不通过,也就不会被标记
             if (index && index !== admin.tabsPage.index) {
-              $(item).addClass(TABS_REMOVE_TAG)
-              admin.getTabsBody(index).addClass(TABS_REMOVE_TAG)
+              $(item).addClass(TABS_REMOVE)
+              admin.tabsBody(index).addClass(TABS_REMOVE)
             }
           })
-          $(`.${TABS_REMOVE_TAG}`).remove()
+          $(`.${TABS_REMOVE}`).remove()
         }
       },
 
@@ -877,21 +904,21 @@ layui.define('view', (exports) => {
           a: item.children(`*[lay-href]`),
         }
       },
-      sideMenu = $(`#${SIDE_MENU}`),
+      sideMenu = $(SIDE_MENU),
       SIDE_NAV_ITEMD = 'layui-nav-itemed',
       // 捕获对应菜单
       matchMenu = (list) => {
-        list.each(function (index1, item1) {
+        list.each((index1, item1) => {
           let data1 = getData($(item1)),
             listChildren1 = data1.list.children('dd'),
             matched1 = pathURL === data1.a.attr('lay-href')
 
-          listChildren1.each(function (index2, item2) {
+          listChildren1.each((index2, item2) => {
             let data2 = getData($(item2)),
               listChildren2 = data2.list.children('dd'),
               matched2 = pathURL === data2.a.attr('lay-href')
 
-            listChildren2.each(function (index3, item3) {
+            listChildren2.each((index3, item3) => {
               let data3 = getData($(item3)),
                 matched3 = pathURL === data3.a.attr('lay-href')
 
@@ -917,8 +944,7 @@ layui.define('view', (exports) => {
         })
       }
     // 移动端点击菜单时自动收缩
-    if (admin.screen() < 2) admin.sideFlexible()
-
+    admin.screen() < 2 && admin.sideFlexible()
     // 重置状态
     sideMenu.find(`.${THIS}`).removeClass(THIS)
     // 开始捕获
@@ -926,7 +952,7 @@ layui.define('view', (exports) => {
   })
 
   // 监听侧边导航点击事件
-  element.on('nav(layadmin-side-menu)', (el) => {
+  element.on(`nav(${FILTER_SIDE_MENU})`, (el) => {
     // PC端时才会进入if内部
     if (el.siblings('.layui-nav-child')[0] && container.hasClass(SIDE_SHRINK)) {
       admin.sideFlexible('spread')
@@ -936,16 +962,16 @@ layui.define('view', (exports) => {
   })
 
   // 监听选项卡的更多操作
-  element.on('nav(layadmin-tabs-control)', (el) => {
+  element.on(`nav(${FILTER_TAB_OPERATE})`, (el) => {
     let dd = el.parent()
     dd.removeClass(THIS)
     dd.parent().removeClass(SHOW)
   })
 
   // 监听 tabspage 删除
-  element.on(`tabDelete(${FILTER_TABS_LIST})`, (data) => {
-    let tab = $(`#${APP_TABS_HEADER}>li.layui-this`)
-    data.index && admin.getTabsBody(data.index).remove()
+  element.on(`tabDelete(${FILTER_TAB_TABS})`, (el) => {
+    let tab = $(`${TABS_HEADER}>li.layui-this`)
+    el.index && admin.tabsBody(el.index).remove()
     setThisRouter(tab)
 
     // 移除resize事件
@@ -953,12 +979,12 @@ layui.define('view', (exports) => {
   })
 
   // 监听 tab 组件切换，同步 index
-  element.on(`tab(${FILTER_TABS_LIST})`, (data) => {
-    admin.tabsPage.index = data.index
+  element.on(`tab(${FILTER_TAB_TABS})`, (el) => {
+    admin.tabsPage.index = el.index
   })
 
   // 点击标签页标题
-  $body.on('click', `#${APP_TABS_HEADER}>li`, function () {
+  $body.on('click', `${TABS_HEADER}>li`, function () {
     let index = $(this).index()
     // 更新tab页数据
     admin.tabsPage.type = 'tab'
@@ -978,7 +1004,7 @@ layui.define('view', (exports) => {
     topLayui.index.openTabsPage(href, text)
   })
 
-  // 预定义点击事件
+  // 点击事件
   $body.on('click', '*[layadmin-event]', function () {
     let attrEvent = $(this).attr('layadmin-event')
     events[attrEvent] && events[attrEvent].call(this, $(this))
@@ -1016,9 +1042,6 @@ layui.define('view', (exports) => {
 
   // 后台初始化
   !(function () {
-    // 移动端初始化页面选择器
-    if (admin.screen() < 2) admin.sideFlexible()
-
     let local = layui.data(setter.tableName)
     // 主题初始化，本地主题记录优先，其次为 initColorIndex
     if (local.theme) {
@@ -1032,15 +1055,15 @@ layui.define('view', (exports) => {
 
     // 不开启页面标签时
     if (!setter.pageTabs) {
-      $(`#${APP_TABS}`).addClass(HIDE)
-      container.addClass('layadmin-tabspage-none')
+      $(APP_TABS).addClass(HIDE)
+      container.addClass('LAY-pageTabs-false')
     }
 
     // 低版本IE提示
     if (device.ie && device.ie < 10) {
       view.error(
         `IE${device.ie}下访问可能不佳，推荐使用：Chrome / Firefox / Edge 等高级浏览器`,
-        { offset: 'auto', id: 'LAY-error-IE' },
+        { offset: 'auto', id: 'LAY_errorIE' },
       )
     }
 

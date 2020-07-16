@@ -1,19 +1,27 @@
+/**
+
+ @Name：layuiAdmin 视图模块
+ @Author：贤心
+ @Site：http://www.layui.com/admin/
+ @License：LPPL
+
+ */
+
 layui.define(['laytpl', 'layer'], (exports) => {
   let $ = layui.$,
     laytpl = layui.laytpl,
     layer = layui.layer,
     setter = layui.setter,
-    // layui.device(key) 获取设备信息,参数key是可选的
     device = layui.device(),
     hint = layui.hint(),
     SHOW = 'layui-show',
-    APP_TABS_BODY = 'LAY-app-tabs-body',
+    APP_BODY = 'LAY_app_body',
     // 对外接口
     view = function (id) {
       return new Class(id)
     },
     // 构造器
-    Class = function (id = APP_TABS_BODY) {
+    Class = function (id = APP_BODY) {
       this.id = id
       this.container = $(`#${id}`)
     }
@@ -56,9 +64,14 @@ layui.define(['laytpl', 'layer'], (exports) => {
     options.headers = options.headers || {}
 
     if (request.tokenName) {
+      let sendData =
+        typeof options.data === 'string'
+          ? JSON.parse(options.data)
+          : options.data
+
       // 自动给参数传入默认 token
       options.data[request.tokenName] =
-        request.tokenName in options.data
+        request.tokenName in sendData
           ? options.data[request.tokenName]
           : layui.data(setter.tableName)[request.tokenName] || ''
 
@@ -126,7 +139,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
           type: 1,
           title: '提示',
           content: '',
-          id: 'LAY-view-popup',
+          id: 'LAY-system-view-popup',
           skin: `layui-layer-admin ${skin ? skin : ''}`,
           shadeClose: true,
           closeBtn: false,
@@ -153,7 +166,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
           maxWidth: 300,
           offset: 't',
           anim: 6,
-          id: 'LAY-admin-error',
+          id: 'LAY_adminError',
         },
         options,
       ),
@@ -165,7 +178,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
     let that = this,
       router = layui.router()
     views = setter.views + views + setter.engine
-    $(`#${APP_TABS_BODY}`).children('.layadmin-loading').remove()
+    $(`#${APP_BODY}`).children('.layadmin-loading').remove()
     view.loading(this.container)
 
     // 请求模板
@@ -221,6 +234,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
     let isScriptTpl = typeof html === 'object', // 是否模板元素
       elem = isScriptTpl ? html : $(html),
       tempElem = isScriptTpl ? html : elem.find('*[template]'),
+      router = layui.router(),
       fn = function (options) {
         let tpl = laytpl(options.dataElem.html())
         options.dataElem.after(
@@ -233,8 +247,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
         } catch (e) {
           console.error(options.dataElem[0], `\n存在错误回调脚本\n\n`, e)
         }
-      },
-      router = layui.router()
+      }
 
     elem.find('title').remove()
     this.container[refresh ? 'after' : 'html'](elem.children())

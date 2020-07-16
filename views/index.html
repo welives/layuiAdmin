@@ -22,14 +22,12 @@
     />
     <link rel="stylesheet" href="../layuiadmin/style/layout.css" media="all" />
     <script>
-      ;/^http(s?):\/\//.test(location.href) ||
-        alert(
-          '请先将项目部署至web环境(Apache/Tomcat/Nginx/IIS/等),否则部分数据将无法正常显示!',
-        )
+      ;/^http(s*):\/\//.test(location.href) ||
+        alert('请先部署到 web环境 下再访问')
     </script>
   </head>
   <body class="layui-layout-body">
-    <div id="LAY-app">
+    <div id="LAY_app">
       <div class="layui-layout layui-layout-admin">
         <!-- 头部区域 -->
         <div class="layui-header">
@@ -38,7 +36,7 @@
               <a href="javascript:;" layadmin-event="flexible" title="侧边收缩">
                 <i
                   class="layui-icon layui-icon-shrink-right"
-                  id="LAY-app-flexible"
+                  id="LAY_app_flexible"
                 ></i
               ></a>
             </li>
@@ -69,7 +67,7 @@
           </ul>
           <ul
             class="layui-nav layui-layout-right"
-            lay-filter="layadmin-header-right"
+            lay-filter="LAY-filter-header-right"
           >
             <li class="layui-nav-item" lay-unselect>
               <a
@@ -103,7 +101,7 @@
                 <dd><a lay-href="set/user/info.html">基本资料</a></dd>
                 <dd><a lay-href="set/user/password.html">修改密码</a></dd>
                 <hr />
-                <dd layadmin-event="logout" style="text-align: center;">
+                <dd layadmin-event="logout" class="layui-text-center">
                   <a>退出</a>
                 </dd>
               </dl>
@@ -129,19 +127,19 @@
           <div class="layui-side-scroll">
             <div class="layui-logo" lay-href="home/console.html">
               <img src="../layuiadmin/images/logo.gif" alt="logo" />
-              <h1>LAYUI 摸🐟</h1>
+              <span>LAYUI 摸🐟</span>
             </div>
             <ul
-              id="LAY-side-menu"
+              id="LAY_app_side_menu"
               class="layui-nav layui-nav-tree"
-              lay-filter="layadmin-side-menu"
+              lay-filter="LAY-filter-side-menu"
               lay-shrink="all"
             ></ul>
           </div>
         </div>
 
         <!-- 页面标签 -->
-        <div class="layadmin-tabs-page" id="LAY-app-tabs">
+        <div class="layadmin-pageTabs" id="LAY_app_tabs">
           <div
             class="layui-icon layui-icon-prev layadmin-tabs-control"
             layadmin-event="leftPage"
@@ -153,14 +151,20 @@
           <div class="layui-icon layui-icon-down layadmin-tabs-control">
             <ul
               class="layui-nav layadmin-tabs-select"
-              lay-filter="layadmin-tabs-control"
+              lay-filter="LAY-filter-tabs-operate"
             >
               <li class="layui-nav-item" lay-unselect>
                 <a href="javascript:;"></a>
                 <dl class="layui-nav-child layui-anim-fadein">
-                  <dd><a layadmin-event="closeThisTabs">关闭当前标签页</a></dd>
-                  <dd><a layadmin-event="closeOtherTabs">关闭其它标签页</a></dd>
-                  <dd><a layadmin-event="closeAllTabs">关闭全部标签页</a></dd>
+                  <dd layadmin-event="closeThisTabs">
+                    <a href="javascript:;">关闭当前标签页</a>
+                  </dd>
+                  <dd layadmin-event="closeOtherTabs">
+                    <a href="javascript:;">关闭其它标签页</a>
+                  </dd>
+                  <dd layadmin-event="closeAllTabs">
+                    <a href="javascript:;">关闭全部标签页</a>
+                  </dd>
                 </dl>
               </li>
             </ul>
@@ -169,9 +173,9 @@
             class="layui-tab"
             lay-unauto
             lay-allowClose="true"
-            lay-filter="layadmin-tabs-list"
+            lay-filter="LAY-filter-layout-tabs"
           >
-            <ul class="layui-tab-title" id="LAY-app-tabs-header">
+            <ul class="layui-tab-title" id="LAY_app_tabsHeader">
               <li
                 class="layui-this"
                 lay-id="home/console.html"
@@ -184,8 +188,8 @@
         </div>
 
         <!-- 主体内容 -->
-        <div class="layui-body" id="LAY-app-tabs-body">
-          <div class="layadmin-tabs-body-item layui-show">
+        <div class="layui-body" id="LAY_app_body">
+          <div class="LAY-tabsBody-item layui-show">
             <iframe
               src="home/console.html"
               frameborder="0"

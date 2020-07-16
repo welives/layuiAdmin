@@ -43,28 +43,28 @@
 }
 
 /* 页面标签 */
-.layadmin-tabs-page {
+.layadmin-pageTabs {
   background-color: #fff;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 .layadmin-tabs-control {
   border-left: 1px solid #f8f8f8;
 }
-.layadmin-tabs-page .layui-icon-prev {
+.layadmin-pageTabs .layui-icon-prev {
   border-right: 1px solid #f8f8f8;
 }
-.layadmin-tabs-page .layui-tab-title li {
+.layadmin-pageTabs .layui-tab-title li {
   border-right: 1px solid #f8f8f8;
 }
 .layadmin-tabs-select .layui-nav-item a {
   color: #565656;
 }
 .layadmin-tabs-control:hover,
-.layadmin-tabs-page .layui-tab-title li:hover,
-.layadmin-tabs-page .layui-tab-title li.layui-this {
+.layadmin-pageTabs .layui-tab-title li:hover,
+.layadmin-pageTabs .layui-tab-title li.layui-this {
   background-color: #f8f8f8;
 }
-.layadmin-tabs-page .layui-tab-title li::after {
+.layadmin-pageTabs .layui-tab-title li::after {
   background-color: #5fb878;
 }
 

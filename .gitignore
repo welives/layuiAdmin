@@ -6,6 +6,7 @@
 .DS_Store
 .editorconfig
 .prettierrc
+.babelrc
 node_modules
 package-lock.json
 dist

@@ -40,7 +40,7 @@
         <a lay-href="app/message/" layadmin-event="message" title="消息中心">
           <i class="layui-icon layui-icon-notice"></i>
           <!-- 如果有新消息,则显示小圆点 -->
-          <script type="text/html" template lay-url="./json/message/new.json">
+          <script type="text/html" template lay-url="json/message/new.json">
             {{# if(d.data.newmsg){ }}
               <span class="layui-badge-dot"></span>
             {{# } }}
@@ -66,7 +66,7 @@
         <script
           type="text/html"
           template
-          lay-url="./json/user/session.json"
+          lay-url="json/user/session.json"
           lay-done="layui.element.render('nav', 'LAY-filter-header-right')"
         >
           <a href="javascript:;"><cite>{{ d.data.username }}</cite></a>
@@ -102,7 +102,7 @@
       <script
         type="text/html"
         template
-        lay-url="./json/menu.json"
+        lay-url="json/menu.json"
         lay-done="layui.element.render('nav','LAY-filter-side-menu')"
         id="layoutTpl"
       >

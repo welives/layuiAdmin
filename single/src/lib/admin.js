@@ -287,48 +287,37 @@ layui.define('view', (exports) => {
           local = layui.data(setter.tableName),
           id = 'LAY_admin_theme',
           style = document.createElement('style'),
-          styleText = laytpl(`
-          /* 主题色 */
-          .layui-side-menu,
-          .layui-layer-admin .layui-layer-title,
-          .layadmin-pageTabs .layui-tab-title li:after,
-          .layadmin-pageTabs .layui-tab-title li.layui-this:after,
-          .LAY-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > .layui-nav-child {
-            background-color: {{ d.color.main }} !important;
-          }
-          /* 选中色 */
-          .layui-nav-tree .layui-this,
-          .layui-nav-tree .layui-this > a,
-          .layui-nav-tree .layui-nav-child dd.layui-this,
-          .layui-nav-tree .layui-nav-child dd.layui-this a {
-            background-color: {{ d.color.selected }} !important;
-          }
-          /* logo */
-          .layui-layout-admin .layui-logo {
-            background-color: {{ d.color.logo || d.color.main }} !important;
-          }
-          {{# if(d.color.header){ }}
-          /* 头部色 */
-          .layui-layout-admin .layui-header {
-            background-color: {{ d.color.header }};
-          }
-          .layui-layout-admin .layui-header a,
-          .layui-layout-admin .layui-header a cite {color: #f8f8f8;}
-          .layui-layout-admin .layui-header a:hover {color: #fff;}
-          .layui-layout-admin .layui-header .layui-nav .layui-nav-more {
-            border-top-color: #fbfbfb;
-          }
-          .layui-layout-admin .layui-header .layui-nav .layui-nav-mored {
-            border-color: transparent;
-            border-bottom-color: #fbfbfb;
-          }
-          .layui-layout-admin .layui-header .layui-nav .layui-this:after,
-          .layui-layout-admin .layui-header .layui-nav-bar {
-            background-color: rgba(255, 255, 255, 0.5);
-          }
-          .layadmin-pageTabs .layui-tab-title li:after {display: none;}
-          {{# } }}
-          `).render($.extend({}, local.theme, options)),
+          styleText = laytpl(
+            [
+              // 主题色
+              '.layui-side-menu,',
+              '.layui-layer-admin .layui-layer-title,',
+              '.layadmin-pageTabs .layui-tab-title li:after,',
+              '.layadmin-pageTabs .layui-tab-title li.layui-this:after,',
+              '.LAY-side-shrink .layui-side-menu .layui-nav > .layui-nav-item > .layui-nav-child { ',
+              'background-color: {{ d.color.main }} !important; }',
+              // 选中色
+              '.layui-nav-tree .layui-this,',
+              '.layui-nav-tree .layui-this > a,',
+              '.layui-nav-tree .layui-nav-child dd.layui-this,',
+              '.layui-nav-tree .layui-nav-child dd.layui-this a { ',
+              'background-color: {{ d.color.selected }} !important; }',
+              // logo
+              '.layui-layout-admin .layui-logo',
+              '{ background-color: {{ d.color.logo || d.color.main }} !important; }',
+              // 头部色
+              '{{# if(d.color.header){ }}',
+              '.layui-layout-admin .layui-header { background-color: {{ d.color.header }}; }',
+              '.layui-layout-admin .layui-header a, .layui-layout-admin .layui-header a cite { color: #f8f8f8; }',
+              '.layui-layout-admin .layui-header a:hover { color: #fff; }',
+              '.layui-layout-admin .layui-header .layui-nav .layui-nav-more { border-top-color: #fbfbfb; }',
+              '.layui-layout-admin .layui-header .layui-nav .layui-nav-mored { border-color: transparent; border-bottom-color: #fbfbfb; }',
+              '.layui-layout-admin .layui-header .layui-nav .layui-this:after,',
+              '.layui-layout-admin .layui-header .layui-nav-bar { background-color: rgba(255, 255, 255, 0.5); }',
+              '.layadmin-pageTabs .layui-tab-title li:after { display: none; }',
+              '{{# } }}',
+            ].join(''),
+          ).render($.extend({}, local.theme, options)),
           styleElem = document.getElementById(id)
 
         // 添加主题样式
@@ -492,9 +481,11 @@ layui.define('view', (exports) => {
             let href = othis.attr('lay-action'),
               text = othis.attr('lay-text') || '搜索'
             href += this.value
-            text = `${text} <span class="layui-text-red">${admin.escape(
-              this.value,
-            )}</span>`
+            text =
+              text +
+              '<span class="layui-text-red">' +
+              admin.escape(this.value) +
+              '</span>'
             // 打开标签页
             location.hash = admin.correctRouter(href)
             // 如果搜索关键词已经打开，则刷新页面即可
@@ -503,7 +494,6 @@ layui.define('view', (exports) => {
             if (this.value === events.search.keys[admin.tabsPage.index]) {
               events.refresh(othis)
             }
-
             // 清空输入框
             this.value = ''
           }

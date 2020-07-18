@@ -130,22 +130,16 @@ layui.define((exports) => {
    * @param {array} data
    */
   function renderShortcut(data) {
-    laytpl(`
-      <div carousel-item>
-      {{# layui.each(d, (index, ul)=>{ }}
-        <ul class="layui-row layui-col-space10">
-        {{# layui.each(ul.list, (idx, li)=>{ }}
-          <li class="layui-col-xs3">
-            <a lay-href="{{ li.url }}">
-              <i class="layui-icon {{ li.icon }}"></i>
-              <cite>{{ li.text }}</cite>
-            </a>
-          </li>
-        {{# }) }}
-        </ul>
-      {{# }) }}
-      </div>
-    `).render(data, (html) => {
+    laytpl(
+      [
+        '<div carousel-item>{{# layui.each(d, (index, ul)=>{ }}',
+        '<ul class="layui-row layui-col-space10">',
+        '{{# layui.each(ul.list, (idx, li)=>{ }}',
+        '<li class="layui-col-xs3"><a lay-href="{{ li.url }}">',
+        '<i class="layui-icon {{ li.icon }}"></i><cite>{{ li.text }}</cite>',
+        '</a></li>{{# }) }}</ul>{{# }) }}</div>',
+      ].join(''),
+    ).render(data, (html) => {
       $('.layadmin-shortcut').html(html)
     })
   }
@@ -155,22 +149,16 @@ layui.define((exports) => {
    * @param {array} data
    */
   function renderBacklog(data) {
-    laytpl(`
-      <div carousel-item>
-      {{# layui.each(d, (index, ul)=>{ }}
-        <ul class="layui-row layui-col-space10">
-        {{# layui.each(ul.list, (idx, li)=>{ }}
-          <li class="layui-col-xs6">
-            <a {{ li.href ? 'href="'+li.href+'"' : '' }} {{ li.action ? 'onclick="'+li.action+'"' : ''}} {{ li.url ? 'lay-href="'+li.url+'"' : ''}} class="layadmin-backlog-body">
-              <h3>{{ li.title }}</h3>
-              <p><cite class="{{ li.skin }}">{{ li.text }}</cite></p>
-            </a>
-          </li>
-        {{# }) }}
-        </ul>
-      {{# }) }}
-      </div>
-    `).render(data, (html) => {
+    laytpl(
+      [
+        '<div carousel-item>{{# layui.each(d, (index, ul)=>{ }}',
+        '<ul class="layui-row layui-col-space10">',
+        '{{# layui.each(ul.list, (idx, li)=>{ }}<li class="layui-col-xs6">',
+        '<a {{ li.href ? "href="+ li.href : "" }} {{ li.action ? "onclick="+ li.action : "" }} {{ li.url ? "lay-href="+ li.url : "" }} class="layadmin-backlog-body">',
+        '<h3>{{ li.title }}</h3><p><cite class="{{ li.skin }}">{{ li.text }}</cite></p>',
+        '</a></li>{{# }) }}</ul>{{# }) }}</div>',
+      ].join(''),
+    ).render(data, (html) => {
       $('.layadmin-backlog').html(html)
     })
   }
@@ -180,15 +168,14 @@ layui.define((exports) => {
    * @param {array} data
    */
   function renderNews(data) {
-    laytpl(`
-      <div carousel-item>
-      {{# layui.each(d, (index, item)=>{ }}
-        <div>
-          <a href="{{ item.url }}" class="{{ item.skin }}" target="_blank">{{ item.text }}</a>
-        </div>
-      {{# }) }}
-      </div>
-    `).render(data, (html) => {
+    laytpl(
+      [
+        '<div carousel-item>',
+        '{{# layui.each(d, (index, item)=>{ }}',
+        '<div><a href="{{ item.url }}" class="{{ item.skin }}" target="_blank">{{ item.text }}</a></div>',
+        '{{# }) }}</div>',
+      ].join(''),
+    ).render(data, (html) => {
       $('.layadmin-news').html(html)
     })
   }

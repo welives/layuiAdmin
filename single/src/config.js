@@ -15,6 +15,8 @@ layui.define(['laytpl', 'layer', 'element', 'util'], (exports) => {
     entry: 'index', // 默认视图文件名
     engine: '.html', // 视图文件后缀名
     pageTabs: false, // 是否开启页面选项卡功能。单页版不推荐开启
+    api: 'http://api.moyu.com/api/', //后台接口的地址 ,如果你的域名直接指向public目录，则直接填域名/（需要加斜杠）
+    website: 'http://api.moyu.com/', //前台地址（区别于后台前端地址）
     name: 'LAYUI 摸🐟',
     tableName: 'layuiAdmin', // 本地存储表名
     MOD_NAME: 'admin', // 模块事件名

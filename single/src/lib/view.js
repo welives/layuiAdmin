@@ -29,7 +29,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
   // 加载中
   view.loading = function (el) {
     this.loadElem = $(
-      `<i class="layui-anim layui-anim-rotate layui-anim-loop layui-icon layui-icon-loading layadmin-loading"></i>`,
+      '<i class="layui-anim layui-anim-rotate layui-anim-loop layui-icon layui-icon-loading layadmin-loading"></i>',
     )
     el.append(this.loadElem)
   }
@@ -101,13 +101,11 @@ layui.define(['laytpl', 'layer'], (exports) => {
             // 其它异常
             else {
               let errorMsg = [
-                `<cite>Error：</cite>${
-                  res[response.msgName] || '返回状态码异常'
-                }`,
+                '<cite>Error：</cite> ' +
+                  (res[response.msgName] || '返回状态码异常'),
                 debug(),
               ].join('')
               view.error(errorMsg)
-              // typeof options.faile === 'function' && options.faile(res)
             }
             // 只要 http 状态码正常，无论 response 的 code 是否正常都执行 success
             typeof success === 'function' && success(res)
@@ -142,8 +140,11 @@ layui.define(['laytpl', 'layer'], (exports) => {
           id: 'LAY-system-view-popup',
           skin: `layui-layer-admin ${skin ? skin : ''}`,
           shadeClose: true,
+          closeBtn: false,
           success(layero, index) {
-            let closeElem = $(`<i class="layui-icon" close>&#x1006;</i>`)
+            let closeElem = $(
+              '<i class="layui-icon layui-icon-close" close></i>',
+            )
             layero.append(closeElem)
             closeElem.on('click', () => {
               layer.close(index)
@@ -165,7 +166,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
           maxWidth: 300,
           offset: 't',
           anim: 6,
-          id: 'LAY_adminError',
+          id: 'LAY_adminError', // 弹窗内容区的id
         },
         options,
       ),

@@ -82,7 +82,7 @@ layui
     // 扩展 lib 目录下的其它模块
     layui.each(setter.extend, (index, item) => {
       let mods = {}
-      mods[item] = `${setter.base}lib/extend/${item}`
+      mods[item] = `{/}${setter.base}lib/extend/${item}`
       layui.extend(mods)
     })
 

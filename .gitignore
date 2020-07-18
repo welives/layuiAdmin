@@ -2,6 +2,10 @@
 /.vscode
 /vendor
 *.log
-thinkphp
 .env
 .DS_Store
+.editorconfig
+.prettierrc
+node_modules
+package-lock.json
+dist

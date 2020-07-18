@@ -350,17 +350,22 @@
         {
           "name": "reg",
           "title": "注册",
-          "jump": "useradmin/reg"
+          "jump": "user/reg"
         },
         {
           "name": "login",
-          "title": "登入",
-          "jump": "useradmin/login"
+          "title": "前台登入",
+          "jump": "user/login"
         },
         {
           "name": "forget",
           "title": "忘记密码",
-          "jump": "useradmin/forget"
+          "jump": "user/forget"
+        },
+        {
+          "name": "login",
+          "title": "后台登入",
+          "jump": "admin/login"
         },
         {
           "name": "404",

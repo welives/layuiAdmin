@@ -38,7 +38,10 @@ layui.define(['laytpl', 'layer', 'element', 'util'], (exports) => {
     },
     //独立页面路由，可随意添加（无需写参数）
     indPage: [
-      '/login', //登入页
+      '/user/reg', // 前台注册页
+      '/user/login', //前台登入页
+      '/user/forget', // 前台找回密码页
+      '/admin/login', // 后台登入页
     ],
     // 扩展的第三方模块
     extend: ['echarts', 'echartsTheme', 'treeGrid'],

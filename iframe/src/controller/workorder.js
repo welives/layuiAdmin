@@ -6,7 +6,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
 
   table.render({
     elem: '#LAY-app-order',
-    url: layui.setter.base + 'json/workorder/demo.json',
+    url: '/iframe/json/workorder/demo.json',
     cols: [
       [
         { type: 'numbers', fixed: 'left' },
@@ -42,7 +42,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
   })
 
   // 监听工具条
-  table.on('tool(LAY-app-order)', (obj) => {
+  table.on('tool(LAY-filter-order)', (obj) => {
     let data = obj.data,
       state = ['未分配', '处理中', '已处理'],
       accept = ['员工-1', '员工-2', '员工-3', '员工-4', '员工-5']
@@ -50,7 +50,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
       layer.open({
         type: 2,
         title: '编辑工单',
-        content: layui.setter.root + 'views/app/workorder/list-form.html',
+        content: layui.setter.views + 'app/workorder/list-form.html',
         area: ['450px', '450px'],
         btn: ['确定', '取消'],
         success(layero, index) {
@@ -58,7 +58,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
           $.each(iframe.find('[name]'), function () {
             switch ($(this)[0].name) {
               case 'attr':
-                $(this).val(data.attr)
+                $(this).focus().val(data.attr)
                 break
               case 'title':
                 $(this).val(data.title)
@@ -81,11 +81,12 @@ layui.define(['table', 'form', 'element'], (exports) => {
         },
         yes(index, layero) {
           let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = 'LAY-app-order-submit',
-            submit = layero.find('iframe').contents().find(`#${submitID}`)
+            submitID = '#LAY-app-order-submit',
+            filter = 'LAY-filter-order-submit',
+            submit = layero.find('iframe').contents().find(submitID)
 
           // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${submitID})`, (data) => {
+          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
             let field = data.field // 获取提交的字段
             //提交 Ajax 成功后，静态更新表格中的数据
             // $.ajax({})

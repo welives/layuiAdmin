@@ -5,7 +5,6 @@
     <title>摸鱼 - 基于Layui的练习项目</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
@@ -53,7 +52,7 @@
                 autocomplete="off"
                 class="layui-input layui-input-search"
                 layadmin-event="search"
-                lay-action="template/search.html?keywords="
+                lay-action="./src/views/template/search.html?keywords="
               />
             </li>
           </ul>
@@ -63,7 +62,7 @@
           >
             <li class="layui-nav-item" lay-unselect>
               <a
-                lay-href="app/message/index.html"
+                lay-href="./src/views/app/message/index.html"
                 layadmin-event="message"
                 lay-text="消息中心"
               >
@@ -90,8 +89,12 @@
             <li class="layui-nav-item" lay-unselect>
               <a href="javascript:;"><cite>摸鱼</cite></a>
               <dl class="layui-nav-child">
-                <dd><a lay-href="set/user/info.html">基本资料</a></dd>
-                <dd><a lay-href="set/user/password.html">修改密码</a></dd>
+                <dd>
+                  <a lay-href="./src/views/set/user/info.html">基本资料</a>
+                </dd>
+                <dd>
+                  <a lay-href="./src/views/set/user/password.html">修改密码</a>
+                </dd>
                 <hr />
                 <dd layadmin-event="logout" class="layui-text-center">
                   <a>退出</a>
@@ -123,7 +126,7 @@
               lay-url="json/menu.json"
               lay-done="layui.element.render('nav','LAY-filter-side-menu')"
             >
-              <div class="layui-logo" lay-href="home/console.html">
+              <div class="layui-logo" lay-href="./src/views/home/console.html">
                 <img src="./images/logo.gif" alt="logo" />
                 <span>{{ layui.setter.name || 'LAYUI 摸🐟' }}</span>
               </div>
@@ -140,9 +143,10 @@
                       return ''
                     },
                     url1 = (item1.jump && typeof item1.jump === 'string') ? item1.jump : item1.name;
+                    url1 = (url1 && url1.indexOf('http') > -1) ? url1 : layui.setter.views + url1
                 }}
-                  <li data-name="{{ item1.name || '' }}" data-jump="{{ item1.jump || '' }}" class="layui-nav-item {{ classSelected1() }}">
-                    <a href="javascript:;" {{ hasChild1 ? '' : 'lay-href="'+ url1 +'"'}} lay-tips="{{ item1.title }}" lay-direction="2">
+                  <li data-name="{{ item1.name || '' }}" class="layui-nav-item {{ classSelected1() }}">
+                    <a href="{{ item1.alone ? url1 :'javascript:;' }}" {{ item1.alone ? 'target="_blank"' : '' }} {{ item1.alone || hasChild1 ? '' : 'lay-href="'+ url1 +'"'}} lay-tips="{{ item1.title }}" lay-direction="2">
                       <i class="layui-icon {{ item1.icon }}"></i>
                       <cite>{{ item1.title }}</cite>
                     </a>
@@ -157,18 +161,20 @@
                             }
                             return ''
                           },
-                          url2 = (item2.jump && typeof item2.jump === 'string') ? item2.jump : [item1.name, item2.name].join('/')
+                          url2 = (item2.jump && typeof item2.jump === 'string') ? item2.jump : [item1.name, item2.name].join('/');
+                          url2 = (url2 && url2.indexOf('http') > -1) ? url2 : layui.setter.views + url2
                         }}
-                          <dd data-name="{{ item2.name || '' }}" data-jump="{{ item2.jump || '' }}" class="{{ classSelected2() }}">
-                            <a href="javascript:;" {{ hasChild2 ? '' : 'lay-href="'+ url2 +'"' }}>{{ item2.title }}</a>
+                          <dd data-name="{{ item2.name || '' }}" class="{{ classSelected2() }}">
+                            <a href="{{ item2.alone ? url2 :'javascript:;' }}" {{ item2.alone ? 'target="_blank"' : '' }} {{ item2.alone || hasChild2 ? '' : 'lay-href="'+ url2 +'"' }}>{{ item2.title }}</a>
                             {{# if(hasChild2){ }}
                               <dl class="layui-nav-child">
                                 {{# layui.each(item2.list, (index3, item3) => {
                                   let match3 = (path[0] === item1.name && path[1] === item2.name && path[2] === item3.name),
-                                  url3 = (item3.jump && typeof item3.jump === 'string') ? item3.jump : [item1.name, item2.name, item3.name].join('/')
+                                  url3 = (item3.jump && typeof item3.jump === 'string') ? item3.jump : [item1.name, item2.name, item3.name].join('/');
+                                  url3 = (url3 && url3.indexOf('http') > -1) ? url3 : layui.setter.views + url3
                                 }}
-                                  <dd data-name="{{ item3.name || '' }}" data-jump="{{ item3.jump || '' }}" {{ match3 ? 'class="layui-this"' : '' }}>
-                                    <a href="javascript:;" lay-href="{{ url3 }}" {{ item3.iframe ? 'lay-iframe="true"' : '' }}>{{ item3.title }}</a>
+                                  <dd data-name="{{ item3.name || '' }}" {{ match3 ? 'class="layui-this"' : '' }}>
+                                    <a href="{{ item3.alone ? url3 :'javascript:;' }}" {{ item3.alone ? 'target="_blank"' : '' }} lay-href="{{ item3.alone ? '' : url3 }}" {{ item3.iframe ? 'lay-iframe="true"' : '' }}>{{ item3.title }}</a>
                                   </dd>
                                 {{# }) }}
                               </dl>
@@ -230,8 +236,8 @@
                 <ul class="layui-tab-title" id="LAY_app_tabsHeader">
                   <li
                     class="layui-this"
-                    lay-id="home/console.html"
-                    lay-attr="home/console.html"
+                    lay-id="./src/views/home/console.html"
+                    lay-attr="./src/views/home/console.html"
                   >
                     <i class="layui-icon layui-icon-home"></i>
                   </li>
@@ -246,7 +252,7 @@
           <div class="layui-body" id="LAY_app_body">
             <div class="LAY-tabsBody-item layui-show">
               <iframe
-                src="{{ layui.setter.views }}home/console.html"
+                src="./src/views/home/console.html"
                 frameborder="0"
                 class="layadmin-iframe"
               ></iframe>

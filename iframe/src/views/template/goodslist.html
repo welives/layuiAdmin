@@ -5,21 +5,12 @@
     <title>商品列表</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../style/public.css" media="all" />
   </head>
   <body>
     <div class="layui-fluid">
@@ -29,7 +20,7 @@
           <div class="layui-col-md2 layui-col-sm4" style="padding: 10px;">
             <div class="layadmin-goods-container">
               <a href="javascript:;">
-                <img src="../../layuiadmin/images/portrait.png" width="100%" />
+                <img src="../../../images/portrait.png" width="100%" />
               </a>
               <a href="javascript:;">
                 <div class="layadmin-goods-content">
@@ -55,14 +46,11 @@
         </div>
       </div>
     </div>
-    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../src/',
         })
         .use(['index', 'laypage'], () => {
           let laypage = layui.laypage

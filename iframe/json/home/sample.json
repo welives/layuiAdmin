@@ -55,37 +55,37 @@
     "userNews": [
       {
         "user": "胡歌",
-        "avatar": "../../layuiadmin/images/logo.gif",
+        "avatar": "../../../images/logo.gif",
         "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/'>layuiadmin专区</a> 回答问题",
         "date": "几秒前"
       },
       {
         "user": "彭于晏",
-        "avatar": "../../layuiadmin/images/logo.gif",
+        "avatar": "../../../images/logo.gif",
         "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/'>layuiadmin专区</a> 进行了 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/column/quiz/'>提问</a>",
         "date": "2天前"
       },
       {
         "user": "贤心",
-        "avatar": "../../layuiadmin/images/logo.gif",
+        "avatar": "../../../images/logo.gif",
         "text": "将 <a class='layui-text-blue' lay-href='http://www.layui.com/'>layui</a> 更新至 2.3.0 版本",
         "date": "7天前"
       },
       {
         "user": "吴尊",
-        "avatar": "../../layuiadmin/images/logo.gif",
+        "avatar": "../../../images/logo.gif",
         "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/'>Fly社区</a> 发布了 <a class='layui-text-blue' lay-href='http://fly.layui.com/column/suggest/'>建议</a>",
         "date": "7天前"
       },
       {
         "user": "许上进",
-        "avatar": "../../layuiadmin/images/logo.gif",
+        "avatar": "../../../images/logo.gif",
         "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/'>Fly社区</a> 发布了 <a class='layui-text-blue' lay-href='http://fly.layui.com/column/suggest/'>建议</a>",
         "date": "8天前"
       },
       {
         "user": "小蚊子",
-        "avatar": "../../layuiadmin/images/logo.gif",
+        "avatar": "../../../images/logo.gif",
         "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/'>layuiadmin专区</a> 进行了 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/column/quiz/'>提问</a>",
         "date": "8天前"
       }
@@ -93,32 +93,32 @@
     "components": [
       {
         "link": "http://www.layui.com/doc/modules/table.html",
-        "img": "../../layuiadmin/images/logo.gif",
+        "img": "../../../images/logo.gif",
         "text": "数据表格"
       },
       {
         "link": "http://www.layui.com/doc/modules/layim.html",
-        "img": "../../layuiadmin/images/logo.gif",
+        "img": "../../../images/logo.gif",
         "text": "即时通讯"
       },
       {
         "link": "http://www.layui.com/doc/modules/form.html",
-        "img": "../../layuiadmin/images/logo.gif",
+        "img": "../../../images/logo.gif",
         "text": "表单"
       },
       {
         "link": "http://www.layui.com/doc/modules/layer.html",
-        "img": "../../layuiadmin/images/logo.gif",
+        "img": "../../../images/logo.gif",
         "text": "弹出层"
       },
       {
         "link": "http://www.layui.com/doc/modules/upload.html",
-        "img": "../../layuiadmin/images/logo.gif",
+        "img": "../../../images/logo.gif",
         "text": "文件上传"
       },
       {
         "link": "http://www.layui.com/doc/modules/rate.html",
-        "img": "../../layuiadmin/images/logo.gif",
+        "img": "../../../images/logo.gif",
         "text": "评分"
       }
     ],

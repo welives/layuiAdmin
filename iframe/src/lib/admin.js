@@ -485,24 +485,6 @@ layui.define('view', (exports) => {
       },
 
       /**
-       * @description 退出
-       */
-      logout() {
-        admin.req({
-          url: setter.base + 'json/user/logout.json',
-          type: 'get',
-          data: {},
-          //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
-          done(res) {
-            //清空本地记录的 token，并跳转到登入页
-            admin.exit(() => {
-              location.href = 'useradmin/login.html'
-            })
-          },
-        })
-      },
-
-      /**
        * @description 点击消息
        * @param {object} othis jQuery对象
        */
@@ -528,11 +510,11 @@ layui.define('view', (exports) => {
        */
       setTheme(othis) {
         let index = othis.data('index'),
-          prevIndex = othis.siblings('layui-this').data('index')
+          prevIndex = othis.siblings('.layui-this').data('index')
 
         if (othis.hasClass(THIS)) return
         // 移除兄弟元素的layui-this
-        othis.addClass(THIS).siblings('layui-this').removeClass(THIS)
+        othis.addClass(THIS).siblings('.layui-this').removeClass(THIS)
         admin.initTheme(index)
       },
 

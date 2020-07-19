@@ -5,21 +5,12 @@
     <title>按钮</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../style/public.css" media="all" />
   </head>
   <body>
     <style>
@@ -301,7 +292,7 @@
                 type="checkbox"
                 name="open"
                 lay-skin="switch"
-                lay-filter="LAY-component-form-group-switch"
+                lay-filter="LAY-filter-form-group-switch"
                 lay-text="ON|OFF"
               />
             </div>
@@ -336,7 +327,7 @@
                 <button
                   class="layui-btn"
                   lay-submit
-                  lay-filter="LAY-form-example"
+                  lay-filter="LAY-filter-form-submit"
                 >
                   立即提交
                 </button>
@@ -349,14 +340,11 @@
         </div>
       </div>
     </div>
-    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../../src/',
         })
         .use(['index', 'form', 'laydate'], () => {
           let laydate = layui.laydate,
@@ -380,7 +368,7 @@
           })
 
           // 监听指定开关
-          form.on('switch(LAY-component-form-group-switch)', function (data) {
+          form.on('switch(LAY-filter-form-group-switch)', function (data) {
             layer.msg(this.checked ? '打开' : '关闭', {
               offset: '6px',
             })
@@ -391,7 +379,7 @@
           })
 
           // 监听提交
-          form.on('submit(LAY-form-example)', (data) => {
+          form.on('submit(LAY-filter-form-submit)', (data) => {
             layer.alert(JSON.stringify(data.field), {
               title: '最终的提交信息',
             })

@@ -5,21 +5,12 @@
     <title>选项卡组件</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../style/public.css" media="all" />
   </head>
   <body>
     <div class="layui-fluid">
@@ -54,7 +45,7 @@
             <div class="layui-card-body">
               <div
                 class="layui-tab layui-tab-brief"
-                lay-filter="LAY-tabs-brief"
+                lay-filter="LAY-filter-tabs-brief"
               >
                 <ul class="layui-tab-title">
                   <li class="layui-this">网站设置</li>
@@ -103,7 +94,7 @@
             <div class="layui-card-body">
               <div
                 class="layui-tab"
-                lay-filter="LAY-tabs-control"
+                lay-filter="LAY-filter-tabs-control"
                 lay-allowclose="true"
               >
                 <ul class="layui-tab-title">
@@ -138,7 +129,10 @@
           <div class="layui-card">
             <div class="layui-card-header">记录状态</div>
             <div class="layui-card-body">
-              <div class="layui-tab layui-tab-brief" lay-filter="LAY-tabs-hash">
+              <div
+                class="layui-tab layui-tab-brief"
+                lay-filter="LAY-filter-tabs-hash"
+              >
                 <ul class="layui-tab-title">
                   <li class="layui-this" lay-id="11">网站设置</li>
                   <li lay-id="22">用户管理</li>
@@ -161,14 +155,11 @@
         </div>
       </div>
     </div>
-    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../../src/',
         })
         .use('index', () => {
           let $ = layui.$,
@@ -177,7 +168,7 @@
             event = {
               add() {
                 // 新增一个Tab项
-                element.tabAdd('LAY-tabs-control', {
+                element.tabAdd('LAY-filter-tabs-control', {
                   title: `新选项${(Math.random() * 1000) | 0}`,
                   content: `内容${(Math.random() * 1000) | 0}`,
                   id: new Date().getTime(),
@@ -185,17 +176,17 @@
               },
               del(othis) {
                 // 删除指定Tab项
-                element.tabDelete('LAY-tabs-control', 22)
+                element.tabDelete('LAY-filter-tabs-control', 22)
                 othis.addClass('layui-btn-disabled')
               },
               change() {
                 // 切换到指定Tab项
-                element.tabChange('LAY-tabs-control', 33)
+                element.tabChange('LAY-filter-tabs-control', 33)
               },
             }
 
           // 监听 tab 事件
-          element.on('tab(LAY-tabs-brief)', function (obj) {
+          element.on('tab(LAY-filter-tabs-brief)', function (obj) {
             layer.msg(`${obj.index}: ${this.innerHTML}`)
           })
 
@@ -206,11 +197,11 @@
           })
 
           // Hash地址的定位
-          element.on('tab(LAY-tabs-hash)', function (elem) {
+          element.on('tab(LAY-filter-tabs-hash)', function (elem) {
             location.hash = `/#layid=${$(this).attr('lay-id')}`
           })
           let layid = router.hash.replace(/^#layid=/, '')
-          layid && element.tabChange('LAY-tabs-hash', layid)
+          layid && element.tabChange('LAY-filter-tabs-hash', layid)
         })
     </script>
   </body>

@@ -5,21 +5,12 @@
     <title>登入 - layuiMoyu</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/style/login.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../style/login.css" media="all" />
   </head>
   <body>
     <div
@@ -66,13 +57,13 @@
             <div class="layui-row">
               <div class="layui-col-xs7">
                 <label
-                  for="LAY-user-login-vercode"
+                  for="LAY-user-vercode"
                   class="layadmin-user-login-icon layui-icon layui-icon-vercode"
                 ></label>
                 <input
                   type="text"
                   class="layui-input"
-                  id="LAY-user-login-vercode"
+                  id="LAY-user-vercode"
                   name="vercode"
                   placeholder="图形验证码"
                   lay-verify="required"
@@ -106,7 +97,7 @@
           <div class="layui-form-item">
             <button
               class="layui-btn layui-btn-fluid"
-              lay-filter="LAY-user-login-submit"
+              lay-filter="LAY-filter-login-submit"
               lay-submit
             >
               登 入
@@ -137,14 +128,11 @@
         </p>
       </div>
     </div>
-    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../src/',
         })
         .use(['index', 'user'], () => {
           let $ = layui.$,
@@ -157,10 +145,10 @@
           form.render()
 
           // 提交
-          form.on('submit(LAY-user-login-submit)', (data) => {
+          form.on('submit(LAY-filter-login-submit)', (data) => {
             // 请求登入接口
             admin.req({
-              url: setter.base + 'json/user/login.json', // 实际使用请改成服务端真实接口
+              url: '/iframe/json/user/login.json', // 实际使用请改成服务端真实接口
               data: data.field,
               done(res) {
                 // 请求成功后，写入 access_token
@@ -178,7 +166,7 @@
                     time: 1000,
                   },
                   () => {
-                    location.href = '../' // 后台主页
+                    location.href = setter.base + '../' // 后台主页
                   },
                 )
               },

@@ -7,7 +7,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 文章列表
   table.render({
     elem: '#LAY-app-content-list',
-    url: layui.setter.base + 'json/content/list.json',
+    url: '/iframe/json/content/list.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -46,14 +46,14 @@ layui.define(['table', 'form', 'util'], (exports) => {
   })
 
   // 监听文章列表行工具事件
-  table.on('tool(LAY-app-content-list)', (obj) => {
+  table.on('tool(LAY-filter-content-list)', (obj) => {
     let data = obj.data,
       label = ['美食', '新闻', '八卦', '体育', '音乐']
     if (obj.event === 'edit') {
       layer.open({
         type: 2,
         title: '编辑文章',
-        content: layui.setter.root + 'views/app/content/list-form.html',
+        content: layui.setter.views + 'app/content/list-form.html',
         maxmin: true,
         area: ['550px', '550px'],
         btn: ['确定', '取消'],
@@ -67,7 +67,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
           $.each(iframe.find('[name]'), function () {
             switch ($(this)[0].name) {
               case 'title':
-                $(this).val(data.title)
+                $(this).focus().val(data.title)
                 break
               case 'author':
                 $(this).val(data.author)
@@ -90,11 +90,12 @@ layui.define(['table', 'form', 'util'], (exports) => {
         yes(index, layero) {
           // 通过 window[name] 获取iframe窗体
           let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = 'LAY-app-content-listform-submit',
-            submit = layero.find('iframe').contents().find(`#${submitID}`)
+            submitID = '#LAY-content-listform-submit',
+            filter = 'LAY-filter-listform-submit',
+            submit = layero.find('iframe').contents().find(submitID)
 
           // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${submitID})`, (data) => {
+          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
             let field = data.field // 获取提交的字段
             //提交 Ajax 成功后，静态更新表格中的数据
             // $.ajax({})
@@ -115,7 +116,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 分类管理
   table.render({
     elem: '#LAY-app-content-tags',
-    url: layui.setter.base + 'json/content/tags.json',
+    url: '/iframe/json/content/tags.json',
     cols: [
       [
         { type: 'numbers', fixed: 'left' },
@@ -134,13 +135,13 @@ layui.define(['table', 'form', 'util'], (exports) => {
   })
 
   // 监听分类管理行工具事件
-  table.on('tool(LAY-app-content-tags)', (obj) => {
+  table.on('tool(LAY-filter-content-tags)', (obj) => {
     let data = obj.data
     if (obj.event === 'edit') {
       layer.open({
         type: 2,
         title: '编辑分类',
-        content: layui.setter.root + 'views/app/content/tags-form.html',
+        content: layui.setter.views + 'app/content/tags-form.html',
         area: ['460px', '200px'],
         btn: ['确定', '取消'],
         success(layero, index) {
@@ -149,7 +150,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
             .find('iframe')
             .contents()
             .find('#LAY-app-content-tagsform')
-          iframe.find('[name=tags]').val(data.tags)
+          iframe.find('[name=tags]').focus().val(data.tags)
         },
         yes(index, layero) {
           // 获取iframe元素的值
@@ -177,7 +178,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 评论管理
   table.render({
     elem: '#LAY-app-content-comment',
-    url: layui.setter.base + 'json/content/comment.json',
+    url: '/iframe/json/content/comment.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -201,13 +202,13 @@ layui.define(['table', 'form', 'util'], (exports) => {
   })
 
   // 监听评论管理行工具事件
-  table.on('tool(LAY-app-content-comment)', (obj) => {
+  table.on('tool(LAY-filter-content-comment)', (obj) => {
     let data = obj.data
     if (obj.event === 'edit') {
       layer.open({
         type: 2,
         title: '编辑评论',
-        content: layui.setter.root + 'views/app/content/comment-form.html',
+        content: layui.setter.views + 'app/content/comment-form.html',
         area: ['450px', '300px'],
         btn: ['确定', '取消'],
         success(layero, index) {
@@ -216,16 +217,17 @@ layui.define(['table', 'form', 'util'], (exports) => {
             .find('iframe')
             .contents()
             .find('#LAY-app-content-comment-form')
-          iframe.find('[name=content]').val(data.content)
+          iframe.find('[name=content]').focus().val(data.content)
         },
         yes(index, layero) {
           // 通过 window[name] 获取iframe窗体
           let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = 'LAY-app-content-comment-submit',
-            submit = layero.find('iframe').contents().find(`#${submitID}`)
+            submitID = '#LAY-app-content-comment-submit',
+            filter = 'LAY-filter-content-comment-submit',
+            submit = layero.find('iframe').contents().find(submitID)
 
           // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${submitID})`, (data) => {
+          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
             let field = data.field // 获取提交的字段
             //提交 Ajax 成功后，静态更新表格中的数据
             // $.ajax({})
@@ -242,5 +244,5 @@ layui.define(['table', 'form', 'util'], (exports) => {
       })
     }
   })
-  exports('conlist', {})
+  exports('contlist', {})
 })

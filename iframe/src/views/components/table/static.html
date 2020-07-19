@@ -5,21 +5,12 @@
     <title>静态表格</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../style/public.css" media="all" />
   </head>
   <body>
     <div class="layui-fluid">
@@ -319,14 +310,11 @@
         </div>
       </div>
     </div>
-    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../../src/',
         })
         .use('index')
     </script>

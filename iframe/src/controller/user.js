@@ -33,7 +33,7 @@ layui.define('form', (exports) => {
     elemPhone: '#LAY-user-cellphone',
     elemSMScode: '#LAY-user-smscode',
     ajax: {
-      url: setter.base + 'json/user/sms.json',
+      url: '/iframe/json/user/sms.json',
     },
   })
 

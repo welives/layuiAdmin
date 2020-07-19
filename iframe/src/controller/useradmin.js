@@ -6,7 +6,7 @@ layui.define(['table', 'form'], (exports) => {
   // 用户列表
   table.render({
     elem: '#LAY-user-list',
-    url: layui.setter.base + 'json/useradmin/userlist.json',
+    url: '/iframe/json/useradmin/userlist.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -34,7 +34,7 @@ layui.define(['table', 'form'], (exports) => {
   })
 
   // 监听用户列表行工具事件
-  table.on('tool(LAY-user-list)', (obj) => {
+  table.on('tool(LAY-filter-user-list)', (obj) => {
     // 注：tool 是工具条事件名，LAY-user-list 是 table 原始容器的属性 lay-filter="对应的值"
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr) // 获得当前行 tr 的 DOM 对象
@@ -52,7 +52,7 @@ layui.define(['table', 'form'], (exports) => {
       layer.open({
         type: 2,
         title: '编辑用户',
-        content: layui.setter.root + 'views/useradmin/user/userform.html',
+        content: layui.setter.views + 'user/userform.html',
         maxmin: true,
         area: ['500px', '450px'],
         btn: ['确定', '取消'],
@@ -63,7 +63,7 @@ layui.define(['table', 'form'], (exports) => {
           $.each(iframe.find('[name]'), function () {
             switch ($(this)[0].name) {
               case 'username':
-                $(this).val(data.username)
+                $(this).focus().val(data.username)
                 break
               case 'phone':
                 $(this).val(data.phone)
@@ -84,11 +84,12 @@ layui.define(['table', 'form'], (exports) => {
         yes(index, layero) {
           // 通过 window[name] 获取iframe窗体
           let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = 'LAY-user-submit',
-            submit = layero.find('iframe').contents().find(`#${submitID}`)
+            submitID = '#LAY-user-submit',
+            filter = 'LAY-filter-user-submit',
+            submit = layero.find('iframe').contents().find(submitID)
 
           // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${submitID})`, (data) => {
+          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
             let field = data.field
             //提交 Ajax 成功后，静态更新表格中的数据
             // $.ajax({})
@@ -104,7 +105,7 @@ layui.define(['table', 'form'], (exports) => {
   // 管理员列表
   table.render({
     elem: '#LAY-admin-list',
-    url: layui.setter.base + 'json/useradmin/adminlist.json',
+    url: '/iframe/json/useradmin/adminlist.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -134,7 +135,7 @@ layui.define(['table', 'form'], (exports) => {
   })
 
   // 监听管理员列表行工具事件
-  table.on('tool(LAY-admin-list)', (obj) => {
+  table.on('tool(LAY-filter-admin-list)', (obj) => {
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr), // 获得当前行 tr 的 DOM 对象
       roles = [
@@ -160,7 +161,7 @@ layui.define(['table', 'form'], (exports) => {
       layer.open({
         type: 2,
         title: '编辑管理员',
-        content: layui.setter.root + 'views/useradmin/admin/adminform.html',
+        content: layui.setter.views + 'admin/adminform.html',
         maxmin: true,
         area: ['420px', '650px'],
         btn: ['确定', '取消'],
@@ -171,7 +172,7 @@ layui.define(['table', 'form'], (exports) => {
           $.each(iframe.find('[name]'), function () {
             switch ($(this)[0].name) {
               case 'loginname':
-                $(this).val(data.loginname)
+                $(this).focus().val(data.loginname)
                 break
               case 'phone':
                 $(this).val(data.phone)
@@ -194,11 +195,12 @@ layui.define(['table', 'form'], (exports) => {
         yes(index, layero) {
           // 通过 window[name] 获取iframe窗体
           let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = 'LAY-admin-submit',
-            submit = layero.find('iframe').contents().find(`#${submitID}`)
+            submitID = '#LAY-admin-submit',
+            filter = 'LAY-filter-admin-submit',
+            submit = layero.find('iframe').contents().find(submitID)
 
           // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${submitID})`, (data) => {
+          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
             let field = data.field
             //提交 Ajax 成功后，静态更新表格中的数据
             // $.ajax({})
@@ -214,7 +216,7 @@ layui.define(['table', 'form'], (exports) => {
   // 角色列表
   table.render({
     elem: '#LAY-role-list',
-    url: layui.setter.base + 'json/useradmin/role.json',
+    url: '/iframe/json/useradmin/role.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -242,7 +244,7 @@ layui.define(['table', 'form'], (exports) => {
   })
 
   // 监听角色列表行工具事件
-  table.on('tool(LAY-role-list)', (obj) => {
+  table.on('tool(LAY-filter-role-list)', (obj) => {
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr), // 获得当前行 tr 的 DOM 对象
       roles = [
@@ -270,7 +272,7 @@ layui.define(['table', 'form'], (exports) => {
       layer.open({
         type: 2,
         title: '编辑角色',
-        content: layui.setter.root + 'views/useradmin/role/roleform.html',
+        content: layui.setter.views + 'role/roleform.html',
         maxmin: true,
         area: ['500px', '480px'],
         btn: ['确定', '取消'],
@@ -286,7 +288,7 @@ layui.define(['table', 'form'], (exports) => {
                 })
                 break
               case 'descr':
-                $(this).val(data.descr)
+                $(this).focus().val(data.descr)
                 break
             }
           })
@@ -295,11 +297,12 @@ layui.define(['table', 'form'], (exports) => {
         yes(index, layero) {
           // 通过 window[name] 获取iframe窗体
           let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = 'LAY-role-submit',
-            submit = layero.find('iframe').contents().find(`#${submitID}`)
+            submitID = '#LAY-role-submit',
+            filter = 'LAY-filter-role-submit',
+            submit = layero.find('iframe').contents().find(submitID)
 
           // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${submitID})`, (data) => {
+          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
             let field = data.field
             //提交 Ajax 成功后，静态更新表格中的数据
             // $.ajax({})

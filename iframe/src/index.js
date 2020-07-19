@@ -46,8 +46,9 @@ layui
             tabsPage.index = index
           }
         })
+
+        // 如果未在选项卡中匹配到，则追加选项卡
         if (setter.pageTabs) {
-          // 如果未在选项卡中匹配到，则追加选项卡
           if (!matchTo) {
             $(APP_BODY).append([
               '<div class="LAY-tabsBody-item layui-show"><iframe src="' +

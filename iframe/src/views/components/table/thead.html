@@ -5,21 +5,12 @@
     <title>复杂表头 - 数据表格</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../style/public.css" media="all" />
   </head>
   <body>
     <div class="layui-fluid">
@@ -34,7 +25,7 @@
               <table
                 class="layui-table"
                 lay-data="{width:900,page:true,limit:6,limits:[6]}"
-                lay-filter="LAY-table-thead1"
+                lay-filter="LAY-filter-table-thead1"
               >
                 <thead>
                   <tr>
@@ -65,11 +56,11 @@
               </table>
               <br />
               <fieldset class="layui-elem-field layui-field-title">
-                更多级表头（可以无限极）
+                <legend>更多级表头（可以无限极）</legend>
               </fieldset>
               <table
                 class="layui-table"
-                lay-filter="LAY-table-thead2"
+                lay-filter="LAY-filter-table-thead2"
                 lay-data="{cellMinWidth:80,page:true}"
               >
                 <thead>
@@ -116,26 +107,23 @@
         </div>
       </div>
     </div>
-    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
           let table = layui.table
 
-          table.init('LAY-table-thead1', {
-            url: layui.setter.base + 'json/table/demo2.json',
+          table.init('LAY-filter-table-thead1', {
+            url: '/iframe/json/table/demo2.json',
           })
-          table.init('LAY-table-thead2', {
-            url: layui.setter.base + 'json/table/demo2.json',
+          table.init('LAY-filter-table-thead2', {
+            url: '/iframe/json/table/demo2.json',
           })
 
-          table.on('tool(LAY-table-thead1)', (obj) => {
+          table.on('tool(LAY-filter-table-thead1)', (obj) => {
             let data = obj.data
             if (obj.event === 'detail') {
               layer.msg(`用户: ${data.username} 的查看操作`)

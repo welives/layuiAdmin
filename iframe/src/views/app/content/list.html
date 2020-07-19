@@ -5,21 +5,12 @@
     <title>layuiAdmin 内容系统 - 文章列表</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../style/public.css" media="all" />
   </head>
   <body>
     <div class="layui-fluid">
@@ -84,7 +75,7 @@
                   <button
                     class="layui-btn layadmin-btn-list"
                     lay-submit
-                    lay-filter="LAY-app-conlist-search"
+                    lay-filter="LAY-filter-contlist-search"
                   >
                     <i
                       class="layui-icon layui-icon-search layadmin-icon-search-btn"
@@ -107,7 +98,7 @@
               </div>
               <table
                 id="LAY-app-content-list"
-                lay-filter="LAY-app-content-list"
+                lay-filter="LAY-filter-content-list"
               ></table>
               <script type="text/html" id="statusTpl">
                 {{# if(d.status){ }}
@@ -125,21 +116,19 @@
         </div>
       </div>
     </div>
-    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../../layuiadmin/',
+          base: '../../../../src/',
         })
-        .extend({
-          index: 'lib/index',
-        })
-        .use(['index', 'conlist'], () => {
+        .use(['index', 'contlist'], () => {
           let $ = layui.$,
             form = layui.form,
             table = layui.table,
             event = {
               batchDel() {
+                // table.checkStatus(id)
                 let checkStatus = table.checkStatus('LAY-app-content-list'),
                   checkData = checkStatus.data
 
@@ -166,31 +155,32 @@
                   yes(index, layero) {
                     // 通过 window[name] 获取iframe窗体
                     let iframeWindow = window['layui-layer-iframe' + index],
-                      submitID = 'LAY-app-content-listform-submit',
-                      submit = layero
-                        .find('iframe')
-                        .contents()
-                        .find(`#${submitID}`)
+                      submitID = '#LAY-content-listform-submit',
+                      filter = 'LAY-filter-listform-submit',
+                      submit = layero.find('iframe').contents().find(submitID)
 
                     // 监听iframe表单提交
-                    iframeWindow.layui.form.on(
-                      `submit(${submitID})`,
-                      (data) => {
-                        let field = data.field // 获取提交的字段
-                        //提交 Ajax 成功后，静态更新表格中的数据
-                        // $.ajax({})
-                        table.reload('LAY-app-content-list') // 数据刷新
-                        layer.close(index) // 关闭弹层
-                      },
-                    )
+                    iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
+                      let field = data.field // 获取提交的字段
+                      //提交 Ajax 成功后，静态更新表格中的数据
+                      // $.ajax({})
+                      table.reload('LAY-app-content-list') // 数据刷新
+                      layer.close(index) // 关闭弹层
+                    })
                     submit.trigger('click')
+                  },
+                  success(layero, index) {
+                    layer
+                      .getChildFrame('body', index)
+                      .find('[name=title]')
+                      .focus()
                   },
                 })
               },
             }
 
           // 监听搜索
-          form.on('submit(LAY-app-conlist-search)', (data) => {
+          form.on('submit(LAY-filter-contlist-search)', (data) => {
             let field = data.field
             table.reload('LAY-app-content-list', { where: field })
           })

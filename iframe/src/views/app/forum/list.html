@@ -5,21 +5,12 @@
     <title>layuiAdmin 社区系统 - 帖子列表</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../style/public.css" media="all" />
   </head>
   <body>
     <div class="layui-fluid">
@@ -81,7 +72,7 @@
                   <button
                     class="layui-btn layadmin-btn-list"
                     lay-submit
-                    lay-filter="LAY-app-forum-list-search"
+                    lay-filter="LAY-filter-forum-list-search"
                   >
                     <i
                       class="layui-icon layui-icon-search layadmin-icon-search-btn"
@@ -101,7 +92,7 @@
               </div>
               <table
                 id="LAY-app-forum-list"
-                lay-filter="LAY-app-forum-list"
+                lay-filter="LAY-filter-forum-list"
               ></table>
               <script type="text/html" id="avatarTpl">
                 <img class="layui-circle" src={{ d.avatar }} style="display: inline-block" width="50%" height="100%">
@@ -122,14 +113,11 @@
         </div>
       </div>
     </div>
-    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../../src/',
         })
         .use(['index', 'forum'], () => {
           let $ = layui.$,
@@ -155,7 +143,7 @@
             }
 
           // 监听搜索
-          form.on('submit(LAY-app-forum-list-search)', (data) => {
+          form.on('submit(LAY-filter-forum-list-search)', (data) => {
             let field = data.field
             table.reload('LAY-app-forum-list', { where: field })
           })

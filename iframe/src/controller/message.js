@@ -22,7 +22,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
   // 全部消息
   table.render({
     elem: '#LAY-app-message-all',
-    url: layui.setter.base + 'json/message/all.json',
+    url: '/iframe/json/message/all.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -46,7 +46,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
   // 通知
   table.render({
     elem: '#LAY-app-message-notice',
-    url: layui.setter.base + 'json/message/notice.json',
+    url: '/iframe/json/message/notice.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -70,7 +70,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
   // 私信
   table.render({
     elem: '#LAY-app-message-direct',
-    url: layui.setter.base + 'json/message/direct.json',
+    url: '/iframe/json/message/direct.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },

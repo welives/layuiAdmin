@@ -5,21 +5,12 @@
     <title>忘记密码 - layuiMoyu</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/style/login.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../style/login.css" media="all" />
   </head>
   <body>
     <div
@@ -36,14 +27,15 @@
         >
           <script type="text/html" template>
             {{# if(layui.router().search.type === 'resetpass' ){ }}
+            <!-- 重置密码 -->
               <div class="layui-form-item">
                 <label
                   class="layadmin-user-login-icon layui-icon layui-icon-password"
-                  for="LAY-user-login-password"
+                  for="LAY-user-reset-password"
                 ></label>
                 <input
                   type="password"
-                  id="LAY-user-login-password"
+                  id="LAY-user-reset-password"
                   class="layui-input"
                   name="password"
                   placeholder="新密码"
@@ -53,11 +45,11 @@
               <div class="layui-form-item">
                 <label
                   class="layadmin-user-login-icon layui-icon layui-icon-password"
-                  for="LAY-user-login-repass"
+                  for="LAY-user-reset-repass"
                 ></label>
                 <input
                   type="password"
-                  id="LAY-user-login-repass"
+                  id="LAY-user-reset-repass"
                   class="layui-input"
                   name="repass"
                   placeholder="确认密码"
@@ -67,13 +59,14 @@
               <div class="layui-form-item">
                 <button
                   class="layui-btn layui-btn-fluid"
-                  lay-filter="LAY-user-forget-resetpass"
+                  lay-filter="LAY-filter-resetpass-submit"
                   lay-submit
                 >
                 重置密码
                 </button>
               </div>
             {{# } else { }}
+            <!-- 找回密码 -->
               <div class="layui-form-item">
                 <label
                   class="layadmin-user-login-icon layui-icon layui-icon-cellphone"
@@ -92,13 +85,13 @@
                 <div class="layui-row">
                   <div class="layui-col-xs7">
                     <label
-                      for="LAY-user-login-vercode"
+                      for="LAY-user-vercode"
                       class="layadmin-user-login-icon layui-icon layui-icon-vercode"
                     ></label>
                     <input
                       type="text"
                       class="layui-input"
-                      id="LAY-user-login-vercode"
+                      id="LAY-user-vercode"
                       name="vercode"
                       placeholder="图形验证码"
                       lay-verify="required"
@@ -146,7 +139,7 @@
               <div class="layui-form-item">
                 <button
                   class="layui-btn layui-btn-fluid"
-                  lay-filter="LAY-user-forget-submit"
+                  lay-filter="LAY-filter-forget-submit"
                   lay-submit
                 >
                 找回密码
@@ -162,14 +155,11 @@
         </p>
       </div>
     </div>
-    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../src/',
         })
         .use(['index', 'user'], () => {
           let $ = layui.$,
@@ -181,11 +171,11 @@
           form.render()
 
           // 找回密码
-          form.on('submit(LAY-user-forget-submit)', (data) => {
+          form.on('submit(LAY-filter-forget-submit)', (data) => {
             let field = data.field
 
             admin.req({
-              url: setter.base + 'json/user/forget.json',
+              url: '/iframe/json/user/forget.json',
               data: field,
               done(res) {
                 location.hash = '/type=resetpass'
@@ -197,7 +187,7 @@
           })
 
           // 重置密码
-          form.on('submit(LAY-user-forget-resetpass)', (data) => {
+          form.on('submit(LAY-filter-resetpass-submit)', (data) => {
             let field = data.field
 
             if (field.password !== field.repass) {
@@ -205,7 +195,7 @@
             }
 
             admin.req({
-              url: setter.base + 'json/user/resetpass.json',
+              url: '/iframe/json/user/resetpass.json',
               data: field,
               done(res) {
                 layer.msg(

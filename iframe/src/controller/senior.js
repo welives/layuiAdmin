@@ -9322,6 +9322,192 @@ layui.define(['admin', 'echarts'], (exports) => {
           },
         ],
       },
+    ],
+    colorColData = [
+      {
+        title: {
+          x: 'center',
+          text: 'ECharts例子个数统计',
+          subtext: 'Rainbow bar example',
+          link: 'http://echarts.baidu.com/doc/example.html',
+        },
+        tooltip: {
+          trigger: 'item',
+        },
+        calculable: true,
+        grid: {
+          borderWidth: 0,
+          y: 80,
+          y2: 60,
+        },
+        xAxis: [
+          {
+            type: 'category',
+            show: false,
+            data: [
+              'Line',
+              'Bar',
+              'Scatter',
+              'K',
+              'Pie',
+              'Radar',
+              'Chord',
+              'Force',
+              'Map',
+              'Gauge',
+              'Funnel',
+            ],
+          },
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            show: false,
+          },
+        ],
+        series: [
+          {
+            name: 'ECharts例子个数统计',
+            type: 'bar',
+            itemStyle: {
+              normal: {
+                color: function (params) {
+                  // build a color map as your need.
+                  var colorList = [
+                    '#C1232B',
+                    '#B5C334',
+                    '#FCCE10',
+                    '#E87C25',
+                    '#27727B',
+                    '#FE8463',
+                    '#9BCA63',
+                    '#FAD860',
+                    '#F3A43B',
+                    '#60C0DD',
+                    '#D7504B',
+                    '#C6E579',
+                    '#F4E001',
+                    '#F0805A',
+                    '#26C0C0',
+                  ]
+                  return colorList[params.dataIndex]
+                },
+                label: {
+                  show: true,
+                  position: 'top',
+                  formatter: '{b}\n{c}',
+                },
+              },
+            },
+            data: [12, 21, 10, 4, 12, 5, 6, 5, 25, 23, 7],
+            markPoint: {
+              tooltip: {
+                trigger: 'item',
+                backgroundColor: 'rgba(0,0,0,0)',
+                formatter: function (params) {
+                  return (
+                    '<img src="' +
+                    params.data.symbol.replace('image://', '') +
+                    '"/>'
+                  )
+                },
+              },
+              data: [
+                { xAxis: 0, y: 350, name: 'Line', symbolSize: 20 },
+                { xAxis: 1, y: 350, name: 'Bar', symbolSize: 20 },
+                { xAxis: 2, y: 350, name: 'Scatter', symbolSize: 20 },
+                { xAxis: 3, y: 350, name: 'K', symbolSize: 20 },
+                { xAxis: 4, y: 350, name: 'Pie', symbolSize: 20 },
+                { xAxis: 5, y: 350, name: 'Radar', symbolSize: 20 },
+                { xAxis: 6, y: 350, name: 'Chord', symbolSize: 20 },
+                { xAxis: 7, y: 350, name: 'Force', symbolSize: 20 },
+                { xAxis: 8, y: 350, name: 'Map', symbolSize: 20 },
+                { xAxis: 9, y: 350, name: 'Gauge', symbolSize: 20 },
+                { xAxis: 10, y: 350, name: 'Funnel', symbolSize: 20 },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+    labelRight = { normal: { label: { position: 'right' } } },
+    windBarData = [
+      {
+        title: {
+          text: '交错正负轴标签',
+          subtext: 'From ExcelHome',
+          sublink: 'http://e.weibo.com/1341556070/AjwF2AgQm',
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
+          },
+        },
+        grid: {
+          y: 80,
+          y2: 30,
+        },
+        xAxis: [
+          {
+            type: 'value',
+            position: 'top',
+            splitLine: { lineStyle: { type: 'dashed' } },
+          },
+        ],
+        yAxis: [
+          {
+            type: 'category',
+            axisLine: { show: false },
+            axisLabel: { show: false },
+            axisTick: { show: false },
+            splitLine: { show: false },
+            data: [
+              'ten',
+              'nine',
+              'eight',
+              'seven',
+              'six',
+              'five',
+              'four',
+              'three',
+              'two',
+              'one',
+            ],
+          },
+        ],
+        series: [
+          {
+            name: '生活费',
+            type: 'bar',
+            stack: '总量',
+            itemStyle: {
+              normal: {
+                color: 'orange',
+                borderRadius: 5,
+                label: {
+                  show: true,
+                  position: 'left',
+                  formatter: '{b}',
+                },
+              },
+            },
+            data: [
+              { value: -0.07, itemStyle: labelRight },
+              { value: -0.09, itemStyle: labelRight },
+              0.2,
+              0.44,
+              { value: -0.23, itemStyle: labelRight },
+              0.08,
+              { value: -0.17, itemStyle: labelRight },
+              0.47,
+              { value: -0.36, itemStyle: labelRight },
+              0.18,
+            ],
+          },
+        ],
+      },
     ]
 
   // 区块轮播切换
@@ -9346,7 +9532,7 @@ layui.define(['admin', 'echarts'], (exports) => {
 
     // 折线图
     admin.req({
-      url: layui.setter.base + 'json/echarts/line.json',
+      url: '/iframe/json/echarts/line.json',
       success(res) {
         normalLine(res.data.normalLine)
         heapLine(res.data.heapLine)
@@ -9359,7 +9545,7 @@ layui.define(['admin', 'echarts'], (exports) => {
 
     // 柱状图
     admin.req({
-      url: layui.setter.base + 'json/echarts/bar.json',
+      url: '/iframe/json/echarts/bar.json',
       success(res) {
         normalCol(res.data.normalCol)
         heapCol(res.data.heapCol)
@@ -9373,7 +9559,7 @@ layui.define(['admin', 'echarts'], (exports) => {
 
     // 地图
     admin.req({
-      url: layui.setter.base + 'json/echarts/map.json',
+      url: '/iframe/json/echarts/map.json',
       success(res) {
         chinaMap(res.data.map)
       },
@@ -9389,8 +9575,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echNormLine.setOption(data[index])
         window.onresize = echNormLine.resize
       }
-    if (!elemNormLine[0]) return
-    renderNormLine(0)
+    elemNormLine[0] && renderNormLine(0)
   }
 
   // 堆积折线图
@@ -9402,8 +9587,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echHeapLine.setOption(data[index])
         window.onresize = echHeapLine.resize
       }
-    if (!elemHeapLine[0]) return
-    renderHeapLine(0)
+    elemHeapLine[0] && renderHeapLine(0)
   }
 
   // 不等距折线图
@@ -9415,8 +9599,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echDiffLine.setOption(data[index])
         window.onresize = echDiffLine.resize
       }
-    if (!elemDiffLine[0]) return
-    renderDiffLine(0)
+    elemDiffLine[0] && renderDiffLine(0)
   }
 
   // 堆积面积图
@@ -9428,8 +9611,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echHeapArea.setOption(data[index])
         window.onresize = echHeapArea.resize
       }
-    if (!elemHeapArea[0]) return
-    renderHeapArea(0)
+    elemHeapArea[0] && renderHeapArea(0)
   }
 
   // 面积图
@@ -9441,8 +9623,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echArea.setOption(data[index])
         window.onresize = echArea.resize
       }
-    if (!elemArea[0]) return
-    renderArea(0)
+    elemArea[0] && renderArea(0)
   }
 
   // 对数轴
@@ -9454,8 +9635,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echLogLine.setOption(data[index])
         window.onresize = echLogLine.resize
       }
-    if (!elemLogLine[0]) return
-    renderLogLine(0)
+    elemLogLine[0] && renderLogLine(0)
   }
 
   // 标准柱状图
@@ -9467,8 +9647,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echNormCol.setOption(data[index])
         window.onresize = echNormCol.resize
       }
-    if (!elemNormCol[0]) return
-    renderNormCol(0)
+    elemNormCol[0] && renderNormCol(0)
   }
 
   // 堆积柱状图
@@ -9480,8 +9659,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echHeapCol.setOption(data[index])
         window.onresize = echHeapCol.resize
       }
-    if (!elemHeapCol[0]) return
-    renderHeapCol(0)
+    elemHeapCol[0] && renderHeapCol(0)
   }
 
   // 不等距柱形图
@@ -9493,128 +9671,19 @@ layui.define(['admin', 'echarts'], (exports) => {
         echDiffCol.setOption(data[index])
         window.onresize = echDiffCol.resize
       }
-    if (!elemDiffCol[0]) return
-    renderDiffCol(0)
+    elemDiffCol[0] && renderDiffCol(0)
   }
 
   // 彩虹柱形图
   function colorCol() {
     let echColorCol,
-      colorCol = [
-        {
-          title: {
-            x: 'center',
-            text: 'ECharts例子个数统计',
-            subtext: 'Rainbow bar example',
-            link: 'http://echarts.baidu.com/doc/example.html',
-          },
-          tooltip: {
-            trigger: 'item',
-          },
-          calculable: true,
-          grid: {
-            borderWidth: 0,
-            y: 80,
-            y2: 60,
-          },
-          xAxis: [
-            {
-              type: 'category',
-              show: false,
-              data: [
-                'Line',
-                'Bar',
-                'Scatter',
-                'K',
-                'Pie',
-                'Radar',
-                'Chord',
-                'Force',
-                'Map',
-                'Gauge',
-                'Funnel',
-              ],
-            },
-          ],
-          yAxis: [
-            {
-              type: 'value',
-              show: false,
-            },
-          ],
-          series: [
-            {
-              name: 'ECharts例子个数统计',
-              type: 'bar',
-              itemStyle: {
-                normal: {
-                  color: function (params) {
-                    // build a color map as your need.
-                    var colorList = [
-                      '#C1232B',
-                      '#B5C334',
-                      '#FCCE10',
-                      '#E87C25',
-                      '#27727B',
-                      '#FE8463',
-                      '#9BCA63',
-                      '#FAD860',
-                      '#F3A43B',
-                      '#60C0DD',
-                      '#D7504B',
-                      '#C6E579',
-                      '#F4E001',
-                      '#F0805A',
-                      '#26C0C0',
-                    ]
-                    return colorList[params.dataIndex]
-                  },
-                  label: {
-                    show: true,
-                    position: 'top',
-                    formatter: '{b}\n{c}',
-                  },
-                },
-              },
-              data: [12, 21, 10, 4, 12, 5, 6, 5, 25, 23, 7],
-              markPoint: {
-                tooltip: {
-                  trigger: 'item',
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  formatter: function (params) {
-                    return (
-                      '<img src="' +
-                      params.data.symbol.replace('image://', '') +
-                      '"/>'
-                    )
-                  },
-                },
-                data: [
-                  { xAxis: 0, y: 350, name: 'Line', symbolSize: 20 },
-                  { xAxis: 1, y: 350, name: 'Bar', symbolSize: 20 },
-                  { xAxis: 2, y: 350, name: 'Scatter', symbolSize: 20 },
-                  { xAxis: 3, y: 350, name: 'K', symbolSize: 20 },
-                  { xAxis: 4, y: 350, name: 'Pie', symbolSize: 20 },
-                  { xAxis: 5, y: 350, name: 'Radar', symbolSize: 20 },
-                  { xAxis: 6, y: 350, name: 'Chord', symbolSize: 20 },
-                  { xAxis: 7, y: 350, name: 'Force', symbolSize: 20 },
-                  { xAxis: 8, y: 350, name: 'Map', symbolSize: 20 },
-                  { xAxis: 9, y: 350, name: 'Gauge', symbolSize: 20 },
-                  { xAxis: 10, y: 350, name: 'Funnel', symbolSize: 20 },
-                ],
-              },
-            },
-          ],
-        },
-      ],
       elemColorCol = $('#LAY-color-col').children('div'),
       renderColorCol = (index) => {
         echColorCol = echarts.init(elemColorCol[index], layui.echartsTheme)
-        echColorCol.setOption(colorCol[index])
+        echColorCol.setOption(colorColData[index])
         window.onresize = echColorCol.resize
       }
-    if (!elemColorCol[0]) return
-    renderColorCol(0)
+    elemColorCol[0] && renderColorCol(0)
   }
 
   // 标准条形图
@@ -9626,8 +9695,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echNormalBar.setOption(data[index])
         window.onresize = echNormalBar.resize
       }
-    if (!elemNormBar[0]) return
-    renderNormBar(0)
+    elemNormBar[0] && renderNormBar(0)
   }
 
   // 堆积条形图
@@ -9639,100 +9707,19 @@ layui.define(['admin', 'echarts'], (exports) => {
         echHeapBar.setOption(data[index])
         window.onresize = echHeapBar.resize
       }
-    if (!elemHeapBar[0]) return
-    renderHeapBar(0)
+    elemHeapBar[0] && renderHeapBar(0)
   }
 
   // 旋风条形图
   function windBar() {
     let echWindBar,
-      labelRight = { normal: { label: { position: 'right' } } },
-      windBar = [
-        {
-          title: {
-            text: '交错正负轴标签',
-            subtext: 'From ExcelHome',
-            sublink: 'http://e.weibo.com/1341556070/AjwF2AgQm',
-          },
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              // 坐标轴指示器，坐标轴触发有效
-              type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
-            },
-          },
-          grid: {
-            y: 80,
-            y2: 30,
-          },
-          xAxis: [
-            {
-              type: 'value',
-              position: 'top',
-              splitLine: { lineStyle: { type: 'dashed' } },
-            },
-          ],
-          yAxis: [
-            {
-              type: 'category',
-              axisLine: { show: false },
-              axisLabel: { show: false },
-              axisTick: { show: false },
-              splitLine: { show: false },
-              data: [
-                'ten',
-                'nine',
-                'eight',
-                'seven',
-                'six',
-                'five',
-                'four',
-                'three',
-                'two',
-                'one',
-              ],
-            },
-          ],
-          series: [
-            {
-              name: '生活费',
-              type: 'bar',
-              stack: '总量',
-              itemStyle: {
-                normal: {
-                  color: 'orange',
-                  borderRadius: 5,
-                  label: {
-                    show: true,
-                    position: 'left',
-                    formatter: '{b}',
-                  },
-                },
-              },
-              data: [
-                { value: -0.07, itemStyle: labelRight },
-                { value: -0.09, itemStyle: labelRight },
-                0.2,
-                0.44,
-                { value: -0.23, itemStyle: labelRight },
-                0.08,
-                { value: -0.17, itemStyle: labelRight },
-                0.47,
-                { value: -0.36, itemStyle: labelRight },
-                0.18,
-              ],
-            },
-          ],
-        },
-      ],
       elemWindBar = $('#LAY-wind-bar').children('div'),
       renderWindBar = (index) => {
         echWindBar = echarts.init(elemWindBar[index], layui.echartsTheme)
-        echWindBar.setOption(windBar[index])
+        echWindBar.setOption(windBarData[index])
         window.onresize = echWindBar.resize
       }
-    if (!elemWindBar[0]) return
-    renderWindBar(0)
+    elemWindBar[0] && renderWindBar(0)
   }
 
   // 地图
@@ -9744,8 +9731,7 @@ layui.define(['admin', 'echarts'], (exports) => {
         echMap.setOption(data[index])
         window.onresize = echMap.resize
       }
-    if (!elemMap[0]) return
-    renderMap(0)
+    elemMap[0] && renderMap(0)
   }
 
   exports('senior', {})

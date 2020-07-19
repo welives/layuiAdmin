@@ -370,17 +370,20 @@
         {
           "name": "reg",
           "title": "注册",
-          "jump": "useradmin/reg.html"
+          "jump": "user/reg.html",
+          "alone": true
         },
         {
           "name": "login",
           "title": "登入",
-          "jump": "useradmin/login.html"
+          "jump": "user/login.html",
+          "alone": true
         },
         {
           "name": "forget",
           "title": "忘记密码",
-          "jump": "useradmin/forget.html"
+          "jump": "user/forget.html",
+          "alone": true
         },
         {
           "name": "404",
@@ -503,17 +506,17 @@
         {
           "name": "list",
           "title": "用户列表",
-          "jump": "useradmin/user/list.html"
+          "jump": "user/list.html"
         },
         {
           "name": "admin",
           "title": "管理员列表",
-          "jump": "useradmin/admin/list.html"
+          "jump": "admin/list.html"
         },
         {
           "name": "role",
           "title": "角色列表",
-          "jump": "useradmin/role/list.html"
+          "jump": "role/list.html"
         }
       ]
     },

@@ -5,21 +5,12 @@
     <title>注册 - layuiMoyu</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/style/login.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../style/login.css" media="all" />
   </head>
   <body>
     <div
@@ -80,11 +71,11 @@
           <div class="layui-form-item">
             <label
               class="layadmin-user-login-icon layui-icon layui-icon-password"
-              for="LAY-user-login-password"
+              for="LAY-user-reg-password"
             ></label>
             <input
               type="password"
-              id="LAY-user-login-password"
+              id="LAY-user-reg-password"
               class="layui-input"
               name="password"
               placeholder="密码"
@@ -94,11 +85,11 @@
           <div class="layui-form-item">
             <label
               class="layadmin-user-login-icon layui-icon layui-icon-password"
-              for="LAY-user-login-repass"
+              for="LAY-user-reg-repass"
             ></label>
             <input
               type="password"
-              id="LAY-user-login-repass"
+              id="LAY-user-reg-repass"
               class="layui-input"
               name="repass"
               placeholder="确认密码"
@@ -108,11 +99,11 @@
           <div class="layui-form-item">
             <label
               class="layadmin-user-login-icon layui-icon layui-icon-username"
-              for="LAY-user-login-nickname"
+              for="LAY-user-reg-nickname"
             ></label>
             <input
               type="text"
-              id="LAY-user-login-nickname"
+              id="LAY-user-reg-nickname"
               class="layui-input"
               name="nickname"
               placeholder="昵称"
@@ -131,7 +122,7 @@
           <div class="layui-form-item">
             <button
               class="layui-btn layui-btn-fluid"
-              lay-filter="LAY-user-reg-submit"
+              lay-filter="LAY-filter-reg-submit"
               lay-submit
             >
               注 册
@@ -167,14 +158,11 @@
         </p>
       </div>
     </div>
-    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../src/',
         })
         .use(['index', 'user'], () => {
           let $ = layui.$,
@@ -186,7 +174,7 @@
           form.render()
 
           // 提交
-          form.on('submit(LAY-user-reg-submit)', (data) => {
+          form.on('submit(LAY-filter-reg-submit)', (data) => {
             let field = data.field
 
             // 确认密码
@@ -201,7 +189,7 @@
 
             // 请求接口
             admin.req({
-              url: setter.base + 'json/user/reg.json',
+              url: '/iframe/json/user/reg.json',
               data: field,
               done(res) {
                 layer.msg(

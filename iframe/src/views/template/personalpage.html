@@ -5,21 +5,12 @@
     <title>个人主页</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../style/public.css" media="all" />
   </head>
   <body>
     <div class="layui-fluid">
@@ -30,7 +21,7 @@
               <div class="layui-card-body">
                 <div class="layadmin-homepage-pad-ver">
                   <img
-                    src="../../layuiadmin/images/portrait.png"
+                    src="../../../images/portrait.png"
                     class="layadmin-homepage-pad-img layui-circle"
                     width="96"
                     height="96"
@@ -111,7 +102,7 @@
                   <div class="panel-body layadmin-homepage-shadow">
                     <a href="javascript:;" class="layui-float-left">
                       <img
-                        src="../../layuiadmin/images/portrait.png"
+                        src="../../../images/portrait.png"
                         class="layui-circle"
                         width="46"
                         height="46"
@@ -135,17 +126,14 @@
                         历经打磨，@索尼中国再献新作品—OLED电视A8F完美诞生。很开心一起参加了A8F的“首映礼”！[鼓掌]正如我们演员对舞台的热爱，索尼对科技与艺术的追求才创造出了让人惊喜的作品。作为A1兄弟款，A8F沿袭了黑科技“屏幕发声技术”和高清画质，色彩的出众表现和高端音质，让人在体验的时候如同身临其境。A8F，这次的“视帝”要颁发给你！
                         索尼官网预售： O网页链接 索尼旗舰店预售：
                       </div>
-                      <img
-                        src="../../layuiadmin/images/huge.jpg"
-                        class="h-img"
-                      />
+                      <img src="../../../images/huge.jpg" class="h-img" />
                       <div class="media">
                         <div class="media-left">
                           <ul class="list-inline">
                             <li>
                               <a href="javascript:;">
                                 <img
-                                  src="../../layuiadmin/images/portrait.png"
+                                  src="../../../images/portrait.png"
                                   class="layui-circle"
                                   width="32"
                                   height="32"
@@ -155,7 +143,7 @@
                             <li>
                               <a href="javascript:;">
                                 <img
-                                  src="../../layuiadmin/images/portrait.png"
+                                  src="../../../images/portrait.png"
                                   class="layui-circle"
                                   width="32"
                                   height="32"
@@ -165,7 +153,7 @@
                             <li>
                               <a href="javascript:;">
                                 <img
-                                  src="../../layuiadmin/images/portrait.png"
+                                  src="../../../images/portrait.png"
                                   class="layui-circle"
                                   width="32"
                                   height="32"
@@ -192,7 +180,7 @@
                         <div class="media-item">
                           <a href="javascript:;" class="media-item-left">
                             <img
-                              src="../../layuiadmin/images/portrait.png"
+                              src="../../../images/portrait.png"
                               class="layui-circle"
                               width="32"
                               height="32"
@@ -209,7 +197,7 @@
                         <div class="media-item">
                           <a href="javascript:;" class="media-item-left">
                             <img
-                              src="../../layuiadmin/images/portrait.png"
+                              src="../../../images/portrait.png"
                               class="layui-circle"
                               width="32"
                               height="32"
@@ -230,7 +218,7 @@
                   <div class="panel-body layadmin-homepage-shadow">
                     <a href="javascript:;" class="layui-float-left">
                       <img
-                        src="../../layuiadmin/images/portrait.png"
+                        src="../../../images/portrait.png"
                         class="layui-circle"
                         width="46"
                         height="46"
@@ -269,33 +257,13 @@
                     </div>
                     <div class="layui-card-body">
                       <div class="layui-row layui-col-space10">
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
-                        <div class="layui-col-md4">
-                          <img src="../../layuiadmin/images/portrait.png" />
-                        </div>
+                        <script type="text/html" template>
+                          {{# for(let i=0; i<9; i++){ }}
+                            <div class="layui-col-md4">
+                              <img src="../../../images/portrait.png" />
+                            </div>
+                          {{# } }}
+                        </script>
                         <div class="layui-col-md12 margin-top10">
                           <button
                             class="layui-btn layui-btn-primary layui-btn-fluid"
@@ -314,74 +282,27 @@
                       </h3>
                     </div>
                     <div class="layui-card-body">
-                      <a
-                        href="javascript:;"
-                        class="layadmin-private-letter-item"
-                      >
-                        <div class="media-left">
-                          <img
-                            src="../../layuiadmin/images/portrait.png"
-                            class="layui-circle"
-                            width="32"
-                            height="32"
-                          />
-                        </div>
-                        <div class="media-right">
-                          <p>Hugo</p>
-                          <span>人生是一场修行,不要轻易交白卷</span>
-                        </div>
-                      </a>
-                      <a
-                        href="javascript:;"
-                        class="layadmin-private-letter-item"
-                      >
-                        <div class="media-left">
-                          <img
-                            src="../../layuiadmin/images/portrait.png"
-                            class="layui-circle"
-                            width="32"
-                            height="32"
-                          />
-                        </div>
-                        <div class="media-right">
-                          <p>Hugo</p>
-                          <span>人生是一场修行,不要轻易交白卷</span>
-                        </div>
-                      </a>
-                      <a
-                        href="javascript:;"
-                        class="layadmin-private-letter-item"
-                      >
-                        <div class="media-left">
-                          <img
-                            src="../../layuiadmin/images/portrait.png"
-                            class="layui-circle"
-                            width="32"
-                            height="32"
-                          />
-                        </div>
-                        <div class="media-right">
-                          <p>Hugo</p>
-                          <span>人生是一场修行,不要轻易交白卷</span>
-                        </div>
-                      </a>
-                      <a
-                        href="javascript:;"
-                        class="layadmin-private-letter-item"
-                      >
-                        <div class="media-left">
-                          <img
-                            src="../../layuiadmin/images/portrait.png"
-                            class="layui-circle"
-                            width="32"
-                            height="32"
-                          />
-                        </div>
-                        <div class="media-right">
-                          <p>Hugo</p>
-                          <span>人生是一场修行,不要轻易交白卷</span>
-                        </div>
-                      </a>
+                      <script type="text/html" template>
+                        {{# for(let i=0; i<4; i++){ }}
+                          <a
+                          href="javascript:;"
+                          class="layadmin-private-letter-item"
+                          >
+                            <div class="media-left">
+                              <img
+                                src="../../../images/portrait.png"
+                                class="layui-circle"
+                                width="32"
+                                height="32"
+                              />
+                            </div>
+                            <div class="media-right">
+                              <p>Hugo</p>
+                              <span>人生是一场修行,不要轻易交白卷</span>
+                            </div>
+                          </a>
+                        {{# } }}
+                      </script>
                     </div>
                   </div>
                 </div>
@@ -391,14 +312,11 @@
         </div>
       </div>
     </div>
-    <script src="../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../layuiadmin/',
-        })
-        .extend({
-          index: 'lib/index',
+          base: '../../../src/',
         })
         .use('index')
     </script>

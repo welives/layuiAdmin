@@ -22,28 +22,28 @@ layui.define(['form', 'upload'], (exports) => {
   })
 
   // 网站设置
-  form.on('submit(LAY-set-website)', (data) => {
+  form.on('submit(LAY-filter-set-website)', (data) => {
     layer.msg(JSON.stringify(data.field))
     // admin.req({})
     return false
   })
 
   // 邮件服务
-  form.on('submit(LAY-set-email)', (data) => {
+  form.on('submit(LAY-filter-set-email)', (data) => {
     layer.msg(JSON.stringify(data.field))
     // admin.req({})
     return false
   })
 
   // 设置我的资料
-  form.on('submit(LAY-set-info)', (data) => {
+  form.on('submit(LAY-filter-set-info)', (data) => {
     layer.msg(JSON.stringify(data.field))
     // admin.req({})
     return false
   })
 
   // 设置密码
-  form.on('submit(LAY-set-password)', (data) => {
+  form.on('submit(LAY-filter-set-password)', (data) => {
     layer.msg(JSON.stringify(data.field))
     // admin.req({})
     return false
@@ -52,7 +52,7 @@ layui.define(['form', 'upload'], (exports) => {
   // 上传头像
   upload.render({
     elem: '#LAY-avatar-upload',
-    url: layui.setter.base + 'json/upload/demo.json',
+    url: '/iframe/json/upload/demo.json',
     method: 'get',
     done(res) {
       if (res.code === 0) {

@@ -5,21 +5,12 @@
     <title>layuiAdmin 内容系统 - 评论管理</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
     />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/layui/css/layui.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="../../../layuiadmin/style/public.css"
-      media="all"
-    />
+    <link rel="stylesheet" href="../../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../style/public.css" media="all" />
   </head>
   <body>
     <div class="layui-fluid">
@@ -58,7 +49,7 @@
                   <button
                     class="layui-btn layadmin-btn-comment"
                     lay-submit
-                    lay-filter="LAY-app-comment-search"
+                    lay-filter="LAY-filter-comment-search"
                   >
                     <i
                       class="layui-icon layui-icon-search layadmin-icon-search-btn"
@@ -78,7 +69,7 @@
               </div>
               <table
                 id="LAY-app-content-comment"
-                lay-filter="LAY-app-content-comment"
+                lay-filter="LAY-filter-content-comment"
               ></table>
               <script type="text/html" id="toolTpl">
                 <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</button>
@@ -89,16 +80,13 @@
         </div>
       </div>
     </div>
-    <script src="../../../layuiadmin/layui/layui.js"></script>
+    <script src="../../../../layui/layui.js"></script>
     <script>
       layui
         .config({
-          base: '../../../layuiadmin/',
+          base: '../../../../src/',
         })
-        .extend({
-          index: 'lib/index',
-        })
-        .use(['index', 'conlist'], () => {
+        .use(['index', 'contlist'], () => {
           let $ = layui.$,
             table = layui.table,
             form = layui.form,
@@ -123,7 +111,7 @@
             }
 
           // 监听搜索
-          form.on('submit(LAY-app-comment-search)', (data) => {
+          form.on('submit(LAY-filter-comment-search)', (data) => {
             let field = data.field
             table.reload('LAY-app-content-comment', { where: field })
           })

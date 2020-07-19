@@ -6,7 +6,7 @@ layui.define(['table', 'form'], (exports) => {
   // 帖子列表
   table.render({
     elem: '#LAY-app-forum-list',
-    url: layui.setter.base + 'json/forum/list.json',
+    url: '/iframe/json/forum/list.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -43,13 +43,13 @@ layui.define(['table', 'form'], (exports) => {
   })
 
   // 监听帖子列表行工具事件
-  table.on('tool(LAY-app-forum-list)', (obj) => {
+  table.on('tool(LAY-filter-forum-list)', (obj) => {
     let data = obj.data
     if (obj.event === 'edit') {
       layer.open({
         type: 2,
         title: '编辑帖子',
-        content: layui.setter.root + 'views/app/forum/list-form.html',
+        content: layui.setter.views + 'app/forum/list-form.html',
         area: ['550px', '400px'],
         btn: ['确定', '取消'],
         resize: false,
@@ -62,7 +62,7 @@ layui.define(['table', 'form'], (exports) => {
           $.each(iframe.find('[name]'), function () {
             switch ($(this)[0].name) {
               case 'poster':
-                $(this).val(data.poster)
+                $(this).focus().val(data.poster)
                 break
               case 'top':
                 $(this).attr('checked', data.top)
@@ -79,11 +79,12 @@ layui.define(['table', 'form'], (exports) => {
         yes(index, layero) {
           // 通过 window[name] 获取iframe窗体
           let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = 'LAY-app-forum-listform-submit',
-            submit = layero.find('iframe').contents().find(`#${submitID}`)
+            submitID = '#LAY-app-forum-listform-submit',
+            filter = 'LAY-filter-forum-listform-submit',
+            submit = layero.find('iframe').contents().find(submitID)
 
           // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${submitID})`, (data) => {
+          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
             let field = data.field // 获取提交的字段
             //提交 Ajax 成功后，静态更新表格中的数据
             // $.ajax({})
@@ -104,7 +105,7 @@ layui.define(['table', 'form'], (exports) => {
   // 回帖列表
   table.render({
     elem: '#LAY-app-forum-replys',
-    url: layui.setter.base + 'json/forum/replys.json',
+    url: '/iframe/json/forum/replys.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -130,13 +131,13 @@ layui.define(['table', 'form'], (exports) => {
   })
 
   // 监听回帖列表行工具事件
-  table.on('tool(LAY-app-forum-replys)', (obj) => {
+  table.on('tool(LAY-filter-forum-replys)', (obj) => {
     let data = obj.data
     if (obj.event === 'edit') {
       layer.open({
         type: 2,
         title: '编辑评论',
-        content: layui.setter.root + 'views/app/forum/replys-form.html',
+        content: layui.setter.views + 'app/forum/replys-form.html',
         area: ['550px', '350px'],
         btn: ['确定', '取消'],
         resize: false,
@@ -146,7 +147,7 @@ layui.define(['table', 'form'], (exports) => {
             .find('iframe')
             .contents()
             .find('#LAY-app-forum-replys-form')
-          iframe.find('[name=content]').val(data.content)
+          iframe.find('[name=content]').focus().val(data.content)
         },
         yes(index, layero) {
           let iframe = layer.getChildFrame('body', index),

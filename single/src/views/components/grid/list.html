@@ -1,0 +1,29 @@
+<div class="layui-card layadmin-breadcrumb">
+  <div class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>组件</cite></a>
+    <a><cite>栅格</cite></a>
+    <a><cite>等比例列表排列</cite></a>
+  </div>
+</div>
+
+<style>
+  #LAY-components-grid-list .layui-row .layui-card {
+    height: 267px;
+    line-height: 267px;
+    font-size: 20px;
+    text-align: center;
+    overflow: hidden;
+  }
+</style>
+<div class="layui-fluid" id="LAY-components-grid-list">
+  <div class="layui-row layui-col-space10">
+    <script type="text/html" template>
+      {{# for(let i=0; i<15; i++){ }}
+        <div class="layui-col-sm4 layui-col-md3 layui-col-lg3">
+          <div class="layui-card">{{ i }}</div>
+        </div>
+      {{# } }}
+    </script>
+  </div>
+</div>

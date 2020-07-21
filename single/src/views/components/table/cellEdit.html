@@ -1,0 +1,68 @@
+<div class="layui-card layadmin-breadcrumb">
+  <div class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>组件</cite></a>
+    <a><cite>数据表格</cite></a>
+    <a><cite>开启单元格编辑</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space10">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">开启单元格编辑</div>
+        <div class="layui-card-body">
+          <table
+            class="layui-hide"
+            id="LAY-table-cellEdit"
+            lay-filter="LAY-filter-table-cellEdit"
+          ></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  layui.use('table', () => {
+    let table = layui.table,
+      setter = layui.setter
+
+    table.render({
+      elem: '#LAY-table-cellEdit',
+      url: setter.api + 'json/table/demo.json',
+      cols: [
+        [
+          { type: 'checkbox' },
+          { field: 'id', title: 'ID', sort: true, width: 80 },
+          {
+            field: 'username',
+            title: '用户名',
+            width: 120,
+            sort: true,
+            edit: 'text',
+          },
+          { field: 'email', title: '邮箱', minWidth: 150, edit: 'text' },
+          { field: 'sex', title: '性别', width: 80, edit: 'text' },
+          { field: 'city', title: '城市', minWidth: 100, edit: 'text' },
+          {
+            field: 'experience',
+            title: '积分',
+            sort: true,
+            edit: 'text',
+          },
+        ],
+      ],
+    })
+
+    table.on('edit(LAY-filter-table-cellEdit)', (obj) => {
+      let value = obj.value, // 得到修改后的值
+        data = obj.data, // 得到所在行所有键值
+        field = obj.field // 得到字段
+
+      layer.msg(`[ID: ${data.id}] ${field} 字段更改为：${value}`, {
+        offset: '15px',
+      })
+    })
+  })
+</script>

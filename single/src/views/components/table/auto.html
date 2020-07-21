@@ -1,0 +1,51 @@
+<div class="layui-card layadmin-breadcrumb">
+  <div class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>组件</cite></a>
+    <a><cite>数据表格</cite></a>
+    <a><cite>列宽自动分配</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space10">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">列宽自动分配</div>
+        <div class="layui-card-body">
+          <table class="layui-hide" id="LAY-table-autoWidth"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  layui.use('table', () => {
+    let table = layui.table,
+      setter = layui.setter
+
+    table.render({
+      elem: '#LAY-table-autoWidth',
+      url: setter.api + 'json/table/user.json',
+      cellMinWidth: 80,
+      cols: [
+        [
+          { field: 'id', title: 'ID', sort: true },
+          { field: 'username', title: '用户名' },
+          { field: 'sex', title: '性别', sort: true },
+          { field: 'city', title: '城市' },
+          { field: 'sign', title: '签名' },
+          { field: 'classify', title: '职业', align: 'center' },
+          {
+            field: 'experience',
+            title: '积分',
+            sort: true,
+            align: 'right',
+          },
+          { field: 'score', title: '评分', sort: true, align: 'right' },
+          { field: 'wealth', title: '财富', sort: true, align: 'right' },
+        ],
+      ],
+    })
+  })
+</script>

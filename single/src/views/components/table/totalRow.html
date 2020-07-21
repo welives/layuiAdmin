@@ -1,0 +1,97 @@
+<div class="layui-card layadmin-breadcrumb">
+  <div class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>组件</cite></a>
+    <a><cite>数据表格</cite></a>
+    <a><cite>开启合计行</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space10">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">开启合计行</div>
+        <div class="layui-card-body">
+          <table
+            class="layui-hide"
+            id="LAY-table-totalRow"
+            lay-filter="LAY-filter-table-totalRow"
+          ></table>
+
+          <script type="text/html" id="table-toolbarTpl">
+            <div class="layui-btn-container">
+              <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+              <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+              <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+            </div>
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  layui.use('table', () => {
+    var setter = layui.setter,
+      table = layui.table
+
+    table.render({
+      elem: '#LAY-table-totalRow',
+      url: setter.api + 'json/table/demo.json',
+      toolbar: '#table-toolbarTpl',
+      title: '用户数据表',
+      totalRow: true,
+      cols: [
+        [
+          { type: 'checkbox', fixed: 'left' },
+          {
+            field: 'id',
+            title: 'ID',
+            width: 80,
+            fixed: 'left',
+            unresize: true,
+            sort: true,
+            totalRowText: '合计',
+          },
+          { field: 'username', title: '用户名', width: 120, edit: 'text' },
+          {
+            field: 'experience',
+            title: '积分',
+            width: 80,
+            sort: true,
+            totalRow: true,
+          },
+          { field: 'sex', title: '性别', width: 80, edit: 'text', sort: true },
+          {
+            field: 'logins',
+            title: '登入次数',
+            width: 100,
+            sort: true,
+            totalRow: true,
+          },
+          { field: 'sign', title: '签名' },
+        ],
+      ],
+      page: true,
+    })
+
+    //头工具栏事件
+    table.on('toolbar(LAY-filter-table-totalRow)', (obj) => {
+      let checkStatus = table.checkStatus(obj.config.id),
+        data = checkStatus.data
+      switch (obj.event) {
+        case 'getCheckData':
+          if (data.length === 0) return layer.msg('你未选中任何数据')
+          layer.alert(JSON.stringify(data))
+          break
+        case 'getCheckLength':
+          layer.msg('选中了：' + data.length + ' 个')
+          break
+        case 'isAll':
+          layer.msg(checkStatus.isAll ? '全选' : '未全选')
+          break
+      }
+    })
+  })
+</script>

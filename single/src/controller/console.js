@@ -13,8 +13,9 @@ layui.define((exports) => {
     setter = layui.setter,
     laytpl = layui.laytpl
 
+  // 请求数据
   admin.req({
-    url: 'json/console/index.json',
+    url: setter.api + 'json/console/index.json',
     success(res) {
       renderShortcut(res.data.shortcut)
       renderBacklog(res.data.backlog)
@@ -82,7 +83,7 @@ layui.define((exports) => {
     // 今日热搜
     table.render({
       elem: '#LAY-index-topSearch', // 渲染容器
-      url: 'json/console/top-search.json', // 数据接口
+      url: setter.api + 'json/console/top-search.json', // 数据接口
       page: true, // 是否开启分页
       // 表头
       cols: [
@@ -104,7 +105,7 @@ layui.define((exports) => {
     // 今日热贴
     table.render({
       elem: '#LAY-index-topCard',
-      url: 'json/console/top-card.json',
+      url: setter.api + 'json/console/top-card.json',
       page: true,
       cellMinWidth: 120,
       cols: [

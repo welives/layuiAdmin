@@ -47,7 +47,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
       remove: true,
     })
     // 跳转到登入页
-    location.hash = '/login'
+    location.hash = 'admin/login'
   }
 
   // Ajax请求
@@ -214,7 +214,6 @@ layui.define(['laytpl', 'layer'], (exports) => {
       error(e) {
         view.removeLoad()
         if (othis.render.isError) {
-          // layer.close(layui.admin.popup.index)
           return view.error(`请求视图文件异常，状态：${e.status}`)
         }
 

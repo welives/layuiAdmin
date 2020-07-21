@@ -1,0 +1,127 @@
+<div class="layui-card layadmin-breadcrumb">
+  <div class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>组件</cite></a>
+    <a><cite>数据表格</cite></a>
+    <a><cite>数据操作</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space10">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">数据操作</div>
+        <div class="layui-card-body">
+          <div class="layui-btn-container">
+            <button class="layui-btn" data-type="getCheckData">
+              获取选中行数据
+            </button>
+            <button class="layui-btn" data-type="getCheckLength">
+              获取选中数目
+            </button>
+            <button class="layui-btn" data-type="isAll">
+              验证是否全选
+            </button>
+          </div>
+          <table
+            class="layui-hide"
+            id="LAY-table-operate"
+            lay-filter="LAY-filter-table-operate"
+          ></table>
+          <script type="text/html" id="LAY-table-tool">
+            <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</button>
+            <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
+            <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  layui.use('table', () => {
+    let $ = layui.$,
+      table = layui.table,
+      setter = layui.setter,
+      event = {
+        getCheckData() {
+          let checkStatus = table.checkStatus('LAY-table-operate'),
+            data = checkStatus.data
+          if (data.length === 0) return layer.msg('你未选中任何数据')
+          layer.alert(JSON.stringify(data))
+        },
+        getCheckLength() {
+          let checkStatus = table.checkStatus('LAY-table-operate'),
+            data = checkStatus.data
+          layer.msg(`选中了：${data.length} 个`)
+        },
+        isAll() {
+          let checkStatus = table.checkStatus('LAY-table-operate')
+          console.log(checkStatus)
+          layer.msg(checkStatus.isAll ? '全选' : '未全选')
+        },
+      }
+
+    table.render({
+      elem: '#LAY-table-operate',
+      url: setter.api + 'json/table/user.json',
+      cols: [
+        [
+          { type: 'checkbox', fixed: 'left' },
+          {
+            field: 'id',
+            title: 'ID',
+            sort: true,
+            width: 80,
+            fixed: 'left',
+          },
+          { field: 'username', title: '用户名', width: 80 },
+          { field: 'sex', title: '性别', sort: true, width: 80 },
+          { field: 'city', title: '城市', width: 80 },
+          { field: 'sign', title: '签名', width: 160 },
+          { field: 'experience', title: '积分', sort: true, width: 80 },
+          { field: 'wealth', title: '财富', sort: true, width: 135 },
+          { field: 'classify', title: '职业', width: 80 },
+          {
+            field: 'score',
+            title: '评分',
+            sort: true,
+            width: 80,
+            fixed: 'right',
+          },
+          {
+            align: 'center',
+            fixed: 'right',
+            templet: '#LAY-table-tool',
+          },
+        ],
+      ],
+      page: true,
+    })
+
+    // 监听表格复选框选择
+    table.on('checkbox(LAY-filter-table-operate)', (obj) => {
+      console.log(obj)
+    })
+    // 监听工具条
+    table.on('tool(LAY-filter-table-operate)', (obj) => {
+      let data = obj.data
+      if (obj.event === 'detail') {
+        layer.msg(`ID: ${data.id} 的查看操作`)
+      } else if (obj.event === 'edit') {
+        layer.alert(`编辑行：<br> ${JSON.stringify(data)}`)
+      } else if (obj.event === 'del') {
+        layer.confirm('确定删除该行吗', (index) => {
+          obj.del()
+          layer.close(index)
+        })
+      }
+    })
+
+    $('.layui-btn-container .layui-btn').on('click', function () {
+      let type = $(this).data('type')
+      event[type] && event[type].call(this)
+    })
+  })
+</script>

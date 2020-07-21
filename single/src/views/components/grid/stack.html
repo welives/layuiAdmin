@@ -1,0 +1,33 @@
+<div class="layui-card layadmin-breadcrumb">
+  <div class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>组件</cite></a>
+    <a><cite>栅格</cite></a>
+    <a><cite>低于桌面堆叠排列</cite></a>
+  </div>
+</div>
+
+<style>
+  #LAY-components-grid-stack .layui-row .layui-card-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 20px;
+    height: 200px;
+  }
+</style>
+<div class="layui-fluid" id="LAY-components-grid-stack">
+  <div class="layui-row layui-col-space10">
+    <script type="text/html" template>
+      {{# for(let i=0; i<15; i++){ }}
+        <div class="layui-col-md4">
+          <div class="layui-card">
+            <div class="layui-card-header"></div>
+            <div class="layui-card-body">{{ i }}</div>
+          </div>
+        </div>
+      {{# } }}
+    </script>
+  </div>
+</div>

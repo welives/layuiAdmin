@@ -1,12 +1,12 @@
 <script type="text/html" template>
-  <link rel="stylesheet" href="{{layui.setter.base}}style/login.css?v={{layui.admin.v}}" media="all">
+  <link rel="stylesheet" href="{{ layui.setter.base }}style/login.css?v={{ layui.admin.v }}" media="all">
 </script>
 
 <div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login">
   <div class="layadmin-user-login-main">
     <div class="layadmin-user-login-box layadmin-user-login-header">
       <h2>前台登入页</h2>
-      <p>摸🐟 - 基于Layui的练习项目</p>
+      <p>摸🐟 - 基于layui的练习项目</p>
     </div>
     <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
       <div class="layui-form-item">
@@ -72,7 +72,7 @@
           lay-skin="primary"
         />
         <a
-          href="forget.html"
+          lay-href="/user/forget"
           class="layadmin-user-jump-change layui-text-green"
           style="margin-top: 7px;"
           >忘记密码？</a
@@ -81,7 +81,7 @@
       <div class="layui-form-item">
         <button
           class="layui-btn layui-btn-fluid"
-          lay-filter="LAY-user-login-submit"
+          lay-filter="LAY-filter-login-submit"
           lay-submit
         >
           登 入
@@ -98,7 +98,9 @@
         <a href="javascript:;"
           ><i class="layui-icon layui-icon-login-weibo"></i
         ></a>
-        <a href="reg.html" class="layadmin-user-jump-change layui-text-green"
+        <a
+          lay-href="/user/reg"
+          class="layadmin-user-jump-change layui-text-green"
           >注册帐号</a
         >
       </div>
@@ -108,3 +110,51 @@
     <p>© 2020 <a href="http://www.layui.com/" target="_blank">layui.com</a></p>
   </div>
 </div>
+<script>
+  layui.use('user', () => {
+    let $ = layui.$,
+      setter = layui.setter,
+      admin = layui.admin,
+      form = layui.form,
+      router = layui.router(),
+      search = router.search
+
+    form.render()
+
+    // 提交
+    form.on('submit(LAY-filter-login-submit)', (data) => {
+      // 请求登入接口
+      admin.req({
+        url: setter.api + 'json/user/login.json', // 实际使用请改成服务端真实接口
+        data: data.field,
+        done(res) {
+          // 请求成功后，写入 access_token
+          layui.data(setter.tableName, {
+            key: setter.request.tokenName,
+            value: res.data.access_token,
+          })
+          // 登入成功的提示与跳转
+          layer.msg(
+            '登入成功',
+            {
+              offset: '15px',
+              icon: 1,
+              time: 1000,
+            },
+            () => {
+              location.hash = search.redirect
+                ? decodeURIComponent(search.redirect)
+                : '/' // 后台主页
+            },
+          )
+        },
+      })
+    })
+
+    // 实际使用时记得删除该代码
+    layer.msg('为了方便演示，用户名密码可随意输入', {
+      offset: '15px',
+      icon: 1,
+    })
+  })
+</script>

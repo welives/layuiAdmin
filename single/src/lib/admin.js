@@ -786,19 +786,19 @@ layui.define('view', (exports) => {
               if (matched3) {
                 let selected = data3.list[0] ? SIDE_NAV_ITEMD : THIS
                 $(item3).addClass(selected).siblings().removeClass(selected)
-                return
+                return false
               }
             })
             if (matched2) {
               let selected = data2.list[0] ? SIDE_NAV_ITEMD : THIS
               $(item2).addClass(selected).siblings().removeClass(selected)
-              return
+              return false
             }
           })
           if (matched1) {
             let selected = data1.list[0] ? SIDE_NAV_ITEMD : THIS
             $(item1).addClass(selected).siblings().removeClass(selected)
-            return
+            return false
           }
         })
       }

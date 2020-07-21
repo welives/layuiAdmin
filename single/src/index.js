@@ -103,7 +103,8 @@ layui
             layui.use('common', layui.cache.callback.common)
             $win.on('resize', layui.data.resize)
 
-            element.render('breadcrumb', 'breadcrumb')
+            // 全局渲染面包屑导航
+            element.render('breadcrumb', 'LAY-filter-breadcrumb')
 
             // 容器 scroll 事件，剔除吸附层
             admin.tabsBody(tabsPage.index).on('scroll', function () {

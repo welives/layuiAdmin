@@ -5,20 +5,20 @@
     {
       "title": "主页",
       "icon": "layui-icon-home",
-      "list": [
+      "child": [
         {
           "title": "控制台",
           "jump": "/"
         },
         {
-          "name": "homepage1",
+          "name": "index-1",
           "title": "主页一",
-          "jump": "home/homepage1"
+          "jump": "home/index-1"
         },
         {
-          "name": "homepage2",
+          "name": "index-2",
           "title": "主页二",
-          "jump": "home/homepage2"
+          "jump": "home/index-2"
         }
       ]
     },
@@ -26,11 +26,11 @@
       "name": "components",
       "title": "组件",
       "icon": "layui-icon-component",
-      "list": [
+      "child": [
         {
           "name": "grid",
           "title": "栅格",
-          "list": [
+          "child": [
             {
               "name": "list",
               "title": "等比例列表排列"
@@ -64,7 +64,7 @@
         {
           "name": "form",
           "title": "表单",
-          "list": [
+          "child": [
             {
               "name": "element",
               "title": "表单元素"
@@ -110,7 +110,7 @@
         {
           "name": "layer",
           "title": "通用弹层",
-          "list": [
+          "child": [
             {
               "name": "list",
               "title": "功能演示"
@@ -128,7 +128,7 @@
         {
           "name": "laydate",
           "title": "日期时间",
-          "list": [
+          "child": [
             {
               "name": "demo1",
               "title": "功能演示一"
@@ -150,7 +150,7 @@
         {
           "name": "table",
           "title": "表格",
-          "list": [
+          "child": [
             {
               "name": "simple",
               "title": "简单数据表格"
@@ -164,7 +164,7 @@
               "title": "赋值已知数据"
             },
             {
-              "name": "tostatic",
+              "name": "toStatic",
               "title": "转化静态表格"
             },
             {
@@ -220,7 +220,7 @@
               "title": "解析任意数据格式"
             },
             {
-              "name": "onrow",
+              "name": "onRow",
               "title": "监听行事件"
             },
             {
@@ -244,7 +244,7 @@
         {
           "name": "laypage",
           "title": "分页",
-          "list": [
+          "child": [
             {
               "name": "demo1",
               "title": "功能演示一"
@@ -258,7 +258,7 @@
         {
           "name": "upload",
           "title": "上传",
-          "list": [
+          "child": [
             {
               "name": "demo1",
               "title": "功能演示一"
@@ -316,16 +316,16 @@
       "name": "template",
       "title": "页面",
       "icon": "layui-icon-template",
-      "list": [
+      "child": [
         {
           "name": "personalpage",
           "title": "个人主页",
-          "jump": "template/personalpage"
+          "jump": "template/personal"
         },
         {
           "name": "addresslist",
           "title": "通讯录",
-          "jump": "template/addresslist"
+          "jump": "template/addressList"
         },
         {
           "name": "caller",
@@ -335,12 +335,12 @@
         {
           "name": "goodslist",
           "title": "商品列表",
-          "jump": "template/goodslist"
+          "jump": "template/goodsList"
         },
         {
           "name": "msgboard",
           "title": "留言板",
-          "jump": "template/msgboard"
+          "jump": "template/msgBoard"
         },
         {
           "name": "search",
@@ -380,8 +380,7 @@
         {
           "name": "",
           "title": "内嵌页面",
-          "spread": true,
-          "list": [
+          "child": [
             {
               "name": "",
               "title": "百度一下",
@@ -405,11 +404,11 @@
       "name": "app",
       "title": "应用",
       "icon": "layui-icon-app",
-      "list": [
+      "child": [
         {
           "name": "content",
           "title": "内容系统",
-          "list": [
+          "child": [
             {
               "name": "list",
               "title": "文章列表"
@@ -427,7 +426,7 @@
         {
           "name": "forum",
           "title": "社区系统",
-          "list": [
+          "child": [
             {
               "name": "list",
               "title": "帖子列表"
@@ -453,7 +452,7 @@
       "name": "senior",
       "title": "高级",
       "icon": "layui-icon-senior",
-      "list": [
+      "child": [
         {
           "name": "im",
           "title": "通讯系统"
@@ -461,7 +460,7 @@
         {
           "name": "echarts",
           "title": "Echarts集成",
-          "list": [
+          "child": [
             {
               "name": "line",
               "title": "折线图"
@@ -482,21 +481,21 @@
       "name": "user",
       "title": "用户",
       "icon": "layui-icon-user",
-      "list": [
+      "child": [
         {
           "name": "user",
           "title": "网站用户",
-          "jump": "useradmin/user/list"
+          "jump": "user/list"
         },
         {
           "name": "admin-list",
           "title": "后台管理员",
-          "jump": "useradmin/admin/list"
+          "jump": "admin/list"
         },
         {
           "name": "admin-rule",
           "title": "角色管理",
-          "jump": "useradmin/admin/role"
+          "jump": "role/list"
         }
       ]
     },
@@ -504,12 +503,11 @@
       "name": "set",
       "title": "设置",
       "icon": "layui-icon-set",
-      "list": [
+      "child": [
         {
           "name": "system",
           "title": "系统设置",
-          "spread": true,
-          "list": [
+          "child": [
             {
               "name": "website",
               "title": "网站设置"
@@ -523,8 +521,7 @@
         {
           "name": "user",
           "title": "我的设置",
-          "spread": true,
-          "list": [
+          "child": [
             {
               "name": "info",
               "title": "基本资料"

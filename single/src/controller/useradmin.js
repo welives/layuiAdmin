@@ -60,14 +60,10 @@ layui.define(['table', 'form'], (exports) => {
       tr = $(obj.tr) // 获得当前行 tr 的 DOM 对象
 
     if (obj.event === 'del') {
-      layer.confirm(
-        '确定删除该条数据吗?',
-        { icon: 3, title: '提示' },
-        (index) => {
-          obj.del()
-          layer.close(index)
-        },
-      )
+      layer.confirm('确定删除该条数据吗?', { icon: 3, title: '提示' }, (index) => {
+        obj.del()
+        layer.close(index)
+      })
     } else if (obj.event === 'edit') {
       layer.open({
         type: 1,
@@ -137,28 +133,16 @@ layui.define(['table', 'form'], (exports) => {
   table.on('tool(LAY-filter-admin-list)', (obj) => {
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr), // 获得当前行 tr 的 DOM 对象
-      roles = [
-        '管理员',
-        '超级管理员',
-        '纠错员',
-        '采购员',
-        '推销员',
-        '运营人员',
-        '编辑',
-      ]
+      roles = ['管理员', '超级管理员', '纠错员', '采购员', '推销员', '运营人员', '编辑']
     roles.forEach((v, index) => {
       if (v === data.role) data.role = index
     })
 
     if (obj.event === 'del') {
-      layer.confirm(
-        '确定删除该条数据吗?',
-        { icon: 3, title: '提示' },
-        (index) => {
-          obj.del()
-          layer.close(index)
-        },
-      )
+      layer.confirm('确定删除该条数据吗?', { icon: 3, title: '提示' }, (index) => {
+        obj.del()
+        layer.close(index)
+      })
     } else if (obj.event === 'edit') {
       layer.open({
         type: 1,
@@ -219,30 +203,16 @@ layui.define(['table', 'form'], (exports) => {
   table.on('tool(LAY-filter-role-list)', (obj) => {
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr), // 获得当前行 tr 的 DOM 对象
-      roles = [
-        '管理员',
-        '超级管理员',
-        '纠错员',
-        '采购员',
-        '推销员',
-        '运营人员',
-        '编辑',
-        '统计人员',
-        '评估员',
-      ]
+      roles = ['管理员', '超级管理员', '纠错员', '采购员', '推销员', '运营人员', '编辑', '统计人员', '评估员']
     roles.forEach((v, index) => {
       if (v === data.role) data.role = index
     })
 
     if (obj.event === 'del') {
-      layer.confirm(
-        '确定删除该条数据吗?',
-        { icon: 3, title: '提示' },
-        (index) => {
-          obj.del()
-          layer.close(index)
-        },
-      )
+      layer.confirm('确定删除该条数据吗?', { icon: 3, title: '提示' }, (index) => {
+        obj.del()
+        layer.close(index)
+      })
     } else if (obj.event === 'edit') {
       layer.open({
         type: 1,

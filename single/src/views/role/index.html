@@ -8,10 +8,7 @@
 
 <div class="layui-fluid">
   <div class="layui-card">
-    <div
-      class="layui-form layui-card-header layadmin-card-header-auto"
-      lay-filter="LAY-filter-role-list"
-    >
+    <div class="layui-form layui-card-header layadmin-card-header-auto" lay-filter="LAY-filter-role-list">
       <div class="layui-form-item">
         <div class="layui-inline">
           角色
@@ -61,71 +58,65 @@
   </div>
 </div>
 <script>
-  layui
-    .use('useradmin', layui.factory('useradmin'))
-    .use(['useradmin', 'table'], () => {
-      let $ = layui.$,
-        view = layui.view,
-        admin = layui.admin,
-        form = layui.form,
-        table = layui.table,
-        // 表格顶部按钮事件
-        event = {
-          // 批量删除
-          batchDel() {
-            let checkStatus = table.checkStatus('LAY-role-list'),
-              checkData = checkStatus.data
+  layui.use('useradmin', layui.factory('useradmin')).use(['useradmin', 'table'], () => {
+    let $ = layui.$,
+      view = layui.view,
+      admin = layui.admin,
+      form = layui.form,
+      table = layui.table,
+      // 表格顶部按钮事件
+      event = {
+        // 批量删除
+        batchDel() {
+          let checkStatus = table.checkStatus('LAY-role-list'),
+            checkData = checkStatus.data
 
-            if (checkData.length === 0) {
-              return layer.msg('请选择数据')
-            }
-            layer.confirm(
-              '确定删除选中的数据吗?',
-              { icon: 3, title: '提示' },
-              (index) => {
-                //执行 Ajax 后重载
-                // $.ajax({})
-                table.reload('LAY-role-list')
-                layer.msg('已删除')
-              },
-            )
-          },
-          // 添加角色
-          add() {
-            layer.open({
-              type: 1,
-              title: '添加角色',
-              id: 'LAY-popup-role-add',
-              area: ['500px', '400px'],
-              success(layero, index) {
-                view(this.id)
-                  .render('role/list-form')
-                  .done(() => {
-                    form.render(null, 'LAY-filter-roleList-form')
-                    admin.setInputFocusEnd(layero.find('[name=descr]'))
-                    form.on('submit(LAY-filter-role-submit)', (data) => {
-                      let field = data.field
-                      //提交 Ajax 成功后，关闭当前弹层并重载表格
-                      //$.ajax({});
-                      table.reload('LAY-role-list')
-                      layer.close(index)
-                    })
+          if (checkData.length === 0) {
+            return layer.msg('请选择数据')
+          }
+          layer.confirm('确定删除选中的数据吗?', { icon: 3, title: '提示' }, (index) => {
+            //执行 Ajax 后重载
+            // $.ajax({})
+            table.reload('LAY-role-list')
+            layer.msg('已删除')
+          })
+        },
+        // 添加角色
+        add() {
+          layer.open({
+            type: 1,
+            title: '添加角色',
+            id: 'LAY-popup-role-add',
+            area: ['500px', '400px'],
+            success(layero, index) {
+              view(this.id)
+                .render('role/list-form')
+                .done(() => {
+                  form.render(null, 'LAY-filter-roleList-form')
+                  admin.setInputFocusEnd(layero.find('[name=descr]'))
+                  form.on('submit(LAY-filter-role-submit)', (data) => {
+                    let field = data.field
+                    //提交 Ajax 成功后，关闭当前弹层并重载表格
+                    //$.ajax({});
+                    table.reload('LAY-role-list')
+                    layer.close(index)
                   })
-              },
-            })
-          },
-        }
-      form.render(null, 'LAY-filter-role-list')
+                })
+            },
+          })
+        },
+      }
+    form.render(null, 'LAY-filter-role-list')
 
-      // 监听搜索
-      form.on('select(LAY-filter-role-search)', (data) => {
-        table.reload('LAY-role-list', { where: { role: data.value } })
-      })
-
-      // 监听表格顶部按钮点击事件
-      $('.layadmin-btn-role').on('click', function () {
-        let type = $(this).data('type')
-        event[type] ? event[type].call(this) : ''
-      })
+    // 监听搜索
+    form.on('select(LAY-filter-role-search)', (data) => {
+      table.reload('LAY-role-list', { where: { role: data.value } })
     })
+
+    // 监听表格顶部按钮点击事件
+    $('.layadmin-btn-role').on('click', function () {
+      let type = $(this).data('type')
+      event[type] ? event[type].call(this) : ''
+    })
+  })
 </script>

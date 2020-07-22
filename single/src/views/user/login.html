@@ -2,24 +2,15 @@
   <link rel="stylesheet" href="{{ layui.setter.base }}style/login.css?v={{ layui.admin.v }}" media="all">
 </script>
 
-<div
-  class="layadmin-user-login layadmin-user-display-show"
-  id="LAY-id-user-login"
->
+<div class="layadmin-user-login layadmin-user-display-show" id="LAY-id-user-login">
   <div class="layadmin-user-login-main">
     <div class="layadmin-user-login-box layadmin-user-login-header">
       <h2>前台登入页</h2>
       <p>摸🐟 - 基于layui的练习项目</p>
     </div>
-    <div
-      class="layadmin-user-login-box layadmin-user-login-body layui-form"
-      lay-filter="LAY-filter-login-form"
-    >
+    <div class="layadmin-user-login-box layadmin-user-login-body layui-form" lay-filter="LAY-filter-login-form">
       <div class="layui-form-item">
-        <label
-          class="layadmin-user-login-icon layui-icon layui-icon-username"
-          for="LAY-id-login-username"
-        ></label>
+        <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="LAY-id-login-username"></label>
         <input
           type="text"
           id="LAY-id-login-username"
@@ -30,10 +21,7 @@
         />
       </div>
       <div class="layui-form-item">
-        <label
-          class="layadmin-user-login-icon layui-icon layui-icon-password"
-          for="LAY-id-login-password"
-        ></label>
+        <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-id-login-password"></label>
         <input
           type="password"
           id="LAY-id-login-password"
@@ -46,10 +34,7 @@
       <div class="layui-form-item">
         <div class="layui-row">
           <div class="layui-col-xs7">
-            <label
-              for="LAY-id-login-vercode"
-              class="layadmin-user-login-icon layui-icon layui-icon-vercode"
-            ></label>
+            <label for="LAY-id-login-vercode" class="layadmin-user-login-icon layui-icon layui-icon-vercode"></label>
             <input
               type="text"
               class="layui-input"
@@ -71,44 +56,22 @@
         </div>
       </div>
       <div class="layui-form-item" style="margin-bottom: 20px;">
-        <input
-          type="checkbox"
-          name="remember"
-          title="记住密码"
-          lay-skin="primary"
-        />
-        <a
-          lay-href="/user/forget"
-          class="layadmin-user-jump-change layui-text-green"
-          style="margin-top: 7px;"
+        <input type="checkbox" name="remember" title="记住密码" lay-skin="primary" />
+        <a lay-href="/user/forget" class="layadmin-user-jump-change layui-text-green" style="margin-top: 7px;"
           >忘记密码？</a
         >
       </div>
       <div class="layui-form-item">
-        <button
-          class="layui-btn layui-btn-fluid"
-          lay-filter="LAY-filter-login-submit"
-          lay-submit
-        >
+        <button class="layui-btn layui-btn-fluid" lay-filter="LAY-filter-login-submit" lay-submit>
           登 入
         </button>
       </div>
       <div class="layui-form-item layui-trans layadmin-user-login-other">
         <label>社交账号登入</label>
-        <a href="javascript:;"
-          ><i class="layui-icon layui-icon-login-qq layui-text-blue"></i
-        ></a>
-        <a href="javascript:;"
-          ><i class="layui-icon layui-icon-login-wechat"></i
-        ></a>
-        <a href="javascript:;"
-          ><i class="layui-icon layui-icon-login-weibo"></i
-        ></a>
-        <a
-          lay-href="/user/reg"
-          class="layadmin-user-jump-change layui-text-green"
-          >注册帐号</a
-        >
+        <a href="javascript:;"><i class="layui-icon layui-icon-login-qq layui-text-blue"></i></a>
+        <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
+        <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
+        <a lay-href="/user/reg" class="layadmin-user-jump-change layui-text-green">注册帐号</a>
       </div>
     </div>
   </div>
@@ -148,9 +111,7 @@
               time: 1000,
             },
             () => {
-              location.hash = search.redirect
-                ? decodeURIComponent(search.redirect)
-                : '/' // 后台主页
+              location.hash = search.redirect ? decodeURIComponent(search.redirect) : '/' // 后台主页
             },
           )
         },

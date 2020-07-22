@@ -412,10 +412,7 @@ layui.define('view', (exports) => {
        */
       closeThisTabs() {
         if (!this.tabsPage.index) return
-        $(`${TABS_HEADER}>li`)
-          .eq(this.tabsPage.index)
-          .find(`.layui-tab-close`)
-          .trigger('click')
+        $(`${TABS_HEADER}>li`).eq(this.tabsPage.index).find(`.layui-tab-close`).trigger('click')
       },
 
       /**
@@ -429,9 +426,7 @@ layui.define('view', (exports) => {
             elem.mozRequestFullScreen ||
             elem.msRequestFullScreen
 
-        typeof reqFullScreen !== 'undefined' &&
-          reqFullScreen &&
-          reqFullScreen.call(elem)
+        typeof reqFullScreen !== 'undefined' && reqFullScreen && reqFullScreen.call(elem)
       },
 
       /**
@@ -455,9 +450,7 @@ layui.define('view', (exports) => {
       correctRouter(href) {
         if (!/^\//.test(href)) href = '/' + href
         // 纠正首尾
-        return href
-          .replace(/^(\/+)/, '/')
-          .replace(new RegExp(`/${setter.entry}$`), '/') // 过滤路由最后的默认视图文件名（如：index）
+        return href.replace(/^(\/+)/, '/').replace(new RegExp(`/${setter.entry}$`), '/') // 过滤路由最后的默认视图文件名（如：index）
       },
     },
     events = (admin.events = {
@@ -492,11 +485,7 @@ layui.define('view', (exports) => {
             let href = othis.attr('lay-action'),
               text = othis.attr('lay-text') || '搜索'
             href += this.value
-            text =
-              text +
-              '<span class="layui-text-red">' +
-              admin.escape(this.value) +
-              '</span>'
+            text = text + '<span class="layui-text-red">' + admin.escape(this.value) + '</span>'
             // 打开标签页
             location.hash = admin.correctRouter(href)
             // 如果搜索关键词已经打开，则刷新页面即可
@@ -668,8 +657,7 @@ layui.define('view', (exports) => {
 
             // 当目标标签在可视区域右侧时
             if (thisLeft + thisLi.outerWidth() >= outerWidth - tabsLeft) {
-              let subLeft =
-                thisLeft + thisLi.outerWidth() - (outerWidth - tabsLeft)
+              let subLeft = thisLeft + thisLi.outerWidth() - (outerWidth - tabsLeft)
               liItem.each((i, item) => {
                 let li = $(item),
                   left = li.position().left
@@ -789,9 +777,7 @@ layui.define('view', (exports) => {
             listChildren2.each((index3, item3) => {
               let data3 = getData($(item3)),
                 matched3 =
-                  (path[0] === data1.name &&
-                    path[1] === data2.name &&
-                    path[2] === data3.name) ||
+                  (path[0] === data1.name && path[1] === data2.name && path[2] === data3.name) ||
                   (data3.jump && pathURL === admin.correctRouter(data3.jump))
 
               if (matched3) {
@@ -854,8 +840,7 @@ layui.define('view', (exports) => {
     admin.tabsPage.type = 'tab'
     admin.tabsPage.index = index
     // 如果是iframe类型的标签页
-    if ($(this).attr('lay-attr') === 'iframe')
-      return admin.tabsBodyChange(index)
+    if ($(this).attr('lay-attr') === 'iframe') return admin.tabsBodyChange(index)
 
     setThisRouter($(this)) // 更新路由
     admin.runResize() // 执行resize事件，如果存在的话
@@ -881,11 +866,7 @@ layui.define('view', (exports) => {
   $body
     .on('mouseenter', '*[lay-tips]', function () {
       // 不是PC端时,终止执行
-      if (
-        $(this).parent().hasClass('layui-nav-item') &&
-        !container.hasClass(SIDE_SHRINK)
-      )
-        return
+      if ($(this).parent().hasClass('layui-nav-item') && !container.hasClass(SIDE_SHRINK)) return
       let tips = $(this).attr('lay-tips'),
         offset = $(this).attr('lay-offset'),
         direction = $(this).attr('lay-direction'),
@@ -930,10 +911,10 @@ layui.define('view', (exports) => {
 
     // 低版本IE提示
     if (device.ie && device.ie < 10) {
-      view.error(
-        `IE${device.ie}下访问可能不佳，推荐使用：Chrome / Firefox / Edge 等高级浏览器`,
-        { offset: 'auto', id: 'LAY_errorIE' },
-      )
+      view.error(`IE${device.ie}下访问可能不佳，推荐使用：Chrome / Firefox / Edge 等高级浏览器`, {
+        offset: 'auto',
+        id: 'LAY_errorIE',
+      })
     }
   })()
 

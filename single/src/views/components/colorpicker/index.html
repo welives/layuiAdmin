@@ -62,12 +62,7 @@
       <div class="layui-card">
         <div class="layui-card-header">全功能和回调的使用</div>
         <div class="layui-card-body">
-          <input
-            type="hidden"
-            name="color"
-            value=""
-            id="LAY-id-colorPicker-all-input"
-          />
+          <input type="hidden" name="color" value="" id="LAY-id-colorPicker-all-input" />
           <div id="LAY-id-colorPicker-demo11"></div>
         </div>
       </div>
@@ -178,10 +173,7 @@
       },
       change(color) {
         //给当前页面头部和左侧设置主题色
-        $('.layui-side-menu,.layui-logo').css(
-          'cssText',
-          'background-color: ' + color + ' !important;',
-        )
+        $('.layui-side-menu,.layui-logo').css('cssText', 'background-color: ' + color + ' !important;')
       },
     })
 

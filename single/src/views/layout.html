@@ -4,10 +4,7 @@
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item layadmin-flexible" lay-unselect>
         <a href="javascript:;" layadmin-event="flexible" title="侧边收缩">
-          <i
-            class="layui-icon layui-icon-shrink-right"
-            id="LAY_app_flexible"
-          ></i
+          <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i
         ></a>
       </li>
       <li class="layui-nav-item layui-hide-xs" lay-unselect>
@@ -32,19 +29,12 @@
       </li>
     </ul>
 
-    <ul
-      class="layui-nav layui-layout-right"
-      lay-filter="LAY-filter-header-right"
-    >
+    <ul class="layui-nav layui-layout-right" lay-filter="LAY-filter-header-right">
       <li class="layui-nav-item" lay-unselect>
         <a lay-href="app/message/" layadmin-event="message" title="消息中心">
           <i class="layui-icon layui-icon-notice"></i>
           <!-- 如果有新消息,则显示小圆点 -->
-          <script
-            type="text/html"
-            template
-            lay-url="{{ layui.setter.api }}json/message/newMsg.json"
-          >
+          <script type="text/html" template lay-url="{{ layui.setter.api }}json/message/newMsg.json">
             {{# if(d.data.newMsg){ }}
               <span class="layui-badge-dot"></span>
             {{# } }}
@@ -89,10 +79,7 @@
           <i class="layui-icon layui-icon-more-vertical"></i>
         </a>
       </li>
-      <li
-        class="layui-nav-item layui-show-xs-inline-block layui-hide-sm"
-        lay-unselect
-      >
+      <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
         <a href="javascript:;" layadmin-event="more">
           <i class="layui-icon layui-icon-more-vertical"></i>
         </a>
@@ -172,11 +159,7 @@
   </div>
 
   <!-- 页面标签 -->
-  <script
-    type="text/html"
-    templae
-    lay-done="layui.element.render('nav','LAY-filter-tabs-operate')"
-  >
+  <script type="text/html" templae lay-done="layui.element.render('nav','LAY-filter-tabs-operate')">
     {{# if(layui.setter.pageTabs){ }}
       <div class="layadmin-pageTabs" id="LAY_app_tabs">
         <div class="layui-icon layui-icon-prev layadmin-tabs-control" layadmin-event="leftPage"></div>

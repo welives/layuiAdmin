@@ -50,10 +50,7 @@
               area: ['390px', '260px'],
               shade: 0,
               maxmix: true,
-              offset: [
-                Math.random() * ($(window).height() - 300),
-                Math.random() * ($(window).width() - 390),
-              ],
+              offset: [Math.random() * ($(window).height() - 300), Math.random() * ($(window).width() - 390)],
               content:
                 '<div style="padding: 10px">当你的页面有很多很多layer窗口，你需要像Window窗体那样，点击某个窗口，该窗体就置顶在上面，那么layer.setTop()可以来轻松实现。它采用巧妙的逻辑，以使这种置顶的性能达到最优。</div>',
               btn: ['继续弹出', '全部关闭'],
@@ -71,13 +68,10 @@
           },
           confirmTrans() {
             layer.closeAll()
-            layer.msg(
-              '大部分参数都是可以公用的<br>合理搭配，展示不一样的风格',
-              {
-                time: 5000,
-                btn: ['明白了', '知道了', '哦'],
-              },
-            )
+            layer.msg('大部分参数都是可以公用的<br>合理搭配，展示不一样的风格', {
+              time: 5000,
+              btn: ['明白了', '知道了', '哦'],
+            })
           },
           notice() {
             layer.closeAll()

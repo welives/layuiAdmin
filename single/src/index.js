@@ -79,9 +79,7 @@ layui
             // 如果未在选项卡中匹配到，则追加选项卡
             if (setter.pageTabs && pathURL !== '/') {
               if (!matchTo) {
-                $(APP_BODY).append(
-                  '<div class="LAY-tabsBody-item layui-show"></div>',
-                )
+                $(APP_BODY).append('<div class="LAY-tabsBody-item layui-show"></div>')
                 tabsPage.index = tabs.length
                 element.tabAdd(FILTER_TAB_TABS, {
                   id: pathURL,
@@ -116,8 +114,7 @@ layui
               if (elemDate[0]) {
                 elemDate.each(function () {
                   let thisElemDate = $(this)
-                  thisElemDate.hasClass('layui-laydate-static') ||
-                    thisElemDate.remove()
+                  thisElemDate.hasClass('layui-laydate-static') || thisElemDate.remove()
                 })
                 othis.find('input').blur()
               }
@@ -157,8 +154,7 @@ layui
             let local = layui.data(setter.tableName)
             if (!local[setter.request.tokenName]) {
               // 跳转到登入页
-              return (location.hash =
-                '/admin/login/redirect=' + encodeURIComponent(pathURL))
+              return (location.hash = '/admin/login/redirect=' + encodeURIComponent(pathURL))
             }
           }
 
@@ -179,11 +175,7 @@ layui
       }
 
     // 初始主体结构
-    layui.link(
-      setter.base + 'style/public.css?v=' + admin.v,
-      entryPage(),
-      'layuiAdmin',
-    )
+    layui.link(setter.base + 'style/public.css?v=' + admin.v, entryPage(), 'layuiAdmin')
 
     // 监听Hash改变
     window.onhashchange = function () {

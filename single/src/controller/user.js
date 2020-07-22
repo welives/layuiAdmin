@@ -48,8 +48,7 @@ layui.define('form', (exports) => {
 
   // 更换图形验证码
   $body.on('click', '#LAY-id-get-vercode', function () {
-    this.src =
-      'https://www.oschina.net/action/user/captcha?t=' + new Date().getTime()
+    this.src = 'https://www.oschina.net/action/user/captcha?t=' + new Date().getTime()
   })
 
   // 输出接口

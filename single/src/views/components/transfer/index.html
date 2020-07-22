@@ -153,12 +153,7 @@
       data: data1,
       onchange(obj, index) {
         let arr = ['左边', '右边']
-        layer.alert(
-          '来自 <strong>' +
-            arr[index] +
-            '</strong> 的数据：' +
-            JSON.stringify(obj),
-        ) //获得被穿梭时的数据
+        layer.alert('来自 <strong>' + arr[index] + '</strong> 的数据：' + JSON.stringify(obj)) //获得被穿梭时的数据
       },
     })
 

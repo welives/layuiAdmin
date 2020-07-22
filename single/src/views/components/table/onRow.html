@@ -13,11 +13,7 @@
       <div class="layui-card">
         <div class="layui-card-header">监听行事件</div>
         <div class="layui-card-body">
-          <table
-            class="layui-hide"
-            id="LAY-id-table-onrow"
-            lay-filter="LAY-filter-table-onRow"
-          ></table>
+          <table class="layui-hide" id="LAY-id-table-onrow" lay-filter="LAY-filter-table-onRow"></table>
         </div>
       </div>
     </div>
@@ -71,10 +67,7 @@
       })
 
       //标注选中样式
-      obj.tr
-        .addClass('layui-table-click')
-        .siblings()
-        .removeClass('layui-table-click')
+      obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click')
     })
   })
 </script>

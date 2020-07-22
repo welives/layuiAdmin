@@ -41,10 +41,7 @@
             <button class="layui-btn" id="LAY-id-upload-more">
               多图片上传
             </button>
-            <blockquote
-              class="layui-elem-quote layui-quote-nm"
-              style="margin-top: 10px;"
-            >
+            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
               预览图：
               <div class="layui-upload-list" id="LAY-id-upload-more-list"></div>
             </blockquote>
@@ -87,16 +84,10 @@
           <button class="layui-btn LAY-upload-demoMore" lay-data="{url:'/a/'}">
             上传A
           </button>
-          <button
-            class="layui-btn LAY-upload-demoMore"
-            lay-data="{url:'/b/',size:5}"
-          >
+          <button class="layui-btn LAY-upload-demoMore" lay-data="{url:'/b/',size:5}">
             上传B
           </button>
-          <button
-            class="layui-btn LAY-upload-demoMore"
-            lay-data="{url:'/c/',accept:'file',size:10}"
-          >
+          <button class="layui-btn LAY-upload-demoMore" lay-data="{url:'/c/',accept:'file',size:10}">
             上传C
           </button>
         </div>
@@ -141,9 +132,7 @@
       multiple: true,
       before(obj) {
         obj.preview((index, file, result) => {
-          $('#LAY-id-upload-more-list').append(
-            `<img src="${result}" alt="${file.name}" class="layui-upload-img">`,
-          )
+          $('#LAY-id-upload-more-list').append(`<img src="${result}" alt="${file.name}" class="layui-upload-img">`)
         })
       },
       done(res) {

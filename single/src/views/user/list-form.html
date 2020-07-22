@@ -1,9 +1,4 @@
-<div
-  class="layui-form"
-  id="LAY-form-user"
-  lay-filter="LAY-filter-userList-form"
-  style="padding: 20px 30px 0 0;"
->
+<div class="layui-form" id="LAY-form-user" lay-filter="LAY-filter-userList-form" style="padding: 20px 30px 0 0;">
   <div class="layui-form-item">
     <label class="layui-form-label">用户名</label>
     <div class="layui-input-inline">
@@ -35,11 +30,7 @@
         <input type="text" class="layui-input layui-disabled" name="avatar" value="{{ d.params.avatar || '' }}" lay-verify="required" placeholder="请上传图片" autocomplete="off" />
       </script>
     </div>
-    <button
-      type="button"
-      class="layui-btn layui-float-left"
-      id="LAY-upload-user"
-    >
+    <button type="button" class="layui-btn layui-float-left" id="LAY-upload-user">
       上传图片
     </button>
   </div>
@@ -58,12 +49,7 @@
     </div>
   </div>
   <div class="layui-form-item layui-text-center">
-    <button
-      class="layui-btn"
-      id="LAY-user-submit"
-      lay-submit
-      lay-filter="LAY-filter-user-submit"
-    >
+    <button class="layui-btn" id="LAY-user-submit" lay-submit lay-filter="LAY-filter-user-submit">
       提交
     </button>
   </div>

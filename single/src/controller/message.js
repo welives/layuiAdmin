@@ -1,3 +1,12 @@
+/**
+
+ @Name：layuiAdmin 消息处理
+ @Author：star1029
+ @Site：http://www.layui.com/admin/
+ @License：GPL-2
+
+ */
+
 layui.define(['admin', 'table', 'util'], (exports) => {
   let $ = layui.$,
     setter = layui.setter,

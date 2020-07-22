@@ -169,15 +169,10 @@
               },
               (pass, index) => {
                 layer.close(index)
-                layer.prompt(
-                  { title: '随便写点啥，并确认', formType: 2 },
-                  (text, index) => {
-                    layer.close(index)
-                    layer.msg(
-                      `演示完毕！您的口令：${pass}<br />您最后写下了：${text}`,
-                    )
-                  },
-                )
+                layer.prompt({ title: '随便写点啥，并确认', formType: 2 }, (text, index) => {
+                  layer.close(index)
+                  layer.msg(`演示完毕！您的口令：${pass}<br />您最后写下了：${text}`)
+                })
               },
             )
           },
@@ -211,8 +206,7 @@
                 {
                   icon,
                   shadeClose: true,
-                  title:
-                    icon === -1 ? '初体验 - layer ' + layer.v : 'icon: ' + icon,
+                  title: icon === -1 ? '初体验 - layer ' + layer.v : 'icon: ' + icon,
                 },
                 changeIcon,
               )
@@ -285,11 +279,10 @@
             layer.tips('Hi，我是tips', this, { tips: 1 })
           },
           useType8() {
-            layer.tips(
-              '我是另外一个tips，只不过我长得跟之前那位稍有些不一样',
-              this,
-              { tips: [3, '#2f9688'], time: 3000 },
-            )
+            layer.tips('我是另外一个tips，只不过我长得跟之前那位稍有些不一样', this, {
+              tips: [3, '#2f9688'],
+              time: 3000,
+            })
           },
           useType9() {
             layer.open({

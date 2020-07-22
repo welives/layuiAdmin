@@ -125,9 +125,7 @@
         $('#LAY-id-laypage-datalist').html(
           (() => {
             let arr = [],
-              thisData = layPageData
-                .concat()
-                .splice(obj.curr * obj.limit - obj.limit, obj.limit)
+              thisData = layPageData.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit)
             $.each(thisData, (index, item) => {
               arr.push(`<li>${item}</li>`)
             })

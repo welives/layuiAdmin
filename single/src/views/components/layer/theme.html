@@ -45,9 +45,7 @@
           admin.popupRight({
             id: 'LAY-popup-right',
             success() {
-              top.layui
-                .$(`#${this.id}`)
-                .html('<div style="padding: 10px">你想要放入的任何内容</div>')
+              top.layui.$(`#${this.id}`).html('<div style="padding: 10px">你想要放入的任何内容</div>')
             },
           })
         },

@@ -14,12 +14,7 @@
         <div class="layui-card-body">
           请选择要计算的日期：
           <div class="layui-inline">
-            <input
-              type="text"
-              class="layui-input"
-              id="LAY-id-util-countdown"
-              value="2099-01-01 00:00:00"
-            />
+            <input type="text" class="layui-input" id="LAY-id-util-countdown" value="2099-01-01 00:00:00" />
           </div>
           <blockquote class="layui-elem-quote" style="margin-top: 10px;">
             <div id="LAY-id-util-countdown-res"></div>
@@ -63,36 +58,20 @@
       elem: '#LAY-id-util-countdown',
       type: 'datetime',
       done(value, date) {
-        setCountdown(
-          date.year,
-          date.month - 1,
-          date.date,
-          date.hours,
-          date.minutes,
-          date.seconds,
-        )
+        setCountdown(date.year, date.month - 1, date.date, date.hours, date.minutes, date.seconds)
       },
     })
 
     // 某个时间在当前时间的多久前
     let setTimeAgo = (y, M, d, H, m, s) => {
-      let str = util.timeAgo(
-        new Date(y, M || 0, d || 1, H || 0, m || 0, s || 0),
-      )
+      let str = util.timeAgo(new Date(y, M || 0, d || 1, H || 0, m || 0, s || 0))
       lay('#LAY-id-util-timeago-res').html(str)
     }
     laydate.render({
       elem: '#LAY-id-util-timeago',
       type: 'datetime',
       done(value, date) {
-        setTimeAgo(
-          date.year,
-          date.month - 1,
-          date.date,
-          date.hours,
-          date.minutes,
-          date.seconds,
-        )
+        setTimeAgo(date.year, date.month - 1, date.date, date.hours, date.minutes, date.seconds)
       },
     })
   })

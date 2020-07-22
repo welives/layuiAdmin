@@ -63,10 +63,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
     options.headers = options.headers || {}
 
     if (request.tokenName) {
-      let sendData =
-        typeof options.data === 'string'
-          ? JSON.parse(options.data)
-          : options.data
+      let sendData = typeof options.data === 'string' ? JSON.parse(options.data) : options.data
 
       // 自动给参数传入默认 token
       options.data[request.tokenName] =
@@ -100,21 +97,14 @@ layui.define(['laytpl', 'layer'], (exports) => {
             }
             // 其它异常
             else {
-              let errorMsg = [
-                '<cite>Error：</cite> ' +
-                  (res[response.msgName] || '返回状态码异常'),
-                debug(),
-              ].join('')
+              let errorMsg = ['<cite>Error：</cite> ' + (res[response.msgName] || '返回状态码异常'), debug()].join('')
               view.error(errorMsg)
             }
             // 只要 http 状态码正常，无论 response 的 code 是否正常都执行 success
             typeof success === 'function' && success(res)
           },
           error(e, code) {
-            let errorMsg = [
-              `请求异常，请重试<br><cite>错误信息：</cite>${code}`,
-              debug(),
-            ].join('')
+            let errorMsg = [`请求异常，请重试<br><cite>错误信息：</cite>${code}`, debug()].join('')
             view.error(errorMsg)
             typeof error === 'function' && error(e)
           },
@@ -142,9 +132,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
           shadeClose: true,
           closeBtn: false,
           success(layero, index) {
-            let closeElem = $(
-              '<i class="layui-icon layui-icon-close" close></i>',
-            )
+            let closeElem = $('<i class="layui-icon layui-icon-close" close></i>')
             layero.append(closeElem)
             closeElem.on('click', () => {
               layer.close(index)
@@ -190,9 +178,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
       success(html) {
         html = `<div>${html}</div>`
         let titleElem = $(html).find('title'),
-          title =
-            titleElem.text() ||
-            (html.match(/<title>([\s\S]*)<\/title>/) || [])[1],
+          title = titleElem.text() || (html.match(/<title>([\s\S]*)<\/title>/) || [])[1],
           res = { title, body: html }
 
         titleElem.remove()

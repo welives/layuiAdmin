@@ -73,9 +73,7 @@ const argv = require('minimist')(process.argv.slice(2), {
     move(cb) {
       src('./src/config.js').pipe(dest(destDir))
       src('./src/lib/extend/echarts.js').pipe(dest(destDir + '/lib/extend'))
-      src('./src/lib/extend/echartsTheme.js').pipe(
-        dest(destDir + '/lib/extend'),
-      )
+      src('./src/lib/extend/echartsTheme.js').pipe(dest(destDir + '/lib/extend'))
       src('./src/style/res/**/*').pipe(dest(destDir + '/style/res'))
       src('./src/views/**/*').pipe(dest(destDir + '/views'))
 
@@ -86,9 +84,4 @@ const argv = require('minimist')(process.argv.slice(2), {
 /**
  * gulp v4 版本写法
  */
-exports.default = series(
-  taskList.clear,
-  taskList.minJS,
-  taskList.minCSS,
-  taskList.move,
-)
+exports.default = series(taskList.clear, taskList.minJS, taskList.minCSS, taskList.move)

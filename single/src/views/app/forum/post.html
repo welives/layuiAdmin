@@ -10,10 +10,7 @@
   <div class="layui-row layui-col-space10">
     <div class="layui-col-md12">
       <div class="layui-card">
-        <div
-          class="layui-card-header layui-form layadmin-card-header-auto"
-          lay-filter="LAY-filter-post-list"
-        >
+        <div class="layui-card-header layui-form layadmin-card-header-auto" lay-filter="LAY-filter-post-list">
           <div class="layui-form-item">
             <div class="layui-inline">
               <label class="layui-form-label">ID</label>
@@ -65,14 +62,8 @@
               </div>
             </div>
             <div class="layui-inline">
-              <button
-                class="layui-btn layadmin-btn-list"
-                lay-submit
-                lay-filter="LAY-filter-post-search"
-              >
-                <i
-                  class="layui-icon layui-icon-search layadmin-icon-search-btn"
-                ></i>
+              <button class="layui-btn layadmin-btn-list" lay-submit lay-filter="LAY-filter-post-search">
+                <i class="layui-icon layui-icon-search layadmin-icon-search-btn"></i>
               </button>
             </div>
           </div>
@@ -115,16 +106,12 @@
             checkData = checkStatus.data
 
           if (checkData.length === 0) return layer.msg('请选择数据')
-          layer.confirm(
-            '确定删除选中的数据吗',
-            { icon: 3, title: '提示' },
-            (index) => {
-              //执行 Ajax 后重载
-              // $.ajax({})
-              table.reload('LAY-post-list')
-              layer.msg('已删除')
-            },
-          )
+          layer.confirm('确定删除选中的数据吗', { icon: 3, title: '提示' }, (index) => {
+            //执行 Ajax 后重载
+            // $.ajax({})
+            table.reload('LAY-post-list')
+            layer.msg('已删除')
+          })
         },
       }
     form.render(null, 'LAY-filter-post-list')

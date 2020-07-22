@@ -81,10 +81,7 @@
               <div>layui-anim-scale</div>
             </li>
             <li>
-              <div
-                class="layui-anim layui-circle"
-                data-anim="layui-anim-scaleSpring"
-              >
+              <div class="layui-anim layui-circle" data-anim="layui-anim-scaleSpring">
                 弹簧式放大
               </div>
               <div>layui-anim-scaleSpring</div>
@@ -92,37 +89,25 @@
           </ul>
           <ul class="LAY-anim-demo">
             <li>
-              <div
-                class="layui-anim layui-circle"
-                data-anim="layui-anim-fadein"
-              >
+              <div class="layui-anim layui-circle" data-anim="layui-anim-fadein">
                 渐现
               </div>
               <div>layui-anim-fadein</div>
             </li>
             <li>
-              <div
-                class="layui-anim layui-circle"
-                data-anim="layui-anim-fadeout"
-              >
+              <div class="layui-anim layui-circle" data-anim="layui-anim-fadeout">
                 渐隐
               </div>
               <div>layui-anim-fadeout</div>
             </li>
             <li>
-              <div
-                class="layui-anim layui-circle"
-                data-anim="layui-anim-rotate"
-              >
+              <div class="layui-anim layui-circle" data-anim="layui-anim-rotate">
                 360度旋转
               </div>
               <div>layui-anim-rotate</div>
             </li>
             <li>
-              <div
-                class="layui-anim layui-circle"
-                data-anim="layui-anim-rotate layui-anim-loop"
-              >
+              <div class="layui-anim layui-circle" data-anim="layui-anim-rotate layui-anim-loop">
                 循环动画
               </div>
               <div>追加：layui-anim-loop</div>
@@ -136,27 +121,23 @@
 <script>
   layui.use('admin', () => {
     let $ = layui.$
-    $('#LAY-id-anim-example .LAY-anim-demo .layui-anim').on(
-      'click',
-      function () {
-        let anim = $(this).data('anim')
-        // 停止循环
-        if ($(this).hasClass('layui-anim-loop'))
-          return $(this).removeClass(anim)
+    $('#LAY-id-anim-example .LAY-anim-demo .layui-anim').on('click', function () {
+      let anim = $(this).data('anim')
+      // 停止循环
+      if ($(this).hasClass('layui-anim-loop')) return $(this).removeClass(anim)
 
-        $(this).removeClass(anim)
+      $(this).removeClass(anim)
 
+      setTimeout(() => {
+        $(this).addClass(anim)
+      })
+
+      // 恢复渐隐
+      if (anim === 'layui-anim-fadeout') {
         setTimeout(() => {
-          $(this).addClass(anim)
-        })
-
-        // 恢复渐隐
-        if (anim === 'layui-anim-fadeout') {
-          setTimeout(() => {
-            $(this).removeClass(anim)
-          }, 1300)
-        }
-      },
-    )
+          $(this).removeClass(anim)
+        }, 1300)
+      }
+    })
   })
 </script>

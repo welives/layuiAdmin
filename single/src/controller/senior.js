@@ -9354,19 +9354,7 @@ layui.define(['admin', 'echarts'], (exports) => {
           {
             type: 'category',
             show: false,
-            data: [
-              'Line',
-              'Bar',
-              'Scatter',
-              'K',
-              'Pie',
-              'Radar',
-              'Chord',
-              'Force',
-              'Map',
-              'Gauge',
-              'Funnel',
-            ],
+            data: ['Line', 'Bar', 'Scatter', 'K', 'Pie', 'Radar', 'Chord', 'Force', 'Map', 'Gauge', 'Funnel'],
           },
         ],
         yAxis: [
@@ -9415,11 +9403,7 @@ layui.define(['admin', 'echarts'], (exports) => {
                 trigger: 'item',
                 backgroundColor: 'rgba(0,0,0,0)',
                 formatter: function (params) {
-                  return (
-                    '<img src="' +
-                    params.data.symbol.replace('image://', '') +
-                    '"/>'
-                  )
+                  return '<img src="' + params.data.symbol.replace('image://', '') + '"/>'
                 },
               },
               data: [
@@ -9473,18 +9457,7 @@ layui.define(['admin', 'echarts'], (exports) => {
             axisLabel: { show: false },
             axisTick: { show: false },
             splitLine: { show: false },
-            data: [
-              'ten',
-              'nine',
-              'eight',
-              'seven',
-              'six',
-              'five',
-              'four',
-              'three',
-              'two',
-              'one',
-            ],
+            data: ['ten', 'nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two', 'one'],
           },
         ],
         series: [

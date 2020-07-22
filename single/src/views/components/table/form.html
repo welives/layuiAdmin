@@ -13,11 +13,7 @@
       <div class="layui-card">
         <div class="layui-card-header">加入表单元素</div>
         <div class="layui-card-body">
-          <table
-            class="layui-hide"
-            id="LAY-id-table-form"
-            lay-filter="LAY-filter-table-form"
-          ></table>
+          <table class="layui-hide" id="LAY-id-table-form" lay-filter="LAY-filter-table-form"></table>
           <script type="text/html" id="LAY-id-sexTpl">
             <!-- 这里的 checked 的状态只是演示 -->
             <input type="checkbox" name="sex" lay-skin="switch" lay-text="女|男" lay-filter="LAY-filter-table-sex" value="{{ d.id }}" data-json="{{ encodeURIComponent(JSON.stringify(d)) }}" {{ d.id === 10003 ? 'checked' : '' }}>

@@ -33,10 +33,7 @@ layui.define((exports) => {
           elemDataView = $('#LAY-index-dataview').children('div'),
           // 渲染图表
           renderDataView = (index) => {
-            echartsApp[index] = echarts.init(
-              elemDataView[index],
-              layui.echartsTheme,
-            )
+            echartsApp[index] = echarts.init(elemDataView[index], layui.echartsTheme)
             echartsApp[index].setOption(res.data.echarts[index])
             window.onresize = echartsApp[index].resize
           }

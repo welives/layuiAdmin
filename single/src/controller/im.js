@@ -111,9 +111,7 @@ layui.define('layim', (exports) => {
     //console.log(data);
 
     if (To.type === 'friend') {
-      layim.setChatStatus(
-        '<span class="layui-text-red">对方正在输入。。。</span>',
-      )
+      layim.setChatStatus('<span class="layui-text-red">对方正在输入。。。</span>')
     }
 
     //演示自动回复
@@ -122,11 +120,7 @@ layui.define('layim', (exports) => {
       if (To.type === 'group') {
         obj = {
           username: `模拟群员${(Math.random() * 100) | 0}`,
-          avatar:
-            layui.cache.dir +
-            'images/face/' +
-            ((Math.random() * 72) | 0) +
-            '.gif',
+          avatar: layui.cache.dir + 'images/face/' + ((Math.random() * 72) | 0) + '.gif',
           id: To.id,
           type: To.type,
           content: autoReplay[(Math.random() * 9) | 0],
@@ -174,8 +168,7 @@ layui.define('layim', (exports) => {
       layim.chat({
         name: '小闲',
         type: 'friend',
-        avatar:
-          '//tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg',
+        avatar: '//tva3.sinaimg.cn/crop.0.0.180.180.180/7f5f6861jw1e8qgp5bmzyj2050050aa8.jpg',
         id: 1008612,
       })
       layer.msg('也就是说，此人可以不在好友面板里')
@@ -198,8 +191,7 @@ layui.define('layim', (exports) => {
         avatar: '//tp3.sinaimg.cn/1223762662/180/5741707953/0',
         id: '76543',
         type: 'friend',
-        content:
-          'audio[http://gddx.sc.chinaz.com/Files/DownLoad/sound1/201510/6473.mp3]',
+        content: 'audio[http://gddx.sc.chinaz.com/Files/DownLoad/sound1/201510/6473.mp3]',
         timestamp: new Date().getTime(),
       })
     },
@@ -218,8 +210,7 @@ layui.define('layim', (exports) => {
       //接受临时会话消息
       layim.getMessage({
         username: '小酱',
-        avatar:
-          '//tva1.sinaimg.cn/crop.7.0.736.736.50/bd986d61jw8f5x8bqtp00j20ku0kgabx.jpg',
+        avatar: '//tva1.sinaimg.cn/crop.7.0.736.736.50/bd986d61jw8f5x8bqtp00j20ku0kgabx.jpg',
         id: '198909151014',
         type: 'friend',
         content: `临时：${new Date().getTime()}`,
@@ -230,8 +221,7 @@ layui.define('layim', (exports) => {
       layim.add({
         type: 'friend',
         username: '麻花疼',
-        avatar:
-          '//tva1.sinaimg.cn/crop.0.0.720.720.180/005JKVuPjw8ers4osyzhaj30k00k075e.jpg',
+        avatar: '//tva1.sinaimg.cn/crop.0.0.720.720.180/005JKVuPjw8ers4osyzhaj30k00k075e.jpg',
         submit(group, remark, index) {
           layer.msg(
             '好友申请已发送，请等待对方确认',
@@ -277,8 +267,7 @@ layui.define('layim', (exports) => {
       layim.add({
         type: 'group',
         username: 'LayIM会员群',
-        avatar:
-          '//tva2.sinaimg.cn/crop.0.0.180.180.50/6ddfa27bjw1e8qgp5bmzyj2050050aa8.jpg',
+        avatar: '//tva2.sinaimg.cn/crop.0.0.180.180.50/6ddfa27bjw1e8qgp5bmzyj2050050aa8.jpg',
         submit(group, remark, index) {
           layer.msg(
             '申请已发送，请等待管理员确认',
@@ -311,8 +300,7 @@ layui.define('layim', (exports) => {
         type: 'friend',
         id: 1234560,
         username: '李彦宏', //好友昵称，若申请加群，参数为：groupname
-        avatar:
-          '//tva4.sinaimg.cn/crop.0.0.996.996.180/8b2b4e23jw8f14vkwwrmjj20ro0rpjsq.jpg', //头像
+        avatar: '//tva4.sinaimg.cn/crop.0.0.996.996.180/8b2b4e23jw8f14vkwwrmjj20ro0rpjsq.jpg', //头像
         sign: '全球最大的中文搜索引擎',
       }
       layim.setFriendGroup({
@@ -345,8 +333,7 @@ layui.define('layim', (exports) => {
       //增加一个群组
       layim.addList({
         type: 'group',
-        avatar:
-          '//tva3.sinaimg.cn/crop.64.106.361.361.50/7181dbb3jw8evfbtem8edj20ci0dpq3a.jpg',
+        avatar: '//tva3.sinaimg.cn/crop.64.106.361.361.50/7181dbb3jw8evfbtem8edj20ci0dpq3a.jpg',
         groupname: 'Angular开发',
         id: '12333333',
         members: 0,
@@ -407,7 +394,7 @@ layui.define('layim', (exports) => {
     },
 
     //移动端版本
-    mobile: function () {
+    mobile() {
       let device = layui.device(),
         mobileHome = '/layim/demo/mobile.html'
       if (device.android || device.ios) {
@@ -428,8 +415,7 @@ layui.define('layim', (exports) => {
         photos: {
           data: [
             {
-              src:
-                'http://cdn.layui.com/upload/2016_12/168_1481056358469_50288.png',
+              src: 'http://cdn.layui.com/upload/2016_12/168_1481056358469_50288.png',
             },
           ],
         },

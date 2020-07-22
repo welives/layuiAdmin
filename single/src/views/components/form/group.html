@@ -66,25 +66,13 @@
         <div class="layui-inline">
           <label class="layui-form-label">手机</label>
           <div class="layui-input-inline">
-            <input
-              type="tel"
-              class="layui-input"
-              name="phone"
-              lay-verify="required|phone"
-              autocomplete="off"
-            />
+            <input type="tel" class="layui-input" name="phone" lay-verify="required|phone" autocomplete="off" />
           </div>
         </div>
         <div class="layui-inline">
           <label class="layui-form-label">邮箱</label>
           <div class="layui-input-inline">
-            <input
-              type="text"
-              class="layui-input"
-              name="email"
-              lay-verify="email"
-              autocomplete="off"
-            />
+            <input type="text" class="layui-input" name="email" lay-verify="email" autocomplete="off" />
           </div>
         </div>
       </div>
@@ -92,13 +80,7 @@
         <div class="layui-inline">
           <label class="layui-form-label">多规则验证</label>
           <div class="layui-input-inline">
-            <input
-              type="text"
-              class="layui-input"
-              name="number"
-              lay-verify="required|number"
-              autocomplete="off"
-            />
+            <input type="text" class="layui-input" name="number" lay-verify="required|number" autocomplete="off" />
           </div>
         </div>
         <div class="layui-inline">
@@ -118,49 +100,25 @@
         <div class="layui-inline">
           <label class="layui-form-label">身份证</label>
           <div class="layui-input-inline">
-            <input
-              type="text"
-              class="layui-input"
-              name="identity"
-              lay-verify="identity"
-              autocomplete="off"
-            />
+            <input type="text" class="layui-input" name="identity" lay-verify="identity" autocomplete="off" />
           </div>
         </div>
       </div>
       <div class="layui-form-item">
         <label class="layui-form-label">链接</label>
         <div class="layui-input-block">
-          <input
-            type="text"
-            class="layui-input"
-            name="url"
-            lay-verify="url"
-            autocomplete="off"
-          />
+          <input type="text" class="layui-input" name="url" lay-verify="url" autocomplete="off" />
         </div>
       </div>
       <div class="layui-form-item">
         <label class="layui-form-label">范围</label>
         <div class="layui-input-block">
           <div class="layui-inline">
-            <input
-              type="text"
-              class="layui-input"
-              name="price_min"
-              placeholder="￥"
-              autocomplete="off"
-            />
+            <input type="text" class="layui-input" name="price_min" placeholder="￥" autocomplete="off" />
           </div>
           <div class="layui-inline">-</div>
           <div class="layui-inline">
-            <input
-              type="text"
-              class="layui-input"
-              name="price_max"
-              placeholder="￥"
-              autocomplete="off"
-            />
+            <input type="text" class="layui-input" name="price_max" placeholder="￥" autocomplete="off" />
           </div>
         </div>
       </div>
@@ -256,25 +214,9 @@
       <div class="layui-form-item">
         <label class="layui-form-label">原始复选框</label>
         <div class="layui-input-block">
-          <input
-            type="checkbox"
-            name="like[write]"
-            title="写作"
-            lay-skin="primary"
-          />
-          <input
-            type="checkbox"
-            name="like[read]"
-            title="阅读"
-            lay-skin="primary"
-            checked
-          />
-          <input
-            type="checkbox"
-            name="like[game]"
-            title="游戏"
-            lay-skin="primary"
-          />
+          <input type="checkbox" name="like[write]" title="写作" lay-skin="primary" />
+          <input type="checkbox" name="like[read]" title="阅读" lay-skin="primary" checked />
+          <input type="checkbox" name="like[game]" title="游戏" lay-skin="primary" />
         </div>
       </div>
       <div class="layui-form-item">
@@ -300,21 +242,13 @@
       <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">普通文本域</label>
         <div class="layui-input-block">
-          <textarea
-            name="text"
-            placeholder="请输入内容"
-            class="layui-textarea"
-          ></textarea>
+          <textarea name="text" placeholder="请输入内容" class="layui-textarea"></textarea>
         </div>
       </div>
       <div class="layui-form-item layui-layout-admin">
         <div class="layui-input-block">
           <div class="layui-footer">
-            <button
-              class="layui-btn"
-              lay-submit
-              lay-filter="LAY-filter-form-submit"
-            >
+            <button class="layui-btn" lay-submit lay-filter="LAY-filter-form-submit">
               立即提交
             </button>
             <button type="reset" class="layui-btn layui-btn-primary">
@@ -354,10 +288,7 @@
       layer.msg(this.checked ? '打开' : '关闭', {
         offset: '6px',
       })
-      layer.tips(
-        '温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF',
-        data.othis,
-      )
+      layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
     })
 
     // 监听提交

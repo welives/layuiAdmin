@@ -536,21 +536,11 @@
 .layadmin-homepage-list-imgtxt .media-body .pad-btm .min-font {
   margin-bottom: 10px;
 }
-.layadmin-homepage-list-imgtxt
-  .media-body
-  .pad-btm
-  .min-font
-  .layui-breadcrumb
-  i {
+.layadmin-homepage-list-imgtxt .media-body .pad-btm .min-font .layui-breadcrumb i {
   font-size: 12px;
   padding-right: 5px;
 }
-.layadmin-homepage-list-imgtxt
-  .media-body
-  .pad-btm
-  .min-font
-  .layui-breadcrumb
-  a {
+.layadmin-homepage-list-imgtxt .media-body .pad-btm .min-font .layui-breadcrumb a {
   font-size: 12px;
 }
 .layui-breadcrumb span[lay-separator] {
@@ -617,11 +607,7 @@
   font-weight: 600;
   display: inline-block;
 }
-.layadmin-homepage-list-imgtxt
-  .media-body
-  .media-list
-  .media-text
-  div:nth-child(2) {
+.layadmin-homepage-list-imgtxt .media-body .media-list .media-text div:nth-child(2) {
   margin-top: 5px;
 }
 .layadmin-homepage-list-imgtxt .media-body .media-list .layui-btn {
@@ -742,10 +728,7 @@
 .layadmin-caller-item .layadmin-caller-main .layadmin-social-icon i {
   margin: 0 5px;
 }
-.layadmin-caller-item
-  .layadmin-caller-main
-  .layadmin-social-icon
-  i:first-child {
+.layadmin-caller-item .layadmin-caller-main .layadmin-social-icon i:first-child {
   margin-left: 0;
 }
 .layadmin-caller .layadmin-caller-item button {

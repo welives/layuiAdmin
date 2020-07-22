@@ -25,19 +25,11 @@
                 autocomplete="off"
               />
             </div>
-            <button
-              class="layui-btn"
-              lay-submit
-              lay-filter="LAY-filter-table-search"
-            >
+            <button class="layui-btn" lay-submit lay-filter="LAY-filter-table-search">
               搜索
             </button>
           </div>
-          <table
-            class="layui-hide"
-            id="LAY-id-table-reload"
-            lay-filter="LAY-filter-table-reload"
-          ></table>
+          <table class="layui-hide" id="LAY-id-table-reload" lay-filter="LAY-filter-table-reload"></table>
           <blockquote class="layui-elem-quote">
             此处由于是静态模拟数据，所以搜索后重载的结果没变，这并非是
             BUG。实际使用时改成真实接口并根据搜索的字段筛选出对应的数据即可。

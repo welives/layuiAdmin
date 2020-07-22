@@ -75,11 +75,11 @@
           添加
         </button>
       </div>
-      <table id="LAY-user-list" lay-filter="LAY-filter-user-list"></table>
-      <script type="text/html" id="imgTpl">
+      <table id="LAY-id-user-list" lay-filter="LAY-filter-user-list"></table>
+      <script type="text/html" id="LAY-id-imgTpl">
         <img style="display: inline-block; width: 50%; height: 100%" class="layui-circle" src={{ d.avatar }}>
       </script>
-      <script type="text/html" id="table-tool-userlist">
+      <script type="text/html" id="LAY-id-rowToolTpl">
         <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">
           <i class="layui-icon layui-icon-edit"></i>
           编辑
@@ -103,7 +103,7 @@
       event = {
         // 批量删除
         batchDel() {
-          let checkStatus = table.checkStatus('LAY-user-list'),
+          let checkStatus = table.checkStatus('LAY-id-user-list'),
             checkData = checkStatus.data
 
           if (checkData.length === 0) {
@@ -112,7 +112,7 @@
           layer.confirm('确定删除选中的数据吗?', { icon: 3, title: '提示' }, (index) => {
             //执行 Ajax 后重载
             // $.ajax({})
-            table.reload('LAY-user-list')
+            table.reload('LAY-id-user-list')
             layer.msg('已删除')
           })
         },
@@ -133,7 +133,7 @@
                     let field = data.field
                     //提交 Ajax 成功后，关闭当前弹层并重载表格
                     //$.ajax({});
-                    table.reload('LAY-user-list')
+                    table.reload('LAY-id-user-list')
                     layer.close(index)
                   })
                 })
@@ -149,7 +149,7 @@
     // 监听搜索
     form.on('submit(LAY-filter-user-search)', (data) => {
       let field = data.field
-      table.reload('LAY-user-list', { where: field })
+      table.reload('LAY-id-user-list', { where: field })
     })
 
     // 监听表格顶部按钮点击事件

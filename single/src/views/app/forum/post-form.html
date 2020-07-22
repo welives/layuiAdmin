@@ -1,4 +1,4 @@
-<div class="layui-form" id="LAY-postList-form" lay-filter="LAY-filter-postList-form" style="padding: 20px 30px 0 0;">
+<div class="layui-form" id="LAY-id-postList-form" lay-filter="LAY-filter-postList-form" style="padding: 20px 30px 0 0;">
   <div class="layui-form-item">
     <label class="layui-form-label">发帖人</label>
     <div class="layui-input-inline">
@@ -22,7 +22,7 @@
         <input type="text" class="layui-input" name="avatar" value="{{ d.params.avatar || '' }}" placeholder="请上传图片" autocomplete="off" />
       </script>
     </div>
-    <button class="layui-btn" id="LAY-upload-img">上传图片</button>
+    <button class="layui-btn" id="LAY-id-upload-img">上传图片</button>
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">发帖内容</label>
@@ -33,7 +33,7 @@
     </div>
   </div>
   <div class="layui-form-item layui-text-center">
-    <button class="layui-btn" id="LAY-post-submit" lay-submit lay-filter="LAY-filter-post-submit">
+    <button class="layui-btn" id="LAY-id-post-submit" lay-submit lay-filter="LAY-filter-post-submit">
       提交
     </button>
   </div>
@@ -45,7 +45,7 @@
       upload = layui.upload
 
     upload.render({
-      elem: '#LAY-upload-img',
+      elem: '#LAY-id-upload-img',
       url: setter.api + 'json/upload/demo.json',
       accept: 'images',
       method: 'get',

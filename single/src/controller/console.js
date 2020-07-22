@@ -30,7 +30,7 @@ layui.define((exports) => {
           echartsApp = [],
           carouselIndex = 0,
           // 拿到图表的DOM容器
-          elemDataView = $('#LAY-index-dataview').children('div'),
+          elemDataView = $('#LAY-id-index-dataview').children('div'),
           // 渲染图表
           renderDataView = (index) => {
             echartsApp[index] = echarts.init(elemDataView[index], layui.echartsTheme)
@@ -79,7 +79,7 @@ layui.define((exports) => {
     let table = layui.table
     // 今日热搜
     table.render({
-      elem: '#LAY-index-topSearch', // 渲染容器
+      elem: '#LAY-id-index-topSearch', // 渲染容器
       url: setter.api + 'json/console/top-search.json', // 数据接口
       page: true, // 是否开启分页
       // 表头
@@ -101,7 +101,7 @@ layui.define((exports) => {
 
     // 今日热贴
     table.render({
-      elem: '#LAY-index-topCard',
+      elem: '#LAY-id-index-topCard',
       url: setter.api + 'json/console/top-card.json',
       page: true,
       cellMinWidth: 120,

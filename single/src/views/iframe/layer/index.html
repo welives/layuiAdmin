@@ -30,7 +30,7 @@
     </style>
   </head>
   <body>
-    <input type="text" class="layui-input" placeholder="标记" id="LAY-mark" />
+    <input type="text" class="layui-input" placeholder="标记" id="LAY-id-mark" />
     <div class="layui-btn-container">
       <button class="layui-btn layui-btn-primary" data-type="auto">
         让层自适应iframe
@@ -66,7 +66,7 @@
             // 给父页面传值
             setParent() {
               let id = '#LAY-id-layer-iframe',
-                mark = $('#LAY-mark'),
+                mark = $('#LAY-id-mark'),
                 val = mark.val()
 
               if (val === '') {

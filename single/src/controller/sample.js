@@ -28,6 +28,7 @@ layui.define('echarts', (exports) => {
         let carousel = layui.carousel,
           device = layui.device()
 
+        element.render('progress')
         // 轮播切换
         $('.layadmin-carousel').each(function () {
           carousel.render({
@@ -41,14 +42,12 @@ layui.define('echarts', (exports) => {
           })
         })
 
-        element.render('progress')
-
         // 八卦新闻
-        let elemPlayers = $('#LAY-index1-players').children('div'),
+        let elemPlayers = $('#LAY-id-players').children('div'),
           // 访问量
-          elemPageView = $('#LAY-index2-pageView').children('div'),
+          elemPageView = $('#LAY-id-pageView').children('div'),
           // 全国用户分布图
-          elemUserMap = $('#LAY-index2-userMap').children('div')
+          elemUserMap = $('#LAY-id-userMap').children('div')
 
         elemPlayers[0] && renderDataView(elemPlayers, res.data.players)
         elemPageView[0] && renderDataView(elemPageView, res.data.pageView)
@@ -61,7 +60,7 @@ layui.define('echarts', (exports) => {
   layui.use('table', () => {
     let table = layui.table
     table.render({
-      elem: '#LAY-index2-activeUser',
+      elem: '#LAY-id-activeUser',
       url: setter.api + 'json/home/active-user.json',
       cols: [
         [
@@ -112,7 +111,7 @@ layui.define('echarts', (exports) => {
   layui.use('table', () => {
     let table = layui.table
     table.render({
-      elem: '#LAY-index2-prograss',
+      elem: '#LAY-id-prograss',
       url: setter.api + 'json/home/prograss.json',
       cols: [
         [
@@ -187,7 +186,7 @@ layui.define('echarts', (exports) => {
         '<span>{{ item.date }}</span></p></div></div>{{# }) }}</div>',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index1-updateLogs').html(html)
+      $('#LAY-id-updateLogs').html(html)
     })
   }
 
@@ -205,7 +204,7 @@ layui.define('echarts', (exports) => {
         '<span>{{ item.date }}</span></div></dd>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index2-userNews').html(html)
+      $('#LAY-id-userNews').html(html)
     })
   }
 
@@ -223,7 +222,7 @@ layui.define('echarts', (exports) => {
         '</a></li>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index1-components').html(html)
+      $('#LAY-id-components').html(html)
     })
   }
 
@@ -245,7 +244,7 @@ layui.define('echarts', (exports) => {
         '</p></div></div></div>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index2-cardList').html(html)
+      $('#LAY-id-cardList').html(html)
     })
   }
 
@@ -262,7 +261,7 @@ layui.define('echarts', (exports) => {
         '</li>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index2-userNotes').html(html)
+      $('#LAY-id-userNotes').html(html)
     })
   }
 

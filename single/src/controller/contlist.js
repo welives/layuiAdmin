@@ -18,7 +18,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 文章列表
   table.render({
-    elem: '#LAY-article-list',
+    elem: '#LAY-id-article-list',
     url: setter.api + 'json/content/article.json',
     cols: [
       [
@@ -40,14 +40,14 @@ layui.define(['table', 'form'], (exports) => {
           title: '发布状态',
           minWidth: 80,
           align: 'center',
-          templet: '#statusTpl',
+          templet: '#LAY-id-statusTpl',
         },
         {
           title: '操作',
           minWidth: 150,
           align: 'center',
           fixed: 'right',
-          toolbar: '#toolTpl',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -81,7 +81,7 @@ layui.define(['table', 'form'], (exports) => {
                 let field = data.field
                 //提交 Ajax 成功后，静态更新表格中的数据
                 // $.ajax({})
-                table.reload('LAY-article-list') // 数据刷新
+                table.reload('LAY-id-article-list') // 数据刷新
                 layer.close(index) // 关闭弹层
               })
             })
@@ -97,7 +97,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 分类管理
   table.render({
-    elem: '#LAY-tags-list',
+    elem: '#LAY-id-tags-list',
     url: setter.api + 'json/content/tags.json',
     cols: [
       [
@@ -109,7 +109,7 @@ layui.define(['table', 'form'], (exports) => {
           width: 150,
           align: 'center',
           fixed: 'right',
-          templet: '#toolTpl',
+          templet: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -151,7 +151,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 评论管理
   table.render({
-    elem: '#LAY-comment-list',
+    elem: '#LAY-id-comment-list',
     url: setter.api + 'json/content/comment.json',
     cols: [
       [
@@ -173,7 +173,7 @@ layui.define(['table', 'form'], (exports) => {
           width: 150,
           align: 'center',
           fixed: 'right',
-          toolbar: '#toolTpl',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],

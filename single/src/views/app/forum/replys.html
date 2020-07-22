@@ -51,11 +51,11 @@
               删除
             </button>
           </div>
-          <table id="LAY-reply-list" lay-filter="LAY-filter-reply-list"></table>
-          <script type="text/html" id="avatarTpl">
+          <table id="LAY-id-reply-list" lay-filter="LAY-filter-reply-list"></table>
+          <script type="text/html" id="LAY-id-avatarTpl">
             <img class="layui-circle" src={{ d.avatar }} style="display: inline-block" width="50%" height="100%">
           </script>
-          <script type="text/html" id="toolTpl">
+          <script type="text/html" id="LAY-id-rowToolTpl">
             <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</button>
             <button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</button>
           </script>
@@ -72,14 +72,14 @@
       table = layui.table,
       event = {
         batchDel() {
-          let checkStatus = table.checkStatus('LAY-reply-list'),
+          let checkStatus = table.checkStatus('LAY-id-reply-list'),
             checkData = checkStatus.data
 
           if (checkData.length === 0) return layer.msg('请选择数据')
           layer.confirm('确定删除选中的数据吗', { icon: 3, title: '提示' }, (index) => {
             //执行 Ajax 后重载
             // $.ajax({})
-            table.reload('LAY-reply-list')
+            table.reload('LAY-id-reply-list')
             layer.msg('已删除')
           })
         },
@@ -90,7 +90,7 @@
     // 监听搜索
     form.on('submit(LAY-filter-replys-search)', (data) => {
       let field = data.field
-      table.reload('LAY-reply-list', { where: field })
+      table.reload('LAY-id-reply-list', { where: field })
     })
 
     $('.layadmin-btn-replys').on('click', function () {

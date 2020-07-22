@@ -72,13 +72,13 @@
           </div>
         </div>
         <div class="layui-card-body">
-          <table id="LAY-order-list" lay-filter="LAY-filter-order-list"></table>
-          <script type="text/html" id="progressTpl">
+          <table id="LAY-id-order-list" lay-filter="LAY-filter-order-list"></table>
+          <script type="text/html" id="LAY-id-progressTpl">
             <div class="layui-progress layadmin-order-progress" lay-filter="LAY-filter-progress-{{ d.orderid }}" lay-showPercent="yes">
               <div class="layui-progress-bar layui-bg-blue" lay-percent={{ d.progress }}></div>
             </div>
           </script>
-          <script type="text/html" id="stateTpl">
+          <script type="text/html" id="LAY-id-stateTpl">
             {{# if( d.state==='已处理' ){ }}
               <button class="layui-btn layui-btn-normal layui-btn-xs">已处理</button>
             {{# }else if( d.state=== '未分配' ){ }}
@@ -87,7 +87,7 @@
               <button class="layui-btn layui-btn-warm layui-btn-xs">处理中</button>
             {{# } }}
           </script>
-          <script type="text/html" id="toolTpl">
+          <script type="text/html" id="LAY-id-rowToolTpl">
             <button class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit">
               <i class="layui-icon layui-icon-edit"></i>编辑
             </button>
@@ -108,7 +108,7 @@
     admin.setInputFocusEnd($('.layui-form').find('[name=orderid]'))
     form.on('submit(LAY-filter-order-search)', (data) => {
       let field = data.field
-      table.reload('LAY-order-list', { where: field })
+      table.reload('LAY-id-order-list', { where: field })
     })
   })
 </script>

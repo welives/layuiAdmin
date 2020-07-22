@@ -18,20 +18,20 @@ layui.define(['table', 'form'], (exports) => {
 
   // 用户列表
   table.render({
-    elem: '#LAY-user-list',
+    elem: '#LAY-id-user-list',
     url: setter.api + 'json/user/userList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
         { field: 'id', title: 'ID', width: 80, sort: true },
         { field: 'username', title: '用户名', minWidth: 100 },
-        { field: 'avatar', title: '头像', width: 100, templet: '#imgTpl' },
+        { field: 'avatar', title: '头像', width: 100, templet: '#LAY-id-imgTpl' },
         { field: 'phone', title: '手机' },
         { field: 'email', title: '邮箱' },
         { field: 'sex', title: '性别', width: 80 },
         { field: 'ip', title: 'IP地址' },
         {
-          field: 'jointime',
+          field: 'joinTime',
           title: '加入时间',
           sort: true,
           templet: (d) => {
@@ -43,7 +43,7 @@ layui.define(['table', 'form'], (exports) => {
           width: 160,
           align: 'center',
           fixed: 'right',
-          toolbar: '#table-tool-userlist',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -55,7 +55,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 监听用户列表行工具事件
   table.on('tool(LAY-filter-user-list)', (obj) => {
-    // 注：tool 是工具条事件名，LAY-user-list 是 table 原始容器的属性 lay-filter="对应的值"
+    // 注：tool 是工具条事件名，LAY-id-user-list 是 table 原始容器的属性 lay-filter="对应的值"
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr) // 获得当前行 tr 的 DOM 对象
 
@@ -81,7 +81,7 @@ layui.define(['table', 'form'], (exports) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-user-list')
+                table.reload('LAY-id-user-list')
                 layer.close(index)
               })
             })
@@ -92,7 +92,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 管理员列表
   table.render({
-    elem: '#LAY-admin-list',
+    elem: '#LAY-id-admin-list',
     url: setter.api + 'json/admin/adminList.json',
     cols: [
       [
@@ -103,7 +103,7 @@ layui.define(['table', 'form'], (exports) => {
         { field: 'email', title: '邮箱' },
         { field: 'role', title: '角色' },
         {
-          field: 'jointime',
+          field: 'joinTime',
           title: '加入时间',
           sort: true,
           templet: (d) => {
@@ -113,7 +113,7 @@ layui.define(['table', 'form'], (exports) => {
         {
           field: 'check',
           title: '审核状态',
-          templet: '#buttonTpl',
+          templet: '#LAY-id-checkTpl',
           width: 100,
           align: 'center',
         },
@@ -122,7 +122,7 @@ layui.define(['table', 'form'], (exports) => {
           width: 160,
           align: 'center',
           fixed: 'right',
-          toolbar: '#table-tool-adminlist',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -160,7 +160,7 @@ layui.define(['table', 'form'], (exports) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-admin-list')
+                table.reload('LAY-id-admin-list')
                 layer.close(index)
               })
             })
@@ -171,7 +171,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 角色列表
   table.render({
-    elem: '#LAY-role-list',
+    elem: '#LAY-id-role-list',
     url: setter.api + 'json/role/roleList.json',
     cols: [
       [
@@ -184,7 +184,7 @@ layui.define(['table', 'form'], (exports) => {
           field: 'check',
           title: '审核状态',
           width: 100,
-          templet: '#buttonTpl',
+          templet: '#LAY-id-checkTpl',
           align: 'center',
         },
         {
@@ -192,7 +192,7 @@ layui.define(['table', 'form'], (exports) => {
           width: 160,
           align: 'center',
           fixed: 'right',
-          toolbar: '#table-tool-rolelist',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -230,7 +230,7 @@ layui.define(['table', 'form'], (exports) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-role-list')
+                table.reload('LAY-id-role-list')
                 layer.close(index)
               })
             })

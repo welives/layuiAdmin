@@ -13,7 +13,7 @@ layui.define(['form', 'upload'], (exports) => {
     admin = layui.admin,
     form = layui.form,
     upload = layui.upload,
-    avatarSrc = $('#LAY-avatar-src')
+    avatarSrc = $('#LAY-id-avatar-src')
 
   // 自定义验证
   form.verify({
@@ -26,7 +26,7 @@ layui.define(['form', 'upload'], (exports) => {
     pass: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'],
     // 确认密码
     repass(value) {
-      if (value !== $('#LAY-new-password').val()) return '两次密码输入不一致'
+      if (value !== $('#LAY-id-new-password').val()) return '两次密码输入不一致'
     },
   })
 
@@ -60,7 +60,7 @@ layui.define(['form', 'upload'], (exports) => {
 
   // 上传头像
   upload.render({
-    elem: '#LAY-avatar-upload',
+    elem: '#LAY-id-avatar-upload',
     url: setter.api + 'json/upload/demo.json',
     method: 'get',
     done(res) {

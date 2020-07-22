@@ -81,15 +81,15 @@
               添加
             </button>
           </div>
-          <table id="LAY-article-list" lay-filter="LAY-filter-article-list"></table>
-          <script type="text/html" id="statusTpl">
+          <table id="LAY-id-article-list" lay-filter="LAY-filter-article-list"></table>
+          <script type="text/html" id="LAY-id-statusTpl">
             {{# if(d.status){ }}
             <button class="layui-btn layui-btn-xs">已发布</button>
             {{# }else{ }}
             <button class="layui-btn layui-btn-xs layui-btn-primary">待修改</button>
             {{# } }}
           </script>
-          <script type="text/html" id="toolTpl">
+          <script type="text/html" id="LAY-id-rowToolTpl">
             <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</button>
             <button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</button>
           </script>
@@ -99,7 +99,7 @@
   </div>
 </div>
 <script>
-  layui.use('contlist', layui.factory('contlist')).use('contlist', () => {
+  layui.use('contlist', layui.factory('contlist')).use('table', () => {
     let $ = layui.$,
       view = layui.view,
       admin = layui.admin,
@@ -107,14 +107,14 @@
       table = layui.table,
       event = {
         batchDel() {
-          let checkStatus = table.checkStatus('LAY-article-list'),
+          let checkStatus = table.checkStatus('LAY-id-article-list'),
             checkData = checkStatus.data
 
           if (checkData.length === 0) return layer.msg('请选择数据')
           layer.confirm('确定删除选中的数据吗', { icon: 3, title: '提示' }, (index) => {
             //执行 Ajax 后重载
             // $.ajax({})
-            table.reload('LAY-article-list')
+            table.reload('LAY-id-article-list')
             layer.msg('已删除')
           })
         },
@@ -134,7 +134,7 @@
                     let field = data.field
                     //提交 Ajax 成功后，静态更新表格中的数据
                     // $.ajax({})
-                    table.reload('LAY-article-list') // 数据刷新
+                    table.reload('LAY-id-article-list') // 数据刷新
                     layer.close(index) // 关闭弹层
                   })
                 })
@@ -148,7 +148,7 @@
     // 监听搜索
     form.on('submit(LAY-filter-article-search)', (data) => {
       let field = data.field
-      table.reload('LAY-article-list', { where: field })
+      table.reload('LAY-id-article-list', { where: field })
     })
 
     $('.layadmin-btn-list').on('click', function () {

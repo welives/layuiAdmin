@@ -18,15 +18,15 @@ layui.define(['admin', 'table', 'util'], (exports) => {
     tabs = {
       all: {
         text: '全部消息',
-        id: 'LAY-message-all',
+        id: 'LAY-id-message-all',
       },
       notice: {
         text: '通知',
-        id: 'LAY-message-notice',
+        id: 'LAY-id-message-notice',
       },
       direct: {
         text: '私信',
-        id: 'LAY-message-direct',
+        id: 'LAY-id-message-direct',
       },
     }
   // 全部消息
@@ -40,7 +40,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
           field: 'title',
           title: '标题内容',
           minWidth: 300,
-          templet: '#titleTpl',
+          templet: '#LAY-id-titleTpl',
         },
         {
           field: 'time',
@@ -64,7 +64,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
           field: 'title',
           title: '标题内容',
           minWidth: 300,
-          templet: '#titleTpl',
+          templet: '#LAY-id-titleTpl',
         },
         {
           field: 'time',
@@ -88,7 +88,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
           field: 'title',
           title: '标题内容',
           minWidth: 300,
-          templet: '#titleTpl',
+          templet: '#LAY-id-titleTpl',
         },
         {
           field: 'time',

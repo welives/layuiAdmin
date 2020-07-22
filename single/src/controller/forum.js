@@ -18,7 +18,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 帖子列表
   table.render({
-    elem: '#LAY-post-list',
+    elem: '#LAY-id-post-list',
     url: setter.api + 'json/forum/post.json',
     cols: [
       [
@@ -29,7 +29,7 @@ layui.define(['table', 'form'], (exports) => {
           field: 'avatar',
           title: '头像',
           width: 100,
-          templet: '#avatarTpl',
+          templet: '#LAY-id-avatarTpl',
         },
         { field: 'content', title: '发帖内容' },
         {
@@ -45,14 +45,14 @@ layui.define(['table', 'form'], (exports) => {
           title: '置顶',
           minWidth: 80,
           align: 'center',
-          templet: '#topTpl',
+          templet: '#LAY-id-topTpl',
         },
         {
           title: '操作',
           width: 150,
           align: 'center',
           fixed: 'right',
-          toolbar: '#toolTpl',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -82,7 +82,7 @@ layui.define(['table', 'form'], (exports) => {
                 let field = data.field
                 //提交 Ajax 成功后，静态更新表格中的数据
                 // $.ajax({})
-                table.reload('LAY-post-list') // 数据刷新
+                table.reload('LAY-id-post-list') // 数据刷新
                 layer.close(index) // 关闭弹层
               })
             })
@@ -98,7 +98,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 回帖列表
   table.render({
-    elem: '#LAY-reply-list',
+    elem: '#LAY-id-reply-list',
     url: setter.api + 'json/forum/replys.json',
     cols: [
       [
@@ -106,7 +106,7 @@ layui.define(['table', 'form'], (exports) => {
         { field: 'id', title: 'ID', width: 100, sort: true },
         { field: 'replyer', title: '回帖人' },
         { field: 'cardid', title: '回帖ID', sort: true },
-        { field: 'avatar', title: '头像', width: 100, templet: '#avatarTpl' },
+        { field: 'avatar', title: '头像', width: 100, templet: '#LAY-id-avatarTpl' },
         { field: 'content', title: '回帖内容', width: 200 },
         {
           field: 'replyTime',
@@ -121,7 +121,7 @@ layui.define(['table', 'form'], (exports) => {
           width: 150,
           align: 'center',
           fixed: 'right',
-          toolbar: '#toolTpl',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -151,7 +151,7 @@ layui.define(['table', 'form'], (exports) => {
                 let field = data.field
                 //提交 Ajax 成功后，静态更新表格中的数据
                 // $.ajax({})
-                table.reload('LAY-reply-list') // 数据刷新
+                table.reload('LAY-id-reply-list') // 数据刷新
                 layer.close(index) // 关闭弹层
               })
             })

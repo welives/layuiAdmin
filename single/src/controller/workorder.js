@@ -17,7 +17,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
     element = layui.element
 
   table.render({
-    elem: '#LAY-order-list',
+    elem: '#LAY-id-order-list',
     url: setter.api + 'json/workorder/order.json',
     cols: [
       [
@@ -30,7 +30,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
           title: '进度',
           width: 200,
           align: 'center',
-          templet: '#progressTpl',
+          templet: '#LAY-id-progressTpl',
         },
         { field: 'submit', title: '提交者', width: 100 },
         { field: 'accept', title: '受理人员', width: 100 },
@@ -39,9 +39,9 @@ layui.define(['table', 'form', 'element'], (exports) => {
           title: '工单状态',
           minWidth: 80,
           align: 'center',
-          templet: '#stateTpl',
+          templet: '#LAY-id-stateTpl',
         },
-        { title: '操作', align: 'center', fixed: 'right', toolbar: '#toolTpl' },
+        { title: '操作', align: 'center', fixed: 'right', toolbar: '#LAY-id-rowToolTpl' },
       ],
     ],
     page: true,
@@ -80,7 +80,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-order-list')
+                table.reload('LAY-id-order-list')
                 layer.close(index)
               })
             })

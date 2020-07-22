@@ -390,7 +390,7 @@
   z-index: 1000;
 }
 
-/* 弹出面板 */
+/* 弹出面板基础样式 */
 .layui-layer-admin .layui-layer-title {
   height: 50px;
   line-height: 50px;
@@ -411,8 +411,8 @@
   font-style: normal;
 }
 
-/* 右侧面板 */
-.layui-layer-admin-right {
+/* 右侧面板基础样式 */
+.layui-layer-popup-right {
   top: 50px !important;
   bottom: 0;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);

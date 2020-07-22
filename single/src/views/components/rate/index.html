@@ -12,35 +12,35 @@
       <div class="layui-card">
         <div class="layui-card-header">基础效果</div>
         <div class="layui-card-body">
-          <div id="LAY-rate-base"></div>
+          <div id="LAY-id-rate-base"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">显示文字</div>
         <div class="layui-card-body">
-          <div id="LAY-rate-text"></div>
+          <div id="LAY-id-rate-text"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">半星效果</div>
         <div class="layui-card-body">
-          <div id="LAY-rate-half1"></div>
+          <div id="LAY-id-rate-half1"></div>
           <br />
-          <div id="LAY-rate-half2"></div>
+          <div id="LAY-id-rate-half2"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">自定义主题色</div>
         <div class="layui-card-body">
-          <div id="LAY-rate-theme1"></div>
+          <div id="LAY-id-rate-theme1"></div>
           <br />
-          <div id="LAY-rate-theme2"></div>
+          <div id="LAY-id-rate-theme2"></div>
           <br />
-          <div id="LAY-rate-theme3"></div>
+          <div id="LAY-id-rate-theme3"></div>
           <br />
-          <div id="LAY-rate-theme4"></div>
+          <div id="LAY-id-rate-theme4"></div>
           <br />
-          <div id="LAY-rate-theme5"></div>
+          <div id="LAY-id-rate-theme5"></div>
         </div>
       </div>
     </div>
@@ -48,23 +48,23 @@
       <div class="layui-card">
         <div class="layui-card-header">只读</div>
         <div class="layui-card-body">
-          <div id="LAY-rate-readonly"></div>
+          <div id="LAY-id-rate-readonly"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">自定义内容</div>
         <div class="layui-card-body">
-          <div id="LAY-rate-custom-content1"></div>
+          <div id="LAY-id-rate-custom-content1"></div>
           <br />
-          <div id="LAY-rate-custom-content2"></div>
+          <div id="LAY-id-rate-custom-content2"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">自定义长度</div>
         <div class="layui-card-body">
-          <div id="LAY-rate-custom-length1"></div>
+          <div id="LAY-id-rate-custom-length1"></div>
           <br />
-          <div id="LAY-rate-custom-length2"></div>
+          <div id="LAY-id-rate-custom-length2"></div>
         </div>
       </div>
     </div>
@@ -77,35 +77,35 @@
 
     // 基础效果
     rate.render({
-      elem: '#LAY-rate-base',
+      elem: '#LAY-id-rate-base',
     })
     // 显示文字
     rate.render({
-      elem: '#LAY-rate-text',
+      elem: '#LAY-id-rate-text',
       value: 2, // 初始值
       text: true, // 开启文本
     })
     // 半星效果
     rate.render({
-      elem: '#LAY-rate-half1',
+      elem: '#LAY-id-rate-half1',
       value: 2.5,
       half: true,
     })
     rate.render({
-      elem: '#LAY-rate-half2',
+      elem: '#LAY-id-rate-half2',
       value: 3.5,
       half: true,
       text: true,
     })
     // 只读
     rate.render({
-      elem: '#LAY-rate-readonly',
+      elem: '#LAY-id-rate-readonly',
       value: 4,
       readonly: true,
     })
     // 自定义内容
     rate.render({
-      elem: '#LAY-rate-custom-content1',
+      elem: '#LAY-id-rate-custom-content1',
       value: 3,
       text: true,
       setText(value) {
@@ -120,7 +120,7 @@
       },
     })
     rate.render({
-      elem: '#LAY-rate-custom-content2',
+      elem: '#LAY-id-rate-custom-content2',
       value: 1.5,
       half: true,
       text: true,
@@ -130,37 +130,37 @@
     })
     // 自定义长度
     rate.render({
-      elem: '#LAY-rate-custom-length1',
+      elem: '#LAY-id-rate-custom-length1',
       length: 3,
     })
     rate.render({
-      elem: '#LAY-rate-custom-length2',
+      elem: '#LAY-id-rate-custom-length2',
       length: 10,
       value: 8,
     })
     // 自定义主题色
     rate.render({
-      elem: '#LAY-rate-theme1',
+      elem: '#LAY-id-rate-theme1',
       value: 3,
       theme: '#FF8000',
     })
     rate.render({
-      elem: '#LAY-rate-theme2',
+      elem: '#LAY-id-rate-theme2',
       value: 3,
       theme: '#009688',
     })
     rate.render({
-      elem: '#LAY-rate-theme3',
+      elem: '#LAY-id-rate-theme3',
       value: 3,
       theme: '#1e9fff',
     })
     rate.render({
-      elem: '#LAY-rate-theme4',
+      elem: '#LAY-id-rate-theme4',
       value: 3,
       theme: '#2f4056',
     })
     rate.render({
-      elem: '#LAY-rate-theme5',
+      elem: '#LAY-id-rate-theme5',
       value: 3,
       theme: '#FE0000',
     })

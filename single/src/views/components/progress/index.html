@@ -95,16 +95,10 @@
             <div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div>
           </div>
           <div class="layui-btn-container">
-            <button
-              class="layui-btn layadmin-progress-control"
-              data-type="setPercent"
-            >
+            <button class="layui-btn" data-type="setPercent">
               设置50%
             </button>
-            <button
-              class="layui-btn layadmin-progress-control"
-              data-type="loading"
-            >
+            <button class="layui-btn" data-type="loading">
               模拟loading
             </button>
           </div>
@@ -157,7 +151,7 @@
     element.render('progress')
 
     // 监听自定义事件
-    $('.layadmin-progress-control').on('click', function () {
+    $('.layui-btn-container .layui-btn').on('click', function () {
       let type = $(this).data('type')
       event[type] && event[type].call(this, $(this))
     })

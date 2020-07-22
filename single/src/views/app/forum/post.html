@@ -10,7 +10,10 @@
   <div class="layui-row layui-col-space10">
     <div class="layui-col-md12">
       <div class="layui-card">
-        <div class="layui-card-header layui-form layadmin-card-header-auto">
+        <div
+          class="layui-card-header layui-form layadmin-card-header-auto"
+          lay-filter="LAY-filter-post-list"
+        >
           <div class="layui-form-item">
             <div class="layui-inline">
               <label class="layui-form-label">ID</label>
@@ -65,7 +68,7 @@
               <button
                 class="layui-btn layadmin-btn-list"
                 lay-submit
-                lay-filter="LAY-filter-forum-list-search"
+                lay-filter="LAY-filter-post-search"
               >
                 <i
                   class="layui-icon layui-icon-search layadmin-icon-search-btn"
@@ -80,10 +83,7 @@
               删除
             </button>
           </div>
-          <table
-            id="LAY-app-forum-list"
-            lay-filter="LAY-filter-forum-list"
-          ></table>
+          <table id="LAY-post-list" lay-filter="LAY-filter-post-list"></table>
           <script type="text/html" id="avatarTpl">
             <img class="layui-circle" src={{ d.avatar }} style="display: inline-block" width="50%" height="100%">
           </script>
@@ -106,11 +106,12 @@
 <script>
   layui.use('forum', layui.factory('forum')).use('forum', () => {
     let $ = layui.$,
+      admin = layui.admin,
       form = layui.form,
       table = layui.table,
       event = {
         batchDel() {
-          let checkStatus = table.checkStatus('LAY-app-forum-list'),
+          let checkStatus = table.checkStatus('LAY-post-list'),
             checkData = checkStatus.data
 
           if (checkData.length === 0) return layer.msg('请选择数据')
@@ -120,18 +121,19 @@
             (index) => {
               //执行 Ajax 后重载
               // $.ajax({})
-              table.reload('LAY-app-forum-list')
+              table.reload('LAY-post-list')
               layer.msg('已删除')
             },
           )
         },
       }
-    form.render()
+    form.render(null, 'LAY-filter-post-list')
+    admin.setInputFocusEnd($('.layui-form').find('[name=id]'))
 
     // 监听搜索
-    form.on('submit(LAY-filter-forum-list-search)', (data) => {
+    form.on('submit(LAY-filter-post-search)', (data) => {
       let field = data.field
-      table.reload('LAY-app-forum-list', { where: field })
+      table.reload('LAY-post-list', { where: field })
     })
 
     $('.layadmin-btn-list').on('click', function () {

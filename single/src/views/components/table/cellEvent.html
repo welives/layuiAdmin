@@ -18,7 +18,7 @@
           </blockquote>
           <table
             class="layui-hide"
-            id="LAY-table-event"
+            id="LAY-id-table-event"
             lay-filter="LAY-filter-table-event"
           ></table>
         </div>
@@ -32,7 +32,7 @@
       setter = layui.setter
 
     table.render({
-      elem: '#LAY-table-event',
+      elem: '#LAY-id-table-event',
       url: setter.api + 'json/table/user.json',
       cols: [
         [

@@ -20,7 +20,7 @@
                 <input
                   type="text"
                   class="layui-input"
-                  id="LAY-laydate-start"
+                  id="LAY-id-laydate-start"
                   placeholder="开始日期"
                 />
               </div>
@@ -29,7 +29,7 @@
                 <input
                   type="text"
                   class="layui-input"
-                  id="LAY-laydate-end"
+                  id="LAY-id-laydate-end"
                   placeholder="结束日期"
                 />
               </div>
@@ -47,7 +47,7 @@
 
     // 开始日期
     let insStart = laydate.render({
-        elem: '#LAY-laydate-start',
+        elem: '#LAY-id-laydate-start',
         min: 0,
         done(value, date) {
           // 更新结束日期的最小日期
@@ -60,7 +60,7 @@
       }),
       // 结束日期
       insEnd = laydate.render({
-        elem: '#LAY-laydate-end',
+        elem: '#LAY-id-laydate-end',
         min: 0,
         done(value, date) {
           // 更新开始日期的最大日期

@@ -56,37 +56,37 @@
       {
         "user": "胡歌",
         "avatar": "images/logo.gif",
-        "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/'>layuiadmin专区</a> 回答问题",
+        "text": "在 <a class='layui-text-blue' href='http://fly.layui.com/vipclub/list/layuiadmin/' target='_blank'>layuiadmin专区</a> 回答问题",
         "date": "几秒前"
       },
       {
         "user": "彭于晏",
         "avatar": "images/logo.gif",
-        "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/'>layuiadmin专区</a> 进行了 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/column/quiz/'>提问</a>",
+        "text": "在 <a class='layui-text-blue' href='http://fly.layui.com/vipclub/list/layuiadmin/' target='_blank'>layuiadmin专区</a> 进行了 <a class='layui-text-blue' href='http://fly.layui.com/vipclub/list/layuiadmin/column/quiz/' target='_blank'>提问</a>",
         "date": "2天前"
       },
       {
         "user": "贤心",
         "avatar": "images/logo.gif",
-        "text": "将 <a class='layui-text-blue' lay-href='http://www.layui.com/'>layui</a> 更新至 2.3.0 版本",
+        "text": "将 <a class='layui-text-blue' href='http://www.layui.com/' target='_blank'>layui</a> 更新至 2.3.0 版本",
         "date": "7天前"
       },
       {
         "user": "吴尊",
         "avatar": "images/logo.gif",
-        "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/'>Fly社区</a> 发布了 <a class='layui-text-blue' lay-href='http://fly.layui.com/column/suggest/'>建议</a>",
+        "text": "在 <a class='layui-text-blue' href='http://fly.layui.com/' target='_blank'>Fly社区</a> 发布了 <a class='layui-text-blue' href='http://fly.layui.com/column/suggest/' target='_blank'>建议</a>",
         "date": "7天前"
       },
       {
         "user": "许上进",
         "avatar": "images/logo.gif",
-        "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/'>Fly社区</a> 发布了 <a class='layui-text-blue' lay-href='http://fly.layui.com/column/suggest/'>建议</a>",
+        "text": "在 <a class='layui-text-blue' href='http://fly.layui.com/' target='_blank'>Fly社区</a> 发布了 <a class='layui-text-blue' href='http://fly.layui.com/column/suggest/' target='_blank'>建议</a>",
         "date": "8天前"
       },
       {
         "user": "小蚊子",
         "avatar": "images/logo.gif",
-        "text": "在 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/'>layuiadmin专区</a> 进行了 <a class='layui-text-blue' lay-href='http://fly.layui.com/vipclub/list/layuiadmin/column/quiz/'>提问</a>",
+        "text": "在 <a class='layui-text-blue' href='http://fly.layui.com/vipclub/list/layuiadmin/' target='_blank'>layuiadmin专区</a> 进行了 <a class='layui-text-blue' href='http://fly.layui.com/vipclub/list/layuiadmin/column/quiz/' target='_blank'>提问</a>",
         "date": "8天前"
       }
     ],

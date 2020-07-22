@@ -17,7 +17,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
     SHOW = 'layui-show',
     APP_BODY = 'LAY_app_body', // 主体内容容器ID
     // 对外接口
-    view = function (id) {
+    view = (id) => {
       return new Class(id)
     },
     // 构造器
@@ -40,14 +40,14 @@ layui.define(['laytpl', 'layer'], (exports) => {
   }
 
   // 清除 token，并跳转到登入页
-  view.exit = function () {
+  view.exit = () => {
     // 清空本地记录的 token
     layui.data(setter.tableName, {
       key: setter.request.tokenName,
       remove: true,
     })
     // 跳转到登入页
-    location.hash = 'admin/login'
+    location.hash = '/admin/login'
   }
 
   // Ajax请求

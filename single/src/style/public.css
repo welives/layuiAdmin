@@ -392,33 +392,6 @@
 }
 
 /**********
-  404页面
- ***********/
-.layadmin-tips {
-  margin-top: 30px;
-  text-align: center;
-}
-.layadmin-tips .layui-icon {
-  display: inline-block;
-  font-size: 300px;
-}
-.layadmin-tips .layui-text {
-  width: 500px;
-  margin: 30px auto;
-  padding-top: 20px;
-  border-top: 5px solid #009688;
-  font-size: 20px;
-}
-.layadmin-tips h1 {
-  font-size: 100px;
-  line-height: 100px;
-  color: #009688;
-}
-.layadmin-tips .layui-text .layui-anim {
-  display: inline-block;
-}
-
-/**********
   个人主页
  ***********/
 .layadmin-homepage-panel {
@@ -724,6 +697,61 @@
 .layadmin-contact-box .layadmin-address address {
   display: inline-block;
 }
+
+/**********
+  客户列表
+ ***********/
+.layadmin-caller .layadmin-caller-search {
+  position: relative;
+  padding-bottom: 40px;
+}
+.layadmin-caller .layadmin-caller-search .layui-icon-search {
+  position: absolute;
+  top: 9px;
+  left: 6px;
+  font-size: 18px;
+}
+.layadmin-caller .layadmin-caller-search input {
+  padding: 0 32px;
+}
+.layadmin-caller .layadmin-caller-search .layui-icon-close {
+  position: absolute;
+  top: 9px;
+  right: 6px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.layadmin-caller .layui-tab-content .layadmin-caller-item {
+  padding: 20px 0;
+  overflow: hidden;
+  border-bottom: 1px solid #e0e0e0;
+}
+.layadmin-caller-item .layadmin-caller-main {
+  margin-left: 20px;
+}
+.layadmin-caller-item .layadmin-caller-main p:first-child {
+  padding-top: 0;
+}
+.layadmin-caller-item .layadmin-caller-main p {
+  line-height: 100%;
+  padding: 8px 0;
+}
+.layadmin-caller-item .layadmin-caller-main span {
+  margin-left: 5px;
+}
+.layadmin-caller-item .layadmin-caller-main .layadmin-social-icon i {
+  margin: 0 5px;
+}
+.layadmin-caller-item
+  .layadmin-caller-main
+  .layadmin-social-icon
+  i:first-child {
+  margin-left: 0;
+}
+.layadmin-caller .layadmin-caller-item button {
+  margin-top: 22px;
+}
+
 /**********
   商品列表
  ***********/
@@ -753,6 +781,7 @@
   text-align: right;
   float: right;
 }
+
 /**********
   留言板
  ***********/
@@ -795,6 +824,7 @@
   padding: 5px 30px;
   font-size: 16px;
 }
+
 /**********
   搜索结果
  ***********/
@@ -822,6 +852,7 @@
   float: left;
   margin-right: 15px;
 }
+
 /**********
   消息中心
  ***********/
@@ -840,6 +871,7 @@
 .layui-card .layui-tab-brief .layui-tab-content {
   padding: 15px;
 }
+
 /**********
   工单系统
  ***********/
@@ -847,6 +879,7 @@
   position: relative;
   top: 15px;
 }
+
 /**********
   网站设置
  ***********/

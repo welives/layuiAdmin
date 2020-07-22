@@ -13,21 +13,21 @@
       <div class="layui-card">
         <div class="layui-card-header">总页数低于页码总数</div>
         <div class="layui-card-body">
-          <div id="LAY-laypage-demo1"></div>
+          <div id="LAY-id-laypage-demo1"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">总页数大于页码总数</div>
         <div class="layui-card-body">
-          <div id="LAY-laypage-demo2"></div>
+          <div id="LAY-id-laypage-demo2"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">自定义主题 - 颜色随意定义</div>
         <div class="layui-card-body">
-          <div id="LAY-laypage-demo3"></div>
-          <div id="LAY-laypage-demo3-1"></div>
-          <div id="LAY-laypage-demo3-2"></div>
+          <div id="LAY-id-laypage-demo3"></div>
+          <div id="LAY-id-laypage-demo3-1"></div>
+          <div id="LAY-id-laypage-demo3-2"></div>
         </div>
       </div>
       <div class="layui-card">
@@ -35,25 +35,25 @@
           自定义首页、尾页、上一页、下一页文本
         </div>
         <div class="layui-card-body">
-          <div id="LAY-laypage-demo4"></div>
+          <div id="LAY-id-laypage-demo4"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">不显示首页尾页</div>
         <div class="layui-card-body">
-          <div id="LAY-laypage-demo5"></div>
+          <div id="LAY-id-laypage-demo5"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">开启HASH</div>
         <div class="layui-card-body">
-          <div id="LAY-laypage-demo6"></div>
+          <div id="LAY-id-laypage-demo6"></div>
         </div>
       </div>
       <div class="layui-card">
         <div class="layui-card-header">只显示上一页、下一页</div>
         <div class="layui-card-body">
-          <div id="LAY-laypage-demo7"></div>
+          <div id="LAY-id-laypage-demo7"></div>
         </div>
       </div>
     </div>
@@ -66,12 +66,12 @@
 
     // 总页数低于页码总数
     laypage.render({
-      elem: 'LAY-laypage-demo1',
+      elem: 'LAY-id-laypage-demo1',
       count: 50,
     })
     // 总页数大于页码总数
     laypage.render({
-      elem: 'LAY-laypage-demo2',
+      elem: 'LAY-id-laypage-demo2',
       count: 70,
       jump(obj) {
         console.log(obj)
@@ -79,23 +79,23 @@
     })
     // 自定义样式
     laypage.render({
-      elem: 'LAY-laypage-demo3',
+      elem: 'LAY-id-laypage-demo3',
       count: 100,
       theme: '#1e9fff',
     })
     laypage.render({
-      elem: 'LAY-laypage-demo3-1',
+      elem: 'LAY-id-laypage-demo3-1',
       count: 100,
       theme: '#FF5722',
     })
     laypage.render({
-      elem: 'LAY-laypage-demo3-2',
+      elem: 'LAY-id-laypage-demo3-2',
       count: 100,
       theme: '#FFB800',
     })
     // 自定义首页、尾页、上一页、下一页文本
     laypage.render({
-      elem: 'LAY-laypage-demo4',
+      elem: 'LAY-id-laypage-demo4',
       count: 100,
       first: '首页',
       last: '尾页',
@@ -104,21 +104,21 @@
     })
     // 不显示首页尾页
     laypage.render({
-      elem: 'LAY-laypage-demo5',
+      elem: 'LAY-id-laypage-demo5',
       count: 100,
       first: false,
       last: false,
     })
     // 开启HASH
     laypage.render({
-      elem: 'LAY-laypage-demo6',
+      elem: 'LAY-id-laypage-demo6',
       count: 500,
       curr: location.hash.replace('#!fenye=', ''), // 获取hash值为fenye的当前页
       hash: 'fenye', // 自定义hash值
     })
     // 只显示上一页、下一页
     laypage.render({
-      elem: 'LAY-laypage-demo7',
+      elem: 'LAY-id-laypage-demo7',
       count: 50,
       layout: ['prev', 'next'],
       jump(obj, first) {

@@ -1,0 +1,182 @@
+<div class="layui-card layadmin-breadcrumb">
+  <div class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>组件</cite></a>
+    <a><cite>树形组件</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space10">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">基本演示</div>
+        <div class="layui-card-body">
+          <div class="layui-btn-container">
+            <button
+              type="button"
+              class="layui-btn layui-btn-sm"
+              lay-event="getChecked"
+            >
+              获取选中节点数据
+            </button>
+            <button
+              type="button"
+              class="layui-btn layui-btn-sm"
+              lay-event="setChecked"
+            >
+              勾选指定节点
+            </button>
+            <button
+              type="button"
+              class="layui-btn layui-btn-sm"
+              lay-event="reload"
+            >
+              重载实例
+            </button>
+          </div>
+          <div id="LAY-id-tree-demo1"></div>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">常规用法</div>
+        <div class="layui-card-body">
+          <div id="LAY-id-tree-demo2"></div>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">无连接线风格</div>
+        <div class="layui-card-body">
+          <div id="LAY-id-tree-demo3"></div>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">仅节点左侧图标控制收缩</div>
+        <div class="layui-card-body">
+          <div id="LAY-id-tree-demo4"></div>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">手风琴模式</div>
+        <div class="layui-card-body">
+          <div id="LAY-id-tree-demo5"></div>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">点击节点新窗口跳转</div>
+        <div class="layui-card-body">
+          <div id="LAY-id-tree-demo6"></div>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">开启复选框</div>
+        <div class="layui-card-body">
+          <div id="LAY-id-tree-demo7"></div>
+        </div>
+      </div>
+      <div class="layui-card">
+        <div class="layui-card-header">开启节点操作图标</div>
+        <div class="layui-card-body">
+          <div id="LAY-id-tree-demo8"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  layui.use(['tree', 'util'], () => {
+    let $ = layui.$,
+      setter = layui.setter,
+      admin = layui.admin,
+      tree = layui.tree,
+      util = layui.util
+
+    admin.req({
+      url: setter.api + 'json/tree/data.json',
+      success(res) {
+        //基本演示
+        tree.render({
+          elem: '#LAY-id-tree-demo1',
+          data: res.data.base,
+          showCheckbox: true, //是否显示复选框
+          id: 'LAY-id-tree-demoId1',
+          isJump: true, //是否允许点击节点时弹出新窗口跳转
+          click(obj) {
+            let data = obj.data //获取当前点击的节点数据
+            layer.msg(`状态：${obj.state}<br>节点数据：${JSON.stringify(data)}`)
+          },
+        })
+
+        //按钮事件
+        util.event('lay-event', {
+          getChecked(othis) {
+            let checkedData = tree.getChecked('LAY-id-tree-demoId1') //获取选中节点的数据
+            layer.alert(JSON.stringify(checkedData), { shade: 0 })
+            console.log(checkedData)
+          },
+          setChecked() {
+            tree.setChecked('LAY-id-tree-demoId1', [12, 16]) //勾选指定节点
+          },
+          reload() {
+            //重载实例
+            tree.reload('LAY-id-tree-demoId1', {})
+          },
+        })
+
+        //常规用法
+        tree.render({
+          elem: '#LAY-id-tree-demo2', //默认是点击节点可进行收缩
+          data: res.data.city,
+        })
+
+        //无连接线风格
+        tree.render({
+          elem: '#LAY-id-tree-demo3',
+          data: res.data.city,
+          showLine: false, //是否开启连接线
+        })
+
+        //仅节点左侧图标控制收缩
+        tree.render({
+          elem: '#LAY-id-tree-demo4',
+          data: res.data.city,
+          onlyIconControl: true, //是否仅允许节点左侧图标控制展开收缩
+          click(obj) {
+            layer.msg(JSON.stringify(obj.data))
+          },
+        })
+
+        //手风琴模式
+        tree.render({
+          elem: '#LAY-id-tree-demo5',
+          data: res.data.accordion,
+          accordion: true,
+        })
+
+        //点击节点新窗口跳转
+        tree.render({
+          elem: '#LAY-id-tree-demo6',
+          data: res.data.base,
+          isJump: true, //link 为参数匹配
+        })
+
+        //开启复选框
+        tree.render({
+          elem: '#LAY-id-tree-demo7',
+          data: res.data.recipe,
+          showCheckbox: true,
+        })
+
+        //开启节点操作图标
+        tree.render({
+          elem: '#LAY-id-tree-demo8',
+          data: res.data.city,
+          edit: ['add', 'update', 'del'], //操作节点的图标
+          click(obj) {
+            layer.msg(JSON.stringify(obj.data))
+          },
+        })
+      },
+    })
+  })
+</script>

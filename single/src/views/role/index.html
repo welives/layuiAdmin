@@ -8,13 +8,16 @@
 
 <div class="layui-fluid">
   <div class="layui-card">
-    <div class="layui-form layui-card-header layadmin-card-header-auto">
+    <div
+      class="layui-form layui-card-header layadmin-card-header-auto"
+      lay-filter="LAY-filter-role-list"
+    >
       <div class="layui-form-item">
         <div class="layui-inline">
           角色
         </div>
         <div class="layui-inline">
-          <select name="rolename" lay-filter="LAY-filter-role-search">
+          <select name="role" lay-filter="LAY-filter-role-search">
             <option value="-1">全部角色</option>
             <option value="0">管理员</option>
             <option value="1">超级管理员</option>
@@ -63,6 +66,7 @@
     .use(['useradmin', 'table'], () => {
       let $ = layui.$,
         view = layui.view,
+        admin = layui.admin,
         form = layui.form,
         table = layui.table,
         // 表格顶部按钮事件
@@ -92,13 +96,13 @@
               type: 1,
               title: '添加角色',
               id: 'LAY-popup-role-add',
-              area: ['500px', '480px'],
+              area: ['500px', '400px'],
               success(layero, index) {
                 view(this.id)
                   .render('role/list-form')
                   .done(() => {
-                    form.render()
-                    layero.find('[name=descr]').focus()
+                    form.render(null, 'LAY-filter-roleList-form')
+                    admin.setInputFocusEnd(layero.find('[name=descr]'))
                     form.on('submit(LAY-filter-role-submit)', (data) => {
                       let field = data.field
                       //提交 Ajax 成功后，关闭当前弹层并重载表格
@@ -111,7 +115,7 @@
             })
           },
         }
-      form.render()
+      form.render(null, 'LAY-filter-role-list')
 
       // 监听搜索
       form.on('select(LAY-filter-role-search)', (data) => {

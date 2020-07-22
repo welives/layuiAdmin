@@ -9,7 +9,7 @@
 <div class="layui-fluid">
   <div class="layui-row layui-col-space10">
     <script type="text/html" template>
-      {{# for(let i=0; i<15; i++){ }}
+      {{# for(let i=0; i<10; i++){ }}
       <div class="layui-col-md2 layui-col-sm4" style="padding: 10px;">
         <div class="layadmin-goods-container">
           <a href="javascript:;">
@@ -35,7 +35,7 @@
       {{# } }}
     </script>
     <div class="layui-col-md12 layui-col-sm12">
-      <div id="LAY-goods-page" class="layui-text-center"></div>
+      <div id="LAY-id-goods-page" class="layui-text-center"></div>
     </div>
   </div>
 </div>
@@ -44,7 +44,7 @@
     let laypage = layui.laypage
 
     laypage.render({
-      elem: 'LAY-goods-page',
+      elem: 'LAY-id-goods-page',
       count: 50,
     })
   })

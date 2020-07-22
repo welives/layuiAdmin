@@ -1,23 +1,23 @@
 <div
   class="layui-form"
-  lay-filter="LAY-filter-form-role"
   id="LAY-form-role"
+  lay-filter="LAY-filter-roleList-form"
   style="padding: 20px 30px 0 0;"
 >
   <div class="layui-form-item">
     <label class="layui-form-label">角色</label>
     <div class="layui-input-block">
       <script type="text/html" template>
-        <select name="rolename" lay-verify="required">
-          <option value="0" {{ d.params.rolename === 0 ? 'selected' : '' }}>管理员</option>
-          <option value="1" {{ d.params.rolename === 1 ? 'selected' : '' }}>超级管理员</option>
-          <option value="2" {{ d.params.rolename === 2 ? 'selected' : '' }}>纠错员</option>
-          <option value="3" {{ d.params.rolename === 3 ? 'selected' : '' }}>采购员</option>
-          <option value="4" {{ d.params.rolename === 4 ? 'selected' : '' }}>推销员</option>
-          <option value="5" {{ d.params.rolename === 5 ? 'selected' : '' }}>运营人员</option>
-          <option value="6" {{ d.params.rolename === 6 ? 'selected' : '' }}>编辑</option>
-          <option value="7" {{ d.params.rolename === 7 ? 'selected' : '' }}>统计人员</option>
-          <option value="8" {{ d.params.rolename === 8 ? 'selected' : '' }}>评估员</option>
+        <select name="role" lay-verify="required">
+          <option value="0" {{ d.params.role === 0 ? 'selected' : '' }}>管理员</option>
+          <option value="1" {{ d.params.role === 1 ? 'selected' : '' }}>超级管理员</option>
+          <option value="2" {{ d.params.role === 2 ? 'selected' : '' }}>纠错员</option>
+          <option value="3" {{ d.params.role === 3 ? 'selected' : '' }}>采购员</option>
+          <option value="4" {{ d.params.role === 4 ? 'selected' : '' }}>推销员</option>
+          <option value="5" {{ d.params.role === 5 ? 'selected' : '' }}>运营人员</option>
+          <option value="6" {{ d.params.role === 6 ? 'selected' : '' }}>编辑</option>
+          <option value="7" {{ d.params.role === 7 ? 'selected' : '' }}>统计人员</option>
+          <option value="8" {{ d.params.role === 8 ? 'selected' : '' }}>评估员</option>
         </select>
       </script>
     </div>

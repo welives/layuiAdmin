@@ -21,12 +21,12 @@
         <div class="layui-card-header">普通图片上传</div>
         <div class="layui-card-body">
           <div class="layui-upload">
-            <button class="layui-btn" id="LAY-upload-normal">
+            <button class="layui-btn" id="LAY-id-upload-normal">
               上传图片
             </button>
             <div class="layui-upload-list">
-              <img class="layui-upload-img" id="LAY-upload-normal-img" />
-              <p id="LAY-upload-error-text"></p>
+              <img class="layui-upload-img" id="LAY-id-upload-normal-img" />
+              <p id="LAY-id-upload-error-text"></p>
             </div>
           </div>
           <blockquote class="layui-elem-quote">
@@ -38,7 +38,7 @@
         <div class="layui-card-header">上传多张图片</div>
         <div class="layui-card-body">
           <div class="layui-upload">
-            <button class="layui-btn" id="LAY-upload-more">
+            <button class="layui-btn" id="LAY-id-upload-more">
               多图片上传
             </button>
             <blockquote
@@ -46,7 +46,7 @@
               style="margin-top: 10px;"
             >
               预览图：
-              <div class="layui-upload-list" id="LAY-upload-more-list"></div>
+              <div class="layui-upload-list" id="LAY-id-upload-more-list"></div>
             </blockquote>
           </div>
         </div>
@@ -54,16 +54,16 @@
       <div class="layui-card">
         <div class="layui-card-header">指定允许上传的文件类型</div>
         <div class="layui-card-body">
-          <button class="layui-btn" id="LAY-upload-type1">
+          <button class="layui-btn" id="LAY-id-upload-type1">
             <i class="layui-icon layui-icon-upload"></i>上传文件
           </button>
-          <button class="layui-btn layui-btn-primary" id="LAY-upload-type2">
+          <button class="layui-btn layui-btn-primary" id="LAY-id-upload-type2">
             <i class="layui-icon layui-icon-upload"></i>只允许压缩文件
           </button>
-          <button class="layui-btn" id="LAY-upload-type3">
+          <button class="layui-btn" id="LAY-id-upload-type3">
             <i class="layui-icon layui-icon-upload"></i>上传视频
           </button>
-          <button class="layui-btn" id="LAY-upload-type4">
+          <button class="layui-btn" id="LAY-id-upload-type4">
             <i class="layui-icon layui-icon-upload"></i>上传音频
           </button>
         </div>
@@ -71,7 +71,7 @@
       <div class="layui-card">
         <div class="layui-card-header">设定文件大小限制</div>
         <div class="layui-card-body">
-          <button class="layui-btn layui-btn-danger" id="LAY-upload-size">
+          <button class="layui-btn layui-btn-danger" id="LAY-id-upload-size">
             <i class="layui-icon layui-icon-upload"></i>上传图片
           </button>
           <div class="layui-inline layui-word-aux">
@@ -111,12 +111,12 @@
 
     // 普通图片上传
     let uploadInst = upload.render({
-      elem: '#LAY-upload-normal',
+      elem: '#LAY-id-upload-normal',
       url: '/upload/',
       before(obj) {
         // 预读本地文件示例，不支持ie8
         obj.preview((index, file, result) => {
-          $('#LAY-upload-normal-img').attr('src', result) // 图片链接（base64）
+          $('#LAY-id-upload-normal-img').attr('src', result) // 图片链接（base64）
         })
       },
       done(res) {
@@ -125,7 +125,7 @@
         }
       },
       error() {
-        let errorText = $('#LAY-upload-error-text')
+        let errorText = $('#LAY-id-upload-error-text')
         errorText.html(
           `<span class="layui-text-red">上传失败</span> <button class="layui-btn layui-btn-sm">重试</button>`,
         )
@@ -136,12 +136,12 @@
     })
     // 多图片上传
     upload.render({
-      elem: '#LAY-upload-more',
+      elem: '#LAY-id-upload-more',
       url: '/upload/',
       multiple: true,
       before(obj) {
         obj.preview((index, file, result) => {
-          $('#LAY-upload-more-list').append(
+          $('#LAY-id-upload-more-list').append(
             `<img src="${result}" alt="${file.name}" class="layui-upload-img">`,
           )
         })
@@ -152,7 +152,7 @@
     })
     // 指定允许上传的文件类型
     upload.render({
-      elem: '#LAY-upload-type1',
+      elem: '#LAY-id-upload-type1',
       url: '/upload/',
       accept: 'file', // 普通文件
       done(res) {
@@ -160,7 +160,7 @@
       },
     })
     upload.render({
-      elem: '#LAY-upload-type2',
+      elem: '#LAY-id-upload-type2',
       url: '/upload/',
       accept: 'file', // 普通文件
       exts: 'zip|rar|7z', // 只允许上传压缩文件
@@ -169,7 +169,7 @@
       },
     })
     upload.render({
-      elem: '#LAY-upload-type3',
+      elem: '#LAY-id-upload-type3',
       url: '/upload/',
       accept: 'video', // 视频
       done(res) {
@@ -177,7 +177,7 @@
       },
     })
     upload.render({
-      elem: '#LAY-upload-type4',
+      elem: '#LAY-id-upload-type4',
       url: '/upload/',
       accept: 'audio', // 音频
       done(res) {
@@ -186,7 +186,7 @@
     })
     // 设定文件大小限制
     upload.render({
-      elem: '#LAY-upload-size',
+      elem: '#LAY-id-upload-size',
       url: '/upload/',
       size: 60, // 限制文件大小，单位 KB
       done(res) {

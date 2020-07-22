@@ -104,13 +104,13 @@
             </div>
           </div>
           <div class="layui-btn-container">
-            <button class="layui-btn LAY-tabs-control" data-type="add">
+            <button class="layui-btn" data-type="add">
               新增一个项
             </button>
-            <button class="layui-btn LAY-tabs-control" data-type="del">
+            <button class="layui-btn" data-type="del">
               删除：用户管理
             </button>
-            <button class="layui-btn LAY-tabs-control" data-type="change">
+            <button class="layui-btn" data-type="change">
               切换到：权限分配
             </button>
           </div>
@@ -148,8 +148,10 @@
 <script>
   layui.use('element', () => {
     let $ = layui.$,
+      admin = layui.admin,
       element = layui.element,
       router = layui.router(),
+      layid = router.hash.replace(/^#layid=/, ''),
       event = {
         add() {
           // 新增一个Tab项
@@ -170,25 +172,25 @@
         },
       }
 
+    element.render('tab')
+
     // 监听 tab 事件
-    element.on('tab(LAY-filter-tabs-brief)', function (obj) {
-      layer.msg(`${obj.index}: ${this.innerHTML}`)
+    element.on('tab(LAY-filter-tabs-brief)', function (el) {
+      layer.msg(`${el.index}: ${this.innerHTML}`)
     })
 
     // 监听自定义事件
-    $('.LAY-tabs-control').on('click', function () {
+    $('.layui-btn-container .layui-btn').on('click', function () {
       let type = $(this).data('type')
       event[type] && event[type].call(this, $(this))
     })
 
-    // Hash地址的定位
-    let layid = router.hash.replace(/^#layid=/, '')
-    layid && element.tabChange('LAY-filter-tabs-hash', layid)
-
-    element.on('tab(LAY-filter-tabs-hash)', function (elem) {
-      location.hash = `/${layui.router().path.join('/')}#layid=${$(this).attr(
-        'lay-id',
-      )}`
+    element.on('tab(LAY-filter-tabs-hash)', function (el) {
+      let href = router.path.join('/') + '#layid=' + $(this).attr('lay-id')
+      location.hash = admin.correctRouter(href)
     })
+
+    // Hash地址的定位
+    layid && element.tabChange('LAY-filter-tabs-hash', layid)
   })
 </script>

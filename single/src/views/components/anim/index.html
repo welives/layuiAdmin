@@ -7,14 +7,14 @@
 </div>
 
 <style>
-  #LAY-anim-example .layui-card-body {
+  #LAY-id-anim-example .layui-card-body {
     padding: 15px;
   }
-  #LAY-anim-example .LAY-anim-demo {
+  #LAY-id-anim-example .LAY-anim-demo {
     margin-bottom: 50px;
     font-size: 0;
   }
-  #LAY-anim-example .LAY-anim-demo li {
+  #LAY-id-anim-example .LAY-anim-demo li {
     display: inline-block;
     vertical-align: middle;
     width: 222px;
@@ -29,21 +29,21 @@
     transition: all 0.3s;
     -webkit-transition: all 0.3s;
   }
-  #LAY-anim-example .LAY-anim-demo li .layui-icon {
+  #LAY-id-anim-example .LAY-anim-demo li .layui-icon {
     display: inline-block;
     font-size: 36px;
   }
-  #LAY-anim-example .LAY-anim-demo li .fontclass {
+  #LAY-id-anim-example .LAY-anim-demo li .fontclass {
     display: none;
   }
-  #LAY-anim-example .LAY-anim-demo li .name {
+  #LAY-id-anim-example .LAY-anim-demo li .name {
     color: #c2c2c2;
   }
-  #LAY-anim-example .LAY-anim-demo li:hover {
+  #LAY-id-anim-example .LAY-anim-demo li:hover {
     background-color: #f2f2f2;
     color: #000;
   }
-  #LAY-anim-example .LAY-anim-demo .layui-anim {
+  #LAY-id-anim-example .LAY-anim-demo .layui-anim {
     width: 150px;
     height: 150px;
     line-height: 150px;
@@ -55,7 +55,7 @@
   }
 </style>
 
-<div class="layui-fluid" id="LAY-anim-example">
+<div class="layui-fluid" id="LAY-id-anim-example">
   <div class="layui-row layui-col-space10">
     <div class="layui-col-md12">
       <div class="layui-card">
@@ -136,23 +136,27 @@
 <script>
   layui.use('admin', () => {
     let $ = layui.$
-    $('#LAY-anim-example .LAY-anim-demo .layui-anim').on('click', function () {
-      let anim = $(this).data('anim')
-      // 停止循环
-      if ($(this).hasClass('layui-anim-loop')) return $(this).removeClass(anim)
+    $('#LAY-id-anim-example .LAY-anim-demo .layui-anim').on(
+      'click',
+      function () {
+        let anim = $(this).data('anim')
+        // 停止循环
+        if ($(this).hasClass('layui-anim-loop'))
+          return $(this).removeClass(anim)
 
-      $(this).removeClass(anim)
+        $(this).removeClass(anim)
 
-      setTimeout(() => {
-        $(this).addClass(anim)
-      })
-
-      // 恢复渐隐
-      if (anim === 'layui-anim-fadeout') {
         setTimeout(() => {
-          $(this).removeClass(anim)
-        }, 1300)
-      }
-    })
+          $(this).addClass(anim)
+        })
+
+        // 恢复渐隐
+        if (anim === 'layui-anim-fadeout') {
+          setTimeout(() => {
+            $(this).removeClass(anim)
+          }, 1300)
+        }
+      },
+    )
   })
 </script>

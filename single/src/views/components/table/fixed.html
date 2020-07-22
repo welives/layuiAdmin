@@ -13,7 +13,11 @@
       <div class="layui-card">
         <div class="layui-card-header">固定列</div>
         <div class="layui-card-body">
-          <table class="layui-hide" id="LAY-table-fixed"></table>
+          <table
+            class="layui-hide"
+            id="LAY-id-table-fixed"
+            lay-filter="LAY-filter-table-fixed"
+          ></table>
         </div>
       </div>
     </div>
@@ -26,7 +30,7 @@
       setter = layui.setter
 
     table.render({
-      elem: '#LAY-table-fixed',
+      elem: '#LAY-id-table-fixed',
       url: setter.api + 'json/table/user.json',
       width: admin.screen() > 1 ? 892 : '',
       height: 332,

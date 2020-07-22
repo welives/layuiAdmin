@@ -8,42 +8,42 @@
           {
             "text": "主页一",
             "icon": "layui-icon-console",
-            "url": "home/index-1"
+            "url": "/home/index-1"
           },
           {
             "text": "主页二",
             "icon": "layui-icon-chart",
-            "url": "home/index-2"
+            "url": "/home/index-2"
           },
           {
             "text": "弹层",
             "icon": "layui-icon-template-1",
-            "url": ""
+            "url": "/components/layer/list"
           },
           {
             "text": "聊天",
             "icon": "layui-icon-chat",
-            "url": ""
+            "url": "/senior/im/"
           },
           {
             "text": "进度条",
             "icon": "layui-icon-find-fill",
-            "url": ""
+            "url": "/components/progress/"
           },
           {
             "text": "工单",
             "icon": "layui-icon-survey",
-            "url": ""
+            "url": "/app/workorder/"
           },
           {
             "text": "用户",
             "icon": "layui-icon-user",
-            "url": ""
+            "url": "/user/"
           },
           {
             "text": "设置",
             "icon": "layui-icon-set",
-            "url": ""
+            "url": "/set/system/website"
           }
         ]
       },
@@ -52,7 +52,7 @@
           {
             "text": "我的资料",
             "icon": "layui-icon-set",
-            "url": ""
+            "url": "/set/user/info"
           }
         ]
       }

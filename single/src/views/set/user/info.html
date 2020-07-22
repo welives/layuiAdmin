@@ -162,10 +162,9 @@
   </div>
 </div>
 <script>
-  layui.use('set', layui.factory('set')).use('form', () => {
+  layui.use('set', layui.factory('set')).use('admin', () => {
     let $ = layui.$,
-      form = layui.form
-
-    form.render()
+      admin = layui.admin
+    admin.setInputFocusEnd($('[name=nickname]'))
   })
 </script>

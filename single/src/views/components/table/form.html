@@ -13,13 +13,17 @@
       <div class="layui-card">
         <div class="layui-card-header">加入表单元素</div>
         <div class="layui-card-body">
-          <table class="layui-hide" id="LAY-table-form"></table>
-          <script type="text/html" id="LAY-table-switchTpl">
+          <table
+            class="layui-hide"
+            id="LAY-id-table-form"
+            lay-filter="LAY-filter-table-form"
+          ></table>
+          <script type="text/html" id="LAY-id-sexTpl">
             <!-- 这里的 checked 的状态只是演示 -->
-            <input type="checkbox" name="sex" lay-skin="switch" lay-text="女|男" lay-filter="LAY-filter-table-sexDemo" value="{{ d.id }}" data-json="{{ encodeURIComponent(JSON.stringify(d)) }}" {{ d.id === 10003 ? 'checked' : '' }}>
+            <input type="checkbox" name="sex" lay-skin="switch" lay-text="女|男" lay-filter="LAY-filter-table-sex" value="{{ d.id }}" data-json="{{ encodeURIComponent(JSON.stringify(d)) }}" {{ d.id === 10003 ? 'checked' : '' }}>
           </script>
-          <script type="text/html" id="LAY-table-checkboxTpl">
-            <input type="checkbox" name="lock" title="锁定" lay-filter="LAY-filter-table-lockDemo" value="{{ d.id }}" data-json="{{ encodeURIComponent(JSON.stringify(d)) }}" {{ d.id === 10006 ? 'checked' : '' }}>
+          <script type="text/html" id="LAY-id-lockTpl">
+            <input type="checkbox" name="lock" title="锁定" lay-filter="LAY-filter-table-lock" value="{{ d.id }}" data-json="{{ encodeURIComponent(JSON.stringify(d)) }}" {{ d.id === 10006 ? 'checked' : '' }}>
           </script>
         </div>
       </div>
@@ -34,7 +38,7 @@
       setter = layui.setter
 
     table.render({
-      elem: '#LAY-table-form',
+      elem: '#LAY-id-table-form',
       url: setter.api + 'json/table/user.json',
       cellMinWidth: 80,
       cols: [
@@ -56,14 +60,14 @@
             title: '性别',
             width: 85,
             unresize: true,
-            templet: '#LAY-table-switchTpl',
+            templet: '#LAY-id-sexTpl',
           },
           {
             field: 'lock',
             title: '是否锁定',
             width: 110,
             unresize: true,
-            templet: '#LAY-table-checkboxTpl',
+            templet: '#LAY-id-lockTpl',
           },
         ],
       ],
@@ -71,14 +75,14 @@
     })
 
     // 监听性别操作
-    form.on('switch(LAY-filter-table-sexDemo)', function (obj) {
+    form.on('switch(LAY-filter-table-sex)', function (obj) {
       let json = JSON.parse(decodeURIComponent($(this).data('json')))
       layer.tips(`${this.value} ${this.name} : ${obj.elem.checked}`, obj.othis)
       json = table.clearCacheKey(json)
       console.log(json) // 当前行数据
     })
     // 监听锁定操作
-    form.on('checkbox(LAY-filter-table-lockDemo)', function (obj) {
+    form.on('checkbox(LAY-filter-table-lock)', function (obj) {
       let json = JSON.parse(decodeURIComponent($(this).data('json')))
       layer.tips(`${this.value} ${this.name} : ${obj.elem.checked}`, obj.othis)
       json = table.clearCacheKey(json)

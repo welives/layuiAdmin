@@ -10,7 +10,10 @@
   <div class="layui-row layui-col-space10">
     <div class="layui-col-md12">
       <div class="layui-card">
-        <div class="layui-card-header layui-form layadmin-card-header-auto">
+        <div
+          class="layui-card-header layui-form layadmin-card-header-auto"
+          lay-filter="LAY-filter-order-list"
+        >
           <div class="layui-form-item">
             <div class="layui-inline">
               <label class="layui-form-label">工单号</label>
@@ -78,7 +81,7 @@
           </div>
         </div>
         <div class="layui-card-body">
-          <table id="LAY-app-order" lay-filter="LAY-filter-order"></table>
+          <table id="LAY-order-list" lay-filter="LAY-filter-order-list"></table>
           <script type="text/html" id="progressTpl">
             <div class="layui-progress layadmin-order-progress" lay-filter="LAY-filter-progress-{{ d.orderid }}" lay-showPercent="yes">
               <div class="layui-progress-bar layui-bg-blue" lay-percent={{ d.progress }}></div>
@@ -106,13 +109,15 @@
 <script>
   layui.use('workorder', layui.factory('workorder')).use('workorder', () => {
     let $ = layui.$,
+      admin = layui.admin,
       form = layui.form,
       table = layui.table
 
-    form.render()
+    form.render(null, 'LAY-filter-order-list')
+    admin.setInputFocusEnd($('.layui-form').find('[name=orderid]'))
     form.on('submit(LAY-filter-order-search)', (data) => {
       let field = data.field
-      table.reload('LAY-app-order', { where: field })
+      table.reload('LAY-order-list', { where: field })
     })
   })
 </script>

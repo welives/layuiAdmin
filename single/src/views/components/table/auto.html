@@ -13,7 +13,11 @@
       <div class="layui-card">
         <div class="layui-card-header">列宽自动分配</div>
         <div class="layui-card-body">
-          <table class="layui-hide" id="LAY-table-autoWidth"></table>
+          <table
+            class="layui-hide"
+            id="LAY-id-table-autoWidth"
+            lay-filter="LAY-filter-table-autoWidth"
+          ></table>
         </div>
       </div>
     </div>
@@ -25,7 +29,7 @@
       setter = layui.setter
 
     table.render({
-      elem: '#LAY-table-autoWidth',
+      elem: '#LAY-id-table-autoWidth',
       url: setter.api + 'json/table/user.json',
       cellMinWidth: 80,
       cols: [

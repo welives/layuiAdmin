@@ -9,20 +9,20 @@ layui.define(['admin', 'table', 'util'], (exports) => {
     tabs = {
       all: {
         text: '全部消息',
-        id: 'LAY-app-message-all',
+        id: 'LAY-message-all',
       },
       notice: {
         text: '通知',
-        id: 'LAY-app-message-notice',
+        id: 'LAY-message-notice',
       },
       direct: {
         text: '私信',
-        id: 'LAY-app-message-direct',
+        id: 'LAY-message-direct',
       },
     }
   // 全部消息
   table.render({
-    elem: '#LAY-app-message-all',
+    elem: `#${tabs.all.id}`,
     url: setter.api + 'json/message/all.json',
     cols: [
       [
@@ -46,7 +46,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
   })
   // 通知
   table.render({
-    elem: '#LAY-app-message-notice',
+    elem: `#${tabs.notice.id}`,
     url: setter.api + 'json/message/notice.json',
     cols: [
       [
@@ -70,7 +70,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
   })
   // 私信
   table.render({
-    elem: '#LAY-app-message-direct',
+    elem: `#${tabs.direct.id}`,
     url: setter.api + 'json/message/direct.json',
     cols: [
       [

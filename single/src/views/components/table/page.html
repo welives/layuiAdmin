@@ -13,7 +13,11 @@
       <div class="layui-card">
         <div class="layui-card-header">开启分页</div>
         <div class="layui-card-body">
-          <table class="layui-hide" id="LAY-table-page"></table>
+          <table
+            class="layui-hide"
+            id="LAY-id-table-page"
+            lay-filter="LAY-filter-table-page"
+          ></table>
         </div>
       </div>
     </div>
@@ -26,7 +30,7 @@
       setter = layui.setter
 
     table.render({
-      elem: '#LAY-table-page',
+      elem: '#LAY-id-table-page',
       url: setter.api + 'json/table/user.json',
       cols: [
         [
@@ -48,7 +52,6 @@
       content:
         '演示数据均为静态模拟数据，因此【切换分页和条数时】发现数据未变并非 BUG。实际使用时改成真实接口即可。',
       area: '300px',
-      offset: '15px',
       shade: false,
     })
   })

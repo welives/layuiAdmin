@@ -64,28 +64,19 @@ layui.define('view', (exports) => {
       tabsPage: {}, // 记录最近一次点击的页面标签数据
 
       /**
-       * @description 右侧面板
-       * @param {object} options
+       * @description 注册监听事件
+       * @param {string} events 事件名
+       * @param {function} callback
        * @returns
        */
-      popupRight(options) {
-        return (this.popup.index = layer.open(
-          $.extend(
-            {
-              type: 1,
-              id: 'LAY_adminPopupR',
-              anim: -1,
-              title: false,
-              closeBtn: false,
-              offset: 'r',
-              shade: 0.1,
-              shadeClose: true,
-              skin: 'layui-anim layui-anim-rl layui-layer-adminRight',
-              area: '300px',
-            },
-            options,
-          ),
-        ))
+      on(events, callback) {
+        /**
+         * layui.onevent(modName, events, callback) 注册自定义模块事件
+         * modName 事件所属模块
+         * events 事件名
+         * callback 事件的方法体
+         */
+        return layui.onevent.call(this, setter.MOD_NAME, events, callback)
       },
 
       /**
@@ -166,20 +157,14 @@ layui.define('view', (exports) => {
       },
 
       /**
-       * @description 判断屏幕大小
-       * @returns {number}
+       * @description 设置input标签光标在内容末尾
+       * @param {object} el jquery对象
        */
-      screen() {
-        let width = $win.width()
-        if (width >= 1200) {
-          return 3 // 大屏幕
-        } else if (width >= 992) {
-          return 2 // 中屏幕
-        } else if (width >= 768) {
-          return 1 // 小屏幕
-        } else {
-          return 0 // 超小屏幕
-        }
+      setInputFocusEnd(el) {
+        let val = el.val()
+        val && el.val('').val(val)
+        el.focus()
+        return false
       },
 
       /**
@@ -197,19 +182,45 @@ layui.define('view', (exports) => {
       },
 
       /**
-       * @description 注册监听事件
-       * @param {string} events 事件名
-       * @param {function} callback
+       * @description 判断屏幕大小
+       * @returns {number}
+       */
+      screen() {
+        let width = $win.width()
+        if (width >= 1200) {
+          return 3 // 大屏幕
+        } else if (width >= 992) {
+          return 2 // 中屏幕
+        } else if (width >= 768) {
+          return 1 // 小屏幕
+        } else {
+          return 0 // 超小屏幕
+        }
+      },
+
+      /**
+       * @description 右侧面板
+       * @param {object} options
        * @returns
        */
-      on(events, callback) {
-        /**
-         * layui.onevent(modName, events, callback) 注册自定义模块事件
-         * modName 事件所属模块
-         * events 事件名
-         * callback 事件的方法体
-         */
-        return layui.onevent.call(this, setter.MOD_NAME, events, callback)
+      popupRight(options) {
+        return (this.popup.index = layer.open(
+          $.extend(
+            {
+              type: 1,
+              id: 'LAY-popup-right',
+              anim: -1,
+              title: false,
+              closeBtn: false,
+              offset: 'r',
+              shade: 0.1,
+              shadeClose: true,
+              skin: 'layui-anim layui-anim-rl layui-layer-popup-right',
+              area: '300px',
+            },
+            options,
+          ),
+        ))
       },
 
       /**
@@ -285,7 +296,7 @@ layui.define('view', (exports) => {
       theme(options) {
         let theme = setter.theme,
           local = layui.data(setter.tableName),
-          id = 'LAY_admin_theme',
+          id = 'LAY-admin-theme',
           style = document.createElement('style'),
           styleText = laytpl(
             [
@@ -513,7 +524,7 @@ layui.define('view', (exports) => {
        */
       theme() {
         admin.popupRight({
-          id: 'LAY_adminPopupTheme',
+          id: 'LAY-popup-setTheme',
           success() {
             view(this.id).render('system/theme')
           },
@@ -546,7 +557,7 @@ layui.define('view', (exports) => {
           shade: 0,
           offset: ['41px', isMobile ? null : `${othis.offset().left - 250}px`],
           anim: -1,
-          id: 'LAY_adminNote',
+          id: 'LAY-popup-note',
           skin: 'layui-anim layui-anim-upbit layadmin-note',
           content: '<textarea placeholder="内容"></textarea>',
           resize: false,
@@ -591,7 +602,7 @@ layui.define('view', (exports) => {
        */
       about() {
         admin.popupRight({
-          id: 'LAY_adminPopupAbout',
+          id: 'LAY-popup-about',
           success() {
             view(this.id).render('system/about')
           },
@@ -603,7 +614,7 @@ layui.define('view', (exports) => {
        */
       more() {
         admin.popupRight({
-          id: 'LAY_adminPopupMore',
+          id: 'LAY-popup-more',
           success() {
             view(this.id).render('system/more')
           },

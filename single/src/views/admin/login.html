@@ -2,21 +2,27 @@
   <link rel="stylesheet" href="{{ layui.setter.base }}style/login.css?v={{ layui.admin.v }}" media="all">
 </script>
 
-<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login">
+<div
+  class="layadmin-user-login layadmin-user-display-show"
+  id="LAY-id-user-login"
+>
   <div class="layadmin-user-login-main">
     <div class="layadmin-user-login-box layadmin-user-login-header">
       <h2>后台登入页</h2>
       <p>摸🐟 - 基于layui的练习项目</p>
     </div>
-    <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+    <div
+      class="layadmin-user-login-box layadmin-user-login-body layui-form"
+      lay-filter="LAY-filter-login-form"
+    >
       <div class="layui-form-item">
         <label
           class="layadmin-user-login-icon layui-icon layui-icon-username"
-          for="LAY-user-login-username"
+          for="LAY-id-login-username"
         ></label>
         <input
           type="text"
-          id="LAY-user-login-username"
+          id="LAY-id-login-username"
           class="layui-input"
           name="username"
           placeholder="用户名"
@@ -26,11 +32,11 @@
       <div class="layui-form-item">
         <label
           class="layadmin-user-login-icon layui-icon layui-icon-password"
-          for="LAY-user-login-password"
+          for="LAY-id-login-password"
         ></label>
         <input
           type="password"
-          id="LAY-user-login-password"
+          id="LAY-id-login-password"
           class="layui-input"
           name="password"
           placeholder="密码"
@@ -41,13 +47,13 @@
         <div class="layui-row">
           <div class="layui-col-xs7">
             <label
-              for="LAY-user-login-vercode"
               class="layadmin-user-login-icon layui-icon layui-icon-vercode"
+              for="LAY-id-login-vercode"
             ></label>
             <input
               type="text"
               class="layui-input"
-              id="LAY-user-login-vercode"
+              id="LAY-id-login-vercode"
               name="vercode"
               placeholder="图形验证码"
               lay-verify="required"
@@ -58,7 +64,7 @@
               <img
                 src="https://www.oschina.net/action/user/captcha"
                 class="layadmin-user-login-codeimg"
-                id="LAY-user-get-vercode"
+                id="LAY-id-get-vercode"
               />
             </div>
           </div>
@@ -98,7 +104,9 @@
         <a href="javascript:;"
           ><i class="layui-icon layui-icon-login-weibo"></i
         ></a>
-        <a href="reg.html" class="layadmin-user-jump-change layui-text-green"
+        <a
+          lay-href="/user/reg"
+          class="layadmin-user-jump-change layui-text-green"
           >注册帐号</a
         >
       </div>
@@ -117,7 +125,7 @@
       router = layui.router(),
       search = router.search
 
-    form.render()
+    form.render(null, 'LAY-filter-login-form')
 
     // 提交
     form.on('submit(LAY-filter-login-submit)', (data) => {

@@ -15,11 +15,11 @@
         <div class="layui-card-body">
           <table
             class="layui-hide"
-            id="LAY-table-totalRow"
+            id="LAY-id-table-totalRow"
             lay-filter="LAY-filter-table-totalRow"
           ></table>
 
-          <script type="text/html" id="table-toolbarTpl">
+          <script type="text/html" id="LAY-id-toolbarTpl">
             <div class="layui-btn-container">
               <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
               <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
@@ -37,9 +37,9 @@
       table = layui.table
 
     table.render({
-      elem: '#LAY-table-totalRow',
+      elem: '#LAY-id-table-totalRow',
       url: setter.api + 'json/table/demo.json',
-      toolbar: '#table-toolbarTpl',
+      toolbar: '#LAY-id-toolbarTpl',
       title: '用户数据表',
       totalRow: true,
       cols: [

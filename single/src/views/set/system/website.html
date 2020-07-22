@@ -132,5 +132,9 @@ layuiAdmin 是 layui 官方出品的通用型后台模板解决方案，提供�
   </div>
 </div>
 <script>
-  layui.use('set', layui.factory('set'))
+  layui.use('set', layui.factory('set')).use('admin', () => {
+    let $ = layui.$,
+      admin = layui.admin
+    admin.setInputFocusEnd($('[name=sitename]'))
+  })
 </script>

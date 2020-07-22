@@ -13,7 +13,11 @@
       <div class="layui-card">
         <div class="layui-card-header">自定义分页</div>
         <div class="layui-card-body">
-          <table class="layui-hide" id="LAY-table-resetPage"></table>
+          <table
+            class="layui-hide"
+            id="LAY-id-table-resetPage"
+            lay-filter="LAY-filter-table-resetPage"
+          ></table>
         </div>
       </div>
     </div>
@@ -25,7 +29,7 @@
       setter = layui.setter
 
     table.render({
-      elem: '#LAY-table-resetPage',
+      elem: '#LAY-id-table-resetPage',
       url: setter.api + 'json/table/user.json',
       cols: [
         [

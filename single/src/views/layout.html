@@ -27,7 +27,7 @@
           autocomplete="off"
           class="layui-input layui-input-search"
           layadmin-event="search"
-          lay-action="template/search.html?keywords="
+          lay-action="/template/search/keywords="
         />
       </li>
     </ul>
@@ -43,7 +43,7 @@
           <script
             type="text/html"
             template
-            lay-url="{{ layui.setter.api }}json/message/new.json"
+            lay-url="{{ layui.setter.api }}json/message/newMsg.json"
           >
             {{# if(d.data.newMsg){ }}
               <span class="layui-badge-dot"></span>

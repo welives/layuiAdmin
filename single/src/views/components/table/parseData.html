@@ -27,7 +27,7 @@
 
           <table
             class="layui-hide"
-            id="LAY-table-parseData"
+            id="LAY-id-table-parseData"
             lay-filter="LAY-filter-table-parseData"
           ></table>
         </div>
@@ -41,7 +41,7 @@
       setter = layui.setter
 
     table.render({
-      elem: '#LAY-table-parseData',
+      elem: '#LAY-id-table-parseData',
       url: setter.api + 'json/table/demo3.json',
       toolbar: true,
       title: '用户数据表',

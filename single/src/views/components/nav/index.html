@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="layui-fluid" id="LAY-components-grid-list">
+<div class="layui-fluid">
   <div class="layui-row layui-col-space10">
     <div class="layui-col-md6">
       <div class="layui-card">
@@ -93,7 +93,7 @@
               </button>
             </div>
           </div>
-          <ul class="layui-nav layui-bg-cyan" id="LAY-nav-theme">
+          <ul class="layui-nav layui-bg-cyan" id="LAY-id-nav-theme">
             <li class="layui-nav-item">
               <a href="javascript:;">藏青导航</a>
             </li>
@@ -195,8 +195,8 @@
     $('body').on('click', '*[lay-event]', function () {
       let color = `layui-bg-${$(this).attr('lay-event')}`,
         text = $(this).text().trim() + '导航'
-      $('#LAY-nav-theme').attr('class', `layui-nav ${color}`)
-      $('#LAY-nav-theme li:first-child>a').text(text)
+      $('#LAY-id-nav-theme').attr('class', `layui-nav ${color}`)
+      $('#LAY-id-nav-theme li:first-child>a').text(text)
     })
 
     element.on('nav(LAY-filter-nav-vertical)', (elem) => {

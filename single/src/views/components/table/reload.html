@@ -13,22 +13,29 @@
       <div class="layui-card">
         <div class="layui-card-header">数据表格的重载</div>
         <div class="layui-card-body">
-          <div style="margin-bottom: 10px;">
+          <div class="layui-form" style="margin-bottom: 10px;">
             <label class="layui-form-label">搜索ID：</label>
             <div class="layui-input-inline">
               <input
                 type="text"
                 class="layui-input"
-                id="LAY-table-search"
+                id="LAY-id-table-search"
                 name="id"
+                lay-verify="required"
                 autocomplete="off"
               />
             </div>
-            <button class="layui-btn" data-type="reload">搜索</button>
+            <button
+              class="layui-btn"
+              lay-submit
+              lay-filter="LAY-filter-table-search"
+            >
+              搜索
+            </button>
           </div>
           <table
             class="layui-hide"
-            id="LAY-table-reload"
+            id="LAY-id-table-reload"
             lay-filter="LAY-filter-table-reload"
           ></table>
           <blockquote class="layui-elem-quote">
@@ -45,19 +52,11 @@
     let $ = layui.$,
       table = layui.table,
       setter = layui.setter,
-      event = {
-        reload() {
-          let search = $('#LAY-table-search')
-          // 表格的重载是使用ID定位表格,不是用过滤器
-          table.reload('LAY-table-reload', {
-            page: { curr: 1 },
-            where: { key: { id: search.val() } },
-          })
-        },
-      }
+      admin = layui.admin,
+      form = layui.form
 
     table.render({
-      elem: '#LAY-table-reload',
+      elem: '#LAY-id-table-reload',
       url: setter.api + 'json/table/user.json',
       cols: [
         [
@@ -82,9 +81,10 @@
       page: true,
     })
 
-    $('.layui-btn').on('click', function () {
-      let type = $(this).data('type')
-      event[type] && event[type].call(this)
+    admin.setInputFocusEnd($('.layui-form').find('[name=id]'))
+    form.on('submit(LAY-filter-table-search)', (data) => {
+      let field = data.field
+      table.reload('LAY-id-table-reload')
     })
   })
 </script>

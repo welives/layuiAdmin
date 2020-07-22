@@ -1,7 +1,7 @@
 <div
   class="layui-form"
-  id="LAY-app-order-form"
-  lay-filter="LAY-filter-order-form"
+  id="LAY-orderList-form"
+  lay-filter="LAY-filter-orderList-form"
   style="padding: 20px 30px 0 0;"
 >
   <div class="layui-form-item">
@@ -14,7 +14,7 @@
   </div>
   <div class="layui-form-item">
     <label class="layui-form-label">工单标题</label>
-    <div class="layui-input-inline">
+    <div class="layui-input-block">
       <script type="text/html" template>
         <input type="text" class="layui-input" name="title" value="{{ d.params.title || '' }}" lay-verify="required" placeholder="工单标题..." autocomplete="off" />
       </script>
@@ -55,10 +55,10 @@
       </script>
     </div>
   </div>
-  <div class="layui-form-item layui-text-center">
+  <div class="layui-form-item layui-text-center" style="padding-top: 20px;">
     <button
       class="layui-btn"
-      id="LAY-app-order-submit"
+      id="LAY-order-submit"
       lay-submit
       lay-filter="LAY-filter-order-submit"
     >

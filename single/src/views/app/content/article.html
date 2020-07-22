@@ -12,7 +12,7 @@
       <div class="layui-card">
         <div
           class="layui-card-header layui-form layadmin-card-header-auto"
-          lay-filter="LAY-filter-content-list"
+          lay-filter="LAY-filter-article-list"
         >
           <div class="layui-form-item">
             <div class="layui-inline">
@@ -72,7 +72,7 @@
               <button
                 class="layui-btn layadmin-btn-list"
                 lay-submit
-                lay-filter="LAY-filter-contlist-search"
+                lay-filter="LAY-filter-article-search"
               >
                 <i
                   class="layui-icon layui-icon-search layadmin-icon-search-btn"
@@ -91,8 +91,8 @@
             </button>
           </div>
           <table
-            id="LAY-app-content-list"
-            lay-filter="LAY-filter-content-list"
+            id="LAY-article-list"
+            lay-filter="LAY-filter-article-list"
           ></table>
           <script type="text/html" id="statusTpl">
             {{# if(d.status){ }}
@@ -114,11 +114,12 @@
   layui.use('contlist', layui.factory('contlist')).use('contlist', () => {
     let $ = layui.$,
       view = layui.view,
+      admin = layui.admin,
       form = layui.form,
       table = layui.table,
       event = {
         batchDel() {
-          let checkStatus = table.checkStatus('LAY-app-content-list'),
+          let checkStatus = table.checkStatus('LAY-article-list'),
             checkData = checkStatus.data
 
           if (checkData.length === 0) return layer.msg('请选择数据')
@@ -128,7 +129,7 @@
             (index) => {
               //执行 Ajax 后重载
               // $.ajax({})
-              table.reload('LAY-app-content-list')
+              table.reload('LAY-article-list')
               layer.msg('已删除')
             },
           )
@@ -137,18 +138,19 @@
           layer.open({
             type: 1,
             title: '添加文章',
-            id: 'LAY-popup-content-add',
-            area: ['550px', '550px'],
+            id: 'LAY-popup-article-add',
+            area: ['550px', '500px'],
             success(layero, index) {
               view(this.id)
-                .render('app/content/list-form')
+                .render('app/content/article-form')
                 .done(() => {
-                  form.render()
-                  form.on('submit(LAY-filter-listform-submit)', (data) => {
+                  form.render(null, 'LAY-filter-articleList-form')
+                  admin.setInputFocusEnd(layero.find('[name=title]'))
+                  form.on('submit(LAY-filter-article-submit)', (data) => {
                     let field = data.field
                     //提交 Ajax 成功后，静态更新表格中的数据
                     // $.ajax({})
-                    table.reload('LAY-app-content-list') // 数据刷新
+                    table.reload('LAY-article-list') // 数据刷新
                     layer.close(index) // 关闭弹层
                   })
                 })
@@ -156,13 +158,13 @@
           })
         },
       }
-
-    form.render()
+    form.render(null, 'LAY-filter-article-list')
+    admin.setInputFocusEnd($('.layui-form').find('[name=id]'))
 
     // 监听搜索
-    form.on('submit(LAY-filter-contlist-search)', (data) => {
+    form.on('submit(LAY-filter-article-search)', (data) => {
       let field = data.field
-      table.reload('LAY-app-content-list', { where: field })
+      table.reload('LAY-article-list', { where: field })
     })
 
     $('.layadmin-btn-list').on('click', function () {

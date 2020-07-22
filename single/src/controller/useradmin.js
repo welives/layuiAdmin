@@ -11,6 +11,7 @@ layui.define(['table', 'form'], (exports) => {
   let $ = layui.$,
     setter = layui.setter,
     view = layui.view,
+    admin = layui.admin,
     table = layui.table,
     form = layui.form,
     util = layui.util
@@ -18,7 +19,7 @@ layui.define(['table', 'form'], (exports) => {
   // 用户列表
   table.render({
     elem: '#LAY-user-list',
-    url: setter.api + 'json/user/userlist.json',
+    url: setter.api + 'json/user/userList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -34,7 +35,7 @@ layui.define(['table', 'form'], (exports) => {
           title: '加入时间',
           sort: true,
           templet: (d) => {
-            return util.toDateString(d.jointime * 1000, 'yyyy年MM月dd日')
+            return util.toDateString(d.joinTime * 1000, 'yyyy年MM月dd日')
           },
         },
         {
@@ -72,14 +73,14 @@ layui.define(['table', 'form'], (exports) => {
         type: 1,
         title: '编辑用户',
         id: 'LAY-popup-user-edit',
-        area: ['500px', '450px'],
+        area: ['500px', '400px'],
         // 成功打开弹窗后的回调
         success(layero, index) {
           view(this.id)
             .render('user/list-form', data)
             .done(() => {
-              form.render()
-              layero.find('[name=username]').focus()
+              form.render(null, 'LAY-filter-userList-form')
+              admin.setInputFocusEnd(layero.find('[name=username]'))
               form.on('submit(LAY-filter-user-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
@@ -96,12 +97,12 @@ layui.define(['table', 'form'], (exports) => {
   // 管理员列表
   table.render({
     elem: '#LAY-admin-list',
-    url: setter.api + 'json/admin/adminlist.json',
+    url: setter.api + 'json/admin/adminList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
         { field: 'id', title: 'ID', width: 80, sort: true },
-        { field: 'loginname', title: '登入名', minWidth: 100 },
+        { field: 'loginName', title: '登入名', minWidth: 100 },
         { field: 'phone', title: '手机' },
         { field: 'email', title: '邮箱' },
         { field: 'role', title: '角色' },
@@ -110,7 +111,7 @@ layui.define(['table', 'form'], (exports) => {
           title: '加入时间',
           sort: true,
           templet: (d) => {
-            return util.toDateString(d.jointime * 1000, 'yyyy年MM月dd日')
+            return util.toDateString(d.joinTime * 1000, 'yyyy年MM月dd日')
           },
         },
         {
@@ -163,14 +164,14 @@ layui.define(['table', 'form'], (exports) => {
         type: 1,
         title: '编辑管理员',
         id: 'LAY-popup-admin-edit',
-        area: ['420px', '650px'],
+        area: ['420px', '450px'],
         // 成功打开弹窗后的回调
         success(layero, index) {
           view(this.id)
             .render('admin/list-form', data)
             .done(() => {
-              form.render()
-              layero.find('[name=loginname]').focus()
+              form.render(null, 'LAY-filter-adminList-form')
+              admin.setInputFocusEnd(layero.find('[name=loginName]'))
               form.on('submit(LAY-filter-admin-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
@@ -187,12 +188,12 @@ layui.define(['table', 'form'], (exports) => {
   // 角色列表
   table.render({
     elem: '#LAY-role-list',
-    url: setter.api + 'json/role/rolelist.json',
+    url: setter.api + 'json/role/roleList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
         { field: 'id', title: 'ID', width: 80, sort: true },
-        { field: 'rolename', title: '角色名' },
+        { field: 'role', title: '角色名' },
         { field: 'limits', title: '权限' },
         { field: 'descr', title: '具体描述' },
         {
@@ -230,7 +231,7 @@ layui.define(['table', 'form'], (exports) => {
         '评估员',
       ]
     roles.forEach((v, index) => {
-      if (v === data.rolename) data.rolename = index
+      if (v === data.role) data.role = index
     })
 
     if (obj.event === 'del') {
@@ -247,14 +248,14 @@ layui.define(['table', 'form'], (exports) => {
         type: 1,
         title: '编辑角色',
         id: 'LAY-popup-role-edit',
-        area: ['500px', '480px'],
+        area: ['500px', '400px'],
         // 成功打开弹窗后的回调
         success(layero, index) {
           view(this.id)
             .render('role/list-form', data)
             .done(() => {
-              form.render()
-              layero.find('[name=descr]').focus()
+              form.render(null, 'LAY-filter-roleList-form')
+              admin.setInputFocusEnd(layero.find('[name=descr]'))
               form.on('submit(LAY-filter-role-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格

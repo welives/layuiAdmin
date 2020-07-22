@@ -180,7 +180,7 @@ layui.define('echarts', (exports) => {
         '<div class="layui-col-xs12 layui-col-sm4">',
         '<div class="layadmin-update-logs"><div class="layadmin-text-top">',
         '<i class="layui-icon {{ item.icon }}"></i>',
-        '<a lay-href="{{ item.link }}">{{ item.title }}</a></div>',
+        '<a href="{{ item.link }}" target="_blank">{{ item.title }}</a></div>',
         '<p class="layadmin-text-center">{{ item.content }}</p>',
         '<p class="layadmin-text-bottom">',
         '<a lay-href="{{ item.link }}">{{ item.module }}</a>',
@@ -217,7 +217,7 @@ layui.define('echarts', (exports) => {
     laytpl(
       [
         '{{# layui.each(d, (index, item) =>{ }}',
-        '<li class="layui-col-xs6"><a lay-href="{{ item.link }}">',
+        '<li class="layui-col-xs6"><a href="{{ item.link }}" target="_blank">',
         '<span class="layui-bg-green layui-circle layadmin-cpn-img">',
         '<img src="{{ item.img }}" ></span><span>{{ item.text }}</span>',
         '</a></li>{{# }) }}',

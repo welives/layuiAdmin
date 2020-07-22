@@ -15,11 +15,11 @@
         <div class="layui-card-body">
           <table
             class="layui-hide"
-            id="LAY-table-toolbar"
+            id="LAY-id-table-toolbar"
             lay-filter="LAY-filter-table-toolbar"
           ></table>
 
-          <script type="text/html" id="table-toolbarTpl">
+          <script type="text/html" id="LAY-id-toolbarTpl">
             <div class="layui-btn-container">
               <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
               <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
@@ -27,7 +27,7 @@
             </div>
           </script>
 
-          <script type="text/html" id="table-barTpl">
+          <script type="text/html" id="LAY-id-rowToolTpl">
             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
           </script>
@@ -42,9 +42,9 @@
       table = layui.table
 
     table.render({
-      elem: '#LAY-table-toolbar',
+      elem: '#LAY-id-table-toolbar',
       url: setter.api + 'json/table/demo.json',
-      toolbar: '#table-toolbarTpl',
+      toolbar: '#LAY-id-toolbarTpl',
       title: '用户数据表',
       cols: [
         [
@@ -77,7 +77,7 @@
           {
             fixed: 'right',
             title: '操作',
-            toolbar: '#table-barTpl',
+            toolbar: '#LAY-id-rowToolTpl',
             width: 150,
           },
         ],

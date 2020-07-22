@@ -1,7 +1,7 @@
 <div
   class="layui-form"
-  id="LAY-app-forum-listform"
-  lay-filter="LAY-filter-forum-listform"
+  id="LAY-postList-form"
+  lay-filter="LAY-filter-postList-form"
   style="padding: 20px 30px 0 0;"
 >
   <div class="layui-form-item">
@@ -40,16 +40,16 @@
   <div class="layui-form-item layui-text-center">
     <button
       class="layui-btn"
-      id="LAY-app-forum-listform-submit"
+      id="LAY-post-submit"
       lay-submit
-      lay-filter="LAY-filter-forum-listform-submit"
+      lay-filter="LAY-filter-post-submit"
     >
       提交
     </button>
   </div>
 </div>
 <script>
-  layui.use(['form', 'upload'], () => {
+  layui.use('upload', () => {
     let $ = layui.$,
       setter = layui.setter,
       upload = layui.upload

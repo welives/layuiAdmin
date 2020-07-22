@@ -13,12 +13,12 @@
         {
           "name": "index-1",
           "title": "主页一",
-          "jump": "home/index-1"
+          "jump": "/home/index-1"
         },
         {
           "name": "index-2",
           "title": "主页二",
-          "jump": "home/index-2"
+          "jump": "/home/index-2"
         }
       ]
     },
@@ -154,6 +154,10 @@
             {
               "name": "simple",
               "title": "简单数据表格"
+            },
+            {
+              "name": "static",
+              "title": "静态数据表格"
             },
             {
               "name": "auto",
@@ -318,64 +322,64 @@
       "icon": "layui-icon-template",
       "child": [
         {
-          "name": "personalpage",
+          "name": "personal",
           "title": "个人主页",
-          "jump": "template/personal"
+          "jump": "/template/personal"
         },
         {
-          "name": "addresslist",
+          "name": "addressList",
           "title": "通讯录",
-          "jump": "template/addressList"
+          "jump": "/template/addressList"
         },
         {
           "name": "caller",
           "title": "客户列表",
-          "jump": "template/caller"
+          "jump": "/template/caller"
         },
         {
-          "name": "goodslist",
+          "name": "goodsList",
           "title": "商品列表",
-          "jump": "template/goodsList"
+          "jump": "/template/goodsList"
         },
         {
-          "name": "msgboard",
+          "name": "msgBoard",
           "title": "留言板",
-          "jump": "template/msgBoard"
+          "jump": "/template/msgBoard"
         },
         {
           "name": "search",
           "title": "搜索结果",
-          "jump": "template/search"
+          "jump": "/template/search"
         },
         {
           "name": "reg",
           "title": "注册",
-          "jump": "user/reg"
+          "jump": "/user/reg"
         },
         {
           "name": "login",
           "title": "前台登入",
-          "jump": "user/login"
+          "jump": "/user/login"
         },
         {
           "name": "forget",
           "title": "忘记密码",
-          "jump": "user/forget"
+          "jump": "/user/forget"
         },
         {
           "name": "login",
           "title": "后台登入",
-          "jump": "admin/login"
+          "jump": "/admin/login"
         },
         {
           "name": "404",
           "title": "404",
-          "jump": "template/tips/404"
+          "jump": "/template/tips/404"
         },
         {
           "name": "error",
           "title": "错误提示",
-          "jump": "template/tips/error"
+          "jump": "/template/tips/error"
         },
         {
           "name": "",
@@ -410,7 +414,7 @@
           "title": "内容系统",
           "child": [
             {
-              "name": "list",
+              "name": "article",
               "title": "文章列表"
             },
             {
@@ -428,7 +432,7 @@
           "title": "社区系统",
           "child": [
             {
-              "name": "list",
+              "name": "post",
               "title": "帖子列表"
             },
             {
@@ -443,8 +447,7 @@
         },
         {
           "name": "workorder",
-          "title": "工单系统",
-          "jump": "app/workorder/list"
+          "title": "工单系统"
         }
       ]
     },
@@ -485,17 +488,17 @@
         {
           "name": "user",
           "title": "网站用户",
-          "jump": "user/list"
+          "jump": "/user/index"
         },
         {
-          "name": "admin-list",
+          "name": "admin",
           "title": "后台管理员",
-          "jump": "admin/list"
+          "jump": "/admin/index"
         },
         {
-          "name": "admin-rule",
+          "name": "role",
           "title": "角色管理",
-          "jump": "role/list"
+          "jump": "/role/index"
         }
       ]
     },
@@ -538,7 +541,7 @@
       "name": "get",
       "title": "授权",
       "icon": "layui-icon-auz",
-      "jump": "system/get"
+      "jump": "/system/get"
     }
   ]
 }

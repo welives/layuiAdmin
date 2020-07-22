@@ -11,13 +11,14 @@ layui.define(['table', 'form', 'element'], (exports) => {
   let $ = layui.$,
     setter = layui.setter,
     view = layui.view,
+    admin = layui.admin,
     table = layui.table,
     form = layui.form,
     element = layui.element
 
   table.render({
-    elem: '#LAY-app-order',
-    url: setter.api + 'json/workorder/demo.json',
+    elem: '#LAY-order-list',
+    url: setter.api + 'json/workorder/order.json',
     cols: [
       [
         { type: 'numbers', fixed: 'left' },
@@ -53,7 +54,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
   })
 
   // 监听工具条
-  table.on('tool(LAY-filter-order)', (obj) => {
+  table.on('tool(LAY-filter-order-list)', (obj) => {
     let data = obj.data,
       state = ['未分配', '处理中', '已处理'],
       accept = ['员工-1', '员工-2', '员工-3', '员工-4', '员工-5']
@@ -67,19 +68,19 @@ layui.define(['table', 'form', 'element'], (exports) => {
       layer.open({
         type: 1,
         title: '编辑工单',
-        id: 'LAY-popup-workorder-edit',
-        area: ['450px', '450px'],
+        id: 'LAY-popup-order-edit',
+        area: ['450px', '420px'],
         success(layero, index) {
-          console.log(data)
           view(this.id)
-            .render('app/workorder/list-form', data)
+            .render('app/workorder/order-form', data)
             .done(() => {
-              form.render()
+              form.render(null, 'LAY-filter-orderList-form')
+              admin.setInputFocusEnd(layero.find('[name=attr]'))
               form.on('submit(LAY-filter-order-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-app-order')
+                table.reload('LAY-order-list')
                 layer.close(index)
               })
             })

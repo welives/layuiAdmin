@@ -13,7 +13,11 @@
       <div class="layui-card">
         <div class="layui-card-header">简单用法</div>
         <div class="layui-card-body">
-          <table class="layui-hide" id="LAY-table-simple"></table>
+          <table
+            class="layui-hide"
+            id="LAY-id-table-simple"
+            lay-filter="LAY-filter-table-simple"
+          ></table>
         </div>
       </div>
     </div>
@@ -25,7 +29,7 @@
       setter = layui.setter
 
     table.render({
-      elem: '#LAY-table-simple',
+      elem: '#LAY-id-table-simple',
       url: setter.api + 'json/table/user.json',
       cellMinWidth: 80,
       cols: [

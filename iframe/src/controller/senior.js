@@ -1,4 +1,4 @@
-layui.define(['admin', 'echarts'], (exports) => {
+layui.define('echarts', (exports) => {
   let $ = layui.$,
     setter = layui.setter,
     admin = layui.admin,

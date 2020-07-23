@@ -741,6 +741,28 @@ layui.define('view', (exports) => {
       shade() {
         admin.sideFlexible()
       },
+
+      /**
+       * @description 呼出IM 示例
+       */
+      im() {
+        admin.popup({
+          id: 'LAY-popup-layim', //定义唯一ID，防止重复弹出
+          shade: 0,
+          area: ['800px', '300px'],
+          title: '面板外的操作示例',
+          offset: 'lb',
+          success() {
+            //将 views 目录下的某视图文件内容渲染给该面板
+            layui
+              .view(this.id)
+              .render('layim/demo')
+              .then(() => {
+                layui.use('im')
+              })
+          },
+        })
+      },
     })
 
   // 注册tabsPage(setMenuStatus)事件, 用于监听选项卡切换，改变菜单状态

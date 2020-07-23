@@ -64,7 +64,7 @@
     })
 
     $('.layui-btn-container .layui-btn').on('click', function () {
-      var type = $(this).data('type')
+      let type = $(this).data('type')
       event[type] && event[type].call(this)
     })
   })

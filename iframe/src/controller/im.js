@@ -7,7 +7,7 @@
 
  */
 
-layui.define('layim', (exports) => {
+layui.define(['index', 'layim'], (exports) => {
   let $ = layui.$,
     setter = layui.setter,
     layim = layui.layim,

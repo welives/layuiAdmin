@@ -308,11 +308,6 @@
         {
           "name": "code",
           "title": "代码修饰"
-        },
-        {
-          "name": "layim",
-          "title": "即时聊天",
-          "jump": "senior/im/"
         }
       ]
     },

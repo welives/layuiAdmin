@@ -26,95 +26,50 @@
               <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
                   <div class="layui-btn-container">
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="all"
-                      data-event="del"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-event="del">
                       删除
                     </button>
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="all"
-                      data-event="read"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-event="read">
                       标记已读
                     </button>
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="all"
-                      data-event="readAll"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="all" data-event="readAll">
                       全部已读
                     </button>
                   </div>
-                  <table
-                    id="LAY-app-message-all"
-                    lay-filter="LAY-filter-message-all"
-                  ></table>
+                  <table id="LAY-id-message-all" lay-filter="LAY-filter-message-all"></table>
                 </div>
                 <div class="layui-tab-item">
                   <div class="layui-btn-container">
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="notice"
-                      data-event="del"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-event="del">
                       删除
                     </button>
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="notice"
-                      data-event="read"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-event="read">
                       标记已读
                     </button>
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="notice"
-                      data-event="readAll"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="notice" data-event="readAll">
                       全部已读
                     </button>
                   </div>
-                  <table
-                    id="LAY-app-message-notice"
-                    lay-filter="LAY-filter-message-notice"
-                  ></table>
+                  <table id="LAY-id-message-notice" lay-filter="LAY-filter-message-notice"></table>
                 </div>
                 <div class="layui-tab-item">
                   <div class="layui-btn-container">
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="direct"
-                      data-event="del"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-event="del">
                       删除
                     </button>
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="direct"
-                      data-event="read"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-event="read">
                       标记已读
                     </button>
-                    <button
-                      class="layui-btn layui-btn-primary layui-btn-sm"
-                      data-type="direct"
-                      data-event="readAll"
-                    >
+                    <button class="layui-btn layui-btn-primary layui-btn-sm" data-type="direct" data-event="readAll">
                       全部已读
                     </button>
                   </div>
-                  <table
-                    id="LAY-app-message-direct"
-                    lay-filter="LAY-filter-message-direct"
-                  ></table>
+                  <table id="LAY-id-message-direct" lay-filter="LAY-filter-message-direct"></table>
                 </div>
               </div>
             </div>
-            <script type="text/html" id="titleTpl">
-              <a href="detail.html?id={{d.id}}">{{d.title}}</a>
+            <script type="text/html" id="LAY-id-titleTpl">
+              <a href="detail.html?id={{ d.id }}">{{ d.title }}</a>
             </script>
           </div>
         </div>

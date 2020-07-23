@@ -7,7 +7,7 @@
 
  */
 
-layui.define((exports) => {
+layui.define('laytpl', (exports) => {
   let $ = layui.$,
     admin = layui.admin,
     setter = layui.setter,
@@ -30,7 +30,7 @@ layui.define((exports) => {
           echartsApp = [],
           carouselIndex = 0,
           // 拿到图表的DOM容器
-          elemDataView = $('#LAY-id-index-dataview').children('div'),
+          elemDataView = $('#LAY-id-dataview').children('div'),
           // 渲染图表
           renderDataView = (index) => {
             echartsApp[index] = echarts.init(elemDataView[index], layui.echartsTheme)
@@ -79,7 +79,7 @@ layui.define((exports) => {
     let table = layui.table
     // 今日热搜
     table.render({
-      elem: '#LAY-id-index-topSearch', // 渲染容器
+      elem: '#LAY-id-topSearch', // 渲染容器
       url: setter.api + 'json/console/top-search.json', // 数据接口
       page: true, // 是否开启分页
       // 表头
@@ -101,7 +101,7 @@ layui.define((exports) => {
 
     // 今日热贴
     table.render({
-      elem: '#LAY-id-index-topCard',
+      elem: '#LAY-id-topCard',
       url: setter.api + 'json/console/top-card.json',
       page: true,
       cellMinWidth: 120,
@@ -152,7 +152,7 @@ layui.define((exports) => {
         '<div carousel-item>{{# layui.each(d, (index, ul)=>{ }}',
         '<ul class="layui-row layui-col-space10">',
         '{{# layui.each(ul.list, (idx, li)=>{ }}<li class="layui-col-xs6">',
-        '<a {{ li.href ? "href="+ li.href : "" }} {{ li.action ? "onclick="+ li.action : "" }} {{ li.url ? "lay-href="+ li.url : "" }} class="layadmin-backlog-body">',
+        '<a href="{{ li.href || "javascript:;" }}" {{ li.action ? "onclick="+ li.action : "" }} {{ li.url ? "lay-href="+ li.url : "" }} class="layadmin-backlog-body">',
         '<h3>{{ li.title }}</h3><p><cite class="{{ li.skin }}">{{ li.text }}</cite></p>',
         '</a></li>{{# }) }}</ul>{{# }) }}</div>',
       ].join(''),

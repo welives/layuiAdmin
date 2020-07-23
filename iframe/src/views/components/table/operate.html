@@ -30,12 +30,8 @@
                   验证是否全选
                 </button>
               </div>
-              <table
-                class="layui-hide"
-                id="LAY-table-operate"
-                lay-filter="LAY-filter-table-operate"
-              ></table>
-              <script type="text/html" id="LAY-table-tool">
+              <table class="layui-hide" id="LAY-id-table-operate" lay-filter="LAY-filter-table-operate"></table>
+              <script type="text/html" id="LAY-id-rowToolTpl">
                 <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</button>
                 <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
                 <button class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</button>
@@ -53,29 +49,30 @@
         })
         .use(['index', 'table'], () => {
           let $ = layui.$,
+            setter = layui.setter,
             table = layui.table,
             event = {
               getCheckData() {
-                let checkStatus = table.checkStatus('LAY-table-operate'),
+                let checkStatus = table.checkStatus('LAY-id-table-operate'),
                   data = checkStatus.data
 
                 layer.alert(JSON.stringify(data))
               },
               getCheckLength() {
-                let checkStatus = table.checkStatus('LAY-table-operate'),
+                let checkStatus = table.checkStatus('LAY-id-table-operate'),
                   data = checkStatus.data
                 layer.msg(`选中了：${data.length} 个`)
               },
               isAll() {
-                let checkStatus = table.checkStatus('LAY-table-operate')
+                let checkStatus = table.checkStatus('LAY-id-table-operate')
                 console.log(checkStatus)
                 layer.msg(checkStatus.isAll ? '全选' : '未全选')
               },
             }
 
           table.render({
-            elem: '#LAY-table-operate',
-            url: '/iframe/json/table/user.json',
+            elem: '#LAY-id-table-operate',
+            url: setter.api + 'json/table/user.json',
             cols: [
               [
                 { type: 'checkbox', fixed: 'left' },
@@ -103,7 +100,7 @@
                 {
                   align: 'center',
                   fixed: 'right',
-                  templet: '#LAY-table-tool',
+                  templet: '#LAY-id-rowToolTpl',
                 },
               ],
             ],

@@ -19,7 +19,7 @@
           <div class="layui-card">
             <div class="layui-card-header">高度最大适应</div>
             <div class="layui-card-body">
-              <table class="layui-hide" id="LAY-table-height"></table>
+              <table class="layui-hide" id="LAY-id-table-height"></table>
             </div>
           </div>
         </div>
@@ -33,11 +33,11 @@
         })
         .use(['index', 'table'], () => {
           let table = layui.table,
-            admin = layui.admin
+            setter = layui.setter
 
           table.render({
-            elem: '#LAY-table-height',
-            url: '/iframe/json/table/user30.json',
+            elem: '#LAY-id-table-height',
+            url: setter.api + 'json/table/user30.json',
             height: 'full-100',
             cellMinWidth: 80,
             cols: [

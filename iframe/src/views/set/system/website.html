@@ -23,37 +23,19 @@
                 <div class="layui-form-item">
                   <label class="layui-form-label">网站名称</label>
                   <div class="layui-input-block">
-                    <input
-                      type="text"
-                      class="layui-input"
-                      name="sitename"
-                      lay-verify="required"
-                      value="layuiAdmin"
-                    />
+                    <input type="text" class="layui-input" name="siteName" lay-verify="required" value="layuiAdmin" />
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <label class="layui-form-label">网站域名</label>
                   <div class="layui-input-block">
-                    <input
-                      type="text"
-                      class="layui-input"
-                      name="domain"
-                      lay-verify="url"
-                      value="http://www.moyu.com"
-                    />
+                    <input type="text" class="layui-input" name="domain" lay-verify="url" value="http://www.moyu.com" />
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <label class="layui-form-label">缓存时间</label>
                   <div class="layui-input-inline" style="width: 100px;">
-                    <input
-                      type="text"
-                      class="layui-input"
-                      name="cache"
-                      lay-verify="number"
-                      value="0"
-                    />
+                    <input type="text" class="layui-input" name="cacheTime" lay-verify="number" value="0" />
                   </div>
                   <div class="layui-input-inline layui-input-company">分钟</div>
                   <div class="layui-word-aux layui-form-mid">
@@ -63,13 +45,7 @@
                 <div class="layui-form-item">
                   <label class="layui-form-label">最大文件上传</label>
                   <div class="layui-input-inline" style="width: 100px;">
-                    <input
-                      type="text"
-                      class="layui-input"
-                      name="maxsize"
-                      lay-verify="number"
-                      value="2048"
-                    />
+                    <input type="text" class="layui-input" name="maxSize" lay-verify="number" value="2048" />
                   </div>
                   <div class="layui-input-inline layui-input-company">KB</div>
                   <div class="layui-word-aux layui-form-mid">
@@ -79,12 +55,7 @@
                 <div class="layui-form-item">
                   <label class="layui-form-label">上传文件类型</label>
                   <div class="layui-input-block">
-                    <input
-                      type="text"
-                      class="layui-input"
-                      name="ext"
-                      value="png|gif|jpg|jpeg|zip|rar"
-                    />
+                    <input type="text" class="layui-input" name="ext" value="png|gif|jpg|jpeg|zip|rar" />
                   </div>
                 </div>
                 <div class="layui-form-item layui-form-text">
@@ -116,18 +87,12 @@ layuiAdmin 是 layui 官方出品的通用型后台模板解决方案，提供�
                 <div class="layui-form-item layui-form-text">
                   <label class="layui-form-label">版权信息</label>
                   <div class="layui-input-block">
-                    <textarea name="copyright" class="layui-textarea">
-© 2018 layui.com MIT license</textarea
-                    >
+                    <textarea name="copyright" class="layui-textarea">© 2018 layui.com MIT license</textarea>
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <div class="layui-input-block">
-                    <button
-                      class="layui-btn"
-                      lay-submit
-                      lay-filter="LAY-filter-set-website"
-                    >
+                    <button class="layui-btn" lay-submit lay-filter="LAY-filter-set-website">
                       确认保存
                     </button>
                   </div>
@@ -144,7 +109,12 @@ layuiAdmin 是 layui 官方出品的通用型后台模板解决方案，提供�
         .config({
           base: '../../../../src/',
         })
-        .use(['index', 'set'])
+        .use(['index', 'set'], () => {
+          let $ = layui.$,
+            admin = layui.admin
+
+          admin.setInputFocusEnd($('[name=siteName]'))
+        })
     </script>
   </body>
 </html>

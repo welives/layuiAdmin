@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../../style/public.css" media="all" />
   </head>
   <body>
-    <div class="layui-fluid" id="LAY-components-grid-list">
+    <div class="layui-fluid">
       <div class="layui-row layui-col-space10">
         <div class="layui-col-md6">
           <div class="layui-card">
@@ -54,23 +54,13 @@
             <div class="layui-card-body">
               <ul class="layui-nav layui-bg-blue">
                 <li class="layui-nav-item">
-                  <a href="javascript:;"
-                    >控制台<span class="layui-badge">9</span>
-                  </a>
+                  <a href="javascript:;">控制台<span class="layui-badge">9</span> </a>
                 </li>
                 <li class="layui-nav-item">
-                  <a href="javascript:;"
-                    >个人中心<span class="layui-badge-dot"></span
-                  ></a>
+                  <a href="javascript:;">个人中心<span class="layui-badge-dot"></span></a>
                 </li>
                 <li class="layui-nav-item">
-                  <a href="javascript:;"
-                    ><img
-                      src="../../../../images/logo.gif"
-                      alt=""
-                      class="layui-nav-img"
-                    />我</a
-                  >
+                  <a href="javascript:;"><img src="../../../../images/logo.gif" alt="" class="layui-nav-img" />我</a>
                   <dl class="layui-nav-child">
                     <dd><a href="javascript:;">修改信息</a></dd>
                     <dd><a href="javascript:;">安全管理</a></dd>
@@ -98,7 +88,7 @@
                   </button>
                 </div>
               </div>
-              <ul class="layui-nav layui-bg-cyan" id="LAY-nav-theme">
+              <ul class="layui-nav layui-bg-cyan" id="LAY-id-nav-theme">
                 <li class="layui-nav-item">
                   <a href="javascript:;">藏青导航</a>
                 </li>
@@ -125,10 +115,7 @@
           <div class="layui-card">
             <div class="layui-card-header">垂直导航菜单</div>
             <div class="layui-card-body">
-              <ul
-                class="layui-nav layui-nav-tree layui-inline layui-bg-green"
-                lay-filter="LAY-filter-nav-vertical"
-              >
+              <ul class="layui-nav layui-nav-tree layui-inline layui-bg-green" lay-filter="LAY-filter-nav-vertical">
                 <li class="layui-nav-item layui-nav-itemed">
                   <a href="javascript:;">默认展开</a>
                   <dl class="layui-nav-child">
@@ -136,11 +123,7 @@
                     <dd><a href="javascript:;">选项二</a></dd>
                     <dd><a href="javascript:;">选项三</a></dd>
                     <dd>
-                      <a
-                        href="https://www.layui.com/admin/std/dist/views/"
-                        target="_blank"
-                        >后台模板</a
-                      >
+                      <a href="https://www.layui.com/admin/std/dist/views/" target="_blank">后台模板</a>
                     </dd>
                   </dl>
                 </li>
@@ -168,21 +151,13 @@
                 <a><cite>导航元素</cite></a>
               </span>
               <br />
-              <span
-                class="layui-breadcrumb"
-                lay-filter="LAY-filter-breadcrumb"
-                lay-separator="-"
-              >
+              <span class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb" lay-separator="-">
                 <a href="javascript:;">首页</a>
                 <a href="javascript:;">演示</a>
                 <a><cite>导航元素</cite></a>
               </span>
               <br />
-              <span
-                class="layui-breadcrumb"
-                lay-filter="LAY-filter-breadcrumb"
-                lay-separator="\"
-              >
+              <span class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb" lay-separator="\">
                 <a href="javascript:;">首页</a>
                 <a href="javascript:;">演示</a>
                 <a><cite>导航元素</cite></a>
@@ -205,8 +180,8 @@
           $('body').on('click', '*[lay-event]', function () {
             let color = `layui-bg-${$(this).attr('lay-event')}`,
               text = $(this).text().trim() + '导航'
-            $('#LAY-nav-theme').attr('class', `layui-nav ${color}`)
-            $('#LAY-nav-theme li:first-child>a').text(text)
+            $('#LAY-id-nav-theme').attr('class', `layui-nav ${color}`)
+            $('#LAY-id-nav-theme li:first-child>a').text(text)
           })
 
           element.on('nav(LAY-filter-nav-vertical)', (elem) => {

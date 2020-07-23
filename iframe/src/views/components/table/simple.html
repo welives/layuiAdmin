@@ -19,7 +19,7 @@
           <div class="layui-card">
             <div class="layui-card-header">简单用法</div>
             <div class="layui-card-body">
-              <table class="layui-hide" id="LAY-table-simple"></table>
+              <table class="layui-hide" id="LAY-id-table-simple"></table>
             </div>
           </div>
         </div>
@@ -32,11 +32,12 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let table = layui.table
+          let table = layui.table,
+            setter = layui.setter
 
           table.render({
-            elem: '#LAY-table-simple',
-            url: '/iframe/json/table/user.json',
+            elem: '#LAY-id-table-simple',
+            url: setter.api + 'json/table/user.json',
             cellMinWidth: 80,
             cols: [
               [

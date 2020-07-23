@@ -66,23 +66,19 @@
           <div class="layui-card">
             <div class="layui-card-header">信息流 - 滚动加载</div>
             <div class="layui-card-body">
-              <ul class="layui-flow-default" id="LAY-flow-auto"></ul>
+              <ul class="layui-flow-default" id="LAY-id-flow-auto"></ul>
             </div>
           </div>
           <div class="layui-card">
             <div class="layui-card-header">信息流 - 手工加载</div>
             <div class="layui-card-body">
-              <ul
-                class="layui-flow-default"
-                id="LAY-flow-manual"
-                style="height: 300px;"
-              ></ul>
+              <ul class="layui-flow-default" id="LAY-id-flow-manual" style="height: 300px;"></ul>
             </div>
           </div>
           <div class="layui-card">
             <div class="layui-card-header">图片懒加载</div>
             <div class="layui-card-body">
-              <div class="layui-flow-lazy" id="LAY-flow-lazyImg">
+              <div class="layui-flow-lazy" id="LAY-id-flow-lazyImg">
                 <img
                   lay-src="https://gw.alicdn.com/bao/uploaded/i2/701696736/TB2PNl5ahQa61Bjy0FhXXaalFXa_!!701696736.jpg_400x400q90.jpg?t=1523290753265"
                 />
@@ -146,8 +142,8 @@
 
           // 滚动加载
           flow.load({
-            elem: '#LAY-flow-auto',
-            scrollElem: '#LAY-flow-auto',
+            elem: '#LAY-id-flow-auto',
+            scrollElem: '#LAY-id-flow-auto',
             done(page, next) {
               // 模拟数据插入
               setTimeout(() => {
@@ -163,8 +159,8 @@
           })
           // 手工加载
           flow.load({
-            elem: '#LAY-flow-manual',
-            scrollElem: '#LAY-flow-manual',
+            elem: '#LAY-id-flow-manual',
+            scrollElem: '#LAY-id-flow-manual',
             isAuto: false,
             isLazyimg: true,
             done(page, next) {
@@ -183,8 +179,8 @@
           })
           // 图片懒加载
           flow.lazyimg({
-            elem: '#LAY-flow-lazyImg img',
-            scrollElem: '#LAY-flow-lazyImg',
+            elem: '#LAY-id-flow-lazyImg img',
+            scrollElem: '#LAY-id-flow-lazyImg',
           })
         })
     </script>

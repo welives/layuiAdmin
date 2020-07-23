@@ -27,13 +27,10 @@
             <div class="layui-card-header">选完文件后不自动上传</div>
             <div class="layui-card-body">
               <div class="layui-upload">
-                <button
-                  class="layui-btn layui-btn-normal"
-                  id="LAY-upload-change"
-                >
+                <button class="layui-btn layui-btn-normal" id="LAY-id-upload-change">
                   选择文件
                 </button>
-                <button class="layui-btn" id="LAY-upload-doUpload">
+                <button class="layui-btn" id="LAY-id-upload-doUpload">
                   开始上传
                 </button>
               </div>
@@ -42,7 +39,7 @@
           <div class="layui-card">
             <div class="layui-card-header">拖拽上传</div>
             <div class="layui-card-body">
-              <div class="layui-upload-drag" id="LAY-upload-drag">
+              <div class="layui-upload-drag" id="LAY-id-upload-drag">
                 <i class="layui-icon layui-icon-upload"></i>
                 <p>点击上传，或将文件拖拽到此处</p>
               </div>
@@ -52,7 +49,7 @@
             <div class="layui-card-header">高级应用：制作一个多文件列表</div>
             <div class="layui-card-body">
               <div class="layui-upload">
-                <button class="layui-btn layui-btn-normal" id="LAY-upload-list">
+                <button class="layui-btn layui-btn-normal" id="LAY-id-upload-list">
                   选择多文件
                 </button>
                 <div class="layui-upload-list">
@@ -65,10 +62,10 @@
                         <th>操作</th>
                       </tr>
                     </thead>
-                    <tbody id="LAY-upload-list-view"></tbody>
+                    <tbody id="LAY-id-upload-list-view"></tbody>
                   </table>
                 </div>
-                <button class="layui-btn" id="LAY-upload-doList">
+                <button class="layui-btn" id="LAY-id-upload-doList">
                   开始上传
                 </button>
               </div>
@@ -77,7 +74,7 @@
           <div class="layui-card">
             <div class="layui-card-header">绑定原始文件域</div>
             <div class="layui-card-body">
-              <input type="file" name="file" id="LAY-upload-primary" />
+              <input type="file" name="file" id="LAY-id-upload-primary" />
             </div>
           </div>
         </div>
@@ -95,10 +92,10 @@
 
           // 选完文件后不自动上传
           upload.render({
-            elem: '#LAY-upload-change',
+            elem: '#LAY-id-upload-change',
             url: '/upload/',
             auto: false,
-            bindAction: '#LAY-upload-doUpload',
+            bindAction: '#LAY-id-upload-doUpload',
             before(obj) {
               console.log(obj)
             },
@@ -108,21 +105,21 @@
           })
           // 拖拽上传
           upload.render({
-            elem: '#LAY-upload-drag',
+            elem: '#LAY-id-upload-drag',
             url: '/upload/',
             done(res) {
               console.log(res)
             },
           })
           // 多文件列表示例
-          let fileListView = $('#LAY-upload-list-view'),
+          let fileListView = $('#LAY-id-upload-list-view'),
             uploadInst = upload.render({
-              elem: '#LAY-upload-list',
+              elem: '#LAY-id-upload-list',
               url: '/upload/',
               accept: 'file',
               multiple: true,
               auto: false,
-              bindAction: '#LAY-upload-doList',
+              bindAction: '#LAY-id-upload-doList',
               choose(obj) {
                 // 将每次选择的文件追加到文件队列
                 let files = (this.files = obj.pushFile())
@@ -172,15 +169,12 @@
                   tds = tr.children()
                 console.log(tds)
                 tds.eq(2).html(`<span class="layui-text-red">上传失败</span>`)
-                tds
-                  .eq(3)
-                  .find('button[data-type="reload"]')
-                  .removeClass('layui-hide') // 显示重传
+                tds.eq(3).find('button[data-type="reload"]').removeClass('layui-hide') // 显示重传
               },
             })
           // 绑定原始文件域
           upload.render({
-            elem: '#LAY-upload-primary',
+            elem: '#LAY-id-upload-primary',
             url: '/upload/',
             done(res) {
               console.log(res)

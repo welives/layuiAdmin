@@ -1,12 +1,15 @@
 layui.define(['table', 'form', 'element'], (exports) => {
   let $ = layui.$,
+    setter = layui.setter,
+    view = layui.view,
+    admin = layui.admin,
     table = layui.table,
     form = layui.form,
     element = layui.element
 
   table.render({
-    elem: '#LAY-app-order',
-    url: '/iframe/json/workorder/demo.json',
+    elem: '#LAY-id-order-list',
+    url: setter.api + 'json/workorder/order.json',
     cols: [
       [
         { type: 'numbers', fixed: 'left' },
@@ -18,7 +21,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
           title: '进度',
           width: 200,
           align: 'center',
-          templet: '#progressTpl',
+          templet: '#LAY-id-progressTpl',
         },
         { field: 'submit', title: '提交者', width: 100 },
         { field: 'accept', title: '受理人员', width: 100 },
@@ -27,9 +30,9 @@ layui.define(['table', 'form', 'element'], (exports) => {
           title: '工单状态',
           minWidth: 80,
           align: 'center',
-          templet: '#stateTpl',
+          templet: '#LAY-id-stateTpl',
         },
-        { title: '操作', align: 'center', fixed: 'right', toolbar: '#toolTpl' },
+        { title: '操作', align: 'center', fixed: 'right', toolbar: '#LAY-id-rowToolTpl' },
       ],
     ],
     page: true,
@@ -42,61 +45,40 @@ layui.define(['table', 'form', 'element'], (exports) => {
   })
 
   // 监听工具条
-  table.on('tool(LAY-filter-order)', (obj) => {
+  table.on('tool(LAY-filter-order-list)', (obj) => {
     let data = obj.data,
       state = ['未分配', '处理中', '已处理'],
       accept = ['员工-1', '员工-2', '员工-3', '员工-4', '员工-5']
+    state.forEach((v, index) => {
+      if (v === data.state) data.state = index
+    })
+    accept.forEach((v, index) => {
+      if (v === data.accept) data.accept = index + 1
+    })
     if (obj.event === 'edit') {
       layer.open({
-        type: 2,
+        type: 1,
         title: '编辑工单',
-        content: layui.setter.views + 'app/workorder/list-form.html',
-        area: ['450px', '450px'],
-        btn: ['确定', '取消'],
+        id: 'LAY-popup-order-edit',
+        area: ['450px', '420px'],
         success(layero, index) {
-          let iframe = layer.getChildFrame('body', index)
-          $.each(iframe.find('[name]'), function () {
-            switch ($(this)[0].name) {
-              case 'attr':
-                $(this).focus().val(data.attr)
-                break
-              case 'title':
-                $(this).val(data.title)
-                break
-              case 'progress':
-                $(this).val(data.progress)
-                break
-              case 'state':
-                state.forEach((value, index) => {
-                  if (value === data.state) return $(this).val(index)
-                })
-                break
-              case 'accept':
-                accept.forEach((value, index) => {
-                  if (value === data.accept) return $(this).val(index + 1)
-                })
-                break
-            }
-          })
-        },
-        yes(index, layero) {
-          let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = '#LAY-app-order-submit',
-            filter = 'LAY-filter-order-submit',
-            submit = layero.find('iframe').contents().find(submitID)
-
-          // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
-            let field = data.field // 获取提交的字段
-            //提交 Ajax 成功后，静态更新表格中的数据
-            // $.ajax({})
-            table.reload('LAY-app-order') // 数据刷新
-            layer.close(index) // 关闭弹层
-          })
-          submit.trigger('click')
+          view(this.id)
+            .render('app/workorder/list-form', data)
+            .done(() => {
+              form.render(null, 'LAY-filter-orderList-form')
+              admin.setInputFocusEnd(layero.find('[name=attr]'))
+              form.on('submit(LAY-filter-order-submit)', (data) => {
+                let field = data.field
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                //$.ajax({});
+                obj.update(field)
+                layer.close(index)
+              })
+            })
         },
       })
     }
   })
+
   exports('workorder', {})
 })

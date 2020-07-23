@@ -7,12 +7,10 @@
 
  */
 
-layui.define(['admin', 'table', 'util'], (exports) => {
+layui.define('table', (exports) => {
   let $ = layui.$,
     setter = layui.setter,
-    admin = layui.admin,
     table = layui.table,
-    element = layui.element,
     DISABLED = 'layui-btn-disabled',
     // 区分各选项卡中的表格
     tabs = {

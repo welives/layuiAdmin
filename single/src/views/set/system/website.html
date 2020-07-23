@@ -16,7 +16,7 @@
             <div class="layui-form-item">
               <label class="layui-form-label">网站名称</label>
               <div class="layui-input-block">
-                <input type="text" class="layui-input" name="sitename" lay-verify="required" value="layuiAdmin" />
+                <input type="text" class="layui-input" name="siteName" lay-verify="required" value="layuiAdmin" />
               </div>
             </div>
             <div class="layui-form-item">
@@ -28,7 +28,7 @@
             <div class="layui-form-item">
               <label class="layui-form-label">缓存时间</label>
               <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" class="layui-input" name="cache" lay-verify="number" value="0" />
+                <input type="text" class="layui-input" name="cacheTime" lay-verify="number" value="0" />
               </div>
               <div class="layui-input-inline layui-input-company">分钟</div>
               <div class="layui-word-aux layui-form-mid">
@@ -38,7 +38,7 @@
             <div class="layui-form-item">
               <label class="layui-form-label">最大文件上传</label>
               <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" class="layui-input" name="maxsize" lay-verify="number" value="2048" />
+                <input type="text" class="layui-input" name="maxSize" lay-verify="number" value="2048" />
               </div>
               <div class="layui-input-inline layui-input-company">KB</div>
               <div class="layui-word-aux layui-form-mid">
@@ -96,6 +96,6 @@ layuiAdmin 是 layui 官方出品的通用型后台模板解决方案，提供�
   layui.use('set', layui.factory('set')).use('admin', () => {
     let $ = layui.$,
       admin = layui.admin
-    admin.setInputFocusEnd($('[name=sitename]'))
+    admin.setInputFocusEnd($('[name=siteName]'))
   })
 </script>

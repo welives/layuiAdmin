@@ -19,7 +19,7 @@
           <div class="layui-card">
             <div class="layui-card-header">固定列</div>
             <div class="layui-card-body">
-              <table class="layui-hide" id="LAY-table-fixed"></table>
+              <table class="layui-hide" id="LAY-id-table-fixed"></table>
             </div>
           </div>
         </div>
@@ -33,11 +33,12 @@
         })
         .use(['index', 'table'], () => {
           let table = layui.table,
-            admin = layui.admin
+            admin = layui.admin,
+            setter = layui.setter
 
           table.render({
-            elem: '#LAY-table-fixed',
-            url: '/iframe/json/table/user.json',
+            elem: '#LAY-id-table-fixed',
+            url: setter.api + 'json/table/user.json',
             width: admin.screen() > 1 ? 892 : '',
             height: 332,
             cols: [

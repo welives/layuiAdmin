@@ -18,8 +18,8 @@ layui.define(['table', 'form'], (exports) => {
 
   // 帖子列表
   table.render({
-    elem: '#LAY-id-post-list',
-    url: setter.api + 'json/forum/post.json',
+    elem: '#LAY-id-posts-list',
+    url: setter.api + 'json/forum/posts.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -63,26 +63,26 @@ layui.define(['table', 'form'], (exports) => {
   })
 
   // 监听帖子列表行工具事件
-  table.on('tool(LAY-filter-post-list)', (obj) => {
+  table.on('tool(LAY-filter-posts-list)', (obj) => {
     let data = obj.data
     if (obj.event === 'edit') {
       layer.open({
         type: 1,
         title: '编辑帖子',
-        id: 'LAY-popup-post-edit',
+        id: 'LAY-popup-posts-edit',
         area: ['550px', '400px'],
         resize: false,
         success(layero, index) {
           view(this.id)
-            .render('app/forum/post-form', data)
+            .render('app/forum/posts-form', data)
             .done(() => {
-              form.render(null, 'LAY-filter-postList-form')
+              form.render(null, 'LAY-filter-postsList-form')
               admin.setInputFocusEnd(layero.find('[name=poster]'))
-              form.on('submit(LAY-filter-post-submit)', (data) => {
+              form.on('submit(LAY-filter-posts-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，静态更新表格中的数据
                 // $.ajax({})
-                table.reload('LAY-id-post-list') // 数据刷新
+                table.reload('LAY-id-posts-list') // 数据刷新
                 layer.close(index) // 关闭弹层
               })
             })
@@ -98,7 +98,7 @@ layui.define(['table', 'form'], (exports) => {
 
   // 回帖列表
   table.render({
-    elem: '#LAY-id-reply-list',
+    elem: '#LAY-id-replys-list',
     url: setter.api + 'json/forum/replys.json',
     cols: [
       [
@@ -132,26 +132,26 @@ layui.define(['table', 'form'], (exports) => {
   })
 
   // 监听回帖列表行工具事件
-  table.on('tool(LAY-filter-reply-list)', (obj) => {
+  table.on('tool(LAY-filter-replys-list)', (obj) => {
     let data = obj.data
     if (obj.event === 'edit') {
       layer.open({
         type: 1,
         title: '编辑回帖',
-        id: 'LAY-popup-forum-edit',
+        id: 'LAY-popup-replys-edit',
         area: ['550px', '350px'],
         resize: false,
         success(layero, index) {
           view(this.id)
             .render('app/forum/replys-form', data)
             .done(() => {
-              form.render(null, 'LAY-filter-replyList-form')
+              form.render(null, 'LAY-filter-replysList-form')
               admin.setInputFocusEnd(layero.find('[name=content]'))
-              form.on('submit(LAY-filter-reply-submit)', (data) => {
+              form.on('submit(LAY-filter-replys-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，静态更新表格中的数据
                 // $.ajax({})
-                table.reload('LAY-id-reply-list') // 数据刷新
+                table.reload('LAY-id-replys-list') // 数据刷新
                 layer.close(index) // 关闭弹层
               })
             })

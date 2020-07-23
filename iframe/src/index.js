@@ -63,9 +63,7 @@ layui
             })
           }
         } else {
-          let iframe = admin
-            .tabsBody(admin.tabsPage.index)
-            .find('.layadmin-iframe')
+          let iframe = admin.tabsBody(admin.tabsPage.index).find('.layadmin-iframe')
           iframe[0].contentWindow.location.href = url
         }
         tabChange()
@@ -73,7 +71,7 @@ layui
 
     // 移动端初始化页面选择器
     admin.screen() < 2 && admin.sideFlexible()
-
+    element.render('breadcrumb', 'LAY-filter-breadcrumb')
     // 将模块根路径设置为 controller 目录
     layui
       .config({
@@ -91,6 +89,7 @@ layui
     })
 
     view().autoRender()
+
     // 输出接口
     exports('index', { openTabsPage })
   })

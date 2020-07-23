@@ -1,28 +1,27 @@
-layui.define(['admin', 'table', 'util'], (exports) => {
+layui.define('table', (exports) => {
   let $ = layui.$,
-    admin = layui.admin,
+    setter = layui.setter,
     table = layui.table,
-    element = layui.element,
     DISABLED = 'layui-btn-disabled',
     // 区分各选项卡中的表格
     tabs = {
       all: {
         text: '全部消息',
-        id: 'LAY-app-message-all',
+        id: 'LAY-id-message-all',
       },
       notice: {
         text: '通知',
-        id: 'LAY-app-message-notice',
+        id: 'LAY-id-message-notice',
       },
       direct: {
         text: '私信',
-        id: 'LAY-app-message-direct',
+        id: 'LAY-id-message-direct',
       },
     }
   // 全部消息
   table.render({
-    elem: '#LAY-app-message-all',
-    url: '/iframe/json/message/all.json',
+    elem: `#${tabs.all.id}`,
+    url: setter.api + 'json/message/all.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -30,7 +29,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
           field: 'title',
           title: '标题内容',
           minWidth: 300,
-          templet: '#titleTpl',
+          templet: '#LAY-id-titleTpl',
         },
         {
           field: 'time',
@@ -45,8 +44,8 @@ layui.define(['admin', 'table', 'util'], (exports) => {
   })
   // 通知
   table.render({
-    elem: '#LAY-app-message-notice',
-    url: '/iframe/json/message/notice.json',
+    elem: `#${tabs.notice.id}`,
+    url: setter.api + 'json/message/notice.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -54,7 +53,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
           field: 'title',
           title: '标题内容',
           minWidth: 300,
-          templet: '#titleTpl',
+          templet: '#LAY-id-titleTpl',
         },
         {
           field: 'time',
@@ -69,8 +68,8 @@ layui.define(['admin', 'table', 'util'], (exports) => {
   })
   // 私信
   table.render({
-    elem: '#LAY-app-message-direct',
-    url: '/iframe/json/message/direct.json',
+    elem: `#${tabs.direct.id}`,
+    url: setter.api + 'json/message/direct.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -78,7 +77,7 @@ layui.define(['admin', 'table', 'util'], (exports) => {
           field: 'title',
           title: '标题内容',
           minWidth: 300,
-          templet: '#titleTpl',
+          templet: '#LAY-id-titleTpl',
         },
         {
           field: 'time',
@@ -128,5 +127,6 @@ layui.define(['admin', 'table', 'util'], (exports) => {
       othis = $(this)
     event[thisEvent] && event[thisEvent].call(this, othis, type)
   })
+
   exports('message', {})
 })

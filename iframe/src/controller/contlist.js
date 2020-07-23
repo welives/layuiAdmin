@@ -1,13 +1,16 @@
 layui.define(['table', 'form', 'util'], (exports) => {
   let $ = layui.$,
+    setter = layui.setter,
+    view = layui.view,
+    admin = layui.admin,
     table = layui.table,
     form = layui.form,
     util = layui.util
 
   // 文章列表
   table.render({
-    elem: '#LAY-app-content-list',
-    url: '/iframe/json/content/list.json',
+    elem: '#LAY-id-article-list',
+    url: setter.api + 'json/content/article.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -16,11 +19,11 @@ layui.define(['table', 'form', 'util'], (exports) => {
         { field: 'title', title: '文章标题' },
         { field: 'author', title: '作者' },
         {
-          field: 'uploadtime',
+          field: 'uploadTime',
           title: '上传时间',
           sort: true,
           templet: (d) => {
-            return util.toDateString(d.uploadtime, 'yyyy年MM月dd日')
+            return util.toDateString(d.uploadTime * 1000, 'yyyy年MM月dd日')
           },
         },
         {
@@ -28,14 +31,14 @@ layui.define(['table', 'form', 'util'], (exports) => {
           title: '发布状态',
           minWidth: 80,
           align: 'center',
-          templet: '#statusTpl',
+          templet: '#LAY-id-statusTpl',
         },
         {
           title: '操作',
           minWidth: 150,
           align: 'center',
           fixed: 'right',
-          toolbar: '#toolTpl',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -46,63 +49,33 @@ layui.define(['table', 'form', 'util'], (exports) => {
   })
 
   // 监听文章列表行工具事件
-  table.on('tool(LAY-filter-content-list)', (obj) => {
+  table.on('tool(LAY-filter-article-list)', (obj) => {
     let data = obj.data,
       label = ['美食', '新闻', '八卦', '体育', '音乐']
+    label.forEach((v, index) => {
+      if (v === data.label) data.label = index
+    })
     if (obj.event === 'edit') {
       layer.open({
-        type: 2,
+        type: 1,
         title: '编辑文章',
-        content: layui.setter.views + 'app/content/list-form.html',
-        maxmin: true,
-        area: ['550px', '550px'],
-        btn: ['确定', '取消'],
+        id: 'LAY-popup-article-edit',
+        area: ['550px', '500px'],
         // 成功打开弹窗后的回调
         success(layero, index) {
-          // 给iframe表单元素赋值
-          let iframe = layero
-            .find('iframe')
-            .contents()
-            .find('#LAY-app-content-listform')
-          $.each(iframe.find('[name]'), function () {
-            switch ($(this)[0].name) {
-              case 'title':
-                $(this).focus().val(data.title)
-                break
-              case 'author':
-                $(this).val(data.author)
-                break
-              case 'label':
-                label.forEach((v, index) => {
-                  if (v === data.label) $(this).val(index)
-                })
-                break
-              case 'status':
-                $(this).attr('checked', data.status)
-                break
-              case 'content':
-                $(this).val(data.content)
-                break
-            }
-          })
-        },
-        // 点击确定按钮后的回调
-        yes(index, layero) {
-          // 通过 window[name] 获取iframe窗体
-          let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = '#LAY-content-listform-submit',
-            filter = 'LAY-filter-listform-submit',
-            submit = layero.find('iframe').contents().find(submitID)
-
-          // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
-            let field = data.field // 获取提交的字段
-            //提交 Ajax 成功后，静态更新表格中的数据
-            // $.ajax({})
-            table.reload('LAY-app-content-list') // 数据刷新
-            layer.close(index) // 关闭弹层
-          })
-          submit.trigger('click')
+          view(this.id)
+            .render('app/content/article-form', data)
+            .done(() => {
+              form.render(null, 'LAY-filter-articleList-form')
+              admin.setInputFocusEnd(layero.find('[name=title]'))
+              form.on('submit(LAY-filter-article-submit)', (data) => {
+                let field = data.field
+                //提交 Ajax 成功后，静态更新表格中的数据
+                // $.ajax({})
+                obj.update(field)
+                layer.close(index) // 关闭弹层
+              })
+            })
         },
       })
     } else if (obj.event === 'del') {
@@ -115,8 +88,8 @@ layui.define(['table', 'form', 'util'], (exports) => {
 
   // 分类管理
   table.render({
-    elem: '#LAY-app-content-tags',
-    url: '/iframe/json/content/tags.json',
+    elem: '#LAY-id-tags-list',
+    url: setter.api + 'json/content/tags.json',
     cols: [
       [
         { type: 'numbers', fixed: 'left' },
@@ -127,7 +100,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
           width: 150,
           align: 'center',
           fixed: 'right',
-          templet: '#toolTpl',
+          templet: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -135,36 +108,28 @@ layui.define(['table', 'form', 'util'], (exports) => {
   })
 
   // 监听分类管理行工具事件
-  table.on('tool(LAY-filter-content-tags)', (obj) => {
+  table.on('tool(LAY-filter-tags-list)', (obj) => {
     let data = obj.data
     if (obj.event === 'edit') {
       layer.open({
-        type: 2,
+        type: 1,
         title: '编辑分类',
-        content: layui.setter.views + 'app/content/tags-form.html',
-        area: ['460px', '200px'],
-        btn: ['确定', '取消'],
+        id: 'LAY-popup-tags-edit',
+        area: ['450px', '200px'],
         success(layero, index) {
-          // 给iframe表单元素赋值
-          let iframe = layero
-            .find('iframe')
-            .contents()
-            .find('#LAY-app-content-tagsform')
-          iframe.find('[name=tags]').focus().val(data.tags)
-        },
-        yes(index, layero) {
-          // 获取iframe元素的值
-          let iframe = layer.getChildFrame('body', index),
-            tags = iframe.find('[name=tags]').val()
-
-          if (!tags.replace(/\s/g, '')) return
-
-          //提交 Ajax 成功后，静态更新表格中的数据
-          // $.ajax({})
-          obj.update({
-            tags,
-          })
-          layer.close(index)
+          view(this.id)
+            .render('app/content/tags-form', data)
+            .done(() => {
+              form.render(null, 'LAY-filter-tagsList-form')
+              admin.setInputFocusEnd(layero.find('[name=tags]'))
+              form.on('submit(LAY-filter-tags-submit)', (data) => {
+                let field = data.field
+                //提交 Ajax 成功后，静态更新表格中的数据
+                // $.ajax({})
+                obj.update(field) // 数据更新
+                layer.close(index) // 关闭弹层
+              })
+            })
         },
       })
     } else if (obj.event === 'del') {
@@ -177,21 +142,29 @@ layui.define(['table', 'form', 'util'], (exports) => {
 
   // 评论管理
   table.render({
-    elem: '#LAY-app-content-comment',
-    url: '/iframe/json/content/comment.json',
+    elem: '#LAY-id-comment-list',
+    url: setter.api + 'json/content/comment.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
         { field: 'id', title: 'ID', width: 100, sort: true },
         { field: 'reviewers', title: '评论者', minWidth: 100 },
         { field: 'content', title: '评论内容', minWidth: 100 },
-        { field: 'commtime', title: '评论时间', minWidth: 100, sort: true },
+        {
+          field: 'commentTime',
+          title: '评论时间',
+          minWidth: 100,
+          sort: true,
+          templet: (d) => {
+            return util.toDateString(d.commentTime * 1000, 'yyyy年MM月dd日')
+          },
+        },
         {
           title: '操作',
           width: 150,
           align: 'center',
           fixed: 'right',
-          toolbar: '#toolTpl',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -202,39 +175,28 @@ layui.define(['table', 'form', 'util'], (exports) => {
   })
 
   // 监听评论管理行工具事件
-  table.on('tool(LAY-filter-content-comment)', (obj) => {
+  table.on('tool(LAY-filter-comment-list)', (obj) => {
     let data = obj.data
     if (obj.event === 'edit') {
       layer.open({
-        type: 2,
+        type: 1,
         title: '编辑评论',
-        content: layui.setter.views + 'app/content/comment-form.html',
-        area: ['450px', '300px'],
-        btn: ['确定', '取消'],
+        id: 'LAY-popup-content-edit',
+        area: ['450px', '240px'],
         success(layero, index) {
-          // 给iframe表单元素赋值
-          let iframe = layero
-            .find('iframe')
-            .contents()
-            .find('#LAY-app-content-comment-form')
-          iframe.find('[name=content]').focus().val(data.content)
-        },
-        yes(index, layero) {
-          // 通过 window[name] 获取iframe窗体
-          let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = '#LAY-app-content-comment-submit',
-            filter = 'LAY-filter-content-comment-submit',
-            submit = layero.find('iframe').contents().find(submitID)
-
-          // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
-            let field = data.field // 获取提交的字段
-            //提交 Ajax 成功后，静态更新表格中的数据
-            // $.ajax({})
-            table.reload('LAY-app-content-comment') // 数据刷新
-            layer.close(index) // 关闭弹层
-          })
-          submit.trigger('click')
+          view(this.id)
+            .render('app/content/comment-form', data)
+            .done(() => {
+              form.render(null, 'LAY-filter-commentList-form')
+              admin.setInputFocusEnd(layero.find('[name=content]'))
+              form.on('submit(LAY-filter-comment-submit)', (data) => {
+                let field = data.field
+                //提交 Ajax 成功后，静态更新表格中的数据
+                // $.ajax({})
+                obj.update(field) // 数据更新
+                layer.close(index) // 关闭弹层
+              })
+            })
         },
       })
     } else if (obj.event === 'del') {

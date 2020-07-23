@@ -20,31 +20,13 @@
             <div class="layui-card-header">输入框</div>
             <div class="layui-card-body layui-row layui-col-space10">
               <div class="layui-col-md12">
-                <input
-                  type="text"
-                  name="title"
-                  class="layui-input"
-                  placeholder="请输入标题"
-                  autocomplete="off"
-                />
+                <input type="text" name="title" class="layui-input" placeholder="请输入标题" autocomplete="off" />
               </div>
               <div class="layui-col-md6">
-                <input
-                  type="text"
-                  name="username"
-                  class="layui-input"
-                  placeholder="用户名"
-                  autocomplete="off"
-                />
+                <input type="text" name="username" class="layui-input" placeholder="用户名" autocomplete="off" />
               </div>
               <div class="layui-col-md6">
-                <input
-                  type="password"
-                  name="password"
-                  class="layui-input"
-                  placeholder="密码"
-                  autocomplete="off"
-                />
+                <input type="password" name="password" class="layui-input" placeholder="密码" autocomplete="off" />
               </div>
             </div>
           </div>
@@ -70,9 +52,7 @@
                 <select name="quiz">
                   <option value="">请选择</option>
                   <optgroup label="城市记忆">
-                    <option value="你工作的第一个城市"
-                      >你工作的第一个城市？</option
-                    >
+                    <option value="你工作的第一个城市">你工作的第一个城市？</option>
                   </optgroup>
                   <optgroup label="学生时代">
                     <option value="你的工号">你的工号？</option>
@@ -111,26 +91,9 @@
                 <input type="checkbox" name="" title="禁用" disabled />
               </div>
               <div class="layui-col-md12">
-                <input
-                  type="checkbox"
-                  name=""
-                  title="写作"
-                  lay-skin="primary"
-                  checked
-                />
-                <input
-                  type="checkbox"
-                  name=""
-                  title="发呆"
-                  lay-skin="primary"
-                />
-                <input
-                  type="checkbox"
-                  name=""
-                  title="禁用"
-                  lay-skin="primary"
-                  disabled
-                />
+                <input type="checkbox" name="" title="写作" lay-skin="primary" checked />
+                <input type="checkbox" name="" title="发呆" lay-skin="primary" />
+                <input type="checkbox" name="" title="禁用" lay-skin="primary" disabled />
               </div>
             </div>
           </div>
@@ -138,19 +101,8 @@
             <div class="layui-card-header">开关</div>
             <div class="layui-card-body">
               <input type="checkbox" name="xxx" lay-skin="switch" />
-              <input
-                type="checkbox"
-                name="yyy"
-                lay-skin="switch"
-                lay-text="ON|OFF"
-                checked
-              />
-              <input
-                type="checkbox"
-                name="zzz"
-                lay-skin="switch"
-                lay-text="开启|关闭"
-              />
+              <input type="checkbox" name="yyy" lay-skin="switch" lay-text="ON|OFF" checked />
+              <input type="checkbox" name="zzz" lay-skin="switch" lay-text="开启|关闭" />
               <input type="checkbox" name="aaa" lay-skin="switch" disabled />
             </div>
           </div>
@@ -167,11 +119,7 @@
           <div class="layui-card">
             <div class="layui-card-header">文本域</div>
             <div class="layui-card-body">
-              <textarea
-                name=""
-                placeholder="请输入"
-                class="layui-textarea"
-              ></textarea>
+              <textarea name="" placeholder="请输入" class="layui-textarea"></textarea>
             </div>
           </div>
           <div class="layui-card">
@@ -208,34 +156,16 @@
                 <div class="layui-form-item">
                   <label class="layui-form-label">兴趣爱好：</label>
                   <div class="layui-input-block">
-                    <input
-                      type="checkbox"
-                      name="interest[write]"
-                      title="写作"
-                    />
+                    <input type="checkbox" name="interest[write]" title="写作" />
                     <input type="checkbox" name="interest[read]" title="阅读" />
-                    <input
-                      type="checkbox"
-                      name="interest[code]"
-                      title="代码"
-                      checked
-                    />
-                    <input
-                      type="checkbox"
-                      name="interest[dreaming]"
-                      title="做梦"
-                    />
+                    <input type="checkbox" name="interest[code]" title="代码" checked />
+                    <input type="checkbox" name="interest[dreaming]" title="做梦" />
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <label class="layui-form-label">是否婚姻：</label>
                   <div class="layui-input-block">
-                    <input
-                      type="checkbox"
-                      name="marriage"
-                      lay-skin="switch"
-                      lay-text="是|否"
-                    />
+                    <input type="checkbox" name="marriage" lay-skin="switch" lay-text="是|否" />
                   </div>
                 </div>
                 <div class="layui-form-item">
@@ -250,32 +180,18 @@
                 <div class="layui-form-item">
                   <label class="layui-form-label">其它信息：</label>
                   <div class="layui-input-block">
-                    <textarea
-                      name="other"
-                      placeholder=""
-                      class="layui-textarea"
-                    ></textarea>
+                    <textarea name="other" placeholder="" class="layui-textarea"></textarea>
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <label class="layui-form-label"></label>
                   <div class="layui-input-block">
-                    <input
-                      type="checkbox"
-                      name="agreement"
-                      title="同意"
-                      lay-skin="primary"
-                      checked
-                    />
+                    <input type="checkbox" name="agreement" title="同意" lay-skin="primary" checked />
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <div class="layui-input-block">
-                    <button
-                      class="layui-btn"
-                      lay-submit
-                      lay-filter="LAY-filter-form-submit"
-                    >
+                    <button class="layui-btn" lay-submit lay-filter="LAY-filter-form-submit">
                       立即提交
                     </button>
                     <button type="reset" class="layui-btn layui-btn-primary">

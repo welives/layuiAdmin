@@ -15,8 +15,8 @@ layui.define(['laytpl', 'layer', 'element', 'util'], (exports) => {
     entry: 'index', // 默认视图文件名
     engine: '.html', // 视图文件后缀名
     pageTabs: true, // 是否开启页面选项卡功能
-    api: '', // 后台接口的地址 ,如果你的域名直接指向public目录，则直接填域名/（需要加斜杠）
-    website: '', // 前台地址（区别于后台前端地址）
+    api: layui.cache.base + '../', // 后台接口的地址 ,如果你的域名直接指向public目录，则直接填域名/（需要加斜杠）
+    website: 'http://127.0.0.1:5501/iframe/', // 前台地址（区别于后台前端地址）
     name: 'LAYUI 摸🐟',
     tableName: 'layuiAdmin', // 本地存储表名
     MOD_NAME: 'admin', // 模块事件名

@@ -146,6 +146,11 @@
       router = layui.router()
 
     form.render(null, 'LAY-filter-forget-form')
+    if (router.search.type === 'resetpass') {
+      admin.setInputFocusEnd($('#LAY-id-reset-newpass'))
+    } else {
+      admin.setInputFocusEnd($('#LAY-id-user-cellphone'))
+    }
 
     // 找回密码
     form.on('submit(LAY-filter-forget-submit)', (data) => {

@@ -99,3 +99,30 @@ a,
 .layui-text-h6 {
   font-size: 12px;
 }
+
+/**********
+  404页面
+ ***********/
+.layadmin-tips {
+  margin-top: 30px;
+  text-align: center;
+}
+.layadmin-tips .layui-icon {
+  display: inline-block;
+  font-size: 300px;
+}
+.layadmin-tips .layui-text {
+  width: 500px;
+  margin: 30px auto;
+  padding-top: 20px;
+  border-top: 5px solid #009688;
+  font-size: 20px;
+}
+.layadmin-tips h1 {
+  font-size: 100px;
+  line-height: 100px;
+  color: #009688;
+}
+.layadmin-tips .layui-text .layui-anim {
+  display: inline-block;
+}

@@ -56,11 +56,7 @@
                 top.layui.admin.popupRight({
                   id: 'LAY-admin-popup-layer-test',
                   success() {
-                    top.layui
-                      .$(`#${this.id}`)
-                      .html(
-                        '<div style="padding: 10px">你想要放入的任何内容</div>',
-                      )
+                    top.layui.$(`#${this.id}`).html('<div style="padding: 10px">你想要放入的任何内容</div>')
                   },
                 })
               },

@@ -89,6 +89,7 @@
       search = router.search
 
     form.render(null, 'LAY-filter-login-form')
+    admin.setInputFocusEnd($('#LAY-id-login-username'))
 
     // 提交
     form.on('submit(LAY-filter-login-submit)', (data) => {

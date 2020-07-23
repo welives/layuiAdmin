@@ -112,11 +112,11 @@
           "title": "通用弹层",
           "child": [
             {
-              "name": "list",
+              "name": "index",
               "title": "功能演示"
             },
             {
-              "name": "special-demo",
+              "name": "special",
               "title": "特殊示例"
             },
             {
@@ -142,7 +142,7 @@
               "title": "设定主题"
             },
             {
-              "name": "special-demo",
+              "name": "special",
               "title": "特殊示例"
             }
           ]
@@ -432,7 +432,7 @@
           "title": "社区系统",
           "child": [
             {
-              "name": "post",
+              "name": "posts",
               "title": "帖子列表"
             },
             {

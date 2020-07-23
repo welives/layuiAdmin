@@ -55,7 +55,7 @@ layui.define('view', (exports) => {
     }),
     // 通用方法
     admin = {
-      v: '1.0.0 std',
+      v: '1.4.0 std',
       // 数据异步请求
       req: view.req,
       // 清除本地 token，并跳转到登入页
@@ -64,6 +64,22 @@ layui.define('view', (exports) => {
       popup: view.popup,
       // 记录最近一次点击的页面标签数据
       tabsPage: {},
+
+      /**
+       * @description 注册监听事件
+       * @param {string} events 事件名
+       * @param {function} callback
+       * @returns
+       */
+      on(events, callback) {
+        /**
+         * layui.onevent(modName, events, callback) 注册自定义模块事件
+         * modName 事件所属模块
+         * events 事件名
+         * callback 事件的方法体
+         */
+        return layui.onevent.call(this, setter.MOD_NAME, events, callback)
+      },
 
       /**
        * @description 发送验证码
@@ -142,6 +158,17 @@ layui.define('view', (exports) => {
       },
 
       /**
+       * @description 设置input标签光标在内容末尾
+       * @param {object} el jquery对象
+       */
+      setInputFocusEnd(el) {
+        let val = el.val()
+        val && el.val('').val(val)
+        el.focus()
+        return false
+      },
+
+      /**
        * @description 侧边伸缩
        * @param {string} status 侧边菜单状态
        */
@@ -207,22 +234,6 @@ layui.define('view', (exports) => {
           .replace(/>/g, '&gt;')
           .replace(/'/g, '&#39;')
           .replace(/"/g, '&quot;')
-      },
-
-      /**
-       * @description 注册监听事件
-       * @param {string} events 事件名
-       * @param {function} callback
-       * @returns
-       */
-      on(events, callback) {
-        /**
-         * layui.onevent(modName, events, callback) 注册自定义模块事件
-         * modName 事件所属模块
-         * events 事件名
-         * callback 事件的方法体
-         */
-        return layui.onevent.call(this, setter.MOD_NAME, events, callback)
       },
 
       /**
@@ -396,10 +407,7 @@ layui.define('view', (exports) => {
        */
       closeThisTabs() {
         if (!this.tabsPage.index) return
-        $(`${TABS_HEADER}>li`)
-          .eq(this.tabsPage.index)
-          .find(`.layui-tab-close`)
-          .trigger('click')
+        $(`${TABS_HEADER}>li`).eq(this.tabsPage.index).find(`.layui-tab-close`).trigger('click')
       },
 
       /**
@@ -413,9 +421,7 @@ layui.define('view', (exports) => {
             elem.mozRequestFullScreen ||
             elem.msRequestFullScreen
 
-        typeof reqFullScreen !== 'undefined' &&
-          reqFullScreen &&
-          reqFullScreen.call(elem)
+        typeof reqFullScreen !== 'undefined' && reqFullScreen && reqFullScreen.call(elem)
       },
 
       /**
@@ -429,6 +435,17 @@ layui.define('view', (exports) => {
           : document.webkitCancelFullScreen
           ? document.webkitCancelFullScreen()
           : document.msExitFullscreen && document.msExitFullscreen()
+      },
+
+      /**
+       * @description 纠正单页路由格式
+       * @param {string} href
+       * @returns {string}
+       */
+      correctRouter(href) {
+        if (!/^\//.test(href)) href = '/' + href
+        // 纠正首尾
+        return href.replace(/^(\/+)/, '/').replace(new RegExp(`/${setter.entry}$`), '/') // 过滤路由最后的默认视图文件名（如：index）
       },
     },
     events = (admin.events = {
@@ -467,9 +484,7 @@ layui.define('view', (exports) => {
             let href = othis.attr('lay-action'),
               text = othis.attr('lay-text') || '搜索'
             href += this.value
-            text = `${text} <span class="layui-text-red">${admin.escape(
-              this.value,
-            )}</span>`
+            text = `${text} <span class="layui-text-red">${admin.escape(this.value)}</span>`
             // 打开标签页
             layui.index.openTabsPage(href, text)
             // 如果搜索关键词已经打开，则刷新页面即可
@@ -641,8 +656,7 @@ layui.define('view', (exports) => {
 
             // 当目标标签在可视区域右侧时
             if (thisLeft + thisLi.outerWidth() >= outerWidth - tabsLeft) {
-              let subLeft =
-                thisLeft + thisLi.outerWidth() - (outerWidth - tabsLeft)
+              let subLeft = thisLeft + thisLi.outerWidth() - (outerWidth - tabsLeft)
               liItem.each((i, item) => {
                 let li = $(item),
                   left = li.position().left
@@ -848,11 +862,7 @@ layui.define('view', (exports) => {
   $body
     .on('mouseenter', '*[lay-tips]', function () {
       // 不是PC端时,终止执行
-      if (
-        $(this).parent().hasClass('layui-nav-item') &&
-        !container.hasClass(SIDE_SHRINK)
-      )
-        return
+      if ($(this).parent().hasClass('layui-nav-item') && !container.hasClass(SIDE_SHRINK)) return
       let tips = $(this).attr('lay-tips'),
         offset = $(this).attr('lay-offset'),
         direction = $(this).attr('lay-direction'),
@@ -895,10 +905,10 @@ layui.define('view', (exports) => {
 
     // 低版本IE提示
     if (device.ie && device.ie < 10) {
-      view.error(
-        `IE${device.ie}下访问可能不佳，推荐使用：Chrome / Firefox / Edge 等高级浏览器`,
-        { offset: 'auto', id: 'LAY_errorIE' },
-      )
+      view.error(`IE${device.ie}下访问可能不佳，推荐使用：Chrome / Firefox / Edge 等高级浏览器`, {
+        offset: 'auto',
+        id: 'LAY_errorIE',
+      })
     }
   })()
 

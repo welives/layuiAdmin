@@ -23,7 +23,7 @@
       div[carousel-item] > *:nth-child(2n + 1) {
         background-color: #eee;
       }
-      #LAY-carousel-normal-2 div[carousel-item] > * {
+      #LAY-id-carousel-normal-2 div[carousel-item] > * {
         line-height: 120px;
       }
     </style>
@@ -35,11 +35,7 @@
           <div class="layui-card">
             <div class="layui-card-header">常规轮播</div>
             <div class="layui-card-body">
-              <div
-                class="layui-carousel"
-                id="LAY-carousel-normal-1"
-                lay-filter="LAY-filter-carousel-normal-1"
-              >
+              <div class="layui-carousel" id="LAY-id-carousel-normal-1" lay-filter="LAY-filter-carousel-normal-1">
                 <div carousel-item>
                   <div>条目1</div>
                   <div>条目2</div>
@@ -50,7 +46,7 @@
               </div>
               <div
                 class="layui-carousel"
-                id="LAY-carousel-normal-2"
+                id="LAY-id-carousel-normal-2"
                 lay-filter="LAY-filter-carousel-normal-2"
                 style="margin-top: 15px;"
               >
@@ -91,10 +87,7 @@
                 <div class="layui-form-item">
                   <label class="layui-form-label">动画类型</label>
                   <div class="layui-input-block">
-                    <div
-                      class="layui-btn-group LAY-carousel-param"
-                      style="margin-top: 5px;"
-                    >
+                    <div class="layui-btn-group LAY-carousel-param" style="margin-top: 5px;">
                       <button
                         class="layui-btn layui-btn-sm"
                         style="background-color: #42b983;"
@@ -104,20 +97,10 @@
                       >
                         左右切换
                       </button>
-                      <button
-                        class="layui-btn layui-btn-sm"
-                        data-type="set"
-                        data-key="anim"
-                        data-value="updown"
-                      >
+                      <button class="layui-btn layui-btn-sm" data-type="set" data-key="anim" data-value="updown">
                         上下切换
                       </button>
-                      <button
-                        class="layui-btn layui-btn-sm"
-                        data-type="set"
-                        data-key="anim"
-                        data-value="fade"
-                      >
+                      <button class="layui-btn layui-btn-sm" data-type="set" data-key="anim" data-value="fade">
                         渐隐渐显
                       </button>
                     </div>
@@ -126,10 +109,7 @@
                 <div class="layui-form-item">
                   <label class="layui-form-label">箭头状态</label>
                   <div class="layui-input-block">
-                    <div
-                      class="layui-btn-group LAY-carousel-param"
-                      style="margin-top: 5px;"
-                    >
+                    <div class="layui-btn-group LAY-carousel-param" style="margin-top: 5px;">
                       <button
                         class="layui-btn layui-btn-sm"
                         style="background-color: #42b983;"
@@ -139,20 +119,10 @@
                       >
                         悬停显示
                       </button>
-                      <button
-                        class="layui-btn layui-btn-sm"
-                        data-type="set"
-                        data-key="arrow"
-                        data-value="always"
-                      >
+                      <button class="layui-btn layui-btn-sm" data-type="set" data-key="arrow" data-value="always">
                         始终显示
                       </button>
-                      <button
-                        class="layui-btn layui-btn-sm"
-                        data-type="set"
-                        data-key="arrow"
-                        data-value="none"
-                      >
+                      <button class="layui-btn layui-btn-sm" data-type="set" data-key="arrow" data-value="none">
                         不显示
                       </button>
                     </div>
@@ -161,10 +131,7 @@
                 <div class="layui-form-item">
                   <label class="layui-form-label">指示器位置</label>
                   <div class="layui-input-block">
-                    <div
-                      class="layui-btn-group LAY-carousel-param"
-                      style="margin-top: 5px;"
-                    >
+                    <div class="layui-btn-group LAY-carousel-param" style="margin-top: 5px;">
                       <button
                         class="layui-btn layui-btn-sm"
                         style="background-color: #42b983;"
@@ -174,20 +141,10 @@
                       >
                         容器内部
                       </button>
-                      <button
-                        class="layui-btn layui-btn-sm"
-                        data-type="set"
-                        data-key="indicator"
-                        data-value="outside"
-                      >
+                      <button class="layui-btn layui-btn-sm" data-type="set" data-key="indicator" data-value="outside">
                         容器外部
                       </button>
-                      <button
-                        class="layui-btn layui-btn-sm"
-                        data-type="set"
-                        data-key="indicator"
-                        data-value="none"
-                      >
+                      <button class="layui-btn layui-btn-sm" data-type="set" data-key="indicator" data-value="none">
                         不显示
                       </button>
                     </div>
@@ -223,11 +180,7 @@
                   </div>
                 </div>
               </div>
-              <div
-                class="layui-carousel"
-                id="LAY-carousel-param"
-                lay-filter="LAY-filter-carousel-param"
-              >
+              <div class="layui-carousel" id="LAY-id-carousel-param" lay-filter="LAY-filter-carousel-param">
                 <div carousel-item>
                   <div>条目1</div>
                   <div>条目2</div>
@@ -241,16 +194,12 @@
           <div class="layui-card">
             <div class="layui-card-header">填充轮播元素 - 以图片为例</div>
             <div class="layui-card-body">
-              <div class="layui-carousel" id="LAY-carousel-img">
-                <script
-                  type="text/html"
-                  template
-                  lay-url="/iframe/json/carousel/img.json"
-                >
+              <div class="layui-carousel" id="LAY-id-carousel-img">
+                <script type="text/html" template lay-url="{{ layui.setter.api }}json/carousel/img.json">
                   <div carousel-item>
                     {{# layui.each(d.data, (index, item)=>{ }}
                       <div>
-                        <img src="{{ item.src }}" alt="" />
+                        <img src="{{ layui.setter.api }}{{ item.src }}" alt="" />
                       </div>
                       {{# }) }}
                     </div>
@@ -274,23 +223,23 @@
 
           // 常规轮播
           carousel.render({
-            elem: '#LAY-carousel-normal-1',
+            elem: '#LAY-id-carousel-normal-1',
             arrow: 'always',
           })
           // 改变下时间间隔、动画类型、高度
           carousel.render({
-            elem: '#LAY-carousel-normal-2',
+            elem: '#LAY-id-carousel-normal-2',
             interval: 1800,
             anim: 'fade',
             height: '120px',
           })
           // 设定各种参数
           let ins = carousel.render({
-            elem: '#LAY-carousel-param',
+            elem: '#LAY-id-carousel-param',
           })
           // 图片轮播
           carousel.render({
-            elem: '#LAY-carousel-img',
+            elem: '#LAY-id-carousel-img',
             height: '340px',
             interval: 3000,
           })
@@ -305,10 +254,7 @@
               let key = othis.data('key'),
                 options = {}
 
-              othis
-                .css('background-color', '#42b983')
-                .siblings()
-                .removeAttr('style')
+              othis.css('background-color', '#42b983').siblings().removeAttr('style')
               options[key] = othis.data('value')
               ins.reload(options)
             },

@@ -24,7 +24,7 @@
                   立即转化为数据表格
                 </button>
               </div>
-              <table lay-filter="LAY-filter-table">
+              <table lay-filter="LAY-filter-table-toStatic">
                 <thead>
                   <tr>
                     <th lay-data="{field:'username', width:200}">昵称</th>
@@ -66,7 +66,7 @@
             table = layui.table,
             event = {
               parseTable() {
-                table.init('LAY-filter-table')
+                table.init('LAY-filter-table-toStatic')
               },
             }
 

@@ -29,10 +29,7 @@
               >
                 <thead>
                   <tr>
-                    <th
-                      lay-data="{checkbox:true,fixed:'left',width:80}"
-                      rowspan="2"
-                    ></th>
+                    <th lay-data="{checkbox:true,fixed:'left',width:80}" rowspan="2"></th>
                     <th lay-data="{field:'username',width:150}" rowspan="2">
                       联系人
                     </th>
@@ -40,10 +37,7 @@
                     <th lay-data="{field:'amount',width:120}" rowspan="2">
                       金额
                     </th>
-                    <th
-                      lay-data="{fixed:'right',align:'center',toolbar:'#LAY-table-tool'}"
-                      rowspan="2"
-                    >
+                    <th lay-data="{fixed:'right',align:'center',toolbar:'#LAY-id-rowToolTpl'}" rowspan="2">
                       操作
                     </th>
                   </tr>
@@ -58,11 +52,7 @@
               <fieldset class="layui-elem-field layui-field-title">
                 <legend>更多级表头（可以无限极）</legend>
               </fieldset>
-              <table
-                class="layui-table"
-                lay-filter="LAY-filter-table-thead2"
-                lay-data="{cellMinWidth:80,page:true}"
-              >
+              <table class="layui-table" lay-filter="LAY-filter-table-thead2" lay-data="{cellMinWidth:80,page:true}">
                 <thead>
                   <tr>
                     <th rowspan="3" lay-data="{field:'username',width:80}">
@@ -73,10 +63,7 @@
                     </th>
                     <th colspan="5" lay-data="{align:'center'}">地址1</th>
                     <th colspan="2" lay-data="{align:'center'}">地址2</th>
-                    <th
-                      rowspan="3"
-                      lay-data="{fixed:'right',align:'center',toolbar:'#LAY-table-tool'}"
-                    >
+                    <th rowspan="3" lay-data="{fixed:'right',align:'center',toolbar:'#LAY-id-rowToolTpl'}">
                       操作
                     </th>
                   </tr>
@@ -94,7 +81,7 @@
                   </tr>
                 </thead>
               </table>
-              <script type="text/html" id="LAY-table-tool">
+              <script type="text/html" id="LAY-id-rowToolTpl">
                 <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</button>
                 <button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
               </script>
@@ -114,13 +101,14 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let table = layui.table
+          let table = layui.table,
+            setter = layui.setter
 
           table.init('LAY-filter-table-thead1', {
-            url: '/iframe/json/table/demo2.json',
+            url: setter.api + 'json/table/demo2.json',
           })
           table.init('LAY-filter-table-thead2', {
-            url: '/iframe/json/table/demo2.json',
+            url: setter.api + 'json/table/demo2.json',
           })
 
           table.on('tool(LAY-filter-table-thead1)', (obj) => {

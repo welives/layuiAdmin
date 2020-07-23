@@ -27,10 +27,8 @@
         border-radius: 4px;
         -moz-border-radius: 4px;
         -webkit-border-radius: 4px;
-        font-family: 'Helvetica Neue For Number', -apple-system,
-          BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC',
-          'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica,
-          Arial, sans-serif;
+        font-family: 'Helvetica Neue For Number', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC',
+          'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size: 14px;
         line-height: 1.5;
         color: rgba(0, 0, 0, 0.65);
@@ -110,56 +108,31 @@
                   <div class="layui-inline">
                     <label class="layui-form-label">墨绿主题</label>
                     <div class="layui-input-inline">
-                      <input
-                        type="text"
-                        class="layui-input"
-                        id="LAY-laydate-theme-molv"
-                        placeholder="yyyy-MM-dd"
-                      />
+                      <input type="text" class="layui-input" id="LAY-id-laydate-theme-molv" placeholder="yyyy-MM-dd" />
                     </div>
                   </div>
                   <div class="layui-inline">
                     <label class="layui-form-label">格子主题</label>
                     <div class="layui-input-inline">
-                      <input
-                        type="text"
-                        class="layui-input"
-                        id="LAY-laydate-theme-grid"
-                        placeholder="yyyy-MM-dd"
-                      />
+                      <input type="text" class="layui-input" id="LAY-id-laydate-theme-grid" placeholder="yyyy-MM-dd" />
                     </div>
                   </div>
                   <div class="layui-inline">
                     <label class="layui-form-label">蓝色主题</label>
                     <div class="layui-input-inline">
-                      <input
-                        type="text"
-                        class="layui-input"
-                        id="LAY-laydate-theme-blue"
-                        placeholder="yyyy-MM-dd"
-                      />
+                      <input type="text" class="layui-input" id="LAY-id-laydate-theme-blue" placeholder="yyyy-MM-dd" />
                     </div>
                   </div>
                   <div class="layui-inline">
                     <label class="layui-form-label">红色主题</label>
                     <div class="layui-input-inline">
-                      <input
-                        type="text"
-                        class="layui-input"
-                        id="LAY-laydate-theme-red"
-                        placeholder="yyyy-MM-dd"
-                      />
+                      <input type="text" class="layui-input" id="LAY-id-laydate-theme-red" placeholder="yyyy-MM-dd" />
                     </div>
                   </div>
                   <div class="layui-inline">
                     <label class="layui-form-label">自定义其它颜色</label>
                     <div class="layui-input-inline">
-                      <input
-                        type="text"
-                        class="layui-input"
-                        id="LAY-laydate-theme-other"
-                        placeholder="yyyy-MM-dd"
-                      />
+                      <input type="text" class="layui-input" id="LAY-id-laydate-theme-other" placeholder="yyyy-MM-dd" />
                     </div>
                   </div>
                   <div class="layui-inline">
@@ -168,7 +141,7 @@
                       <input
                         type="text"
                         class="layui-input"
-                        id="LAY-laydate-theme-custom"
+                        id="LAY-id-laydate-theme-custom"
                         placeholder="yyyy-MM-dd"
                       />
                     </div>
@@ -181,11 +154,11 @@
             <div class="layui-card-header">直接嵌套显示</div>
             <div class="layui-card-body">
               <div class="layadmin-laydate-theme-box">
-                <div class="layui-inline" id="LAY-laydate-static-n1"></div>
-                <div class="layui-inline" id="LAY-laydate-static-n2"></div>
-                <div class="layui-inline" id="LAY-laydate-static-n3"></div>
-                <div class="layui-inline" id="LAY-laydate-static-n4"></div>
-                <div class="layui-inline" id="LAY-laydate-static-n5"></div>
+                <div class="layui-inline" id="LAY-id-laydate-static-n1"></div>
+                <div class="layui-inline" id="LAY-id-laydate-static-n2"></div>
+                <div class="layui-inline" id="LAY-id-laydate-static-n3"></div>
+                <div class="layui-inline" id="LAY-id-laydate-static-n4"></div>
+                <div class="layui-inline" id="LAY-id-laydate-static-n5"></div>
               </div>
             </div>
           </div>
@@ -204,56 +177,56 @@
 
           // 墨绿主题
           laydate.render({
-            elem: '#LAY-laydate-theme-molv',
+            elem: '#LAY-id-laydate-theme-molv',
             theme: 'molv',
           })
           // 格子主题
           laydate.render({
-            elem: '#LAY-laydate-theme-grid',
+            elem: '#LAY-id-laydate-theme-grid',
             theme: 'grid',
           })
           // 蓝色主题
           laydate.render({
-            elem: '#LAY-laydate-theme-blue',
+            elem: '#LAY-id-laydate-theme-blue',
             theme: '#1e9fff',
           })
           // 红色主题
           laydate.render({
-            elem: '#LAY-laydate-theme-red',
+            elem: '#LAY-id-laydate-theme-red',
             theme: '#ff5722',
           })
           // 自定义其它颜色
           laydate.render({
-            elem: '#LAY-laydate-theme-other',
+            elem: '#LAY-id-laydate-theme-other',
             theme: '#42b983',
           })
           // 定制主题
           laydate.render({
-            elem: '#LAY-laydate-theme-custom',
+            elem: '#LAY-id-laydate-theme-custom',
             theme: 'gbw',
           })
           // 直接嵌套显示
           laydate.render({
-            elem: '#LAY-laydate-static-n1',
+            elem: '#LAY-id-laydate-static-n1',
             position: 'static',
           })
           laydate.render({
-            elem: '#LAY-laydate-static-n2',
+            elem: '#LAY-id-laydate-static-n2',
             position: 'static',
             lang: 'en',
           })
           laydate.render({
-            elem: '#LAY-laydate-static-n3',
+            elem: '#LAY-id-laydate-static-n3',
             type: 'year',
             position: 'static',
           })
           laydate.render({
-            elem: '#LAY-laydate-static-n4',
+            elem: '#LAY-id-laydate-static-n4',
             type: 'month',
             position: 'static',
           })
           laydate.render({
-            elem: '#LAY-laydate-static-n4',
+            elem: '#LAY-id-laydate-static-n4',
             type: 'time',
             position: 'static',
           })

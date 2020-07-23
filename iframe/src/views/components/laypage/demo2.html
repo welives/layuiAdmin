@@ -19,28 +19,28 @@
           <div class="layui-card">
             <div class="layui-card-header">显示完整功能</div>
             <div class="layui-card-body">
-              <div id="LAY-laypage-complete"></div>
+              <div id="LAY-id-laypage-complete"></div>
             </div>
           </div>
           <div class="layui-card">
             <div class="layui-card-header">自定义排版</div>
             <div class="layui-card-body">
-              <div id="LAY-laypage-custom1"></div>
-              <div id="LAY-laypage-custom2"></div>
-              <div id="LAY-laypage-custom3"></div>
+              <div id="LAY-id-laypage-custom1"></div>
+              <div id="LAY-id-laypage-custom2"></div>
+              <div id="LAY-id-laypage-custom3"></div>
             </div>
           </div>
           <div class="layui-card">
             <div class="layui-card-header">自定义每页条数的选择项</div>
             <div class="layui-card-body">
-              <div id="LAY-laypage-custom4"></div>
+              <div id="LAY-id-laypage-custom4"></div>
             </div>
           </div>
           <div class="layui-card">
             <div class="layui-card-header">将一段已知数组分页展示</div>
             <div class="layui-card-body">
-              <div id="LAY-laypage-data"></div>
-              <ul id="LAY-laypage-datalist"></ul>
+              <div id="LAY-id-laypage-data"></div>
+              <ul id="LAY-id-laypage-datalist"></ul>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
 
           // 显示完整功能
           laypage.render({
-            elem: 'LAY-laypage-complete',
+            elem: 'LAY-id-laypage-complete',
             count: 100,
             layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
             jump(obj) {
@@ -67,23 +67,23 @@
           })
           // 自定义排版
           laypage.render({
-            elem: 'LAY-laypage-custom1',
+            elem: 'LAY-id-laypage-custom1',
             count: 1000,
             layout: ['limit', 'prev', 'page', 'next'],
           })
           laypage.render({
-            elem: 'LAY-laypage-custom2',
+            elem: 'LAY-id-laypage-custom2',
             count: 1000,
             layout: ['prev', 'next', 'page'],
           })
           laypage.render({
-            elem: 'LAY-laypage-custom3',
+            elem: 'LAY-id-laypage-custom3',
             count: 1000,
             layout: ['page', 'count'],
           })
           // 自定义每页条数的选择项
           laypage.render({
-            elem: 'LAY-laypage-custom4',
+            elem: 'LAY-id-laypage-custom4',
             count: 1000,
             limit: 100,
             limits: [100, 300, 500],
@@ -129,16 +129,14 @@
             '台北',
           ]
           laypage.render({
-            elem: 'LAY-laypage-data',
+            elem: 'LAY-id-laypage-data',
             count: layPageData.length,
             jump(obj) {
               // 模拟渲染
-              $('#LAY-laypage-datalist').html(
+              $('#LAY-id-laypage-datalist').html(
                 (() => {
                   let arr = [],
-                    thisData = layPageData
-                      .concat()
-                      .splice(obj.curr * obj.limit - obj.limit, obj.limit)
+                    thisData = layPageData.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit)
                   $.each(thisData, (index, item) => {
                     arr.push(`<li>${item}</li>`)
                   })

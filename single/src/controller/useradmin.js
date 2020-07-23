@@ -7,7 +7,7 @@
 
  */
 
-layui.define(['table', 'form'], (exports) => {
+layui.define(['table', 'form', 'util'], (exports) => {
   let $ = layui.$,
     setter = layui.setter,
     view = layui.view,

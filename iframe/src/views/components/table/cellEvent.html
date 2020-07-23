@@ -22,11 +22,7 @@
               <blockquote class="layui-elem-quote">
                 点击下面表格中的【签名列】，以演示单元格事件
               </blockquote>
-              <table
-                class="layui-hide"
-                id="LAY-table-event"
-                lay-filter="LAY-filter-table-event"
-              ></table>
+              <table class="layui-hide" id="LAY-id-table-event" lay-filter="LAY-filter-table-event"></table>
             </div>
           </div>
         </div>
@@ -39,11 +35,12 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let table = layui.table
+          let table = layui.table,
+            setter = layui.setter
 
           table.render({
-            elem: '#LAY-table-event',
-            url: '/iframe/json/table/user.json',
+            elem: '#LAY-id-table-event',
+            url: setter.api + 'json/table/user.json',
             cols: [
               [
                 { field: 'id', title: 'ID', width: 80 },

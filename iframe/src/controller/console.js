@@ -1,11 +1,11 @@
-layui.define((exports) => {
+layui.define('laytpl', (exports) => {
   let $ = layui.$,
     admin = layui.admin,
     setter = layui.setter,
     laytpl = layui.laytpl
 
   admin.req({
-    url: '/iframe/json/home/console.json',
+    url: setter.api + 'json/console/index.json',
     success(res) {
       renderShortcut(res.data.shortcut)
       renderBacklog(res.data.backlog)
@@ -20,13 +20,10 @@ layui.define((exports) => {
           echartsApp = [],
           carouselIndex = 0,
           // 拿到图表的DOM容器
-          elemDataView = $('#LAY-console-dataview').children('div'),
+          elemDataView = $('#LAY-id-dataview').children('div'),
           // 渲染图表
           renderDataView = (index) => {
-            echartsApp[index] = echarts.init(
-              elemDataView[index],
-              layui.echartsTheme,
-            )
+            echartsApp[index] = echarts.init(elemDataView[index], layui.echartsTheme)
             echartsApp[index].setOption(res.data.echarts[index])
             window.onresize = echartsApp[index].resize
           }
@@ -72,8 +69,8 @@ layui.define((exports) => {
     let table = layui.table
     // 今日热搜
     table.render({
-      elem: '#LAY-console-topSearch', // 渲染容器
-      url: '/iframe/json/home/top-search.json', // 数据接口
+      elem: '#LAY-id-topSearch', // 渲染容器
+      url: setter.api + 'json/console/top-search.json', // 数据接口
       page: true, // 是否开启分页
       // 表头
       cols: [
@@ -94,8 +91,8 @@ layui.define((exports) => {
 
     // 今日热贴
     table.render({
-      elem: '#LAY-console-topCard',
-      url: '/iframe/json/home/top-card.json',
+      elem: '#LAY-id-topCard',
+      url: setter.api + 'json/console/top-card.json',
       page: true,
       cellMinWidth: 120,
       cols: [
@@ -126,7 +123,7 @@ layui.define((exports) => {
         '<div carousel-item>{{# layui.each(d, (index, ul)=>{ }}',
         '<ul class="layui-row layui-col-space10">',
         '{{# layui.each(ul.list, (idx, li)=>{ }}',
-        '<li class="layui-col-xs3"><a lay-href="{{ li.url }}">',
+        '<li class="layui-col-xs3"><a lay-href="{{ top.layui.setter.views }}{{ li.url }}">',
         '<i class="layui-icon {{ li.icon }}"></i><cite>{{ li.text }}</cite>',
         '</a></li>{{# }) }}</ul>{{# }) }}</div>',
       ].join(''),
@@ -145,7 +142,7 @@ layui.define((exports) => {
         '<div carousel-item>{{# layui.each(d, (index, ul)=>{ }}',
         '<ul class="layui-row layui-col-space10">',
         '{{# layui.each(ul.list, (idx, li)=>{ }}<li class="layui-col-xs6">',
-        '<a {{ li.href ? "href="+ li.href : "" }} {{ li.action ? "onclick="+ li.action : "" }} {{ li.url ? "lay-href="+ li.url : "" }} class="layadmin-backlog-body">',
+        '<a href="{{ li.href || "javascript:;" }}" {{ li.action ? "onclick="+ li.action : "" }} {{ li.url ? "lay-href="+ li.url : "" }} class="layadmin-backlog-body">',
         '<h3>{{ li.title }}</h3><p><cite class="{{ li.skin }}">{{ li.text }}</cite></p>',
         '</a></li>{{# }) }}</ul>{{# }) }}</div>',
       ].join(''),

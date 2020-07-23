@@ -2,7 +2,7 @@
 <html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <title>摸鱼 - 基于Layui的练习项目</title>
+    <title>摸鱼 - 基于layui的练习项目</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta
@@ -13,11 +13,10 @@
     <link rel="stylesheet" href="src/style/default.css" media="all" />
     <link rel="stylesheet" href="src/style/layout.css" media="all" />
     <script>
-      ;/^http(s*):\/\//.test(location.href) ||
-        alert('请先部署到 web环境 下再访问')
+      ;/^http(s*):\/\//.test(location.href) || alert('请先部署到 web环境 下再访问')
     </script>
   </head>
-  <body class="layui-layout-body">
+  <body>
     <div id="LAY_app">
       <div class="layui-layout layui-layout-admin">
         <!-- 头部区域 -->
@@ -25,18 +24,11 @@
           <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item layadmin-flexible" lay-unselect>
               <a href="javascript:;" layadmin-event="flexible" title="侧边收缩">
-                <i
-                  class="layui-icon layui-icon-shrink-right"
-                  id="LAY_app_flexible"
-                ></i
+                <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i
               ></a>
             </li>
             <li class="layui-nav-item layui-hide-xs" lay-unselect>
-              <a
-                href="http://www.layui.com/admin/"
-                target="_blank"
-                title="前台"
-              >
+              <a href="http://www.layui.com/admin/" target="_blank" title="前台">
                 <i class="layui-icon layui-icon-website"></i>
               </a>
             </li>
@@ -56,20 +48,17 @@
               />
             </li>
           </ul>
-          <ul
-            class="layui-nav layui-layout-right"
-            lay-filter="LAY-filter-header-right"
-          >
+          <ul class="layui-nav layui-layout-right" lay-filter="LAY-filter-header-right">
             <li class="layui-nav-item" lay-unselect>
-              <a
-                lay-href="./src/views/app/message/index.html"
-                layadmin-event="message"
-                lay-text="消息中心"
-              >
-                <i class="layui-icon layui-icon-notice"></i>
-                <!-- 如果有新消息,则显示小圆点 -->
-                <span class="layui-badge-dot"></span>
-              </a>
+              <script type="text/html" template lay-url="{{ layui.setter.api }}json/message/newMsg.json">
+                <a lay-href="{{ layui.setter.views }}app/message/index.html" layadmin-event="message" lay-text="消息中心">
+                  <i class="layui-icon layui-icon-notice"></i>
+                  <!-- 如果有新消息,则显示小圆点 -->
+                    {{# if(d.data.newMsg){ }}
+                      <span class="layui-badge-dot"></span>
+                    {{# } }}
+                  </a>
+              </script>
             </li>
             <li class="layui-nav-item layui-hide-xs" lay-unselect>
               <a href="javascript:;" layadmin-event="theme">
@@ -87,29 +76,33 @@
               </a>
             </li>
             <li class="layui-nav-item" lay-unselect>
-              <a href="javascript:;"><cite>摸鱼</cite></a>
-              <dl class="layui-nav-child">
-                <dd>
-                  <a lay-href="./src/views/set/user/info.html">基本资料</a>
-                </dd>
-                <dd>
-                  <a lay-href="./src/views/set/user/password.html">修改密码</a>
-                </dd>
-                <hr />
-                <dd layadmin-event="logout" class="layui-text-center">
-                  <a>退出</a>
-                </dd>
-              </dl>
+              <script
+                type="text/html"
+                template
+                lay-url="{{ layui.setter.api }}json/user/session.json"
+                lay-done="layui.element.render('nav', 'LAY-filter-header-right')"
+              >
+                <a href="javascript:;"><cite>{{ d.data.username }}</cite></a>
+                <dl class="layui-nav-child">
+                  <dd>
+                    <a lay-href="{{ layui.setter.views }}set/user/info.html">基本资料</a>
+                  </dd>
+                  <dd>
+                    <a lay-href="{{ layui.setter.views }}set/user/password.html">修改密码</a>
+                  </dd>
+                  <hr />
+                  <dd layadmin-event="logout" class="layui-text-center">
+                    <a>退出</a>
+                  </dd>
+                </dl>
+              </script>
             </li>
             <li class="layui-nav-item layui-hide-xs" lay-unselect>
               <a href="javascript:;" layadmin-event="about">
                 <i class="layui-icon layui-icon-more-vertical"></i>
               </a>
             </li>
-            <li
-              class="layui-nav-item layui-show-xs-inline-block layui-hide-sm"
-              lay-unselect
-            >
+            <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
               <a href="javascript:;" layadmin-event="more">
                 <i class="layui-icon layui-icon-more-vertical"></i>
               </a>
@@ -126,17 +119,18 @@
               lay-url="json/menu.json"
               lay-done="layui.element.render('nav','LAY-filter-side-menu')"
             >
-              <div class="layui-logo" lay-href="./src/views/home/console.html">
+              <div class="layui-logo" lay-href="./src/views/index.html">
                 <img src="./images/logo.gif" alt="logo" />
                 <span>{{ layui.setter.name || 'LAYUI 摸🐟' }}</span>
               </div>
               <ul id="LAY_app_side_menu" class="layui-nav layui-nav-tree"  lay-filter="LAY-filter-side-menu" lay-shrink="all">
-                {{# let path = layui.router().path,
-                      dataName = layui.setter.response.dataName;
-                  layui.each(d[dataName], (index1, item1) => {
-                    let hasChild1 = typeof item1.list === 'object' && item1.list.length > 0,
+                {{#
+                  let path = layui.router().path,
+                  pathURL = layui.admin.correctRouter(path.join('/'));
+                  layui.each(d.data, (index1, item1) => {
+                    let hasChild1 = typeof item1.child === 'object' && item1.child.length > 0,
                     classSelected1 = () => {
-                      let match1 = item1.spread || path[0] === item1.name || (index1 === 0 && !path[0]);
+                      let match1 = item1.is_spread || path[0] === item1.name || (index1 === 0 && !path[0]);
                       if(match1) {
                         return hasChild1 ? 'layui-nav-itemed' : 'layui-this'
                       }
@@ -146,35 +140,35 @@
                     url1 = (url1 && url1.indexOf('http') > -1) ? url1 : layui.setter.views + url1
                 }}
                   <li data-name="{{ item1.name || '' }}" class="layui-nav-item {{ classSelected1() }}">
-                    <a href="{{ item1.alone ? url1 :'javascript:;' }}" {{ item1.alone ? 'target="_blank"' : '' }} {{ item1.alone || hasChild1 ? '' : 'lay-href="'+ url1 +'"'}} lay-tips="{{ item1.title }}" lay-direction="2">
+                    <a href="{{ item1.is_alone ? url1 :'javascript:;' }}" {{ item1.is_alone ? 'target="_blank"' : '' }} {{ item1.is_alone || hasChild1 ? '' : 'lay-href="'+ url1 +'"'}} lay-tips="{{ item1.title }}" lay-direction="2">
                       <i class="layui-icon {{ item1.icon }}"></i>
                       <cite>{{ item1.title }}</cite>
                     </a>
                     {{# if(hasChild1){ }}
                       <dl class="layui-nav-child">
-                        {{# layui.each(item1.list, (index2, item2) => {
-                          let hasChild2 = typeof item2.list === 'object' && item2.list.length > 0,
+                        {{# layui.each(item1.child, (index2, item2) => {
+                          let hasChild2 = typeof item2.child === 'object' && item2.child.length > 0,
                           classSelected2 = () => {
-                            let match2 = item2.spread || (path[0] === item1.name && path[1] === item2.name);
+                            let match2 = item2.is_spread || (path[0] === item1.name && path[1] === item2.name);
                             if(match2) {
                               return hasChild2 ? 'layui-nav-itemed' : 'layui-this'
                             }
                             return ''
                           },
-                          url2 = (item2.jump && typeof item2.jump === 'string') ? item2.jump : [item1.name, item2.name].join('/');
+                          url2 = (item2.jump && typeof item2.jump === 'string') ? item2.jump : [item1.name, item2.name,''].join('/');
                           url2 = (url2 && url2.indexOf('http') > -1) ? url2 : layui.setter.views + url2
                         }}
                           <dd data-name="{{ item2.name || '' }}" class="{{ classSelected2() }}">
-                            <a href="{{ item2.alone ? url2 :'javascript:;' }}" {{ item2.alone ? 'target="_blank"' : '' }} {{ item2.alone || hasChild2 ? '' : 'lay-href="'+ url2 +'"' }}>{{ item2.title }}</a>
+                            <a href="{{ item2.is_alone ? url2 :'javascript:;' }}" {{ item2.is_alone ? 'target="_blank"' : '' }} {{ item2.is_alone || hasChild2 ? '' : 'lay-href="'+ url2 +'"' }}>{{ item2.title }}</a>
                             {{# if(hasChild2){ }}
                               <dl class="layui-nav-child">
-                                {{# layui.each(item2.list, (index3, item3) => {
+                                {{# layui.each(item2.child, (index3, item3) => {
                                   let match3 = (path[0] === item1.name && path[1] === item2.name && path[2] === item3.name),
                                   url3 = (item3.jump && typeof item3.jump === 'string') ? item3.jump : [item1.name, item2.name, item3.name].join('/');
                                   url3 = (url3 && url3.indexOf('http') > -1) ? url3 : layui.setter.views + url3
                                 }}
                                   <dd data-name="{{ item3.name || '' }}" {{ match3 ? 'class="layui-this"' : '' }}>
-                                    <a href="{{ item3.alone ? url3 :'javascript:;' }}" {{ item3.alone ? 'target="_blank"' : '' }} lay-href="{{ item3.alone ? '' : url3 }}" {{ item3.iframe ? 'lay-iframe="true"' : '' }}>{{ item3.title }}</a>
+                                    <a href="{{ item3.is_alone ? url3 :'javascript:;' }}" {{ item3.is_alone ? 'target="_blank"' : '' }} lay-href="{{ item3.is_alone ? '' : url3 }}">{{ item3.title }}</a>
                                   </dd>
                                 {{# }) }}
                               </dl>
@@ -191,11 +185,7 @@
         </div>
 
         <!-- 页面标签 -->
-        <script
-          type="text/html"
-          template
-          lay-done="layui.element.render('nav','LAY-filter-tabs-operate')"
-        >
+        <script type="text/html" template lay-done="layui.element.render('nav','LAY-filter-tabs-operate')">
           {{# if(layui.setter.pageTabs){ }}
             <div class="layadmin-pageTabs" id="LAY_app_tabs">
               <div
@@ -236,8 +226,8 @@
                 <ul class="layui-tab-title" id="LAY_app_tabsHeader">
                   <li
                     class="layui-this"
-                    lay-id="./src/views/home/console.html"
-                    lay-attr="./src/views/home/console.html"
+                    lay-id="{{ layui.setter.views }}index.html"
+                    lay-attr="{{ layui.setter.views }}index.html"
                   >
                     <i class="layui-icon layui-icon-home"></i>
                   </li>
@@ -248,17 +238,17 @@
         </script>
 
         <!-- 主体内容 -->
-        <script type="text/html" template>
-          <div class="layui-body" id="LAY_app_body">
-            <div class="LAY-tabsBody-item layui-show">
+        <div class="layui-body" id="LAY_app_body">
+          <div class="LAY-tabsBody-item layui-show">
+            <script type="text/html" template>
               <iframe
-                src="./src/views/home/console.html"
+                src="{{ layui.setter.views }}index.html"
                 frameborder="0"
                 class="layadmin-iframe"
               ></iframe>
-            </div>
+            </script>
           </div>
-        </script>
+        </div>
 
         <!-- 辅助元素 用于移动端设备下的遮罩 -->
         <div class="layadmin-body-shade" layadmin-event="shade"></div>
@@ -268,7 +258,8 @@
     <script>
       layui
         .config({
-          base: './src/', // 静态资源所在路径
+          base: './src/', //指定 layuiAdmin 项目路径，本地开发用 src，线上用 dist
+          version: new Date().getTime(), // 这里设置成时间戳是在开发环境时进行实时更新缓存
         })
         .use('index')
     </script>

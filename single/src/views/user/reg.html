@@ -10,7 +10,7 @@
     </div>
     <div class="layadmin-user-login-box layadmin-user-login-body layui-form" lay-filter="LAY-filter-reg-form">
       <div class="layui-form-item">
-        <label class="layadmin-user-login-icon layui-icon layui-icon-cellphone" for="LAY-id-user-cellphone"></label>
+        <label for="LAY-id-user-cellphone" class="layadmin-user-login-icon layui-icon layui-icon-cellphone"></label>
         <input
           type="text"
           id="LAY-id-user-cellphone"
@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="layui-form-item">
-        <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-id-reg-password"></label>
+        <label for="LAY-id-reg-password" class="layadmin-user-login-icon layui-icon layui-icon-password"></label>
         <input
           type="password"
           id="LAY-id-reg-password"
@@ -54,7 +54,7 @@
         />
       </div>
       <div class="layui-form-item">
-        <label class="layadmin-user-login-icon layui-icon layui-icon-password" for="LAY-id-reg-repass"></label>
+        <label for="LAY-id-reg-repass" class="layadmin-user-login-icon layui-icon layui-icon-password"></label>
         <input
           type="password"
           id="LAY-id-reg-repass"
@@ -65,7 +65,7 @@
         />
       </div>
       <div class="layui-form-item">
-        <label class="layadmin-user-login-icon layui-icon layui-icon-username" for="LAY-id-reg-nickname"></label>
+        <label for="LAY-id-reg-nickname" class="layadmin-user-login-icon layui-icon layui-icon-username"></label>
         <input
           type="text"
           id="LAY-id-reg-nickname"
@@ -110,7 +110,7 @@
       router = layui.router()
 
     form.render(null, 'LAY-filter-reg-form')
-
+    admin.setInputFocusEnd($('#LAY-id-user-cellphone'))
     // 提交
     form.on('submit(LAY-filter-reg-submit)', (data) => {
       let field = data.field

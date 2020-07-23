@@ -10,7 +10,7 @@
   <div class="layui-row layui-col-space10">
     <div class="layui-col-md12">
       <div class="layui-card">
-        <div class="layui-card-header layui-form layadmin-card-header-auto" lay-filter="LAY-filter-reply-list">
+        <div class="layui-card-header layui-form layadmin-card-header-auto" lay-filter="LAY-filter-replys-list">
           <div class="layui-form-item">
             <div class="layui-inline">
               <label class="layui-form-label">回帖人</label>
@@ -51,7 +51,7 @@
               删除
             </button>
           </div>
-          <table id="LAY-id-reply-list" lay-filter="LAY-filter-reply-list"></table>
+          <table id="LAY-id-replys-list" lay-filter="LAY-filter-replys-list"></table>
           <script type="text/html" id="LAY-id-avatarTpl">
             <img class="layui-circle" src={{ d.avatar }} style="display: inline-block" width="50%" height="100%">
           </script>
@@ -72,25 +72,25 @@
       table = layui.table,
       event = {
         batchDel() {
-          let checkStatus = table.checkStatus('LAY-id-reply-list'),
+          let checkStatus = table.checkStatus('LAY-id-replys-list'),
             checkData = checkStatus.data
 
           if (checkData.length === 0) return layer.msg('请选择数据')
           layer.confirm('确定删除选中的数据吗', { icon: 3, title: '提示' }, (index) => {
             //执行 Ajax 后重载
             // $.ajax({})
-            table.reload('LAY-id-reply-list')
+            table.reload('LAY-id-replys-list')
             layer.msg('已删除')
           })
         },
       }
-    form.render(null, 'LAY-filter-reply-list')
+    form.render(null, 'LAY-filter-replys-list')
     admin.setInputFocusEnd($('.layui-form').find('[name=replyer]'))
 
     // 监听搜索
     form.on('submit(LAY-filter-replys-search)', (data) => {
       let field = data.field
-      table.reload('LAY-id-reply-list', { where: field })
+      table.reload('LAY-id-replys-list', { where: field })
     })
 
     $('.layadmin-btn-replys').on('click', function () {

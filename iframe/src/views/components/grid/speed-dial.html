@@ -14,7 +14,7 @@
   </head>
   <body>
     <style>
-      #LAY-components-grid-speed-dial .layui-row .layui-card-body {
+      #LAY-id-grid-speed-dial .layui-row .layui-card-body {
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -22,7 +22,7 @@
         font-size: 20px;
       }
     </style>
-    <div class="layui-fluid" id="LAY-components-grid-speed-dial">
+    <div class="layui-fluid" id="LAY-id-grid-speed-dial">
       <div class="layui-row layui-col-space1">
         <script type="text/html" template>
           {{# for(let i=1; i<10; i++){ }}
@@ -46,7 +46,7 @@
             admin = layui.admin
 
           admin.resize(() => {
-            let cardBody = $('#LAY-components-grid-speed-dial .layui-card-body')
+            let cardBody = $('#LAY-id-grid-speed-dial .layui-card-body')
             cardBody.height(cardBody.width())
           })
         })

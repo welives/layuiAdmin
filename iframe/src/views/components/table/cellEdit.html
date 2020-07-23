@@ -19,11 +19,7 @@
           <div class="layui-card">
             <div class="layui-card-header">开启单元格编辑</div>
             <div class="layui-card-body">
-              <table
-                class="layui-hide"
-                id="LAY-table-cellEdit"
-                lay-filter="LAY-filter-table-cellEdit"
-              ></table>
+              <table class="layui-hide" id="LAY-id-table-cellEdit" lay-filter="LAY-filter-table-cellEdit"></table>
             </div>
           </div>
         </div>
@@ -36,11 +32,12 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let table = layui.table
+          let setter = layui.setter,
+            table = layui.table
 
           table.render({
-            elem: '#LAY-table-cellEdit',
-            url: '/iframe/json/table/demo.json',
+            elem: '#LAY-id-table-cellEdit',
+            url: setter.api + 'json/table/demo.json',
             cols: [
               [
                 { type: 'checkbox' },

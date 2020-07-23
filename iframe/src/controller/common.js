@@ -10,7 +10,7 @@ layui.define((exports) => {
    */
   admin.events.logout = () => {
     admin.req({
-      url: '/iframe/json/user/logout.json',
+      url: setter.api + 'json/user/logout.json',
       type: 'get',
       data: {},
       //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行

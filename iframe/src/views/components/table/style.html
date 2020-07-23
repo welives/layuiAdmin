@@ -19,11 +19,11 @@
           <div class="layui-card">
             <div class="layui-card-header">设置单元格样式</div>
             <div class="layui-card-body">
-              <table class="layui-hide" id="LAY-table-style"></table>
-              <script type="text/html" id="LAY-table-usernameTpl">
-                <a href="/?table-demo-id={{d.id}}" class="layui-table-link" target="_blank">{{d.username}}</a>
+              <table class="layui-hide" id="LAY-id-table-style"></table>
+              <script type="text/html" id="LAY-id-usernameTpl">
+                <a href="?id={{ d.id }}" class="layui-table-link">{{ d.username }}</a>
               </script>
-              <script type="text/html" id="LAY-table-sexTpl">
+              <script type="text/html" id="LAY-id-sexTpl">
                 {{# if(d.sex==='女'){ }}
                   <span style="color: #F581B1;">{{d.sex}}</span>
                 {{# }else{ }}
@@ -42,11 +42,12 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let table = layui.table
+          let table = layui.table,
+            setter = layui.setter
 
           table.render({
-            elem: '#LAY-table-style',
-            url: '/iframe/json/table/user.json',
+            elem: '#LAY-id-table-style',
+            url: setter.api + 'json/table/user.json',
             height: 310,
             cols: [
               [
@@ -55,14 +56,14 @@
                   field: 'username',
                   title: '用户名',
                   width: 80,
-                  templet: '#LAY-table-usernameTpl',
+                  templet: '#LAY-id-usernameTpl',
                 },
                 {
                   field: 'sex',
                   title: '性别',
                   sort: true,
                   width: 80,
-                  templet: '#LAY-table-sexTpl',
+                  templet: '#LAY-id-sexTpl',
                 },
                 { field: 'city', title: '城市', width: 80 },
                 { field: 'sign', title: '签名' },

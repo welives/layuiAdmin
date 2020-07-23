@@ -1,5 +1,6 @@
 layui.define(['admin', 'echarts'], (exports) => {
   let $ = layui.$,
+    setter = layui.setter,
     admin = layui.admin,
     echarts = layui.echarts,
     areaData = [
@@ -9344,19 +9345,7 @@ layui.define(['admin', 'echarts'], (exports) => {
           {
             type: 'category',
             show: false,
-            data: [
-              'Line',
-              'Bar',
-              'Scatter',
-              'K',
-              'Pie',
-              'Radar',
-              'Chord',
-              'Force',
-              'Map',
-              'Gauge',
-              'Funnel',
-            ],
+            data: ['Line', 'Bar', 'Scatter', 'K', 'Pie', 'Radar', 'Chord', 'Force', 'Map', 'Gauge', 'Funnel'],
           },
         ],
         yAxis: [
@@ -9405,11 +9394,7 @@ layui.define(['admin', 'echarts'], (exports) => {
                 trigger: 'item',
                 backgroundColor: 'rgba(0,0,0,0)',
                 formatter: function (params) {
-                  return (
-                    '<img src="' +
-                    params.data.symbol.replace('image://', '') +
-                    '"/>'
-                  )
+                  return '<img src="' + params.data.symbol.replace('image://', '') + '"/>'
                 },
               },
               data: [
@@ -9463,18 +9448,7 @@ layui.define(['admin', 'echarts'], (exports) => {
             axisLabel: { show: false },
             axisTick: { show: false },
             splitLine: { show: false },
-            data: [
-              'ten',
-              'nine',
-              'eight',
-              'seven',
-              'six',
-              'five',
-              'four',
-              'three',
-              'two',
-              'one',
-            ],
+            data: ['ten', 'nine', 'eight', 'seven', 'six', 'five', 'four', 'three', 'two', 'one'],
           },
         ],
         series: [
@@ -9532,7 +9506,7 @@ layui.define(['admin', 'echarts'], (exports) => {
 
     // 折线图
     admin.req({
-      url: '/iframe/json/echarts/line.json',
+      url: setter.api + 'json/echarts/line.json',
       success(res) {
         normalLine(res.data.normalLine)
         heapLine(res.data.heapLine)
@@ -9545,7 +9519,7 @@ layui.define(['admin', 'echarts'], (exports) => {
 
     // 柱状图
     admin.req({
-      url: '/iframe/json/echarts/bar.json',
+      url: setter.api + 'json/echarts/bar.json',
       success(res) {
         normalCol(res.data.normalCol)
         heapCol(res.data.heapCol)
@@ -9559,7 +9533,7 @@ layui.define(['admin', 'echarts'], (exports) => {
 
     // 地图
     admin.req({
-      url: '/iframe/json/echarts/map.json',
+      url: setter.api + 'json/echarts/map.json',
       success(res) {
         chinaMap(res.data.map)
       },
@@ -9569,7 +9543,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 标准折线图
   function normalLine(data) {
     let echNormLine,
-      elemNormLine = $('#LAY-normal-line').children('div'),
+      elemNormLine = $('#LAY-id-normal-line').children('div'),
       renderNormLine = (index) => {
         echNormLine = echarts.init(elemNormLine[index], layui.echartsTheme)
         echNormLine.setOption(data[index])
@@ -9581,7 +9555,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 堆积折线图
   function heapLine(data) {
     let echHeapLine,
-      elemHeapLine = $('#LAY-heap-line').children('div'),
+      elemHeapLine = $('#LAY-id-heap-line').children('div'),
       renderHeapLine = (index) => {
         echHeapLine = echarts.init(elemHeapLine[index], layui.echartsTheme)
         echHeapLine.setOption(data[index])
@@ -9593,7 +9567,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 不等距折线图
   function diffLine(data) {
     let echDiffLine,
-      elemDiffLine = $('#LAY-diff-line').children('div'),
+      elemDiffLine = $('#LAY-id-diff-line').children('div'),
       renderDiffLine = (index) => {
         echDiffLine = echarts.init(elemDiffLine[index], layui.echartsTheme)
         echDiffLine.setOption(data[index])
@@ -9605,7 +9579,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 堆积面积图
   function heapArea(data) {
     let echHeapArea,
-      elemHeapArea = $('#LAY-heap-area').children('div'),
+      elemHeapArea = $('#LAY-id-heap-area').children('div'),
       renderHeapArea = (index) => {
         echHeapArea = echarts.init(elemHeapArea[index], layui.echartsTheme)
         echHeapArea.setOption(data[index])
@@ -9617,7 +9591,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 面积图
   function area(data) {
     let echArea,
-      elemArea = $('#LAY-area').children('div'),
+      elemArea = $('#LAY-id-area').children('div'),
       renderArea = (index) => {
         echArea = echarts.init(elemArea[index], layui.echartsTheme)
         echArea.setOption(data[index])
@@ -9629,7 +9603,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 对数轴
   function logLine(data) {
     let echLogLine,
-      elemLogLine = $('#LAY-log-line').children('div'),
+      elemLogLine = $('#LAY-id-log-line').children('div'),
       renderLogLine = (index) => {
         echLogLine = echarts.init(elemLogLine[index], layui.echartsTheme)
         echLogLine.setOption(data[index])
@@ -9641,7 +9615,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 标准柱状图
   function normalCol(data) {
     let echNormCol,
-      elemNormCol = $('#LAY-normal-col').children('div'),
+      elemNormCol = $('#LAY-id-normal-col').children('div'),
       renderNormCol = (index) => {
         echNormCol = echarts.init(elemNormCol[index], layui.echartsTheme)
         echNormCol.setOption(data[index])
@@ -9653,7 +9627,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 堆积柱状图
   function heapCol(data) {
     let echHeapCol,
-      elemHeapCol = $('#LAY-heap-col').children('div'),
+      elemHeapCol = $('#LAY-id-heap-col').children('div'),
       renderHeapCol = (index) => {
         echHeapCol = echarts.init(elemHeapCol[index], layui.echartsTheme)
         echHeapCol.setOption(data[index])
@@ -9665,7 +9639,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 不等距柱形图
   function diffCol(data) {
     let echDiffCol,
-      elemDiffCol = $('#LAY-diff-col').children('div'),
+      elemDiffCol = $('#LAY-id-diff-col').children('div'),
       renderDiffCol = (index) => {
         echDiffCol = echarts.init(elemDiffCol[index], layui.echartsTheme)
         echDiffCol.setOption(data[index])
@@ -9677,7 +9651,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 彩虹柱形图
   function colorCol() {
     let echColorCol,
-      elemColorCol = $('#LAY-color-col').children('div'),
+      elemColorCol = $('#LAY-id-color-col').children('div'),
       renderColorCol = (index) => {
         echColorCol = echarts.init(elemColorCol[index], layui.echartsTheme)
         echColorCol.setOption(colorColData[index])
@@ -9689,7 +9663,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 标准条形图
   function normalBar(data) {
     let echNormalBar,
-      elemNormBar = $('#LAY-normal-bar').children('div'),
+      elemNormBar = $('#LAY-id-normal-bar').children('div'),
       renderNormBar = (index) => {
         echNormalBar = echarts.init(elemNormBar[index], layui.echartsTheme)
         echNormalBar.setOption(data[index])
@@ -9701,7 +9675,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 堆积条形图
   function heapBar(data) {
     let echHeapBar,
-      elemHeapBar = $('#LAY-heap-bar').children('div'),
+      elemHeapBar = $('#LAY-id-heap-bar').children('div'),
       renderHeapBar = (index) => {
         echHeapBar = echarts.init(elemHeapBar[index], layui.echartsTheme)
         echHeapBar.setOption(data[index])
@@ -9713,7 +9687,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 旋风条形图
   function windBar() {
     let echWindBar,
-      elemWindBar = $('#LAY-wind-bar').children('div'),
+      elemWindBar = $('#LAY-id-wind-bar').children('div'),
       renderWindBar = (index) => {
         echWindBar = echarts.init(elemWindBar[index], layui.echartsTheme)
         echWindBar.setOption(windBarData[index])
@@ -9725,7 +9699,7 @@ layui.define(['admin', 'echarts'], (exports) => {
   // 地图
   function chinaMap(data) {
     let echMap,
-      elemMap = $('#LAY-map').children('div'),
+      elemMap = $('#LAY-id-map').children('div'),
       renderMap = (index) => {
         echMap = echarts.init(elemMap[index], layui.echartsTheme)
         echMap.setOption(data[index])

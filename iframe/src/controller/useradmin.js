@@ -1,29 +1,40 @@
-layui.define(['table', 'form'], (exports) => {
+layui.define(['table', 'form', 'util'], (exports) => {
   let $ = layui.$,
+    view = layui.view,
+    admin = layui.admin,
+    setter = layui.setter,
     table = layui.table,
-    form = layui.form
+    form = layui.form,
+    util = layui.util
 
   // 用户列表
   table.render({
-    elem: '#LAY-user-list',
-    url: '/iframe/json/useradmin/userlist.json',
+    elem: '#LAY-id-user-list',
+    url: setter.api + 'json/user/userList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
         { field: 'id', title: 'ID', width: 80, sort: true },
         { field: 'username', title: '用户名', minWidth: 100 },
-        { field: 'avatar', title: '头像', width: 100, templet: '#imgTpl' },
+        { field: 'avatar', title: '头像', width: 100, templet: '#LAY-id-imgTpl' },
         { field: 'phone', title: '手机' },
         { field: 'email', title: '邮箱' },
         { field: 'sex', title: '性别', width: 80 },
         { field: 'ip', title: 'IP地址' },
-        { field: 'jointime', title: '加入时间', sort: true },
+        {
+          field: 'joinTime',
+          title: '加入时间',
+          sort: true,
+          templet: (d) => {
+            return util.toDateString(d.joinTime * 1000, 'yyyy年MM月dd日')
+          },
+        },
         {
           title: '操作',
           width: 160,
           align: 'center',
           fixed: 'right',
-          toolbar: '#table-tool-userlist',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -35,68 +46,36 @@ layui.define(['table', 'form'], (exports) => {
 
   // 监听用户列表行工具事件
   table.on('tool(LAY-filter-user-list)', (obj) => {
-    // 注：tool 是工具条事件名，LAY-user-list 是 table 原始容器的属性 lay-filter="对应的值"
+    // 注：tool 是工具条事件名，LAY-id-user-list 是 table 原始容器的属性 lay-filter="对应的值"
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr) // 获得当前行 tr 的 DOM 对象
 
     if (obj.event === 'del') {
-      layer.confirm(
-        '确定删除该条数据吗?',
-        { icon: 3, title: '提示' },
-        (index) => {
-          obj.del()
-          layer.close(index)
-        },
-      )
+      layer.confirm('确定删除该条数据吗?', { icon: 3, title: '提示' }, (index) => {
+        obj.del()
+        layer.close(index)
+      })
     } else if (obj.event === 'edit') {
       layer.open({
-        type: 2,
+        type: 1,
         title: '编辑用户',
-        content: layui.setter.views + 'user/userform.html',
-        maxmin: true,
-        area: ['500px', '450px'],
-        btn: ['确定', '取消'],
+        id: 'LAY-popup-user-edit',
+        area: ['500px', '400px'],
         // 成功打开弹窗后的回调
         success(layero, index) {
-          // 给iframe表单元素赋值
-          let iframe = layero.find('iframe').contents().find('#LAY-form-user')
-          $.each(iframe.find('[name]'), function () {
-            switch ($(this)[0].name) {
-              case 'username':
-                $(this).focus().val(data.username)
-                break
-              case 'phone':
-                $(this).val(data.phone)
-                break
-              case 'email':
-                $(this).val(data.email)
-                break
-              case 'avatar':
-                $(this).val(data.avatar)
-                break
-              case 'sex':
-                $(this).val() === data.sex ? $(this).attr('checked', true) : ''
-                break
-            }
-          })
-        },
-        // 点击确定按钮后的回调
-        yes(index, layero) {
-          // 通过 window[name] 获取iframe窗体
-          let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = '#LAY-user-submit',
-            filter = 'LAY-filter-user-submit',
-            submit = layero.find('iframe').contents().find(submitID)
-
-          // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
-            let field = data.field
-            //提交 Ajax 成功后，静态更新表格中的数据
-            // $.ajax({})
-            table.reload('LAY-user-list') // 数据刷新
-            layer.close(index) // 关闭弹层
-          })
-          submit.trigger('click')
+          view(this.id)
+            .render('user/list-form', data)
+            .done(() => {
+              form.render(null, 'LAY-filter-userList-form')
+              admin.setInputFocusEnd(layero.find('[name=username]'))
+              form.on('submit(LAY-filter-user-submit)', (data) => {
+                let field = data.field
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                //$.ajax({});
+                obj.update(field)
+                layer.close(index)
+              })
+            })
         },
       })
     }
@@ -104,21 +83,28 @@ layui.define(['table', 'form'], (exports) => {
 
   // 管理员列表
   table.render({
-    elem: '#LAY-admin-list',
-    url: '/iframe/json/useradmin/adminlist.json',
+    elem: '#LAY-id-admin-list',
+    url: setter.api + 'json/admin/adminList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
         { field: 'id', title: 'ID', width: 80, sort: true },
-        { field: 'loginname', title: '登入名', minWidth: 100 },
+        { field: 'loginName', title: '登入名', minWidth: 100 },
         { field: 'phone', title: '手机' },
         { field: 'email', title: '邮箱' },
         { field: 'role', title: '角色' },
-        { field: 'jointime', title: '加入时间', sort: true },
+        {
+          field: 'joinTime',
+          title: '加入时间',
+          sort: true,
+          templet: (d) => {
+            return util.toDateString(d.joinTime * 1000, 'yyyy年MM月dd日')
+          },
+        },
         {
           field: 'check',
           title: '审核状态',
-          templet: '#buttonTpl',
+          templet: '#LAY-id-checkTpl',
           width: 100,
           align: 'center',
         },
@@ -127,7 +113,7 @@ layui.define(['table', 'form'], (exports) => {
           width: 160,
           align: 'center',
           fixed: 'right',
-          toolbar: '#table-tool-adminlist',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -138,76 +124,37 @@ layui.define(['table', 'form'], (exports) => {
   table.on('tool(LAY-filter-admin-list)', (obj) => {
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr), // 获得当前行 tr 的 DOM 对象
-      roles = [
-        '管理员',
-        '超级管理员',
-        '纠错员',
-        '采购员',
-        '推销员',
-        '运营人员',
-        '编辑',
-      ]
+      roles = ['管理员', '超级管理员', '纠错员', '采购员', '推销员', '运营人员', '编辑']
+    roles.forEach((v, index) => {
+      if (v === data.role) data.role = index
+    })
 
     if (obj.event === 'del') {
-      layer.confirm(
-        '确定删除该条数据吗?',
-        { icon: 3, title: '提示' },
-        (index) => {
-          obj.del()
-          layer.close(index)
-        },
-      )
+      layer.confirm('确定删除该条数据吗?', { icon: 3, title: '提示' }, (index) => {
+        obj.del()
+        layer.close(index)
+      })
     } else if (obj.event === 'edit') {
       layer.open({
-        type: 2,
+        type: 1,
         title: '编辑管理员',
-        content: layui.setter.views + 'admin/adminform.html',
-        maxmin: true,
-        area: ['420px', '650px'],
-        btn: ['确定', '取消'],
+        id: 'LAY-popup-admin-edit',
+        area: ['420px', '450px'],
         // 成功打开弹窗后的回调
         success(layero, index) {
-          // 给iframe表单元素赋值
-          let iframe = layero.find('iframe').contents().find('#LAY-form-admin')
-          $.each(iframe.find('[name]'), function () {
-            switch ($(this)[0].name) {
-              case 'loginname':
-                $(this).focus().val(data.loginname)
-                break
-              case 'phone':
-                $(this).val(data.phone)
-                break
-              case 'email':
-                $(this).val(data.email)
-                break
-              case 'role':
-                roles.forEach((v, index) => {
-                  if (v === data.role) $(this).val(index)
-                })
-                break
-              case 'check':
-                $(this).attr('checked', data.check)
-                break
-            }
-          })
-        },
-        // 点击确定按钮后的回调
-        yes(index, layero) {
-          // 通过 window[name] 获取iframe窗体
-          let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = '#LAY-admin-submit',
-            filter = 'LAY-filter-admin-submit',
-            submit = layero.find('iframe').contents().find(submitID)
-
-          // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
-            let field = data.field
-            //提交 Ajax 成功后，静态更新表格中的数据
-            // $.ajax({})
-            table.reload('LAY-admin-list') // 数据刷新
-            layer.close(index) // 关闭弹层
-          })
-          submit.trigger('click')
+          view(this.id)
+            .render('admin/list-form', data)
+            .done(() => {
+              form.render(null, 'LAY-filter-adminList-form')
+              admin.setInputFocusEnd(layero.find('[name=loginName]'))
+              form.on('submit(LAY-filter-admin-submit)', (data) => {
+                let field = data.field
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                //$.ajax({});
+                obj.update(field)
+                layer.close(index)
+              })
+            })
         },
       })
     }
@@ -215,20 +162,20 @@ layui.define(['table', 'form'], (exports) => {
 
   // 角色列表
   table.render({
-    elem: '#LAY-role-list',
-    url: '/iframe/json/useradmin/role.json',
+    elem: '#LAY-id-role-list',
+    url: setter.api + 'json/role/roleList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
         { field: 'id', title: 'ID', width: 80, sort: true },
-        { field: 'rolename', title: '角色名' },
+        { field: 'role', title: '角色名' },
         { field: 'limits', title: '权限' },
         { field: 'descr', title: '具体描述' },
         {
           field: 'check',
           title: '审核状态',
           width: 100,
-          templet: '#buttonTpl',
+          templet: '#LAY-id-checkTpl',
           align: 'center',
         },
         {
@@ -236,7 +183,7 @@ layui.define(['table', 'form'], (exports) => {
           width: 160,
           align: 'center',
           fixed: 'right',
-          toolbar: '#table-tool-rolelist',
+          toolbar: '#LAY-id-rowToolTpl',
         },
       ],
     ],
@@ -247,69 +194,37 @@ layui.define(['table', 'form'], (exports) => {
   table.on('tool(LAY-filter-role-list)', (obj) => {
     let data = obj.data, //获得当前行数据
       tr = $(obj.tr), // 获得当前行 tr 的 DOM 对象
-      roles = [
-        '管理员',
-        '超级管理员',
-        '纠错员',
-        '采购员',
-        '推销员',
-        '运营人员',
-        '编辑',
-        '统计人员',
-        '评估员',
-      ]
+      roles = ['管理员', '超级管理员', '纠错员', '采购员', '推销员', '运营人员', '编辑', '统计人员', '评估员']
+    roles.forEach((v, index) => {
+      if (v === data.role) data.role = index
+    })
 
     if (obj.event === 'del') {
-      layer.confirm(
-        '确定删除该条数据吗?',
-        { icon: 3, title: '提示' },
-        (index) => {
-          obj.del()
-          layer.close(index)
-        },
-      )
+      layer.confirm('确定删除该条数据吗?', { icon: 3, title: '提示' }, (index) => {
+        obj.del()
+        layer.close(index)
+      })
     } else if (obj.event === 'edit') {
       layer.open({
-        type: 2,
+        type: 1,
         title: '编辑角色',
-        content: layui.setter.views + 'role/roleform.html',
-        maxmin: true,
-        area: ['500px', '480px'],
-        btn: ['确定', '取消'],
+        id: 'LAY-popup-role-edit',
+        area: ['500px', '400px'],
         // 成功打开弹窗后的回调
         success(layero, index) {
-          // 给iframe表单元素赋值
-          let iframe = layero.find('iframe').contents().find('#LAY-form-role')
-          $.each(iframe.find('[name]'), function () {
-            switch ($(this)[0].name) {
-              case 'rolename':
-                roles.forEach((v, index) => {
-                  if (v === data.rolename) $(this).val(index)
-                })
-                break
-              case 'descr':
-                $(this).focus().val(data.descr)
-                break
-            }
-          })
-        },
-        // 点击确定按钮后的回调
-        yes(index, layero) {
-          // 通过 window[name] 获取iframe窗体
-          let iframeWindow = window['layui-layer-iframe' + index],
-            submitID = '#LAY-role-submit',
-            filter = 'LAY-filter-role-submit',
-            submit = layero.find('iframe').contents().find(submitID)
-
-          // 监听iframe表单提交
-          iframeWindow.layui.form.on(`submit(${filter})`, (data) => {
-            let field = data.field
-            //提交 Ajax 成功后，静态更新表格中的数据
-            // $.ajax({})
-            table.reload('LAY-role-list') // 数据刷新
-            layer.close(index) // 关闭弹层
-          })
-          submit.trigger('click')
+          view(this.id)
+            .render('role/list-form', data)
+            .done(() => {
+              form.render(null, 'LAY-filter-roleList-form')
+              admin.setInputFocusEnd(layero.find('[name=descr]'))
+              form.on('submit(LAY-filter-role-submit)', (data) => {
+                let field = data.field
+                //提交 Ajax 成功后，关闭当前弹层并重载表格
+                //$.ajax({});
+                obj.update(field)
+                layer.close(index)
+              })
+            })
         },
       })
     }

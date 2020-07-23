@@ -13,29 +13,24 @@
     <link rel="stylesheet" href="../../style/login.css" media="all" />
   </head>
   <body>
-    <div
-      class="layadmin-user-login layadmin-user-display-show"
-      id="LAY-user-login"
-    >
+    <div class="layadmin-user-login layadmin-user-display-show" id="LAY-id-user-login">
       <div class="layadmin-user-login-main">
         <div class="layadmin-user-login-box layadmin-user-login-header">
           <h2>layuiMoyu</h2>
           <p>摸🐟 - 基于Layui的练习项目</p>
         </div>
-        <div
-          class="layadmin-user-login-box layadmin-user-login-body layui-form"
-        >
+        <div class="layadmin-user-login-box layadmin-user-login-body layui-form" lay-filter="LAY-filter-forget-form">
           <script type="text/html" template>
             {{# if(layui.router().search.type === 'resetpass' ){ }}
             <!-- 重置密码 -->
               <div class="layui-form-item">
                 <label
                   class="layadmin-user-login-icon layui-icon layui-icon-password"
-                  for="LAY-user-reset-password"
+                  for="LAY-id-reset-newpass"
                 ></label>
                 <input
                   type="password"
-                  id="LAY-user-reset-password"
+                  id="LAY-id-reset-newpass"
                   class="layui-input"
                   name="password"
                   placeholder="新密码"
@@ -45,11 +40,11 @@
               <div class="layui-form-item">
                 <label
                   class="layadmin-user-login-icon layui-icon layui-icon-password"
-                  for="LAY-user-reset-repass"
+                  for="LAY-id-reset-repass"
                 ></label>
                 <input
                   type="password"
-                  id="LAY-user-reset-repass"
+                  id="LAY-id-reset-repass"
                   class="layui-input"
                   name="repass"
                   placeholder="确认密码"
@@ -70,11 +65,11 @@
               <div class="layui-form-item">
                 <label
                   class="layadmin-user-login-icon layui-icon layui-icon-cellphone"
-                  for="LAY-user-cellphone"
+                  for="LAY-id-user-cellphone"
                 ></label>
                 <input
                   type="text"
-                  id="LAY-user-cellphone"
+                  id="LAY-id-user-cellphone"
                   class="layui-input"
                   name="cellphone"
                   placeholder="请输入注册时的手机号"
@@ -85,13 +80,13 @@
                 <div class="layui-row">
                   <div class="layui-col-xs7">
                     <label
-                      for="LAY-user-vercode"
+                      for="LAY-id-forget-vercode"
                       class="layadmin-user-login-icon layui-icon layui-icon-vercode"
                     ></label>
                     <input
                       type="text"
                       class="layui-input"
-                      id="LAY-user-vercode"
+                      id="LAY-id-forget-vercode"
                       name="vercode"
                       placeholder="图形验证码"
                       lay-verify="required"
@@ -102,7 +97,7 @@
                       <img
                         src="https://www.oschina.net/action/user/captcha"
                         class="layadmin-user-login-codeimg"
-                        id="LAY-user-get-vercode"
+                        id="LAY-id-get-vercode"
                       />
                     </div>
                   </div>
@@ -112,13 +107,13 @@
                 <div class="layui-row">
                   <div class="layui-col-xs7">
                     <label
-                      for="LAY-user-smscode"
+                      for="LAY-id-user-smscode"
                       class="layadmin-user-login-icon layui-icon layui-icon-vercode"
                     ></label>
                     <input
                       type="text"
                       class="layui-input"
-                      id="LAY-user-smscode"
+                      id="LAY-id-user-smscode"
                       name="smscode"
                       placeholder="短信验证码"
                       lay-verify="required"
@@ -128,7 +123,7 @@
                     <div style="margin-left: 10px;">
                       <button
                         class="layui-btn layui-btn-primary layui-btn-fluid"
-                        id="LAY-user-get-smscode"
+                        id="LAY-id-get-smscode"
                       >
                         获取验证码
                       </button>
@@ -150,9 +145,7 @@
         </div>
       </div>
       <div class="layadmin-user-login-footer layui-trans">
-        <p>
-          © 2020 <a href="http://www.layui.com/" target="_blank">layui.com</a>
-        </p>
+        <p>© 2020 <a href="http://www.layui.com/" target="_blank">layui.com</a></p>
       </div>
     </div>
     <script src="../../../layui/layui.js"></script>
@@ -165,10 +158,15 @@
           let $ = layui.$,
             setter = layui.setter,
             admin = layui.admin,
-            view = layui.view,
-            form = layui.form
+            form = layui.form,
+            router = layui.router()
 
-          form.render()
+          form.render(null, 'LAY-filter-forget-form')
+          if (router.search.type === 'resetpass') {
+            admin.setInputFocusEnd($('#LAY-id-reset-newpass'))
+          } else {
+            admin.setInputFocusEnd($('#LAY-id-user-cellphone'))
+          }
 
           // 找回密码
           form.on('submit(LAY-filter-forget-submit)', (data) => {
@@ -195,7 +193,7 @@
             }
 
             admin.req({
-              url: '/iframe/json/user/resetpass.json',
+              url: setter.api + 'json/user/resetpass.json',
               data: field,
               done(res) {
                 layer.msg(
@@ -211,7 +209,6 @@
                 )
               },
             })
-
             return false
           })
         })

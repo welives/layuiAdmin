@@ -182,7 +182,7 @@ layui.define('echarts', (exports) => {
         '<a href="{{ item.link }}" target="_blank">{{ item.title }}</a></div>',
         '<p class="layadmin-text-center">{{ item.content }}</p>',
         '<p class="layadmin-text-bottom">',
-        '<a lay-href="{{ item.link }}">{{ item.module }}</a>',
+        '<a href="{{ item.link }}" target="_blank">{{ item.module }}</a>',
         '<span>{{ item.date }}</span></p></div></div>{{# }) }}</div>',
       ].join(''),
     ).render(data, (html) => {

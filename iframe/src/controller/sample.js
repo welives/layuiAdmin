@@ -1,12 +1,12 @@
-layui.define('echarts', (exports) => {
+layui.define(['laytpl', 'echarts'], (exports) => {
   let $ = layui.$,
-    layer = layui.layer,
     admin = layui.admin,
     setter = layui.setter,
-    laytpl = layui.laytpl
+    laytpl = layui.laytpl,
+    echarts = layui.echarts
 
   admin.req({
-    url: '/iframe/json/home/sample.json',
+    url: setter.api + 'json/home/sample.json',
     success(res) {
       renderUpdateLogs(res.data.updateLogs)
       renderUserNews(res.data.userNews)
@@ -32,11 +32,11 @@ layui.define('echarts', (exports) => {
         })
 
         // 八卦新闻
-        let elemPlayers = $('#LAY-index1-players').children('div'),
+        let elemPlayers = $('#LAY-id-players').children('div'),
           // 访问量
-          elemPageView = $('#LAY-index2-pageView').children('div'),
+          elemPageView = $('#LAY-id-pageView').children('div'),
           // 全国用户分布图
-          elemUserMap = $('#LAY-index2-userMap').children('div')
+          elemUserMap = $('#LAY-id-userMap').children('div')
 
         elemPlayers[0] && renderDataView(elemPlayers, res.data.players)
         elemPageView[0] && renderDataView(elemPageView, res.data.pageView)
@@ -49,8 +49,8 @@ layui.define('echarts', (exports) => {
   layui.use('table', () => {
     let table = layui.table
     table.render({
-      elem: '#LAY-index2-activeUser',
-      url: '/iframe/json/home/active-user.json',
+      elem: '#LAY-id-activeUser',
+      url: setter.api + 'json/home/active-user.json',
       cols: [
         [
           {
@@ -100,8 +100,8 @@ layui.define('echarts', (exports) => {
   layui.use('table', () => {
     let table = layui.table
     table.render({
-      elem: '#LAY-index2-prograss',
-      url: '/iframe/json/home/prograss.json',
+      elem: '#LAY-id-prograss',
+      url: setter.api + 'json/home/prograss.json',
       cols: [
         [
           { type: 'checkbox', fixed: 'left' },
@@ -149,8 +149,7 @@ layui.define('echarts', (exports) => {
    * @param {number} [index=0]
    */
   function renderDataView(elem, data, index = 0) {
-    let echarts = layui.echarts,
-      echartsApp = []
+    let echartsApp = []
     echartsApp[index] = echarts.init(elem[index], layui.echartsTheme)
     echartsApp[index].setOption(data[index])
     window.onresize = echartsApp[index].resize
@@ -168,14 +167,14 @@ layui.define('echarts', (exports) => {
         '<div class="layui-col-xs12 layui-col-sm4">',
         '<div class="layadmin-update-logs"><div class="layadmin-text-top">',
         '<i class="layui-icon {{ item.icon }}"></i>',
-        '<a lay-href="{{ item.link }}">{{ item.title }}</a></div>',
+        '<a href="{{ item.link }}" target="_blank">{{ item.title }}</a></div>',
         '<p class="layadmin-text-center">{{ item.content }}</p>',
         '<p class="layadmin-text-bottom">',
-        '<a lay-href="{{ item.link }}">{{ item.module }}</a>',
+        '<a href="{{ item.link }}" target="_blank">{{ item.module }}</a>',
         '<span>{{ item.date }}</span></p></div></div>{{# }) }}</div>',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index1-updateLogs').html(html)
+      $('#LAY-id-updateLogs').html(html)
     })
   }
 
@@ -188,12 +187,12 @@ layui.define('echarts', (exports) => {
       [
         '{{# layui.each(d, (index, item) => { }}<dd>',
         '<div class="layadmin-avatar-img layui-bg-green layui-circle">',
-        '<a href="javascript:;"><img src="{{ item.avatar }}" alt="" /></a>',
+        '<a href="javascript:;"><img src="{{ layui.setter.api }}{{ item.avatar }}" alt="" /></a>',
         '</div><div><p>{{ item.user }} {{ item.text }}</p>',
         '<span>{{ item.date }}</span></div></dd>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index2-userNews').html(html)
+      $('#LAY-id-userNews').html(html)
     })
   }
 
@@ -205,13 +204,13 @@ layui.define('echarts', (exports) => {
     laytpl(
       [
         '{{# layui.each(d, (index, item) =>{ }}',
-        '<li class="layui-col-xs6"><a lay-href="{{ item.link }}">',
+        '<li class="layui-col-xs6"><a href="{{ item.link }}" target="_blank">',
         '<span class="layui-bg-green layui-circle layadmin-cpn-img">',
-        '<img src="{{ item.img }}" ></span><span>{{ item.text }}</span>',
+        '<img src="{{ layui.setter.api }}{{ item.img }}" ></span><span>{{ item.text }}</span>',
         '</a></li>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index1-components').html(html)
+      $('#LAY-id-components').html(html)
     })
   }
 
@@ -233,7 +232,7 @@ layui.define('echarts', (exports) => {
         '</p></div></div></div>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index2-cardList').html(html)
+      $('#LAY-id-cardList').html(html)
     })
   }
 
@@ -250,7 +249,7 @@ layui.define('echarts', (exports) => {
         '</li>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {
-      $('#LAY-index2-userNotes').html(html)
+      $('#LAY-id-userNotes').html(html)
     })
   }
 

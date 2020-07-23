@@ -29,18 +29,17 @@ layui.define('form', (exports) => {
 
   // 发送短信验证码
   admin.sendAuthCode({
-    elem: '#LAY-user-get-smscode',
-    elemPhone: '#LAY-user-cellphone',
-    elemSMScode: '#LAY-user-smscode',
+    elem: '#LAY-id-get-smscode',
+    elemPhone: '#LAY-id-user-cellphone',
+    elemSMScode: '#LAY-id-user-smscode',
     ajax: {
-      url: '/iframe/json/user/sms.json',
+      url: setter.api + 'json/user/sms.json',
     },
   })
 
   // 更换图形验证码
-  $body.on('click', '#LAY-user-get-vercode', function () {
-    this.src =
-      'https://www.oschina.net/action/user/captcha?t=' + new Date().getTime()
+  $body.on('click', '#LAY-id-get-vercode', function () {
+    this.src = 'https://www.oschina.net/action/user/captcha?t=' + new Date().getTime()
   })
 
   // 输出接口

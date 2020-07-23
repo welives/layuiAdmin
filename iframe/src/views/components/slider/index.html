@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>滑块组件</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="stylesheet" href="../../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../../style/public.css" media="all" />
+    <style>
+      .layadmin-slider {
+        margin: 45px 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">基础效果</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo1" class="layadmin-slider"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">定义初始值</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo2" class="layadmin-slider"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">设置最大最小值</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo3" class="layadmin-slider"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">设置步长</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo4" class="layadmin-slider"></div>
+              <div id="LAY-id-slider-demo5" class="layadmin-slider"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">设置提示文本</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo6" class="layadmin-slider"></div>
+              <div id="LAY-id-slider-demo7" class="layadmin-slider"></div>
+              <div id="LAY-id-slider-tips1" style="position: relative; left: 30px; top: -20px;"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">开启输入框</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo8" class="layadmin-slider"></div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">开启范围选择</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo9" class="layadmin-slider"></div>
+              <div id="LAY-id-slider-tips2" style="position: relative; left: 30px; margin-top: -10px;"></div>
+              <div id="LAY-id-slider-demo10" class="layadmin-slider"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">垂直滑块</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo11" style="margin: 45px 30px; display: inline-block;"></div>
+              <div id="LAY-id-slider-demo12" style="margin: 45px 30px; display: inline-block;"></div>
+              <div id="LAY-id-slider-demo13" style="margin: 45px 30px; display: inline-block;"></div>
+              <div id="LAY-id-slider-demo14" style="margin: 45px 30px; display: inline-block;"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">自定义颜色</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo15" class="layadmin-slider"></div>
+              <div id="LAY-id-slider-demo16" class="layadmin-slider"></div>
+              <div id="LAY-id-slider-demo17" class="layadmin-slider"></div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">禁用滑块</div>
+            <div class="layui-card-body">
+              <div id="LAY-id-slider-demo18" class="layadmin-slider"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../../../layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../../src/',
+        })
+        .use(['index', 'slider'], () => {
+          let $ = layui.$,
+            slider = layui.slider
+
+          //默认滑块
+          slider.render({
+            elem: '#LAY-id-slider-demo1',
+          })
+
+          //定义初始值
+          slider.render({
+            elem: '#LAY-id-slider-demo2',
+            value: 20, //初始值
+          })
+
+          //设置最大最小值
+          slider.render({
+            elem: '#LAY-id-slider-demo3',
+            min: 20, //最小值
+            max: 50, //最大值
+          })
+
+          //设置步长
+          slider.render({
+            elem: '#LAY-id-slider-demo4',
+            step: 10, //步长
+          })
+
+          slider.render({
+            elem: '#LAY-id-slider-demo5',
+            step: 10, //步长
+            showstep: true, //开启间隔点
+          })
+
+          //设置提示文本
+          slider.render({
+            elem: '#LAY-id-slider-demo6',
+            min: 20,
+            max: 1000,
+            setTips(value) {
+              //自定义提示文本
+              return value + 'GB'
+            },
+          })
+          slider.render({
+            elem: '#LAY-id-slider-demo7',
+            tips: false, //关闭默认提示层
+            change(value) {
+              $('#LAY-id-slider-tips1').html('当前数值：' + value)
+            },
+          })
+
+          //开启输入框
+          slider.render({
+            elem: '#LAY-id-slider-demo8',
+            input: true, //输入框
+          })
+
+          //开启范围选择
+          slider.render({
+            elem: '#LAY-id-slider-demo9',
+            value: 40, //初始值
+            range: true, //范围选择
+            change: function (vals) {
+              $('#LAY-id-slider-tips2').html('开始值：' + vals[0] + '、结尾值：' + vals[1])
+            },
+          })
+          slider.render({
+            elem: '#LAY-id-slider-demo10',
+            value: [30, 60], //初始值
+            range: true, //范围选择
+          })
+
+          //垂直滑块
+          slider.render({
+            elem: '#LAY-id-slider-demo11',
+            type: 'vertical', //垂直滑块
+          })
+          slider.render({
+            elem: '#LAY-id-slider-demo12',
+            value: 30,
+            type: 'vertical', //垂直滑块
+          })
+          slider.render({
+            elem: '#LAY-id-slider-demo13',
+            value: 50,
+            range: true, //范围选择
+            type: 'vertical', //垂直滑块
+          })
+          slider.render({
+            elem: '#LAY-id-slider-demo14',
+            value: 80,
+            input: true, //输入框
+            type: 'vertical', //垂直滑块
+          })
+
+          //自定义颜色
+          slider.render({
+            elem: '#LAY-id-slider-demo15',
+            theme: '#1E9FFF', //主题色
+          })
+          slider.render({
+            elem: '#LAY-id-slider-demo16',
+            value: 50,
+            theme: '#5FB878', //主题色
+          })
+          slider.render({
+            elem: '#LAY-id-slider-demo17',
+            value: [30, 70],
+            range: true,
+            theme: '#FF5722', //主题色
+          })
+
+          //禁用滑块
+          slider.render({
+            elem: '#LAY-id-slider-demo18',
+            value: 35,
+            disabled: true, //禁用滑块
+          })
+        })
+    </script>
+  </body>
+</html>

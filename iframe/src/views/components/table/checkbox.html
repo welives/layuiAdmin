@@ -19,7 +19,7 @@
           <div class="layui-card">
             <div class="layui-card-header">开启复选框</div>
             <div class="layui-card-body">
-              <table class="layui-hide" id="LAY-table-checkbox"></table>
+              <table class="layui-hide" id="LAY-id-table-checkbox"></table>
             </div>
           </div>
         </div>
@@ -32,11 +32,12 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let table = layui.table
+          let table = layui.table,
+            setter = layui.setter
 
           table.render({
-            elem: '#LAY-table-checkbox',
-            url: '/iframe/json/table/user.json',
+            elem: '#LAY-id-table-checkbox',
+            url: setter.api + 'json/table/user.json',
             cols: [
               [
                 { type: 'checkbox' },

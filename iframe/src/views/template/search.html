@@ -19,8 +19,7 @@
           <div class="layui-card layadmin-search-main">
             <div class="layui-card-header">
               <p style="font-size: 18px;">
-                <span class="layui-text-blue">关键词</span> 查询到
-                <strong>66</strong> 个结果
+                <span class="layui-text-blue">关键词</span> 查询到 <strong>66</strong> 个结果
               </p>
               <p class="layui-word-aux">耗时：350ms</p>
             </div>
@@ -42,24 +41,16 @@
                 </li>
                 <li class="layadmin-search-item">
                   <a href="javascript:;" class="search-item-cover">
-                    <img
-                      src="../../../images/logo.gif"
-                      width="90"
-                      height="90"
-                    />
+                    <img src="../../../images/logo.gif" width="90" height="90" />
                   </a>
                   <div>
                     <h3>
-                      <a href="javascript:;"
-                        >layuiAdmin 成为国内颇受欢迎的通用后台模板解决方案</a
-                      >
+                      <a href="javascript:;">layuiAdmin 成为国内颇受欢迎的通用后台模板解决方案</a>
                     </h3>
                     <p>
                       作为 layui
                       官方推出的后台模板，从初版的饱受争议，到后续的埋头丰富，逐步用行动赢得了许多人的关注。目前
-                      layuiAdmin
-                      在国内后台系统应用市场，占据了相当大的份额，几乎已成为开发者的不二选择。这得益于
-                      layui
+                      layuiAdmin 在国内后台系统应用市场，占据了相当大的份额，几乎已成为开发者的不二选择。这得益于 layui
                       本身所积累的用户规模，更得益于开发团队的付出，用我们的方式，用心做好一款产品。
                     </p>
                   </div>
@@ -73,15 +64,13 @@
                     <p>
                       作为 layui
                       官方推出的后台模板，从初版的饱受争议，到后续的埋头丰富，逐步用行动赢得了许多人的关注。目前
-                      layuiAdmin
-                      在国内后台系统应用市场，占据了相当大的份额，几乎已成为开发者的不二选择。这得益于
-                      layui
+                      layuiAdmin 在国内后台系统应用市场，占据了相当大的份额，几乎已成为开发者的不二选择。这得益于 layui
                       本身所积累的用户规模，更得益于开发团队的付出，用我们的方式，用心做好一款产品。
                     </p>
                   </div>
                 </li>
               </ul>
-              <div id="LAY-search-page" class="layui-text-center"></div>
+              <div id="LAY-id-search-page" class="layui-text-center"></div>
             </div>
           </div>
         </div>
@@ -97,7 +86,7 @@
           let laypage = layui.laypage
 
           laypage.render({
-            elem: 'LAY-search-page',
+            elem: 'LAY-id-search-page',
             count: 66,
             jump(obj, first) {
               if (!first) {

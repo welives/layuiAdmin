@@ -57,7 +57,7 @@ layui.define('view', (exports) => {
     }),
     // 通用方法
     admin = {
-      v: '1.2.1 pro', // 版本号
+      v: '1.4.0 pro', // 版本号
       req: view.req, // 数据异步请求
       exit: view.exit, // 清除本地 token，并跳转到登入页
       popup: view.popup, // 弹出面板

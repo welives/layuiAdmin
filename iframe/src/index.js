@@ -58,11 +58,14 @@ layui
         // 如果未在选项卡中匹配到，则追加选项卡
         if (setter.pageTabs) {
           if (!matchTo) {
-            $(APP_BODY).append(
-              '<div class="LAY-tabsBody-item layui-show"><iframe src="' +
-                (url.indexOf('http') > -1 ? url : setter.views + url) +
-                '" frameborder="0" class="layadmin-iframe"></iframe></div>',
-            )
+            setTimeout(() => {
+              $(APP_BODY).append(
+                '<div class="LAY-tabsBody-item layui-show"><iframe src="' +
+                  (url.indexOf('http') > -1 ? url : setter.views + url) +
+                  '" frameborder="0" class="layadmin-iframe"></iframe></div>',
+              )
+              tabChange()
+            }, 10)
             tabsPage.index = tabs.length
             element.tabAdd(FILTER_TAB_TABS, {
               id: url, // 选项卡标题的lay-id属性值

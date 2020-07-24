@@ -31,7 +31,7 @@ layui
           isIndPage,
           tabs = $(`${TABS_HEADER}>li`),
           attr = url.replace(/(^http(s*):)|(\?[\s\S]*$)/g, ''),
-          pathURL = admin.correctRouter(url),
+          pathURL = admin.correctRouter(url), // 用来检查独立页
           tabChange = () => {
             // 定位当前tabs
             element.tabChange(FILTER_TAB_TABS, url)
@@ -53,28 +53,26 @@ layui
         layui.each(setter.indPage, (index, item) => {
           if (pathURL === item) return (isIndPage = true)
         })
+        if (isIndPage) return window.open(setter.views + url)
+
         // 如果未在选项卡中匹配到，则追加选项卡
         if (setter.pageTabs) {
-          if (isIndPage) {
-            window.open(setter.views + url)
-          } else {
-            if (!matchTo) {
-              $(APP_BODY).append(
-                '<div class="LAY-tabsBody-item layui-show"><iframe src="' +
-                  (url.indexOf('http') > -1 ? url : setter.views + url) +
-                  '" frameborder="0" class="layadmin-iframe"></iframe></div>',
-              )
-              tabsPage.index = tabs.length
-              element.tabAdd(FILTER_TAB_TABS, {
-                id: url, // 选项卡标题的lay-id属性值
-                attr,
-                title: `<span>${text}</span>`, // 选项卡的标题
-              })
-            }
+          if (!matchTo) {
+            $(APP_BODY).append(
+              '<div class="LAY-tabsBody-item layui-show"><iframe src="' +
+                (url.indexOf('http') > -1 ? url : setter.views + url) +
+                '" frameborder="0" class="layadmin-iframe"></iframe></div>',
+            )
+            tabsPage.index = tabs.length
+            element.tabAdd(FILTER_TAB_TABS, {
+              id: url, // 选项卡标题的lay-id属性值
+              attr,
+              title: `<span>${text}</span>`, // 选项卡的标题
+            })
           }
         } else {
           let iframe = admin.tabsBody(admin.tabsPage.index).find('.layadmin-iframe')
-          iframe[0].contentWindow.location.href = url
+          iframe[0].contentWindow.location.href = url.indexOf('http') > -1 ? url : setter.views + url
         }
         tabChange()
       }

@@ -36,6 +36,11 @@ layui.define(['laytpl', 'layer', 'element', 'util'], (exports) => {
       msgName: 'msg', // 状态信息的字段名称
       dataName: 'data', // 数据详情的字段名称
     },
+    indPage: [
+      '/user/reg.html', // 前台注册页
+      '/user/login.html', //前台登入页
+      '/user/forget.html', // 前台找回密码页
+    ],
     // 扩展到第三方模块
     extend: ['echarts', 'echartsTheme'],
     // 主题配置

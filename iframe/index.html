@@ -44,14 +44,14 @@
                 autocomplete="off"
                 class="layui-input layui-input-search"
                 layadmin-event="search"
-                lay-action="./src/views/template/search.html?keywords="
+                lay-action="template/search.html?keywords="
               />
             </li>
           </ul>
           <ul class="layui-nav layui-layout-right" lay-filter="LAY-filter-header-right">
             <li class="layui-nav-item" lay-unselect>
-              <script type="text/html" template lay-url="{{ layui.setter.api }}json/message/newMsg.json">
-                <a lay-href="{{ layui.setter.views }}app/message/index.html" layadmin-event="message" lay-text="消息中心">
+              <script type="text/html" template lay-url="json/message/newMsg.json">
+                <a lay-href="app/message/index.html" layadmin-event="message" lay-text="消息中心">
                   <i class="layui-icon layui-icon-notice"></i>
                   <!-- 如果有新消息,则显示小圆点 -->
                     {{# if(d.data.newMsg){ }}
@@ -79,20 +79,20 @@
               <script
                 type="text/html"
                 template
-                lay-url="{{ layui.setter.api }}json/user/session.json"
+                lay-url="json/user/session.json"
                 lay-done="layui.element.render('nav', 'LAY-filter-header-right')"
               >
                 <a href="javascript:;"><cite>{{ d.data.username }}</cite></a>
                 <dl class="layui-nav-child">
                   <dd>
-                    <a lay-href="{{ layui.setter.views }}set/user/info.html">基本资料</a>
+                    <a href="javascript:;" lay-href="set/user/info.html">基本资料</a>
                   </dd>
                   <dd>
-                    <a lay-href="{{ layui.setter.views }}set/user/password.html">修改密码</a>
+                    <a href="javascript:;" lay-href="set/user/password.html">修改密码</a>
                   </dd>
                   <hr />
                   <dd layadmin-event="logout" class="layui-text-center">
-                    <a>退出</a>
+                    <a href="javascript:;">退出</a>
                   </dd>
                 </dl>
               </script>
@@ -119,14 +119,13 @@
               lay-url="json/menu.json"
               lay-done="layui.element.render('nav','LAY-filter-side-menu')"
             >
-              <div class="layui-logo" lay-href="./src/views/index.html">
-                <img src="./images/logo.gif" alt="logo" />
+              <div class="layui-logo" lay-href="index.html">
+                <img src="images/logo.gif" alt="logo" />
                 <span>{{ layui.setter.name || 'LAYUI 摸🐟' }}</span>
               </div>
               <ul id="LAY_app_side_menu" class="layui-nav layui-nav-tree"  lay-filter="LAY-filter-side-menu" lay-shrink="all">
                 {{#
-                  let path = layui.router().path,
-                  pathURL = layui.admin.correctRouter(path.join('/'));
+                  let path = layui.router().path;
                   layui.each(d.data, (index1, item1) => {
                     let hasChild1 = typeof item1.child === 'object' && item1.child.length > 0,
                     classSelected1 = () => {
@@ -136,11 +135,10 @@
                       }
                       return ''
                     },
-                    url1 = (item1.jump && typeof item1.jump === 'string') ? item1.jump : item1.name;
-                    url1 = (url1 && url1.indexOf('http') > -1) ? url1 : layui.setter.views + url1
+                    url1 = (item1.jump && typeof item1.jump === 'string') ? item1.jump : item1.name
                 }}
                   <li data-name="{{ item1.name || '' }}" class="layui-nav-item {{ classSelected1() }}">
-                    <a href="{{ item1.is_alone ? url1 :'javascript:;' }}" {{ item1.is_alone ? 'target="_blank"' : '' }} {{ item1.is_alone || hasChild1 ? '' : 'lay-href="'+ url1 +'"'}} lay-tips="{{ item1.title }}" lay-direction="2">
+                    <a href="javascript:;" {{ hasChild1 ? '' : 'lay-href="'+ url1 +'"' }} lay-tips="{{ item1.title }}" lay-direction="2">
                       <i class="layui-icon {{ item1.icon }}"></i>
                       <cite>{{ item1.title }}</cite>
                     </a>
@@ -155,20 +153,18 @@
                             }
                             return ''
                           },
-                          url2 = (item2.jump && typeof item2.jump === 'string') ? item2.jump : [item1.name, item2.name,''].join('/');
-                          url2 = (url2 && url2.indexOf('http') > -1) ? url2 : layui.setter.views + url2
+                          url2 = (item2.jump && typeof item2.jump === 'string') ? item2.jump : [item1.name, item2.name,''].join('/')
                         }}
                           <dd data-name="{{ item2.name || '' }}" class="{{ classSelected2() }}">
-                            <a href="{{ item2.is_alone ? url2 :'javascript:;' }}" {{ item2.is_alone ? 'target="_blank"' : '' }} {{ item2.is_alone || hasChild2 ? '' : 'lay-href="'+ url2 +'"' }}>{{ item2.title }}</a>
+                            <a href="javascript:;" {{ hasChild2 ? '' : 'lay-href="'+ url2 +'"' }}>{{ item2.title }}</a>
                             {{# if(hasChild2){ }}
                               <dl class="layui-nav-child">
                                 {{# layui.each(item2.child, (index3, item3) => {
                                   let match3 = (path[0] === item1.name && path[1] === item2.name && path[2] === item3.name),
-                                  url3 = (item3.jump && typeof item3.jump === 'string') ? item3.jump : [item1.name, item2.name, item3.name].join('/');
-                                  url3 = (url3 && url3.indexOf('http') > -1) ? url3 : layui.setter.views + url3
+                                  url3 = (item3.jump && typeof item3.jump === 'string') ? item3.jump : [item1.name, item2.name, item3.name].join('/')
                                 }}
                                   <dd data-name="{{ item3.name || '' }}" {{ match3 ? 'class="layui-this"' : '' }}>
-                                    <a href="{{ item3.is_alone ? url3 :'javascript:;' }}" {{ item3.is_alone ? 'target="_blank"' : '' }} lay-href="{{ item3.is_alone ? '' : url3 }}">{{ item3.title }}</a>
+                                    <a href="javascript:;" lay-href="{{ url3 }}">{{ item3.title }}</a>
                                   </dd>
                                 {{# }) }}
                               </dl>
@@ -232,7 +228,7 @@
                 <ul class="layui-tab-title" id="LAY_app_tabsHeader">
                   <li
                     class="layui-this"
-                    lay-id="{{ layui.setter.views }}index.html"
+                    lay-id="index.html"
                     lay-attr="{{ layui.setter.views }}index.html"
                   >
                     <i class="layui-icon layui-icon-home"></i>

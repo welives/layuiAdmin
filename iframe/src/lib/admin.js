@@ -443,6 +443,7 @@ layui.define('view', (exports) => {
        * @returns {string}
        */
       correctRouter(href) {
+        // 如果不是以 / 开头的则补上
         if (!/^\//.test(href)) href = '/' + href
         // 纠正首尾
         return href.replace(/^(\/+)/, '/').replace(new RegExp(`/${setter.entry}$`), '/') // 过滤路由最后的默认视图文件名（如：index）

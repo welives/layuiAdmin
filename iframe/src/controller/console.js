@@ -123,7 +123,7 @@ layui.define('laytpl', (exports) => {
         '<div carousel-item>{{# layui.each(d, (index, ul)=>{ }}',
         '<ul class="layui-row layui-col-space10">',
         '{{# layui.each(ul.list, (idx, li)=>{ }}',
-        '<li class="layui-col-xs3"><a lay-href="{{ top.layui.setter.views }}{{ li.url }}">',
+        '<li class="layui-col-xs3"><a lay-href="{{ li.url }}">',
         '<i class="layui-icon {{ li.icon }}"></i><cite>{{ li.text }}</cite>',
         '</a></li>{{# }) }}</ul>{{# }) }}</div>',
       ].join(''),

@@ -420,20 +420,17 @@
         {
           "name": "reg",
           "title": "注册",
-          "jump": "user/reg.html",
-          "is_alone": true
+          "jump": "user/reg.html"
         },
         {
           "name": "login",
           "title": "登入",
-          "jump": "user/login.html",
-          "is_alone": true
+          "jump": "user/login.html"
         },
         {
           "name": "forget",
           "title": "忘记密码",
-          "jump": "user/forget.html",
-          "is_alone": true
+          "jump": "user/forget.html"
         },
         {
           "name": "404",

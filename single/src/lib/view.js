@@ -127,7 +127,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
           type: 1,
           title: '提示',
           content: '',
-          id: 'LAY-system-view-popup',
+          id: 'LAY-id-view-popup',
           skin: `layui-layer-admin ${skin ? skin : ''}`,
           shadeClose: true,
           closeBtn: false,
@@ -154,7 +154,7 @@ layui.define(['laytpl', 'layer'], (exports) => {
           maxWidth: 300,
           offset: 't',
           anim: 6,
-          id: 'LAY_adminError', // 弹窗内容区的id
+          id: 'LAY-id-error', // 弹窗内容区的id
         },
         options,
       ),

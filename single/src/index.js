@@ -142,7 +142,7 @@ layui
           base: setter.base + 'controller/',
         })
         // 独立页面
-        if (isIndPage || pathURL === '/admin/login') {
+        if (isIndPage || pathURL === '/user/login') {
           // 此处单独判断登入页，是为了兼容旧版（即未在 config.js 配置 indPage 的情况）
           container.render(router.path.join('/')).done(() => {
             admin.pageType = 'alone'
@@ -154,7 +154,7 @@ layui
             let local = layui.data(setter.tableName)
             if (!local[setter.request.tokenName]) {
               // 跳转到登入页
-              return (location.hash = '/admin/login/redirect=' + encodeURIComponent(pathURL))
+              return (location.hash = '/user/login/redirect=' + encodeURIComponent(pathURL))
             }
           }
 

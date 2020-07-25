@@ -89,8 +89,8 @@ layui.define('view', (exports) => {
         options = $.extend(
           {
             seconds: 60,
-            elemPhone: '#LAY_phone',
-            elemSMScode: '#LAY_smscode',
+            elemPhone: '#LAY-id-phone',
+            elemSMScode: '#LAY-id-smscode',
           },
           options,
         )
@@ -246,14 +246,14 @@ layui.define('view', (exports) => {
           $.extend(
             {
               type: 1,
-              id: 'LAY_adminPopupR',
+              id: 'LAY-id-popup-right',
               anim: -1,
               title: false,
               closeBtn: false,
               offset: 'r',
               shade: 0.1,
               shadeClose: true,
-              skin: 'layui-anim layui-anim-rl layui-layer-admin-right',
+              skin: 'layui-anim layui-anim-rl layui-layer-popup-right',
               area: '300px',
             },
             options,
@@ -268,7 +268,7 @@ layui.define('view', (exports) => {
       theme(options) {
         let theme = setter.theme,
           local = layui.data(setter.tableName),
-          id = 'LAY_admin_theme',
+          id = 'LAY-id-admin-theme',
           style = document.createElement('style'),
           styleText = laytpl(
             [
@@ -513,7 +513,7 @@ layui.define('view', (exports) => {
        */
       theme() {
         admin.popupRight({
-          id: 'LAY_adminPopupTheme',
+          id: 'LAY-id-popup-setTheme',
           success() {
             view(this.id).render('system/theme')
           },
@@ -546,7 +546,7 @@ layui.define('view', (exports) => {
           shade: 0,
           offset: ['41px', isMobile ? null : `${othis.offset().left - 250}px`],
           anim: -1,
-          id: 'LAY_adminNote',
+          id: 'LAY-id-popup-note',
           skin: 'layui-anim layui-anim-upbit layadmin-note',
           content: '<textarea placeholder="内容"></textarea>',
           resize: false,
@@ -591,7 +591,7 @@ layui.define('view', (exports) => {
        */
       about() {
         admin.popupRight({
-          id: 'LAY_adminPopupAbout',
+          id: 'LAY-id-popup-about',
           success() {
             view(this.id).render('system/about')
           },
@@ -603,7 +603,7 @@ layui.define('view', (exports) => {
        */
       more() {
         admin.popupRight({
-          id: 'LAY_adminPopupMore',
+          id: 'LAY-id-popup-more',
           success() {
             view(this.id).render('system/more')
           },
@@ -748,7 +748,7 @@ layui.define('view', (exports) => {
        */
       im() {
         admin.popup({
-          id: 'LAY-popup-layim', //定义唯一ID，防止重复弹出
+          id: 'LAY-id-popup-layim', //定义唯一ID，防止重复弹出
           shade: 0,
           area: ['800px', '300px'],
           title: '面板外的操作示例',
@@ -930,7 +930,7 @@ layui.define('view', (exports) => {
     if (device.ie && device.ie < 10) {
       view.error(`IE${device.ie}下访问可能不佳，推荐使用：Chrome / Firefox / Edge 等高级浏览器`, {
         offset: 'auto',
-        id: 'LAY_errorIE',
+        id: 'LAY-id-error-IE',
       })
     }
   })()

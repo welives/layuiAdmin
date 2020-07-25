@@ -353,18 +353,13 @@
         },
         {
           "name": "login",
-          "title": "前台登入",
+          "title": "登入",
           "jump": "/user/login"
         },
         {
           "name": "forget",
           "title": "忘记密码",
           "jump": "/user/forget"
-        },
-        {
-          "name": "login",
-          "title": "后台登入",
-          "jump": "/admin/login"
         },
         {
           "name": "404",

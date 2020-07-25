@@ -28,21 +28,6 @@
   margin-left: 130px;
 }
 
-/* 面包屑导航 */
-.layadmin-breadcrumb {
-  display: none;
-  height: 50px;
-  line-height: 50px;
-  margin-bottom: 0;
-  border-radius: 0;
-}
-.LAY-pageTabs-false .layadmin-breadcrumb {
-  display: block;
-}
-.LAY-pageTabs-false .layadmin-breadcrumb .layui-breadcrumb {
-  padding: 0 15px;
-}
-
 /***************
   首页 home.html
  ***************/

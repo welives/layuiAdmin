@@ -31,6 +31,7 @@ layui
           isIndPage,
           tabs = $(`${TABS_HEADER}>li`),
           attr = url.replace(/(^http(s*):)|(\?[\s\S]*$)/g, ''),
+          realURL = url.indexOf('http') > -1 ? url : setter.views + url,
           pathURL = admin.correctRouter(url), // 用来检查独立页
           tabChange = () => {
             // 定位当前tabs
@@ -61,7 +62,7 @@ layui
             setTimeout(() => {
               $(APP_BODY).append(
                 '<div class="LAY-tabsBody-item layui-show"><iframe src="' +
-                  (url.indexOf('http') > -1 ? url : setter.views + url) +
+                  realURL +
                   '" frameborder="0" class="layadmin-iframe"></iframe></div>',
               )
               tabChange()
@@ -75,7 +76,7 @@ layui
           }
         } else {
           let iframe = admin.tabsBody(admin.tabsPage.index).find('.layadmin-iframe')
-          iframe[0].contentWindow.location.href = url.indexOf('http') > -1 ? url : setter.views + url
+          iframe[0].contentWindow.location.href = realURL
         }
         tabChange()
       }

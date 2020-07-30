@@ -59,6 +59,7 @@ body,
   width: 100%;
   cursor: pointer;
   box-sizing: border-box;
+  border: 1px solid #e6e6e6;
 }
 .layadmin-user-jump-change {
   float: right;

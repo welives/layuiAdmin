@@ -1,3 +1,12 @@
+/**
+
+ @Name：echarts 主题
+ @Author：贤心
+ @Site：http://www.layui.com/admin/
+ @License：GPL-2
+
+ */
+
 ;(function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
     ? factory(exports) // 支持 CommonJS

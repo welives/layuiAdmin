@@ -1,8 +1,18 @@
+/**
+
+ @Name：layuiAdmin 主页控制台
+ @Author：贤心
+ @Site：http://www.layui.com/admin/
+ @License：LPPL
+
+ */
+
 layui.define('laytpl', (exports) => {
   let $ = layui.$,
     admin = layui.admin,
     setter = layui.setter,
-    laytpl = layui.laytpl
+    laytpl = layui.laytpl,
+    device = layui.device()
 
   admin.req({
     url: setter.api + 'json/console/index.json',
@@ -14,8 +24,6 @@ layui.define('laytpl', (exports) => {
       // 区块轮播切换
       layui.use(['carousel', 'echarts'], () => {
         let carousel = layui.carousel,
-          element = layui.element,
-          device = layui.device(),
           echarts = layui.echarts,
           echartsApp = [],
           carouselIndex = 0,
@@ -59,8 +67,6 @@ layui.define('laytpl', (exports) => {
         admin.on('hash(tab)', () => {
           layui.router().path.join('') || renderDataView(carouselIndex)
         })
-
-        element.render('progress')
       })
     },
   })

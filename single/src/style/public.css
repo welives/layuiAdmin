@@ -236,6 +236,9 @@
   display: flex;
   display: -webkit-flex;
 }
+.layadmin-user-news dd:last-child {
+  border: none;
+}
 .layadmin-user-news dd .layadmin-avatar-img,
 .layadmin-components .layadmin-cpn-img {
   width: 32px;

@@ -1,0 +1,48 @@
+<div class="layui-card layadmin-breadcrumb">
+  <div class="layui-breadcrumb" lay-filter="LAY-filter-breadcrumb">
+    <a lay-href="">主页</a>
+    <a><cite>富文本编辑器</cite></a>
+  </div>
+</div>
+
+<div class="layui-fluid">
+  <div class="layui-row layui-col-space10">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          wangEditor 富文本编辑器
+          <a class="layui-text-blue" href="https://www.kancloud.cn/wangfupeng/wangeditor3/332599" target="_blank"
+            >使用文档</a
+          >
+        </div>
+        <div class="layui-card-body">
+          <div id="LAY-id-wang"></div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          layedit 富文本编辑器
+          <a class="layui-text-blue" href="https://www.layui.com/doc/modules/layedit.html" target="_blank">使用文档</a>
+        </div>
+        <div class="layui-card-body">
+          <textarea id="LAY-id-layedit"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  layui.use(['layedit', 'wangEditor'], () => {
+    let layedit = layui.layedit,
+      E = layui.wangEditor,
+      // wangEditor 富文本编辑器
+      editor = new E('#LAY-id-wang')
+    editor.customConfig.uploadImgShowBase64 = true
+    editor.create()
+
+    // layedit 富文本编辑器
+    layedit.build('LAY-id-layedit')
+  })
+</script>

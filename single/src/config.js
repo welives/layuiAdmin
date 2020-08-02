@@ -44,7 +44,7 @@ layui.define(['laytpl', 'layer', 'element', 'util'], (exports) => {
       '/admin/login', // 后台登入页
     ],
     // 扩展的第三方模块
-    extend: ['echarts', 'echartsTheme', 'treeGrid'],
+    extend: ['echarts', 'echartsTheme', 'wangEditor', 'treeGrid'],
     // 主题配置
     theme: {
       color: [

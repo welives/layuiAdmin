@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>富文本编辑</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../style/public.css" media="all" />
+  </head>
+  <body>
+    <div class="layui-fluid">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md12">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              wangEditor 富文本编辑器
+              <a class="layui-text-blue" href="https://www.kancloud.cn/wangfupeng/wangeditor3/332599" target="_blank"
+                >使用文档</a
+              >
+            </div>
+            <div class="layui-card-body">
+              <div id="LAY-id-wang"></div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md12">
+          <div class="layui-card">
+            <div class="layui-card-header">
+              layedit 富文本编辑器
+              <a class="layui-text-blue" href="https://www.layui.com/doc/modules/layedit.html" target="_blank"
+                >使用文档</a
+              >
+            </div>
+            <div class="layui-card-body">
+              <textarea id="LAY-id-layedit"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../../layui/layui.js"></script>
+    <script>
+      layui
+        .config({
+          base: '../../../src/',
+        })
+        .use(['index', 'layedit', 'wangEditor'], () => {
+          let layedit = layui.layedit,
+            E = layui.wangEditor,
+            // wangEditor 富文本编辑器
+            editor = new E('#LAY-id-wang')
+          editor.customConfig.uploadImgShowBase64 = true
+          editor.create()
+
+          // layedit 富文本编辑器
+          layedit.build('LAY-id-layedit')
+        })
+    </script>
+  </body>
+</html>

@@ -42,7 +42,7 @@ layui.define(['laytpl', 'layer', 'element', 'util'], (exports) => {
       '/user/forget.html', // 前台找回密码页
     ],
     // 扩展到第三方模块
-    extend: ['echarts', 'echartsTheme'],
+    extend: ['echarts', 'echartsTheme', 'wangEditor'],
     // 主题配置
     theme: {
       color: [

@@ -19,6 +19,11 @@
           "name": "index-2",
           "title": "主页二",
           "jump": "/home/index-2"
+        },
+        {
+          "name": "editor",
+          "title": "富文本编辑器",
+          "jump": "/home/editor"
         }
       ]
     },

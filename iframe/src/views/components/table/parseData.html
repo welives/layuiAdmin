@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>解析任意数据格式 - 数据表格</title>
@@ -19,17 +19,12 @@
           <div class="layui-card">
             <div class="layui-card-header">解析任意数据格式</div>
             <div class="layui-card-body">
-              <script type="text/html" template>
-                <blockquote class="layui-elem-quote layui-text">
-                  尽管本示例中的原始数据：<a
-                    href="{{ layui.setter.api }}json/table/demo3.json"
-                    target="_blank"
-                    >json/table/demo3.json</a
-                  >，并不符合 table 组件默认规定的数据格式，但从 layui 2.4.0
-                  开始，新增的 parseData 回调可以将原始的任意格式的数据重新解析成
-                  table 组件规定的数据格式。具体可以点击上方查看代码。
-                </blockquote>
-              </script>
+              <blockquote class="layui-elem-quote layui-text">
+                尽管本示例中的原始数据：<a href="/iframe/json/table/demo3.json" target="_blank"
+                  >iframe/json/table/demo3.json</a
+                >，并不符合 table 组件默认规定的数据格式，但从 layui 2.4.0 开始，新增的 parseData
+                回调可以将原始的任意格式的数据重新解析成 table 组件规定的数据格式。具体可以点击上方查看代码。
+              </blockquote>
               <table class="layui-hide" id="LAY-id-table-parseData" lay-filter="LAY-filter-table-parseData"></table>
             </div>
           </div>
@@ -43,12 +38,11 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let setter = layui.setter,
-            table = layui.table
+          let table = layui.table
 
           table.render({
             elem: '#LAY-id-table-parseData',
-            url: setter.api + 'json/table/demo3.json',
+            url: '/iframe/json/table/demo3.json',
             toolbar: true,
             title: '用户数据表',
             totalRow: true,

@@ -10,12 +10,11 @@
 layui.define('echarts', (exports) => {
   let $ = layui.$,
     admin = layui.admin,
-    setter = layui.setter,
     laytpl = layui.laytpl,
     echarts = layui.echarts
 
   admin.req({
-    url: setter.api + 'json/home/sample.json',
+    url: '/iframe/json/home/sample.json',
     success(res) {
       renderUpdateLogs(res.data.updateLogs)
       renderUserNews(res.data.userNews)
@@ -59,7 +58,7 @@ layui.define('echarts', (exports) => {
     let table = layui.table
     table.render({
       elem: '#LAY-id-activeUser',
-      url: setter.api + 'json/home/active-user.json',
+      url: '/iframe/json/home/active-user.json',
       cols: [
         [
           {
@@ -110,7 +109,7 @@ layui.define('echarts', (exports) => {
     let table = layui.table
     table.render({
       elem: '#LAY-id-prograss',
-      url: setter.api + 'json/home/prograss.json',
+      url: '/iframe/json/home/prograss.json',
       cols: [
         [
           { type: 'checkbox', fixed: 'left' },
@@ -196,7 +195,7 @@ layui.define('echarts', (exports) => {
       [
         '{{# layui.each(d, (index, item) => { }}<dd>',
         '<div class="layadmin-avatar-img layui-bg-green layui-circle">',
-        '<a href="javascript:;"><img src="{{ layui.setter.api }}{{ item.avatar }}" alt="" /></a>',
+        '<a href="javascript:;"><img src="/iframe/{{ item.avatar }}" alt="" /></a>',
         '</div><div><p>{{ item.user }} {{ item.text }}</p>',
         '<span>{{ item.date }}</span></div></dd>{{# }) }}',
       ].join(''),
@@ -215,7 +214,7 @@ layui.define('echarts', (exports) => {
         '{{# layui.each(d, (index, item) =>{ }}',
         '<li class="layui-col-xs6"><a href="{{ item.link }}" target="_blank">',
         '<span class="layui-bg-green layui-circle layadmin-cpn-img">',
-        '<img src="{{ layui.setter.api }}{{ item.img }}" ></span><span>{{ item.text }}</span>',
+        '<img src="/iframe/{{ item.img }}" ></span><span>{{ item.text }}</span>',
         '</a></li>{{# }) }}',
       ].join(''),
     ).render(data, (html) => {

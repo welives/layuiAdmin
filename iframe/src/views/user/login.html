@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
-    <title>登入 - layuiMoyu</title>
+    <title>登入 - layuiAdmin</title>
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta
@@ -16,8 +16,8 @@
     <div class="layadmin-user-login layadmin-user-display-show" id="LAY-id-user-login">
       <div class="layadmin-user-login-main">
         <div class="layadmin-user-login-box layadmin-user-login-header">
-          <h2>layuiMoyu</h2>
-          <p>摸🐟 - 基于Layui的练习项目</p>
+          <h2>layuiAdmin</h2>
+          <p>摸🐟 - 基于layui的练习项目</p>
         </div>
         <div class="layadmin-user-login-box layadmin-user-login-body layui-form" lay-filter="LAY-filter-login-form">
           <div class="layui-form-item">
@@ -76,7 +76,12 @@
             >
           </div>
           <div class="layui-form-item">
-            <button class="layui-btn layui-btn-fluid" lay-filter="LAY-filter-login-submit" lay-submit>
+            <button
+              class="layui-btn layui-btn-fluid"
+              id="LAY-id-login-btn"
+              lay-filter="LAY-filter-login-submit"
+              lay-submit
+            >
               登 入
             </button>
           </div>
@@ -103,18 +108,19 @@
           let $ = layui.$,
             setter = layui.setter,
             admin = layui.admin,
-            form = layui.form,
-            router = layui.router(),
-            search = router.search
+            form = layui.form
 
           form.render(null, 'LAY-filter-login-form')
-          admin.setInputFocusEnd($('#LAY-id-login-username'))
+          // 光标定位
+          admin.focusEnd($('#LAY-id-login-username'))
+          // 绑定回车提交表单
+          admin.enterSubmit($('#LAY-id-login-btn'))
 
           // 提交
           form.on('submit(LAY-filter-login-submit)', (data) => {
             // 请求登入接口
             admin.req({
-              url: setter.api + 'json/user/login.json', // 实际使用请改成服务端真实接口
+              url: '/iframe/json/user/login.json', // 实际使用请改成服务端真实接口
               data: data.field,
               done(res) {
                 // 请求成功后，写入 access_token
@@ -132,7 +138,7 @@
                     time: 1000,
                   },
                   () => {
-                    location.href = setter.base + '../' // 后台主页
+                    location.href = '/iframe' // 后台主页
                   },
                 )
               },

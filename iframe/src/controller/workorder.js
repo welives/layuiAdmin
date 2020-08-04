@@ -9,7 +9,6 @@
 
 layui.define(['table', 'form', 'element'], (exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     view = layui.view,
     admin = layui.admin,
     table = layui.table,
@@ -18,7 +17,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
 
   table.render({
     elem: '#LAY-id-order-list',
-    url: setter.api + 'json/workorder/order.json',
+    url: '/iframe/json/workorder/order.json',
     cols: [
       [
         { type: 'numbers', fixed: 'left' },
@@ -28,7 +27,6 @@ layui.define(['table', 'form', 'element'], (exports) => {
         {
           field: 'progress',
           title: '进度',
-          width: 200,
           align: 'center',
           templet: '#LAY-id-progressTpl',
         },
@@ -37,11 +35,11 @@ layui.define(['table', 'form', 'element'], (exports) => {
         {
           field: 'state',
           title: '工单状态',
-          minWidth: 80,
+          width: 100,
           align: 'center',
           templet: '#LAY-id-stateTpl',
         },
-        { title: '操作', align: 'center', fixed: 'right', toolbar: '#LAY-id-rowToolTpl' },
+        { title: '操作', align: 'center', width: 100, fixed: 'right', toolbar: '#LAY-id-rowToolTpl' },
       ],
     ],
     page: true,
@@ -70,20 +68,35 @@ layui.define(['table', 'form', 'element'], (exports) => {
         title: '编辑工单',
         id: 'LAY-popup-order-edit',
         area: ['450px', '420px'],
+        maxmin: true,
         success(layero, index) {
           view(this.id)
             .render('app/workorder/list-form', data)
             .done(() => {
               form.render(null, 'LAY-filter-orderList-form')
-              admin.setInputFocusEnd(layero.find('[name=attr]'))
+              admin.focusEnd(layero.find('[name=attr]'))
+              admin.enterSubmit($('#LAY-id-order-submit'))
               form.on('submit(LAY-filter-order-submit)', (data) => {
                 let field = data.field
+                state.filter((v, index) => {
+                  if (index == field.state) {
+                    field.state = v
+                  }
+                })
+                accept.filter((v, index) => {
+                  if (index == field.accept - 1) {
+                    field.accept = v
+                  }
+                })
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
                 obj.update(field)
                 layer.close(index)
               })
             })
+        },
+        end() {
+          admin.enterSubmit($('#LAY-id-search-btn'))
         },
       })
     }

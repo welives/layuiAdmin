@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>轮播</title>
@@ -195,11 +195,11 @@
             <div class="layui-card-header">填充轮播元素 - 以图片为例</div>
             <div class="layui-card-body">
               <div class="layui-carousel" id="LAY-id-carousel-img">
-                <script type="text/html" template lay-url="{{ layui.setter.api }}json/carousel/img.json">
+                <script type="text/html" template lay-url="/iframe/json/carousel/img.json">
                   <div carousel-item>
                     {{# layui.each(d.data, (index, item)=>{ }}
                       <div>
-                        <img src="{{ layui.setter.api }}{{ item.src }}" alt="" />
+                        <img src="/iframe/{{ item.src }}" alt="" />
                       </div>
                       {{# }) }}
                     </div>

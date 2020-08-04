@@ -161,11 +161,23 @@ layui.define('view', (exports) => {
        * @description 设置input标签光标在内容末尾
        * @param {object} el jquery对象
        */
-      setInputFocusEnd(el) {
+      focusEnd(el) {
         let val = el.val()
         val && el.val('').val(val)
         el.focus()
         return false
+      },
+
+      /**
+       * @description 表单绑定回车提交
+       * @param {object} el jquery对象
+       */
+      enterSubmit(el) {
+        $('.layui-form')
+          .off('keypress')
+          .on('keypress', (e) => {
+            if (e.keyCode === 13) el.trigger('click')
+          })
       },
 
       /**

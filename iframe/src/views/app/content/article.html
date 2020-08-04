@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>layuiAdmin 内容系统 - 文章列表</title>
@@ -17,7 +17,10 @@
       <div class="layui-row layui-col-space10">
         <div class="layui-col-md12">
           <div class="layui-card">
-            <div class="layui-card-header layui-form layadmin-card-header-auto" lay-filter="LAY-filter-article-list">
+            <div
+              class="layui-card-header layui-form layui-form-pane layadmin-card-header-auto"
+              lay-filter="LAY-filter-article-list"
+            >
               <div class="layui-form-item">
                 <div class="layui-inline">
                   <label class="layui-form-label">文章ID</label>
@@ -72,7 +75,12 @@
                   </div>
                 </div>
                 <div class="layui-inline">
-                  <button class="layui-btn layadmin-btn-list" lay-submit lay-filter="LAY-filter-article-search">
+                  <button
+                    class="layui-btn layadmin-btn-list"
+                    id="LAY-id-search-btn"
+                    lay-submit
+                    lay-filter="LAY-filter-article-search"
+                  >
                     <i class="layui-icon layui-icon-search layadmin-icon-search-btn"></i>
                   </button>
                 </div>
@@ -134,13 +142,13 @@
                   type: 1,
                   title: '添加文章',
                   id: 'LAY-popup-article-add',
-                  area: ['550px', '500px'],
+                  area: ['550px', '520px'],
                   success(layero, index) {
                     view(this.id)
                       .render('app/content/article-form')
                       .done(() => {
                         form.render(null, 'LAY-filter-articleList-form')
-                        admin.setInputFocusEnd(layero.find('[name=title]'))
+                        admin.focusEnd(layero.find('[name=title]'))
                         form.on('submit(LAY-filter-article-submit)', (data) => {
                           let field = data.field
                           //提交 Ajax 成功后，静态更新表格中的数据
@@ -154,7 +162,8 @@
               },
             }
           form.render(null, 'LAY-filter-article-list')
-          admin.setInputFocusEnd($('[name=id]'))
+          admin.focusEnd($('[name=id]'))
+          admin.enterSubmit($('#LAY-id-search-btn'))
 
           // 监听搜索
           form.on('submit(LAY-filter-article-search)', (data) => {

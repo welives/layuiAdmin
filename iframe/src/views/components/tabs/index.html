@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>选项卡组件</title>
@@ -187,6 +187,7 @@
           // Hash地址的定位
           element.on('tab(LAY-filter-tabs-hash)', function (elem) {
             location.hash = router.path.join('/') + '#layid=' + $(this).attr('lay-id')
+            layer.msg(location.hash)
           })
           layid && element.tabChange('LAY-filter-tabs-hash', layid)
         })

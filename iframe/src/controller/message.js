@@ -9,7 +9,6 @@
 
 layui.define('table', (exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     table = layui.table,
     DISABLED = 'layui-btn-disabled',
     // 区分各选项卡中的表格
@@ -30,7 +29,7 @@ layui.define('table', (exports) => {
   // 全部消息
   table.render({
     elem: `#${tabs.all.id}`,
-    url: setter.api + 'json/message/all.json',
+    url: '/iframe/json/message/all.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -54,7 +53,7 @@ layui.define('table', (exports) => {
   // 通知
   table.render({
     elem: `#${tabs.notice.id}`,
-    url: setter.api + 'json/message/notice.json',
+    url: '/iframe/json/message/notice.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -78,7 +77,7 @@ layui.define('table', (exports) => {
   // 私信
   table.render({
     elem: `#${tabs.direct.id}`,
-    url: setter.api + 'json/message/direct.json',
+    url: '/iframe/json/message/direct.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -107,7 +106,7 @@ layui.define('table', (exports) => {
         checkStatus = table.checkStatus(thisTabs.id),
         checkData = checkStatus.data
       if (checkData.length === 0) return layer.msg('未选中行')
-      layer.confirm('确定删除选中的数据吗？', (index) => {
+      layer.confirm('确定删除选中的数据吗？', { icon: 3, title: '提示' }, (index) => {
         // 请求接口
         // admin.req({})
         layer.msg('删除成功', { icon: 1 })

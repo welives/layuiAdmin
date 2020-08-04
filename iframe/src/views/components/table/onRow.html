@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>监听行事件 - 数据表格</title>
@@ -32,12 +32,11 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let table = layui.table,
-            setter = layui.setter
+          let table = layui.table
 
           table.render({
             elem: '#LAY-id-table-onrow',
-            url: setter.api + 'json/table/demo.json',
+            url: '/iframe/json/table/demo.json',
             cols: [
               [
                 {

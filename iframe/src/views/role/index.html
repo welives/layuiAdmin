@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>角色列表</title>
@@ -15,12 +15,13 @@
   <body>
     <div class="layui-fluid">
       <div class="layui-card">
-        <div class="layui-form layui-card-header layadmin-card-header-auto" lay-filter="LAY-filter-role-list">
+        <div
+          class="layui-form layui-form-pane layui-card-header layadmin-card-header-auto"
+          lay-filter="LAY-filter-role-list"
+        >
           <div class="layui-form-item">
-            <div class="layui-inline">
-              角色
-            </div>
-            <div class="layui-inline">
+            <label for="" class="layui-form-label">角色</label>
+            <div class="layui-input-inline">
               <select name="role" lay-filter="LAY-filter-role-search">
                 <option value="-1">全部角色</option>
                 <option value="0">管理员</option>
@@ -105,7 +106,7 @@
                       .render('role/list-form')
                       .done(() => {
                         form.render(null, 'LAY-filter-roleList-form')
-                        admin.setInputFocusEnd(layero.find('[name=descr]'))
+                        admin.focusEnd(layero.find('[name=descr]'))
                         form.on('submit(LAY-filter-role-submit)', (data) => {
                           let field = data.field
                           //提交 Ajax 成功后，关闭当前弹层并重载表格

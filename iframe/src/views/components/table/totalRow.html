@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>开启合计行 - 数据表格</title>
@@ -40,12 +40,11 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let table = layui.table,
-            setter = layui.setter
+          let table = layui.table
 
           table.render({
             elem: '#LAY-id-table-totalRow',
-            url: setter.api + 'json/table/demo.json',
+            url: '/iframe/json/table/demo.json',
             toolbar: '#LAY-id-toolbarTpl',
             title: '用户数据表',
             totalRow: true,

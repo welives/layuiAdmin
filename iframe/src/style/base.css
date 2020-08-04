@@ -1,11 +1,5 @@
 /* 本文件为基础全局通用样式 */
 
-/* 页面默认背景色和字体颜色 */
-body {
-  background-color: #f8f8f8;
-  color: #666;
-}
-
 /* 自定义滚动条样式 */
 ::-webkit-scrollbar {
   width: 6px;
@@ -66,38 +60,75 @@ a,
   color: #565656 !important;
 }
 
+/* 文本方向 */
 .layui-float-left {
-  float: left;
+  float: left !important;
 }
 .layui-float-right {
-  float: right;
+  float: right !important;
 }
 .layui-text-center {
-  text-align: center;
+  text-align: center !important;
 }
 .layui-text-left {
-  text-align: left;
+  text-align: left !important;
 }
 .layui-text-right {
-  text-align: right;
+  text-align: right !important;
 }
+
+/* 文字大小 */
 .layui-text-h1 {
-  font-size: 32px;
+  font-size: 32px !important;
 }
 .layui-text-h2 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 .layui-text-h3 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 .layui-text-h4 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 .layui-text-h5 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 .layui-text-h6 {
-  font-size: 12px;
+  font-size: 12px !important;
+}
+
+/* 宽度 */
+.layui-w-25 {
+  width: 25% !important;
+}
+.layui-w-50 {
+  width: 50% !important;
+}
+.layui-w-75 {
+  width: 75% !important;
+}
+.layui-w-100 {
+  width: 100% !important;
+}
+.layui-w-auto {
+  width: auto !important;
+}
+
+/* 高度 */
+.layui-h-25 {
+  height: 25% !important;
+}
+.layui-h-50 {
+  height: 50% !important;
+}
+.layui-h-75 {
+  height: 75% !important;
+}
+.layui-h-100 {
+  height: 100% !important;
+}
+.layui-h-auto {
+  height: auto !important;
 }
 
 /* 面包屑导航 */

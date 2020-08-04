@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
   <head>
     <meta charset="UTF-8" />
     <title>忘记密码 - layuiMoyu</title>
@@ -54,6 +54,7 @@
               <div class="layui-form-item">
                 <button
                   class="layui-btn layui-btn-fluid"
+                  id="LAY-id-resetpass-btn"
                   lay-filter="LAY-filter-resetpass-submit"
                   lay-submit
                 >
@@ -134,6 +135,7 @@
               <div class="layui-form-item">
                 <button
                   class="layui-btn layui-btn-fluid"
+                  id="LAY-id-forget-btn"
                   lay-filter="LAY-filter-forget-submit"
                   lay-submit
                 >
@@ -163,9 +165,11 @@
 
           form.render(null, 'LAY-filter-forget-form')
           if (router.search.type === 'resetpass') {
-            admin.setInputFocusEnd($('#LAY-id-reset-newpass'))
+            admin.focusEnd($('#LAY-id-reset-newpass'))
+            admin.enterSubmit($('#LAY-id-resetpass-btn'))
           } else {
-            admin.setInputFocusEnd($('#LAY-id-user-cellphone'))
+            admin.focusEnd($('#LAY-id-user-cellphone'))
+            admin.enterSubmit($('#LAY-id-forget-btn'))
           }
 
           // 找回密码
@@ -193,7 +197,7 @@
             }
 
             admin.req({
-              url: setter.api + 'json/user/resetpass.json',
+              url: '/iframe/json/user/resetpass.json',
               data: field,
               done(res) {
                 layer.msg(

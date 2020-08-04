@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>layuiAdmin 工单系统</title>
@@ -17,7 +17,10 @@
       <div class="layui-row layui-col-space10">
         <div class="layui-col-md12">
           <div class="layui-card">
-            <div class="layui-card-header layui-form layadmin-card-header-auto" lay-filter="LAY-filter-order-list">
+            <div
+              class="layui-card-header layui-form layui-form-pane layadmin-card-header-auto"
+              lay-filter="LAY-filter-order-list"
+            >
               <div class="layui-form-item">
                 <div class="layui-inline">
                   <label class="layui-form-label">工单号</label>
@@ -72,7 +75,12 @@
                   </div>
                 </div>
                 <div class="layui-inline">
-                  <button class="layui-btn layadmin-btn-order" lay-submit lay-filter="LAY-filter-order-search">
+                  <button
+                    class="layui-btn layadmin-btn-order"
+                    id="LAY-id-search-btn"
+                    lay-submit
+                    lay-filter="LAY-filter-order-search"
+                  >
                     <i class="layui-icon layui-icon-search layadmin-icon-search-btn"></i>
                   </button>
                 </div>
@@ -117,7 +125,8 @@
             table = layui.table
 
           form.render(null, 'LAY-filter-order-list')
-          admin.setInputFocusEnd($('[name=orderid]'))
+          admin.focusEnd($('[name=orderid]'))
+          admin.enterSubmit($('#LAY-id-search-btn'))
 
           form.on('submit(LAY-filter-order-search)', (data) => {
             let field = data.field

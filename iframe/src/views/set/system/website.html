@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>网站设置</title>
@@ -18,7 +18,7 @@
         <div class="layui-col-md12">
           <div class="layui-card">
             <div class="layui-card-header">网站设置</div>
-            <div class="layui-card-body" pad15>
+            <div class="layui-card-body">
               <div class="layui-form" wid100>
                 <div class="layui-form-item">
                   <label class="layui-form-label">网站名称</label>
@@ -113,7 +113,7 @@ layuiAdmin 是 layui 官方出品的通用型后台模板解决方案，提供�
           let $ = layui.$,
             admin = layui.admin
 
-          admin.setInputFocusEnd($('[name=siteName]'))
+          admin.focusEnd($('[name=siteName]'))
         })
     </script>
   </body>

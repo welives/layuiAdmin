@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>按钮</title>
@@ -24,8 +24,8 @@
     </style>
     <div class="layui-fluid">
       <div class="layui-card">
-        <div class="layui-card-header">表单组合</div>
-        <div class="layui-card-body layui-form" style="padding: 15px;">
+        <div class="layui-card-header">表单组合(方框风格)</div>
+        <div class="layui-card-body layui-form layui-form-pane" style="padding: 15px;">
           <div class="layui-form-item">
             <label class="layui-form-label">单行输入框</label>
             <div class="layui-input-block">
@@ -254,7 +254,7 @@
           <div class="layui-form-item layui-layout-admin">
             <div class="layui-input-block">
               <div class="layui-footer">
-                <button class="layui-btn" lay-submit lay-filter="LAY-filter-form-submit">
+                <button class="layui-btn" id="LAY-id-form-submit" lay-submit lay-filter="LAY-filter-form-submit">
                   立即提交
                 </button>
                 <button type="reset" class="layui-btn layui-btn-primary">
@@ -273,9 +273,12 @@
           base: '../../../../src/',
         })
         .use(['index', 'form', 'laydate'], () => {
-          let laydate = layui.laydate,
+          let $ = layui.$,
+            admin = layui.admin,
+            laydate = layui.laydate,
             form = layui.form
 
+          admin.focusEnd($('[name=title]'))
           laydate.render({
             elem: '#LAY-id-form-group-date',
           })

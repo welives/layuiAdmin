@@ -1,4 +1,9 @@
-<div class="layui-form" id="LAY-id-userList-form" lay-filter="LAY-filter-userList-form" style="padding: 20px 30px 0 0;">
+<div
+  class="layui-form layui-form-pane"
+  id="LAY-id-userList-form"
+  lay-filter="LAY-filter-userList-form"
+  style="padding: 20px 20px 0;"
+>
   <div class="layui-form-item">
     <label class="layui-form-label">用户名</label>
     <div class="layui-input-inline">
@@ -63,7 +68,7 @@
     // 上传头像
     upload.render({
       elem: '#LAY-id-upload-user',
-      url: layui.setter.api + 'json/upload/demo.json',
+      url: '/iframe/json/upload/demo.json',
       accept: 'images',
       method: 'get',
       acceptMime: 'image/*',

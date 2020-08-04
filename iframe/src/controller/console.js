@@ -10,12 +10,11 @@
 layui.define('laytpl', (exports) => {
   let $ = layui.$,
     admin = layui.admin,
-    setter = layui.setter,
     laytpl = layui.laytpl,
     device = layui.device()
 
   admin.req({
-    url: setter.api + 'json/console/index.json',
+    url: '/iframe/json/console/index.json',
     success(res) {
       renderShortcut(res.data.shortcut)
       renderBacklog(res.data.backlog)
@@ -76,7 +75,7 @@ layui.define('laytpl', (exports) => {
     // 今日热搜
     table.render({
       elem: '#LAY-id-topSearch', // 渲染容器
-      url: setter.api + 'json/console/top-search.json', // 数据接口
+      url: '/iframe/json/console/top-search.json', // 数据接口
       page: true, // 是否开启分页
       // 表头
       cols: [
@@ -98,7 +97,7 @@ layui.define('laytpl', (exports) => {
     // 今日热贴
     table.render({
       elem: '#LAY-id-topCard',
-      url: setter.api + 'json/console/top-card.json',
+      url: '/iframe/json/console/top-card.json',
       page: true,
       cellMinWidth: 120,
       cols: [

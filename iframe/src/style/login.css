@@ -1,8 +1,13 @@
 @import url(./base.css);
 
+/* 页面默认背景色和字体颜色 */
+body {
+  background-color: #f8f8f8;
+  color: #666;
+}
+
 html,
-body,
-#LAY_app {
+body {
   height: 100%;
 }
 

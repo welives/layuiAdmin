@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>数据操作 - 数据表格</title>
@@ -49,7 +49,6 @@
         })
         .use(['index', 'table'], () => {
           let $ = layui.$,
-            setter = layui.setter,
             table = layui.table,
             event = {
               getCheckData() {
@@ -65,14 +64,13 @@
               },
               isAll() {
                 let checkStatus = table.checkStatus('LAY-id-table-operate')
-                console.log(checkStatus)
                 layer.msg(checkStatus.isAll ? '全选' : '未全选')
               },
             }
 
           table.render({
             elem: '#LAY-id-table-operate',
-            url: setter.api + 'json/table/user.json',
+            url: '/iframe/json/table/user.json',
             cols: [
               [
                 { type: 'checkbox', fixed: 'left' },

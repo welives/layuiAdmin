@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>开启单选框 - 数据表格</title>
@@ -37,16 +37,15 @@
           base: '../../../../src/',
         })
         .use(['index', 'table'], () => {
-          let setter = layui.setter,
-            table = layui.table
+          let table = layui.table
 
           table.render({
             elem: '#LAY-id-table-radio',
-            url: setter.api + 'json/table/user.json',
+            url: '/iframe/json/table/user.json',
             toolbar: '#LAY-id-toolbarTpl',
             cols: [
               [
-                { type: 'radio' },
+                { type: 'radio', fixed: 'left' },
                 { field: 'id', width: 80, title: 'ID', sort: true },
                 { field: 'username', width: 80, title: '用户名' },
                 { field: 'sex', width: 80, title: '性别', sort: true },

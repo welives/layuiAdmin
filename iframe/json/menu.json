@@ -3,21 +3,18 @@
   "msg": "",
   "data": [
     {
+      "name": "home",
       "title": "主页",
       "icon": "layui-icon-home",
       "child": [
         {
-          "title": "控制台",
-          "jump": "index.html"
-        },
-        {
           "name": "index-1",
-          "title": "主页一",
+          "title": "演示页一",
           "jump": "home/index-1.html"
         },
         {
           "name": "index-1",
-          "title": "主页二",
+          "title": "演示页二",
           "jump": "home/index-2.html"
         },
         {

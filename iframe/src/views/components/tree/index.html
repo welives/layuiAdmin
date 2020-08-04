@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>树形组件</title>
@@ -86,13 +86,12 @@
         })
         .use(['index', 'tree', 'util'], () => {
           let $ = layui.$,
-            setter = layui.setter,
             admin = layui.admin,
             tree = layui.tree,
             util = layui.util
 
           admin.req({
-            url: setter.api + 'json/tree/data.json',
+            url: '/iframe/json/tree/data.json',
             success(res) {
               //基本演示
               tree.render({

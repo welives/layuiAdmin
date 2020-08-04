@@ -9,7 +9,6 @@
 
 layui.define(['form', 'upload'], (exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     admin = layui.admin,
     form = layui.form,
     upload = layui.upload,
@@ -61,7 +60,7 @@ layui.define(['form', 'upload'], (exports) => {
   // 上传头像
   upload.render({
     elem: '#LAY-id-avatar-upload',
-    url: setter.api + 'json/upload/demo.json',
+    url: '/iframe/json/upload/demo.json',
     method: 'get',
     done(res) {
       if (res.code === 0) {

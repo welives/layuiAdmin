@@ -136,7 +136,7 @@
                     },
                     url1 = (item1.jump && typeof item1.jump === 'string') ? item1.jump : item1.name
                 }}
-                  <li data-name="{{ item1.name || '' }}" class="layui-nav-item {{ classSelected1() }}">
+                  <li data-name="{{ item1.name || '' }}" class="layui-nav-item">
                     <a href="javascript:;" {{ hasChild1 ? '' : 'lay-href="'+ url1 +'"' }} lay-tips="{{ item1.title }}" lay-direction="2">
                       <i class="layui-icon {{ item1.icon }}"></i>
                       <cite>{{ item1.title }}</cite>

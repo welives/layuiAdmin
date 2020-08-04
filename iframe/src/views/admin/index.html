@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <title>管理员列表</title>
@@ -15,11 +15,14 @@
   <body>
     <div class="layui-fluid">
       <div class="layui-card">
-        <div class="layui-form layui-card-header layadmin-card-header-auto" lay-filter="LAY-filter-admin-list">
+        <div
+          class="layui-form layui-form-pane layui-card-header layadmin-card-header-auto"
+          lay-filter="LAY-filter-admin-list"
+        >
           <div class="layui-form-item">
             <div class="layui-inline">
               <label class="layui-form-label">登入名</label>
-              <div class="layui-input-block">
+              <div class="layui-input-inline">
                 <input
                   type="text"
                   class="layui-input"
@@ -32,7 +35,7 @@
             </div>
             <div class="layui-inline">
               <label class="layui-form-label">手机</label>
-              <div class="layui-input-block">
+              <div class="layui-input-inline">
                 <input
                   type="text"
                   class="layui-input"
@@ -45,7 +48,7 @@
             </div>
             <div class="layui-inline">
               <label class="layui-form-label">邮箱</label>
-              <div class="layui-input-block">
+              <div class="layui-input-inline">
                 <input
                   type="text"
                   class="layui-input"
@@ -58,7 +61,7 @@
             </div>
             <div class="layui-inline">
               <label class="layui-form-label">角色</label>
-              <div class="layui-input-block">
+              <div class="layui-input-inline">
                 <select name="role" lay-verify="required">
                   <option value="0">管理员</option>
                   <option value="1">超级管理员</option>
@@ -71,7 +74,12 @@
               </div>
             </div>
             <div class="layui-inline">
-              <button class="layui-btn layadmin-btn-admin" lay-submit lay-filter="LAY-filter-admin-search">
+              <button
+                class="layui-btn layadmin-btn-admin"
+                id="LAY-id-search-btn"
+                lay-submit
+                lay-filter="LAY-filter-admin-search"
+              >
                 <i class="layui-icon layui-icon-search layadmin-icon-search-btn"></i>
               </button>
             </div>
@@ -155,7 +163,8 @@
                       .render('admin/list-form')
                       .done(() => {
                         form.render(null, 'LAY-filter-adminList-form')
-                        admin.setInputFocusEnd(layero.find('[name=loginName]'))
+                        admin.focusEnd(layero.find('[name=loginName]'))
+                        admin.enterSubmit($('#LAY-id-admin-submit'))
                         form.on('submit(LAY-filter-admin-submit)', (data) => {
                           let field = data.field
                           //提交 Ajax 成功后，关闭当前弹层并重载表格
@@ -165,11 +174,15 @@
                         })
                       })
                   },
+                  end() {
+                    admin.enterSubmit($('#LAY-id-search-btn'))
+                  },
                 })
               },
             }
           form.render(null, 'LAY-filter-admin-list')
-          admin.setInputFocusEnd($('[name=loginName]'))
+          admin.focusEnd($('[name=loginName]'))
+          admin.enterSubmit($('#LAY-id-search-btn'))
           // 监听搜索
           form.on('submit(LAY-filter-admin-search)', (data) => {
             let field = data.field

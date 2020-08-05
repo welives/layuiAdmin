@@ -30,12 +30,11 @@
   layui.use(['table', 'form'], () => {
     let $ = layui.$,
       table = layui.table,
-      form = layui.form,
-      setter = layui.setter
+      form = layui.form
 
     table.render({
       elem: '#LAY-id-table-form',
-      url: setter.api + 'json/table/user.json',
+      url: '/single/json/table/user.json',
       cellMinWidth: 80,
       cols: [
         [

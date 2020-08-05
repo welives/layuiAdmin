@@ -88,9 +88,11 @@ layui.define(['table', 'form', 'element'], (exports) => {
                     field.accept = v
                   }
                 })
+                element.progress('LAY-filter-progress-' + obj.data.orderid, field.progress)
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
                 obj.update(field)
+                element.render('progress')
                 layer.close(index)
               })
             })

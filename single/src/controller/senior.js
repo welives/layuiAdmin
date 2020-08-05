@@ -9,7 +9,6 @@
 
 layui.define('echarts', (exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     admin = layui.admin,
     echarts = layui.echarts,
     areaData = [
@@ -9515,7 +9514,7 @@ layui.define('echarts', (exports) => {
 
     // 折线图
     admin.req({
-      url: setter.api + 'json/echarts/line.json',
+      url: '/single/json/echarts/line.json',
       success(res) {
         normalLine(res.data.normalLine)
         heapLine(res.data.heapLine)
@@ -9528,7 +9527,7 @@ layui.define('echarts', (exports) => {
 
     // 柱状图
     admin.req({
-      url: setter.api + 'json/echarts/bar.json',
+      url: '/single/json/echarts/bar.json',
       success(res) {
         normalCol(res.data.normalCol)
         heapCol(res.data.heapCol)
@@ -9542,7 +9541,7 @@ layui.define('echarts', (exports) => {
 
     // 地图
     admin.req({
-      url: setter.api + 'json/echarts/map.json',
+      url: '/single/json/echarts/map.json',
       success(res) {
         chinaMap(res.data.map)
       },

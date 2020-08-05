@@ -45,7 +45,8 @@
                 .render('app/content/tags-form')
                 .done(() => {
                   form.render(null, 'LAY-filter-tagsList-form')
-                  admin.setInputFocusEnd(layero.find('[name=tags]'))
+                  admin.focusEnd(layero.find('[name=tags]'))
+                  admin.enterSubmit($('#LAY-id-tags-submit'))
                   form.on('submit(LAY-filter-tags-submit)', (data) => {
                     let field = data.field
                     //提交 Ajax 成功后，静态更新表格中的数据

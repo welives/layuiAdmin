@@ -79,7 +79,7 @@
         <input type="checkbox" name="agreement" title="同意用户协议" lay-skin="primary" checked />
       </div>
       <div class="layui-form-item">
-        <button class="layui-btn layui-btn-fluid" lay-filter="LAY-filter-reg-submit" lay-submit>
+        <button class="layui-btn layui-btn-fluid" id="LAY-id-reg-btn" lay-filter="LAY-filter-reg-submit" lay-submit>
           注 册
         </button>
       </div>
@@ -104,13 +104,13 @@
 <script>
   layui.use('user', () => {
     let $ = layui.$,
-      setter = layui.setter,
       admin = layui.admin,
       form = layui.form,
       router = layui.router()
 
     form.render(null, 'LAY-filter-reg-form')
-    admin.setInputFocusEnd($('#LAY-id-user-cellphone'))
+    admin.focusEnd($('#LAY-id-user-cellphone'))
+    admin.enterSubmit($('#LAY-id-reg-btn'))
     // 提交
     form.on('submit(LAY-filter-reg-submit)', (data) => {
       let field = data.field
@@ -127,7 +127,7 @@
 
       // 请求接口
       admin.req({
-        url: setter.api + 'json/user/reg.json',
+        url: '/single/json/user/reg.json',
         data: field,
         done(res) {
           layer.msg(

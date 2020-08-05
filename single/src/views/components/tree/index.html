@@ -74,13 +74,12 @@
 <script>
   layui.use(['tree', 'util'], () => {
     let $ = layui.$,
-      setter = layui.setter,
       admin = layui.admin,
       tree = layui.tree,
       util = layui.util
 
     admin.req({
-      url: setter.api + 'json/tree/data.json',
+      url: '/single/json/tree/data.json',
       success(res) {
         //基本演示
         tree.render({

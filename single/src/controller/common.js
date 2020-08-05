@@ -9,12 +9,11 @@
 
 layui.define((exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     admin = layui.admin
 
   admin.events.logout = () => {
     admin.req({
-      url: setter.api + 'json/user/logout.json',
+      url: '/single/json/user/logout.json',
       done(res) {
         //这里要说明一下：done 是只有 response 的 code 正常才会执行。而 succese 则是只要 http 为 200 就会执行
 

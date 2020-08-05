@@ -22,12 +22,11 @@
 <script>
   layui.use('table', () => {
     let table = layui.table,
-      admin = layui.admin,
-      setter = layui.setter
+      admin = layui.admin
 
     table.render({
       elem: '#LAY-id-table-fixed',
-      url: setter.api + 'json/table/user.json',
+      url: '/single/json/table/user.json',
       width: admin.screen() > 1 ? 892 : '',
       height: 332,
       cols: [

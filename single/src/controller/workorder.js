@@ -9,7 +9,6 @@
 
 layui.define(['table', 'form', 'element'], (exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     view = layui.view,
     admin = layui.admin,
     table = layui.table,
@@ -18,7 +17,7 @@ layui.define(['table', 'form', 'element'], (exports) => {
 
   table.render({
     elem: '#LAY-id-order-list',
-    url: setter.api + 'json/workorder/order.json',
+    url: '/single/json/workorder/order.json',
     cols: [
       [
         { type: 'numbers', fixed: 'left' },
@@ -75,15 +74,32 @@ layui.define(['table', 'form', 'element'], (exports) => {
             .render('app/workorder/order-form', data)
             .done(() => {
               form.render(null, 'LAY-filter-orderList-form')
-              admin.setInputFocusEnd(layero.find('[name=attr]'))
+              admin.focusEnd(layero.find('[name=attr]'))
+              admin.enterSubmit($('#LAY-id-order-submit'))
               form.on('submit(LAY-filter-order-submit)', (data) => {
                 let field = data.field
+                state.filter((v, index) => {
+                  if (index == field.state) {
+                    field.state = v
+                  }
+                })
+                accept.filter((v, index) => {
+                  if (index == field.accept - 1) {
+                    field.accept = v
+                  }
+                })
+                element.progress('LAY-filter-progress-' + obj.data.orderid, field.progress)
+                // console.log(field)
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-id-order-list')
+                obj.update(field)
+                element.render('progress')
                 layer.close(index)
               })
             })
+        },
+        end() {
+          admin.enterSubmit($('#LAY-id-search-btn'))
         },
       })
     }

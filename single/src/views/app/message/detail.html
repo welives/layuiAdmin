@@ -2,11 +2,7 @@
   <div class="layui-row layui-col-space10">
     <div class="layui-col-md12">
       <div class="layui-card">
-        <script
-          type="text/html"
-          template
-          lay-url="{{ layui.setter.api }}json/message/detail.json?id={{ layui.router().search.id }}"
-        >
+        <script type="text/html" template lay-url="/single/json/message/detail.json?id={{ layui.router().search.id }}">
           <div class="layui-card-body layui-text">
             <div class="layadmin-text">
               {{ d.data.content }}

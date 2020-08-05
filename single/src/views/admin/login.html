@@ -62,7 +62,7 @@
         >
       </div>
       <div class="layui-form-item">
-        <button class="layui-btn layui-btn-fluid" lay-filter="LAY-filter-login-submit" lay-submit>
+        <button class="layui-btn layui-btn-fluid" id="LAY-id-login-btn" lay-filter="LAY-filter-login-submit" lay-submit>
           登 入
         </button>
       </div>
@@ -89,12 +89,14 @@
       search = router.search
 
     form.render(null, 'LAY-filter-login-form')
+    admin.focusEnd($('#LAY-id-login-username'))
+    admin.enterSubmit($('#LAY-id-login-btn'))
 
     // 提交
     form.on('submit(LAY-filter-login-submit)', (data) => {
       // 请求登入接口
       admin.req({
-        url: setter.api + 'json/user/login.json', // 实际使用请改成服务端真实接口
+        url: '/single/json/user/login.json', // 实际使用请改成服务端真实接口
         data: data.field,
         done(res) {
           // 请求成功后，写入 access_token

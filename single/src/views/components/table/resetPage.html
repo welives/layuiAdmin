@@ -21,12 +21,11 @@
 </div>
 <script>
   layui.use('table', () => {
-    let table = layui.table,
-      setter = layui.setter
+    let table = layui.table
 
     table.render({
       elem: '#LAY-id-table-resetPage',
-      url: setter.api + 'json/table/user.json',
+      url: '/single/json/table/user.json',
       cols: [
         [
           { field: 'id', width: 80, title: 'ID', sort: true },

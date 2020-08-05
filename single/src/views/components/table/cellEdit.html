@@ -21,12 +21,11 @@
 </div>
 <script>
   layui.use('table', () => {
-    let table = layui.table,
-      setter = layui.setter
+    let table = layui.table
 
     table.render({
       elem: '#LAY-id-table-cellEdit',
-      url: setter.api + 'json/table/demo.json',
+      url: '/single/json/table/demo.json',
       cols: [
         [
           { type: 'checkbox' },

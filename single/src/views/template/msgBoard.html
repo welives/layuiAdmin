@@ -28,7 +28,7 @@
             </a>
           </div>
           <div class="layui-input-block layui-float-right">
-            <button class="layui-btn" lay-submit lay-filter="LAY-msgboard">
+            <button class="layui-btn" lay-submit lay-filter="LAY-filter-msg-submit">
               发表
             </button>
           </div>
@@ -41,7 +41,7 @@
           <div class="media-body">
             <a href="javascript:;" class="media-left layui-float-left">
               <img
-                src="{{ layui.setter.api }}images/portrait.png"
+                src="/single/images/portrait.png"
                 class="layui-circle"
                 width="46"
                 height="46"
@@ -70,3 +70,15 @@
     </div>
   </div>
 </div>
+<script>
+  layui.use(['admin', 'form'], () => {
+    let $ = layui.$,
+      admin = layui.admin,
+      form = layui.form
+
+    admin.focusEnd($('[name=desc]'))
+    form.on('submit(LAY-filter-msg-submit)', (data) => {
+      layer.msg(data.field.desc)
+    })
+  })
+</script>

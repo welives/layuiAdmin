@@ -9,7 +9,6 @@
 
 layui.define(['table', 'form', 'util'], (exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     view = layui.view,
     admin = layui.admin,
     table = layui.table,
@@ -19,7 +18,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 用户列表
   table.render({
     elem: '#LAY-id-user-list',
-    url: setter.api + 'json/user/userList.json',
+    url: '/single/json/user/userList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -76,15 +75,19 @@ layui.define(['table', 'form', 'util'], (exports) => {
             .render('user/list-form', data)
             .done(() => {
               form.render(null, 'LAY-filter-userList-form')
-              admin.setInputFocusEnd(layero.find('[name=username]'))
+              admin.focusEnd(layero.find('[name=username]'))
+              admin.enterSubmit($('#LAY-id-user-submit'))
               form.on('submit(LAY-filter-user-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-id-user-list')
+                obj.update(field)
                 layer.close(index)
               })
             })
+        },
+        end() {
+          admin.enterSubmit($('#LAY-id-search-btn'))
         },
       })
     }
@@ -93,7 +96,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 管理员列表
   table.render({
     elem: '#LAY-id-admin-list',
-    url: setter.api + 'json/admin/adminList.json',
+    url: '/single/json/admin/adminList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -155,15 +158,25 @@ layui.define(['table', 'form', 'util'], (exports) => {
             .render('admin/list-form', data)
             .done(() => {
               form.render(null, 'LAY-filter-adminList-form')
-              admin.setInputFocusEnd(layero.find('[name=loginName]'))
+              admin.focusEnd(layero.find('[name=loginName]'))
+              admin.enterSubmit($('#LAY-id-admin-submit'))
               form.on('submit(LAY-filter-admin-submit)', (data) => {
                 let field = data.field
+                roles.filter((v, index) => {
+                  if (index == field.role) {
+                    field.role = v
+                  }
+                })
+                field.check = field.check === 'on' ? true : false
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-id-admin-list')
+                obj.update(field)
                 layer.close(index)
               })
             })
+        },
+        end() {
+          admin.enterSubmit($('#LAY-id-search-btn'))
         },
       })
     }
@@ -172,7 +185,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 角色列表
   table.render({
     elem: '#LAY-id-role-list',
-    url: setter.api + 'json/role/roleList.json',
+    url: '/single/json/role/roleList.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -225,12 +238,17 @@ layui.define(['table', 'form', 'util'], (exports) => {
             .render('role/list-form', data)
             .done(() => {
               form.render(null, 'LAY-filter-roleList-form')
-              admin.setInputFocusEnd(layero.find('[name=descr]'))
+              admin.focusEnd(layero.find('[name=descr]'))
               form.on('submit(LAY-filter-role-submit)', (data) => {
                 let field = data.field
+                roles.filter((v, index) => {
+                  if (index == field.role) {
+                    field.role = v
+                  }
+                })
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 //$.ajax({});
-                table.reload('LAY-id-role-list')
+                obj.update(field)
                 layer.close(index)
               })
             })

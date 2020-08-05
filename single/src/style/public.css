@@ -3,6 +3,9 @@
 .layui-fluid {
   padding: 10px;
 }
+.layui-fluid .layui-card {
+  border: 1px solid #f8f8f8;
+}
 .layui-card-header .layui-icon {
   line-height: initial;
   position: absolute;

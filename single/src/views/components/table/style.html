@@ -31,12 +31,11 @@
 </div>
 <script>
   layui.use('table', () => {
-    let table = layui.table,
-      setter = layui.setter
-    console.log(layui.router())
+    let table = layui.table
+
     table.render({
       elem: '#LAY-id-table-style',
-      url: setter.api + 'json/table/user.json',
+      url: '/single/json/table/user.json',
       height: 310,
       cols: [
         [

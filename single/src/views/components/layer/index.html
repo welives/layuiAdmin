@@ -192,7 +192,7 @@
             })
           },
           photos() {
-            $.getJSON(layui.setter.api + 'json/layer/photos.json', (json) => {
+            $.getJSON('/single/json/layer/photos.json', (json) => {
               layer.photos({
                 photos: json,
               })

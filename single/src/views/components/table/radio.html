@@ -26,12 +26,11 @@
 </div>
 <script>
   layui.use('table', () => {
-    let setter = layui.setter,
-      table = layui.table
+    let table = layui.table
 
     table.render({
       elem: '#LAY-id-table-radio',
-      url: setter.api + 'json/table/user.json',
+      url: '/single/json/table/user.json',
       toolbar: '#LAY-id-toolbarTpl',
       cols: [
         [

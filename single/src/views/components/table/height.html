@@ -22,12 +22,11 @@
 <script>
   layui.use('table', () => {
     let table = layui.table,
-      admin = layui.admin,
-      setter = layui.setter
+      admin = layui.admin
 
     table.render({
       elem: '#LAY-id-table-height',
-      url: setter.api + 'json/table/user30.json',
+      url: '/single/json/table/user30.json',
       height: 'full-100',
       cellMinWidth: 80,
       cols: [

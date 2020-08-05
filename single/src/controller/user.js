@@ -9,7 +9,6 @@
 
 layui.define('form', (exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     admin = layui.admin,
     form = layui.form,
     $body = $('body')
@@ -42,7 +41,7 @@ layui.define('form', (exports) => {
     elemPhone: '#LAY-id-user-cellphone', // 手机输入框
     elemSMScode: '#LAY-id-user-smscode', // 短信验证码输入框
     ajax: {
-      url: setter.api + 'json/user/sms.json',
+      url: '/single/json/user/sms.json',
     },
   })
 

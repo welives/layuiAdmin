@@ -9,7 +9,6 @@
 
 layui.define(['table', 'form', 'util'], (exports) => {
   let $ = layui.$,
-    setter = layui.setter,
     view = layui.view,
     admin = layui.admin,
     table = layui.table,
@@ -19,7 +18,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 文章列表
   table.render({
     elem: '#LAY-id-article-list',
-    url: setter.api + 'json/content/article.json',
+    url: '/single/json/content/article.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -76,19 +75,25 @@ layui.define(['table', 'form', 'util'], (exports) => {
             .render('app/content/article-form', data)
             .done(() => {
               form.render(null, 'LAY-filter-articleList-form')
-              admin.setInputFocusEnd(layero.find('[name=title]'))
+              admin.focusEnd(layero.find('[name=title]'))
               form.on('submit(LAY-filter-article-submit)', (data) => {
                 let field = data.field
+                label.filter((v, index) => {
+                  if (index == field.label) {
+                    field.label = v
+                  }
+                })
+                field.status = field.status === 'on' ? true : false
                 //提交 Ajax 成功后，静态更新表格中的数据
                 // $.ajax({})
-                table.reload('LAY-id-article-list') // 数据刷新
+                obj.update(field)
                 layer.close(index) // 关闭弹层
               })
             })
         },
       })
     } else if (obj.event === 'del') {
-      layer.confirm('确定删除此文章？', (index) => {
+      layer.confirm('确定删除此文章？', { icon: 3, title: '提示' }, (index) => {
         obj.del()
         layer.close(index)
       })
@@ -98,7 +103,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 分类管理
   table.render({
     elem: '#LAY-id-tags-list',
-    url: setter.api + 'json/content/tags.json',
+    url: '/single/json/content/tags.json',
     cols: [
       [
         { type: 'numbers', fixed: 'left' },
@@ -130,7 +135,8 @@ layui.define(['table', 'form', 'util'], (exports) => {
             .render('app/content/tags-form', data)
             .done(() => {
               form.render(null, 'LAY-filter-tagsList-form')
-              admin.setInputFocusEnd(layero.find('[name=tags]'))
+              admin.focusEnd(layero.find('[name=tags]'))
+              admin.enterSubmit($('#LAY-id-tags-submit'))
               form.on('submit(LAY-filter-tags-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，静态更新表格中的数据
@@ -142,7 +148,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
         },
       })
     } else if (obj.event === 'del') {
-      layer.confirm('确定删除此分类？', (index) => {
+      layer.confirm('确定删除此分类？', { icon: 3, title: '提示' }, (index) => {
         obj.del()
         layer.close(index)
       })
@@ -152,7 +158,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
   // 评论管理
   table.render({
     elem: '#LAY-id-comment-list',
-    url: setter.api + 'json/content/comment.json',
+    url: '/single/json/content/comment.json',
     cols: [
       [
         { type: 'checkbox', fixed: 'left' },
@@ -197,7 +203,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
             .render('app/content/comment-form', data)
             .done(() => {
               form.render(null, 'LAY-filter-commentList-form')
-              admin.setInputFocusEnd(layero.find('[name=content]'))
+              admin.focusEnd(layero.find('[name=content]'))
               form.on('submit(LAY-filter-comment-submit)', (data) => {
                 let field = data.field
                 //提交 Ajax 成功后，静态更新表格中的数据
@@ -209,7 +215,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
         },
       })
     } else if (obj.event === 'del') {
-      layer.confirm('确定删除此条评论？', (index) => {
+      layer.confirm('确定删除此条评论？', { icon: 3, title: '提示' }, (index) => {
         obj.del()
         layer.close(index)
       })

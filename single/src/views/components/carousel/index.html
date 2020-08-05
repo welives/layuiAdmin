@@ -189,16 +189,11 @@
         <div class="layui-card-header">填充轮播元素 - 以图片为例</div>
         <div class="layui-card-body">
           <div class="layui-carousel" id="LAY-id-carousel-img">
-            <script
-              type="text/html"
-              template
-              lay-url="{{ layui.setter.api }}json/carousel/img.json"
-              lay-done="imgCarousel()"
-            >
+            <script type="text/html" template lay-url="/single/json/carousel/img.json" lay-done="imgCarousel()">
               <div carousel-item>
                 {{# layui.each(d.data, (index, item)=>{ }}
                   <div>
-                    <img src="{{ layui.setter.api }}{{ item.src }}" alt="" />
+                    <img src="/single/{{ item.src }}" alt="" />
                   </div>
                   {{# }) }}
                 </div>

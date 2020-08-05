@@ -34,12 +34,11 @@
 </div>
 <script>
   layui.use('table', () => {
-    let setter = layui.setter,
-      table = layui.table
+    let table = layui.table
 
     table.render({
       elem: '#LAY-id-table-toolbar',
-      url: setter.api + 'json/table/demo.json',
+      url: '/single/json/table/demo.json',
       toolbar: '#LAY-id-toolbarTpl',
       title: '用户数据表',
       cols: [

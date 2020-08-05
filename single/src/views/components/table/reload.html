@@ -25,7 +25,7 @@
                 autocomplete="off"
               />
             </div>
-            <button class="layui-btn" lay-submit lay-filter="LAY-filter-table-search">
+            <button class="layui-btn" id="LAY-id-search-btn" lay-submit lay-filter="LAY-filter-table-search">
               搜索
             </button>
           </div>
@@ -43,13 +43,12 @@
   layui.use('table', () => {
     let $ = layui.$,
       table = layui.table,
-      setter = layui.setter,
       admin = layui.admin,
       form = layui.form
 
     table.render({
       elem: '#LAY-id-table-reload',
-      url: setter.api + 'json/table/user.json',
+      url: '/single/json/table/user.json',
       cols: [
         [
           { type: 'checkbox', fixed: true },
@@ -73,7 +72,8 @@
       page: true,
     })
 
-    admin.setInputFocusEnd($('.layui-form').find('[name=id]'))
+    admin.focusEnd($('.layui-form').find('[name=id]'))
+    admin.enterSubmit($('#LAY-id-search-btn'))
     form.on('submit(LAY-filter-table-search)', (data) => {
       let field = data.field
       table.reload('LAY-id-table-reload')

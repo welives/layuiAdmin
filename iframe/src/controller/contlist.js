@@ -83,6 +83,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
                     field.label = v
                   }
                 })
+                field.status = field.status === 'on' ? true : false
                 //提交 Ajax 成功后，静态更新表格中的数据
                 // $.ajax({})
                 obj.update(field)

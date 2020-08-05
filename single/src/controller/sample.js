@@ -11,12 +11,11 @@ layui.define('echarts', (exports) => {
   let $ = layui.$,
     layer = layui.layer,
     admin = layui.admin,
-    setter = layui.setter,
     element = layui.element,
     laytpl = layui.laytpl
 
   admin.req({
-    url: setter.api + 'json/home/sample.json',
+    url: '/single/json/home/sample.json',
     success(res) {
       renderUpdateLogs(res.data.updateLogs)
       renderUserNews(res.data.userNews)
@@ -61,7 +60,7 @@ layui.define('echarts', (exports) => {
     let table = layui.table
     table.render({
       elem: '#LAY-id-activeUser',
-      url: setter.api + 'json/home/active-user.json',
+      url: '/single/json/home/active-user.json',
       cols: [
         [
           {
@@ -112,7 +111,7 @@ layui.define('echarts', (exports) => {
     let table = layui.table
     table.render({
       elem: '#LAY-id-prograss',
-      url: setter.api + 'json/home/prograss.json',
+      url: '/single/json/home/prograss.json',
       cols: [
         [
           { type: 'checkbox', fixed: 'left' },
@@ -199,7 +198,7 @@ layui.define('echarts', (exports) => {
       [
         '{{# layui.each(d, (index, item) => { }}<dd>',
         '<div class="layadmin-avatar-img layui-bg-green layui-circle">',
-        '<a href="javascript:;"><img src="{{ layui.setter.api }}{{ item.avatar }}" alt="" /></a>',
+        '<a href="javascript:;"><img src="/single/{{ item.avatar }}" alt="" /></a>',
         '</div><div><p>{{ item.user }} {{ item.text }}</p>',
         '<span>{{ item.date }}</span></div></dd>{{# }) }}',
       ].join(''),

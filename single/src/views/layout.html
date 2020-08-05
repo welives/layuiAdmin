@@ -34,7 +34,7 @@
         <a lay-href="app/message/" layadmin-event="message" title="消息中心">
           <i class="layui-icon layui-icon-notice"></i>
           <!-- 如果有新消息,则显示小圆点 -->
-          <script type="text/html" template lay-url="{{ layui.setter.api }}json/message/newMsg.json">
+          <script type="text/html" template lay-url="/single/json/message/newMsg.json">
             {{# if(d.data.newMsg){ }}
               <span class="layui-badge-dot"></span>
             {{# } }}
@@ -60,7 +60,7 @@
         <script
           type="text/html"
           template
-          lay-url="{{ layui.setter.api }}json/user/session.json"
+          lay-url="/single/json/user/session.json"
           lay-done="layui.element.render('nav', 'LAY-filter-header-right')"
         >
           <a href="javascript:;"><cite>{{ d.data.username }}</cite></a>
@@ -93,11 +93,11 @@
       <script
         type="text/html"
         template
-        lay-url="{{ layui.setter.api }}json/menu.json"
+        lay-url="/single/json/menu.json"
         lay-done="layui.element.render('nav','LAY-filter-side-menu')"
       >
         <div class="layui-logo" lay-href="">
-          <img src="{{ layui.setter.api }}images/logo.gif" alt="logo" />
+          <img src="/single/images/logo.gif" alt="logo" />
           <span>{{ layui.setter.name || 'LAYUI 摸🐟' }}</span>
         </div>
         <ul class="layui-nav layui-nav-tree" id="LAY_app_side_menu" lay-filter="LAY-filter-side-menu" lay-shrink="all">
@@ -114,7 +114,7 @@
               },
               url1 = (item1.jump && typeof item1.jump === 'string') ? item1.jump : item1.name
           }}
-            <li data-name="{{ item1.name || '' }}" data-jump="{{ item1.jump || '' }}" class="layui-nav-item {{ classSelected1() }}">
+            <li data-name="{{ item1.name || '' }}" data-jump="{{ item1.jump || '' }}" class="layui-nav-item">
               <a href="javascript:;" {{ hasChild1 ? '' : 'lay-href="'+ url1 +'"' }} lay-tips="{{ item1.title }}" lay-direction="2">
                 <i class="layui-icon {{ item1.icon }}"></i>
                 <cite>{{ item1.title }}</cite>

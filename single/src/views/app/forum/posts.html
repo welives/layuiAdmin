@@ -10,7 +10,10 @@
   <div class="layui-row layui-col-space10">
     <div class="layui-col-md12">
       <div class="layui-card">
-        <div class="layui-card-header layui-form layadmin-card-header-auto" lay-filter="LAY-filter-posts-list">
+        <div
+          class="layui-card-header layui-form layui-form-pane layadmin-card-header-auto"
+          lay-filter="LAY-filter-posts-list"
+        >
           <div class="layui-form-item">
             <div class="layui-inline">
               <label class="layui-form-label">ID</label>
@@ -62,7 +65,12 @@
               </div>
             </div>
             <div class="layui-inline">
-              <button class="layui-btn layadmin-btn-list" lay-submit lay-filter="LAY-filter-posts-search">
+              <button
+                class="layui-btn layadmin-btn-list"
+                id="LAY-id-search-btn"
+                lay-submit
+                lay-filter="LAY-filter-posts-search"
+              >
                 <i class="layui-icon layui-icon-search layadmin-icon-search-btn"></i>
               </button>
             </div>
@@ -115,7 +123,8 @@
         },
       }
     form.render(null, 'LAY-filter-posts-list')
-    admin.setInputFocusEnd($('.layui-form').find('[name=id]'))
+    admin.focusEnd($('.layui-form').find('[name=id]'))
+    admin.enterSubmit($('#LAY-id-search-btn'))
 
     // 监听搜索
     form.on('submit(LAY-filter-posts-search)', (data) => {

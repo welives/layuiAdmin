@@ -43,6 +43,7 @@
           <div class="layui-form-item">
             <button
               class="layui-btn layui-btn-fluid"
+              id="LAY-id-resetpass-btn"
               lay-filter="LAY-filter-resetpass-submit"
               lay-submit
             >
@@ -123,6 +124,7 @@
           <div class="layui-form-item">
             <button
               class="layui-btn layui-btn-fluid"
+              id="LAY-id-forget-btn"
               lay-filter="LAY-filter-forget-submit"
               lay-submit
             >
@@ -140,16 +142,17 @@
 <script>
   layui.use('user', () => {
     let $ = layui.$,
-      setter = layui.setter,
       admin = layui.admin,
       form = layui.form,
       router = layui.router()
 
     form.render(null, 'LAY-filter-forget-form')
     if (router.search.type === 'resetpass') {
-      admin.setInputFocusEnd($('#LAY-id-reset-newpass'))
+      admin.focusEnd($('#LAY-id-reset-newpass'))
+      admin.enterSubmit($('#LAY-id-resetpass-btn'))
     } else {
-      admin.setInputFocusEnd($('#LAY-id-user-cellphone'))
+      admin.focusEnd($('#LAY-id-user-cellphone'))
+      admin.enterSubmit($('#LAY-id-forget-btn'))
     }
 
     // 找回密码
@@ -157,7 +160,7 @@
       let field = data.field
 
       admin.req({
-        url: setter.api + 'json/user/forget.json',
+        url: '/single/json/user/forget.json',
         data: field,
         done(res) {
           location.hash = router.href + '/type=resetpass'
@@ -174,7 +177,7 @@
         return layer.msg('两次密码输入不一致')
       }
       admin.req({
-        url: setter.api + 'json/user/resetpass.json',
+        url: '/single/json/user/resetpass.json',
         data: field,
         done(res) {
           layer.msg(

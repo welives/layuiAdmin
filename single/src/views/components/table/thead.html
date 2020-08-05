@@ -90,14 +90,13 @@
 </div>
 <script>
   layui.use('table', () => {
-    let table = layui.table,
-      setter = layui.setter
+    let table = layui.table
 
     table.init('LAY-filter-table-thead1', {
-      url: setter.api + 'json/table/demo2.json',
+      url: '/single/json/table/demo2.json',
     })
     table.init('LAY-filter-table-thead2', {
-      url: setter.api + 'json/table/demo2.json',
+      url: '/single/json/table/demo2.json',
     })
 
     table.on('tool(LAY-filter-table-thead1)', (obj) => {

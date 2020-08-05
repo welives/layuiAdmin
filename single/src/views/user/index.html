@@ -8,11 +8,14 @@
 
 <div class="layui-fluid">
   <div class="layui-card">
-    <div class="layui-form layui-card-header layadmin-card-header-auto" lay-filter="LAY-filter-user-list">
+    <div
+      class="layui-form layui-form-pane layui-card-header layadmin-card-header-auto"
+      lay-filter="LAY-filter-user-list"
+    >
       <div class="layui-form-item">
         <div class="layui-inline">
           <label class="layui-form-label">ID</label>
-          <div class="layui-input-block">
+          <div class="layui-input-inline">
             <input
               type="text"
               class="layui-input"
@@ -25,7 +28,7 @@
         </div>
         <div class="layui-inline">
           <label class="layui-form-label">用户名</label>
-          <div class="layui-input-block">
+          <div class="layui-input-inline">
             <input
               type="text"
               class="layui-input"
@@ -38,7 +41,7 @@
         </div>
         <div class="layui-inline">
           <label class="layui-form-label">邮箱</label>
-          <div class="layui-input-block">
+          <div class="layui-input-inline">
             <input
               type="text"
               class="layui-input"
@@ -51,7 +54,7 @@
         </div>
         <div class="layui-inline">
           <label class="layui-form-label">性别</label>
-          <div class="layui-input-block">
+          <div class="layui-input-inline">
             <select name="sex" lay-verify="required">
               <option value="0">不限</option>
               <option value="1">男</option>
@@ -60,7 +63,12 @@
           </div>
         </div>
         <div class="layui-inline">
-          <button class="layui-btn layadmin-btn-user" lay-submit lay-filter="LAY-filter-user-search">
+          <button
+            class="layui-btn layadmin-btn-user"
+            id="LAY-id-search-btn"
+            lay-submit
+            lay-filter="LAY-filter-user-search"
+          >
             <i class="layui-icon layui-icon-search layadmin-icon-search-btn"></i>
           </button>
         </div>
@@ -128,7 +136,8 @@
                 .render('user/list-form')
                 .done(() => {
                   form.render(null, 'LAY-filter-userList-form')
-                  admin.setInputFocusEnd(layero.find('[name=username]'))
+                  admin.focusEnd(layero.find('[name=username]'))
+                  admin.enterSubmit($('#LAY-id-user-submit'))
                   form.on('submit(LAY-filter-user-submit)', (data) => {
                     let field = data.field
                     //提交 Ajax 成功后，关闭当前弹层并重载表格
@@ -138,13 +147,17 @@
                   })
                 })
             },
+            end() {
+              admin.enterSubmit($('#LAY-id-search-btn'))
+            },
           })
         },
       }
     // 渲染表单
     form.render(null, 'LAY-filter-user-list')
     // 初始聚焦
-    admin.setInputFocusEnd($('.layui-form').find('[name=id]'))
+    admin.focusEnd($('.layui-form').find('[name=id]'))
+    admin.enterSubmit($('#LAY-id-search-btn'))
 
     // 监听搜索
     form.on('submit(LAY-filter-user-search)', (data) => {

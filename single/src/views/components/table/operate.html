@@ -39,29 +39,27 @@
   layui.use('table', () => {
     let $ = layui.$,
       table = layui.table,
-      setter = layui.setter,
       event = {
         getCheckData() {
-          let checkStatus = table.checkStatus('LAY-table-operate'),
+          let checkStatus = table.checkStatus('LAY-id-table-operate'),
             data = checkStatus.data
           if (data.length === 0) return layer.msg('你未选中任何数据')
           layer.alert(JSON.stringify(data))
         },
         getCheckLength() {
-          let checkStatus = table.checkStatus('LAY-table-operate'),
+          let checkStatus = table.checkStatus('LAY-id-table-operate'),
             data = checkStatus.data
           layer.msg(`选中了：${data.length} 个`)
         },
         isAll() {
-          let checkStatus = table.checkStatus('LAY-table-operate')
-          console.log(checkStatus)
+          let checkStatus = table.checkStatus('LAY-id-table-operate')
           layer.msg(checkStatus.isAll ? '全选' : '未全选')
         },
       }
 
     table.render({
       elem: '#LAY-id-table-operate',
-      url: setter.api + 'json/table/user.json',
+      url: '/single/json/table/user.json',
       cols: [
         [
           { type: 'checkbox', fixed: 'left' },

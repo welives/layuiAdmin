@@ -79,6 +79,7 @@ layui.define(['table', 'form', 'util'], (exports) => {
               admin.focusEnd(layero.find('[name=poster]'))
               form.on('submit(LAY-filter-posts-submit)', (data) => {
                 let field = data.field
+                field.top = field.top === 'on' ? true : false
                 //提交 Ajax 成功后，静态更新表格中的数据
                 // $.ajax({})
                 obj.update(field)

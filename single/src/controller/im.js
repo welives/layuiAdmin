@@ -29,12 +29,12 @@ layui.define('layim', (exports) => {
   layim.config({
     //初始化接口
     init: {
-      url: setter.api + 'json/layim/getList.json',
+      url: '/single/json/layim/getList.json',
       data: {},
     },
     //查看群员接口
     members: {
-      url: setter.api + 'json/layim/getMembers.json',
+      url: '/single/json/layim/getMembers.json',
       data: {},
     },
 

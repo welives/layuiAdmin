@@ -56,7 +56,7 @@
               <script type="text/html" template>
                 <a href="javascript:;"
                   ><img
-                    src="{{ layui.setter.api }}images/logo.gif"
+                    src="/single/images/logo.gif"
                     alt=""
                     class="layui-nav-img"
                   />我</a
@@ -172,6 +172,8 @@
   layui.use('element', () => {
     let $ = layui.$,
       element = layui.element
+
+    element.init()
 
     $('body').on('click', '*[lay-event]', function () {
       let color = `layui-bg-${$(this).attr('lay-event')}`,

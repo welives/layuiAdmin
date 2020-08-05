@@ -45,7 +45,7 @@
           </div>
           <br />
           <ul class="layui-nav">
-            <li class="layui-nav-item">
+            <li class="layui-nav-item layui-this">
               <a href="javascript:;">控制台<span class="layui-badge">9</span></a>
             </li>
             <li class="layui-nav-item">
@@ -70,3 +70,9 @@
     </div>
   </div>
 </div>
+<script>
+  layui.use('element', () => {
+    let element = layui.element
+    element.init()
+  })
+</script>

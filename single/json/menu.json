@@ -3,6 +3,7 @@
   "msg": "",
   "data": [
     {
+      "name": "home",
       "title": "主页",
       "icon": "layui-icon-home",
       "child": [
@@ -118,7 +119,8 @@
           "child": [
             {
               "name": "index",
-              "title": "功能演示"
+              "title": "功能演示",
+              "jump": "components/layer/index"
             },
             {
               "name": "special",
